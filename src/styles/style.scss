@@ -1,0 +1,21 @@
+// abstracts file
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+
+@import "./base/reset";
+
+@import "./components/buttons";
+@import "./components/cards";
+@import "./components/form";
+
+@import "./layouts/header";
+@import "./layouts/footer";
+
+@import "./pages/index";
+@import "./pages/reviews";
+@import "./pages/tools";
+@import "./pages/login";
+@import "./pages/hero";
+@import "./pages/dashboard";
+@import "./pages/papers";
+@import "./pages/classes";

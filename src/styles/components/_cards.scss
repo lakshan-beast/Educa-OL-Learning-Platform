@@ -1,0 +1,374 @@
+// // card for style
+// .card {
+//   background-color: rgb(168, 152, 168);
+//   border-radius: $border-radius-medium;
+//   padding: 3rem;
+//   box-shadow: $shadow-light;
+//   transition: all 0.3s ease;
+//   position: relative;
+//   overflow: hidden;
+//   @include flex-custom(center, flex-start, column, 1.5rem);
+
+//   &-icon {
+//     font-size: 3.5rem;
+//     color: $dark-purple;
+//     margin-bottom: 1rem;
+//   }
+
+//   &-title {
+//     font-size: 2rem;
+//     font-weight: $font-weight-bold;
+//     color: $dark-purple;
+//   }
+//   &-text {
+//     font-size: 1.5rem;
+//     // color: $medium-text;
+//     line-height: 1.6;
+//   }
+
+//   &:hover {
+//     transform: translateY(-10px);
+//     box-shadow: $shadow-dark;
+//     border-bottom: 4px solid $dark-purple1;
+//   }
+// }
+
+// .resources-card {
+//   background: $white;
+//   border-radius: $border-radius-medium;
+//   box-shadow: 0px 1px 8px $blue-light;
+//   transition: 0.3s ease-out;
+//   @include flex-custom(center, center, column, 0, nowrap);
+//   text-align: center;
+//   position: relative;
+
+//   &:hover {
+//     transform: translateY(-10px);
+//     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+//   }
+
+//   @include respond(mobile) {
+//     text-align: center;
+//   }
+
+//   img {
+//     width: 180px;
+//     height: 180px;
+//     object-fit: cover;
+//     margin: 1rem auto;
+//   }
+
+//   h3 {
+//     color: $blue-medium;
+//     text-align: center;
+//     margin-bottom: 6px;
+
+//     i {
+//       margin-right: 0.3rem;
+//     }
+//   }
+//   p {
+//     color: $blue-medium;
+//     text-align: center;
+//     margin: 10px 18px;
+//     margin: 6px 18px 16px 18px;
+//     padding: $padding-none;
+//   }
+//   a {
+//     box-shadow: 0px 0px 16px rgba(92, 92, 231, 0.397);
+//     margin-top: auto;
+//     border-radius: 0 0;
+//     padding: 8px 0px;
+//     /* margin-top: auto; */
+//     /* margin-bottom: 6px; */
+//     /* border-radius: 3px 0 1rem 0; */
+//     position: relative;
+//     bottom: 0;
+//     /* margin: auto -0rem 0rem auto; */
+//     width: 100%;
+//     border-radius: 0 0 1rem 1rem;
+//     color: #ffffff;
+//     background: #f7786f;
+
+//     &:hover {
+//       opacity: 0.8;
+//       border-top: 2px solid $blue-medium;
+//     }
+//   }
+// }
+
+// .card-badge {
+//   padding: 6px 16px;
+//   text-align: center;
+//   border-radius: 3px;
+//   position: absolute;
+//   top: -0.5rem;
+//   right: -0.3rem;
+//   font-size: 0.7rem;
+//   text-transform: uppercase;
+//   z-index: 10;
+//   width: auto;
+//   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.164);
+//   font-weight: 500;
+
+//   &.card-badge-official {
+//     background: gold;
+//     color: $white;
+//   }
+//   &.card-badge-update {
+//     color: $secondary-blue;
+//     background: rgb(218, 218, 218);
+//   }
+//   &.card-badge-popular {
+//     color: $secondary-blue;
+//     background: rgb(255, 251, 0);
+
+//     i {
+//       color: red;
+//     }
+//   }
+//   &.card-badge-new {
+//     background: red;
+//     color: $white;
+//   }
+//   &.card-badge-verified {
+//     color: $secondary-blue;
+//     background: rgb(51, 255, 0);
+//   }
+//   &.card-badge-free {
+//     background: rgb(40, 126, 255);
+//     color: $white;
+//   }
+//   &.card-badge-members {
+//     background: #2ecc71;
+//     color: $white;
+//   }
+//   i {
+//     margin-right: 8px;
+//   }
+// }
+
+// .classes-card {
+//   padding: 1rem 0;
+//   margin: 0.5rem 0;
+//   gap: 6px;
+//   max-width: 700px;
+//   width: 100%;
+
+//   background: $white;
+//   border-radius: $border-radius-medium;
+//   box-shadow: 0px 1px 8px $blue-light;
+//   transition: 0.3s ease-out;
+//   text-align: center;
+//   position: relative;
+
+//   @include flex-custom(space-between, center);
+
+//   @include respond(desktop) {
+//     width: 900px;
+//     flex-direction: row;
+//     &:nth-child(even) {
+//       flex-direction: row-reverse;
+//     }
+//   }
+//   .position {
+//     background-color: $blue-medium;
+//     color: $white;
+//     padding: 8px 16px;
+
+//     text-align: center;
+//     box-shadow: 0px 0px 6px $blue-light;
+
+//     margin: 12px auto 0px auto;
+//     border-radius: 6px;
+//     text-align: center;
+
+//     i {
+//       margin-right: 1rem;
+//     }
+//   }
+
+//   .classes-column img {
+//     width: 100%;
+//     max-width: 800px;
+//     height: auto;
+//     border-radius: $border-radius-styles2;
+//     object-fit: cover;
+
+//     @include respond(desktop) {
+//       max-width: 100%;
+//     }
+
+//     &:hover {
+//       transform: scale(1.05);
+//     }
+//   }
+//   .classes-info {
+//     @include flex-custom(flex-start, stretch, column, 2px, nowrap);
+//     padding: 0 1rem;
+
+//     p {
+//       color: $blue-medium;
+//       margin: 0rem 0.3rem;
+//       text-align: left;
+
+//       span {
+//         background: transparent;
+//         color: $dark-purple;
+//         text-decoration: underline;
+//         margin: 3px;
+//         border: none;
+//         box-shadow: none;
+//       }
+//     }
+//   }
+// }
+
+// .teacher-card {
+//   border: 2px solid $blue-light;
+//   @include flex-custom(space-between, flex-start, column);
+//   margin-bottom: 1rem;
+//   border-radius: $border-radius-medium;
+//   box-shadow: 0px 4px 15px $blue-light;
+
+//   @include flex-custom(space-between, center);
+
+//   @include respond(laptop) {
+//     width: 900px;
+//     flex-direction: row;
+//     &:nth-child(even) {
+//       flex-direction: row-reverse;
+//     }
+//   }
+//   .teacher-info {
+//     @include flex-custom(center, center, column, 0, nowrap);
+//     margin: $margin-none;
+//     padding: 0.8rem 0.5rem;
+//     padding: 1rem;
+//     width: 100%;
+
+//     mark {
+//       background-color: #7f91ec;
+//       color: white;
+//       padding: 2px 6px;
+//       border-radius: 3px;
+
+//       &:hover {
+//         background-color: $dark-purple;
+//         border-radius: 5px;
+//         border-bottom: 2px solid $primary-orange;
+//       }
+//     }
+
+//     h3 {
+//       text-align: center;
+//       color: $secondary-blue;
+//       // font-size: $font-size-xhuge;
+//       margin-bottom: 0.5rem;
+
+//       span {
+//         color: $dark-purple;
+//         color: #4e6ab9;
+//         font-size: 1.2rem;
+//       }
+//     }
+//     .teacher-details {
+//       @include flex-custom(flex-start, flex-start, column);
+//       border-bottom: 2px solid $blue-light;
+//       padding-bottom: 0.5rem;
+//       width: 100%;
+//       p {
+//         color: $text-medium;
+//         // font-size: $font-size-p;
+//         display: flex;
+//         align-items: flex-start;
+//         margin: $margin-none;
+//         flex-direction: column;
+
+//         span {
+//           padding: 6px;
+//           color: $text-blue;
+//           background: $white;
+//           border-radius: 6px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// All Cards Base Style
+.card-container,
+.card,
+.resources-card,
+.class-card,
+.teacher-card {
+  background: $white;
+  border-radius: $border-radius-medium;
+  padding: $padding-large;
+  box-shadow: $shadow-light;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba($blue-light, 0.3);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  margin-bottom: 10px;
+  @include flex-custom(flex-start, stretch, column, 1rem);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-dark;
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: $border-radius-small;
+    transition: transform 0.5s ease;
+  }
+
+  h1 {
+    color: $dark-purple;
+    font-size: $font-size-h3;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  h3 {
+    color: $dark-purple;
+    font-size: $font-size-h3;
+    margin-top: 0.5rem;
+  }
+
+  p {
+    color: $text-medium;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  // කාඩ් එකේ අගට එන බටන් එක
+  .btn,
+  .class-btn,
+  .browse-btn {
+    align-self: flex-start;
+    margin-top: auto; // බටන් එක හැමතිස්සෙම කාඩ් එකේ පල්ලෙහාටම යනවා
+  }
+}
+
+// Special badge for cards (Official, Week 04 වගේ ඒවට)
+.card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: $primary-orange;
+  color: $white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: $font-weight-bold;
+  z-index: 10;
+}

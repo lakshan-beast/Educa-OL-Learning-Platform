@@ -1,0 +1,33 @@
+.classes-section {
+  padding: 2rem 0;
+}
+
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $grid-gap-large;
+
+  .class-card {
+    background: $white;
+    border-radius: $border-radius-medium;
+    padding: $padding-medium;
+    display: flex;
+    flex-direction: column;
+    gap: $flex-gap-medium;
+
+    h3 {
+      color: $dark-purple;
+      font-size: $font-size-h3-m;
+    }
+
+    .class-info {
+      color: $text-medium;
+      font-size: $font-size-body;
+
+      span {
+        color: $primary-orange;
+        font-weight: bold;
+      }
+    }
+  }
+}

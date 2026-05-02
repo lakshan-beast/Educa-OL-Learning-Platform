@@ -1,0 +1,71 @@
+.paper-hub-page {
+  .paper-hub-header {
+    text-align: center;
+    margin-bottom: $margin-large;
+
+    h2 {
+      color: $dark-purple;
+      font-size: $font-size-h2;
+      margin-bottom: $margin-small;
+    }
+
+    p {
+      color: $text-medium;
+      font-size: $font-size-body;
+    }
+  }
+
+  .papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $grid-gap-xlarge;
+  }
+}
+
+.category-filter {
+  display: flex;
+  justify-content: center;
+  gap: $flex-gap-medium;
+  margin-bottom: $margin-large;
+  flex-wrap: wrap;
+
+  button {
+    background: $white;
+    color: $dark-purple;
+    border: 2px solid $blue-light;
+    padding: $padding-small $padding-medium;
+    border-radius: $border-radius-small;
+    cursor: pointer;
+    font-size: $font-size-body;
+
+    &.active,
+    &:hover {
+      background: $blue-light;
+      color: $white;
+      border-color: $primary-orange;
+    }
+  }
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $grid-gap-xlarge;
+}
+
+span {
+  color: $primary-orange;
+}
+
+button {
+  background: $primary-orange;
+  color: $white;
+  padding: $padding-small $padding-medium;
+  border: none;
+  border-radius: $border-radius-small;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($primary-orange, 10%);
+  }
+}

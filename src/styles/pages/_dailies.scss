@@ -1,0 +1,141 @@
+.quizzes-page {
+  padding: $padding-large $padding-medium;
+  background: $blue-light;
+  min-height: 100vh;
+
+  h2 {
+    text-align: center;
+    color: $dark-purple;
+    font-size: $font-size-h2-m;
+    margin-bottom: $margin-xlarge;
+
+    span {
+      color: $primary-orange;
+    }
+  }
+}
+
+.score-section {
+  background: $white;
+  border-radius: $border-radius-medium;
+  padding: $padding-large;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    color: $dark-purple;
+    margin-bottom: $margin-medium;
+  }
+
+  p {
+    font-size: $font-size-body;
+    color: $text-medium;
+  }
+  button {
+    background: $primary-orange;
+    color: $white;
+    font-size: $font-size-body;
+    padding: $padding-small $padding-medium;
+    border: none;
+    border-radius: $border-radius-small;
+    margin-top: $margin-medium;
+    cursor: pointer;
+
+    &:hover {
+      background: darken($primary-orange, 10%);
+    }
+  }
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $margin-medium;
+
+  h3 {
+    color: $dark-purple;
+  }
+
+  .timer {
+    color: $text-medium;
+    font-size: $font-size-body;
+  }
+
+  span {
+    color: $primary-orange;
+  }
+}
+
+.quetion-section {
+  margin-bottom: $margin-large;
+
+  h3 {
+    color: $dark-purple;
+    margin-bottom: $margin-medium;
+  }
+
+  .options-section {
+    display: flex;
+    flex-direction: column;
+    gap: $flex-gap-medium;
+
+    button {
+      background: $white;
+      color: $dark-purple;
+      border: 2px solid $blue-light;
+      padding: $padding-small $padding-medium;
+      border-radius: $border-radius-small;
+      cursor: pointer;
+      font-size: $font-size-body;
+
+      &:hover {
+        background: $blue-light;
+        color: $white;
+        border-color: $primary-orange;
+      }
+    }
+  }
+}
+
+.daily-questions-page {
+  padding: $padding-large $padding-medium;
+  background: $blue-light;
+  min-height: 100vh;
+
+  h2 {
+    text-align: center;
+    color: $dark-purple;
+    font-size: $font-size-h2-m;
+    margin-bottom: $margin-xlarge;
+
+    span {
+      color: $primary-orange;
+    }
+  }
+}
+.subject-selector {
+  display: flex;
+  justify-content: center;
+  gap: $flex-gap-medium;
+  margin: $margin-large;
+  flex-wrap: wrap;
+
+  button {
+    background: $white;
+    color: $dark-purple;
+    border: 2px solid $blue-light;
+    padding: $padding-small $padding-medium;
+    border-radius: $border-radius-small;
+    cursor: pointer;
+    font-size: $font-size-body;
+
+    &.active,
+    &:hover {
+      background: $blue-light;
+      color: $white;
+      border-color: $primary-orange;
+    }
+  }
+}

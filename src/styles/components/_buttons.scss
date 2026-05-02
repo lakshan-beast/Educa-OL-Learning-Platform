@@ -1,0 +1,269 @@
+// all btns buttun and buttons
+.start-btn,
+.browse-btn,
+button {
+  outline: none;
+  border: none;
+  display: block;
+  background-size: 200% auto;
+  transition: all 0.5s ease;
+  text-align: center;
+  box-shadow: 0px 0px 6px rgb(208, 208, 228);
+}
+
+.start-btn {
+  background-image: linear-gradient(
+    to right,
+    #ff5a4e 0%,
+    #4548ff 51%,
+    #c0ccf3 100%
+  );
+  color: $white;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// .btn,
+// button {
+//   background-image: linear-gradient(
+//     to right,
+//     #ff5e53 0%,
+//     #474aff 51%,
+//     #5d70a5 100%
+//   );
+// }
+
+.browse-btn {
+  border: 1px solid $secondary-blue;
+  color: $secondary-blue;
+  transition: background 1s ease;
+
+  &:hover {
+    background-color: $blue-light;
+    color: $blue-medium;
+    border: none;
+  }
+}
+.start-btn:hover,
+button:hover {
+  background-position: right center;
+  box-shadow: 0px 0px 8px rgb(203, 203, 241);
+}
+
+.resources-card a {
+  outline: none;
+  border: none;
+  display: block;
+  background-size: 200% auto;
+  transition: all 0.5s ease;
+  letter-spacing: 1px;
+  background: #a6bdff;
+
+  &:hover {
+    background-position: right center;
+    background: #4548ff;
+    color: #8aa9ff;
+  }
+}
+
+.contact-btn,
+.reviews-btn {
+  background: linear-gradient(to right, #ff5e53 0%, #474aff 100%);
+
+  &:hover {
+    transform: scale(1.03);
+    background: linear-gradient(to right, #ff5e5375 0%, #474aff80 100%);
+  }
+}
+
+.class-btn,
+.fullclass-btn {
+  border-radius: 6px;
+  padding: 6px 0;
+  margin: 12px 0 0 0;
+  color: $white;
+  width: 100%;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+.class-btn {
+  background-color: $dark-purple1;
+}
+.fullclass-btn {
+  background: linear-gradient(to right, #ff5d51 0%, #494cff 100%);
+}
+
+.more-btn {
+  @include flex-custom(flex-end, flex-end, row);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  a {
+    border-radius: $border-radius-xlarge;
+    padding: 12px 25px;
+    width: auto;
+    margin: 0rem auto;
+  }
+}
+
+// // Base Button Style
+// .btn-base {
+//   outline: none;
+//   border: none;
+//   display: block;
+//   text-align: center;
+//   border-radius: $border-radius-small; // Variables වලින් ගත්තා
+//   transition: $transition-fast; // 0.3s ease
+//   cursor: pointer;
+//   background-size: 200% auto;
+//   box-shadow: $shadow-light;
+
+//   &:hover {
+//     transform: translateY(-3px) scale(1.02);
+//     box-shadow: $shadow-medium;
+//   }
+// }
+
+// Start Button (Primary Gradient)
+// .start-btn {
+//   @extend .btn-base;
+//   background-image: linear-gradient(to right, #ff5a4e 0%, #4548ff 51%, #c0ccf3 100%);
+//   color: $white;
+
+//   &:hover {
+//     background-position: right center;
+//   }
+// }
+
+// // Browse Button (Outline Style)
+// .browse-btn {
+//   @extend .btn-base;
+//   border: 1px solid $secondary-blue;
+//   color: $secondary-blue;
+//   background-color: transparent;
+
+//   &:hover {
+//     background-color: $blue-light;
+//     color: $blue-medium;
+//     border-color: $blue-medium;
+//   }
+// }
+
+// // Contact & Review Buttons
+// .contact-btn,
+// .reviews-btn,
+// .fullclass-btn {
+//   @extend .btn-base;
+//   background: linear-gradient(to right, #ff5e53 0%, #474aff 100%);
+//   color: $white;
+//   padding: 10px 20px;
+
+//   &:hover {
+//     background: linear-gradient(to right, #ff5e5375 0%, #474aff80 100%);
+//   }
+// }
+
+// // Class View Button
+// .class-btn {
+//   @extend .btn-base;
+//   background-color: $dark-purple1;
+//   color: $white;
+//   padding: 6px 0;
+//   width: 100%;
+// }
+
+// .card-container {
+//   background: $white;
+//   border-radius: $border-radius-medium;
+//   padding: $padding-large;
+//   box-shadow: $shadow-light;
+//   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // ලස්සන bounce effect එකක්
+//   border: 1px solid rgba($blue-light, 0.3);
+//   position: relative;
+//   overflow: hidden;
+//   height: 100%;
+//   @include flex-custom(flex-start, stretch, column, 1rem);
+
+//   // කාඩ් එක උඩට මවුස් එක ගෙනිච්චම වෙන වෙනස
+//   &:hover {
+//     transform: translateY(-10px);
+//     box-shadow: $shadow-dark;
+//     border-color: $dark-purple1;
+//   }
+// }
+
+// All Cards Base Style
+.card-container,
+.card,
+.resources-card,
+.class-card,
+.teacher-card {
+  background: $white;
+  border-radius: $border-radius-medium;
+  padding: $padding-large;
+  box-shadow: $shadow-light;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // ලස්සන bounce effect එකක්
+  border: 1px solid rgba($blue-light, 0.3);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  @include flex-custom(flex-start, stretch, column, 1rem);
+
+  // කාඩ් එක උඩට මවුස් එක ගෙනිච්චම වෙන වෙනස
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: $shadow-dark;
+    // border-color: $dark-purple1;
+
+    // කාඩ් එක ඇතුළේ තියෙන ඉමේජ් එක පොඩ්ඩක් සූම් වෙන්න
+    img {
+      transform: scale(1.05);
+    }
+  }
+
+  // කාඩ් එකේ පින්තූරය සඳහා
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: $border-radius-small;
+    transition: transform 0.5s ease;
+  }
+
+  h3 {
+    color: $dark-purple;
+    font-size: $font-size-h3;
+    margin-top: 0.5rem;
+  }
+
+  p {
+    color: $text-medium;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  // කාඩ් එකේ අගට එන බටන් එක
+  .btn,
+  .class-btn,
+  .browse-btn {
+    align-self: flex-start;
+    margin-top: auto; // බටන් එක හැමතිස්සෙම කාඩ් එකේ පල්ලෙහාටම යනවා
+  }
+}
+
+// Special badge for cards (Official, Week 04 වගේ ඒවට)
+.card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: $primary-orange;
+  color: $white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: $font-weight-bold;
+  z-index: 10;
+}

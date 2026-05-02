@@ -1,0 +1,423 @@
+.tools-page {
+  padding: $padding-large $padding-medium;
+  background: $blue-light;
+  min-height: 100vh;
+
+  h2 {
+    text-align: center;
+    color: $dark-purple;
+    font-size: $font-size-h2-m;
+    margin-bottom: $margin-xlarge;
+
+    span {
+      color: $primary-orange;
+    }
+  }
+}
+
+// tools-grid {
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: $grid-gap-xlarge;
+}
+
+// Calculator styels
+.calculator-box {
+  @include flex-custom(center, center, column);
+  padding: $padding-small;
+  margin: 0 auto;
+  background: $white;
+  border-radius: $border-radius-medium;
+  box-shadow: $shadow-light;
+  max-width: 400px;
+  width: 100%;
+
+  .calculator-display {
+    background: $blue-light;
+    color: $dark-purple;
+    font-size: $font-size-h3-m;
+    padding: $padding-medium;
+    border-radius: $border-radius-small;
+    margin-bottom: $margin-large;
+    width: 100%;
+    text-align: right;
+    box-sizing: border-box;
+  }
+
+  .buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+
+    button {
+      background: $primary-orange;
+      color: $white;
+      font-size: $font-size-h3-m;
+      padding: $padding-small;
+      border: none;
+      border-radius: $border-radius-small;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darken($primary-orange, 10%);
+      }
+    }
+  }
+}
+
+// Exam Counter styles
+.countdown-display {
+  background: rgba($blue-light, 0.3);
+  color: $dark-purple;
+  font-size: $font-size-h3-m;
+  padding: $padding-medium;
+  border-radius: $border-radius-small;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+
+  .time-block {
+    display: inline-block;
+    margin: 0 $margin-medium;
+    text-align: center;
+
+    .time-value {
+      font-size: $font-size-h2;
+      font-weight: bold;
+      color: $primary-orange;
+    }
+
+    p {
+      font-size: $font-size-body;
+      color: $text-medium;
+    }
+  }
+}
+
+.exam-note {
+  text-align: right;
+}
+
+// Grade Calculator styles
+.grade-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $flex-gap-medium;
+  width: 100%;
+  max-width: 300px;
+
+  .mark-input {
+    display: flex;
+    flex-direction: column;
+    gap: $flex-gap-small;
+
+    label {
+      font-size: $font-size-body;
+      color: $text-medium;
+    }
+
+    input {
+      padding: $padding-small;
+      border-radius: $border-radius-small;
+      border: 1px solid $blue-light;
+      font-size: $font-size-body;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-orange;
+      }
+    }
+
+    .grade-badge {
+      color: $primary-orange;
+    }
+  }
+}
+// .result-footer {
+//   // h3 {
+//   color: $primary-orange;
+//   font-size: $font-size-h2;
+//   // }
+// }
+
+//  Motivation Style
+.quote-box {
+  background: $white;
+  border-radius: $border-radius-medium;
+  padding: $padding-medium $padding-small;
+  //   box-shadow: $shadow-light;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+
+  p {
+    font-size: $font-size-h3-m;
+    color: $dark-purple;
+    margin-bottom: $margin-large;
+    font-style: italic;
+  }
+
+  .browse-btn {
+    background: $primary-orange;
+    color: $white;
+    font-size: $font-size-body;
+    padding: $padding-small;
+    border: none;
+    border-radius: $border-radius-small;
+    cursor: pointer;
+    width: 180px;
+
+    &:hover {
+      background-color: darken($primary-orange, 10%);
+    }
+  }
+}
+
+// Pomodoro Styles
+.timer-display {
+  background: $white;
+  color: $dark-purple;
+  font-size: $font-size-h2;
+  padding: $padding-medium;
+  border-radius: $border-radius-small;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  margin-bottom: $margin-large;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: $flex-gap-medium;
+
+  button {
+    // background: $primary-orange;
+    // color: $white;
+    font-size: $font-size-body;
+    padding: $padding-small;
+    border: none;
+    border-radius: $border-radius-small;
+    cursor: pointer;
+    width: 80px;
+
+    &:hover {
+      background-color: darken($primary-orange, 10%);
+    }
+  }
+}
+.timer-note {
+  text-align: center;
+  margin-top: $margin-medium;
+  color: $text-medium;
+}
+
+// Todo Styles
+.todo-input {
+  display: flex;
+  //   gap: $flex-gap-small;
+  margin-bottom: $margin-large;
+
+  input {
+    flex: 1;
+    padding: $padding-small;
+    border-radius: $border-radius-input;
+    border: 1px solid $blue-light;
+    font-size: $font-size-body;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-orange;
+    }
+  }
+
+  button {
+    background: $primary-orange;
+    color: $white;
+    font-size: $font-size-h3-m;
+    padding: $padding-small $padding-medium;
+    border: none;
+    border-radius: $border-radius-button;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($primary-orange, 10%);
+    }
+  }
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $flex-gap-medium;
+  border-top: 2px solid $blue-light;
+  padding-top: 3px;
+
+  h3 {
+    color: $dark-purple;
+    font-size: $font-size-h3-m;
+  }
+
+  .task-timer {
+    background: $blue-light;
+    color: $text-medium;
+    font-size: $font-size-body;
+    padding: $padding-small;
+    border-radius: $border-radius-small;
+
+    span {
+      color: $dark-purple;
+    }
+  }
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $white;
+    border-radius: $border-radius-small;
+    padding: $padding-small;
+    margin-bottom: $margin-small;
+
+    .task-info {
+      display: flex;
+      align-items: center;
+      gap: $flex-gap-small;
+
+      .task-name {
+        color: $dark-purple;
+        font-size: $font-size-body;
+      }
+
+      .task-time {
+        background: $blue-light;
+        color: $dark-purple;
+        font-size: $font-size-body;
+        padding: $padding-small;
+        border-radius: $border-radius-small;
+      }
+    }
+
+    .task-btns {
+      display: flex;
+      gap: $flex-gap-small;
+    }
+    .done-btn {
+      background: transparent;
+      color: $primary-orange;
+      border: none;
+      cursor: pointer;
+      font-size: $font-size-h3-m;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .delete-btn {
+      background: transparent;
+      color: $primary-orange;
+      border: none;
+      cursor: pointer;
+      font-size: $font-size-h3-m;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.task-counter {
+  background: $blue-light;
+  color: $dark-purple;
+  font-size: $font-size-body;
+  padding: $padding-small;
+  border-radius: $border-radius-small;
+  text-align: center;
+  margin-top: $margin-medium;
+  border-top: 2px solid $blue-light;
+}
+
+#congrats-msg {
+  text-align: center;
+  color: $primary-orange;
+  font-size: $font-size-h3-m;
+  margin-top: $margin-medium;
+}
+
+// Unit Converter Styles
+.converter-box {
+  display: flex;
+  flex-direction: column;
+  gap: $flex-gap-medium;
+  margin-bottom: $margin-large;
+
+  select {
+    padding: $padding-small;
+    border-radius: $border-radius-small;
+    border: 1px solid $blue-light;
+    font-size: $font-size-body;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-orange;
+    }
+  }
+
+  .input-group {
+    display: flex;
+    gap: $flex-gap-small;
+
+    input {
+      flex: 1;
+      padding: $padding-small;
+      border-radius: $border-radius-input;
+      border: 1px solid $blue-light;
+      font-size: $font-size-body;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-orange;
+      }
+    }
+
+    button {
+      background: $primary-orange;
+      color: $white;
+      font-size: $font-size-body;
+      padding: $padding-small $padding-medium;
+      border: none;
+      border-radius: $border-radius-button;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darken($primary-orange, 10%);
+      }
+    }
+  }
+  .icon-sep {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $font-size-h3-m;
+    color: $primary-orange;
+  }
+  .result-display {
+    background: $white;
+    color: $dark-purple;
+    font-size: $font-size-body;
+    padding: $padding-small;
+    border-radius: $border-radius-small;
+    text-align: center;
+  }
+}

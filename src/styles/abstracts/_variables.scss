@@ -1,0 +1,184 @@
+// variables.scss
+
+// stores colors and other variables used in the project
+
+// brand colors
+$primary-orange: #f7786f;
+$secondary-blue: #1d10ac;
+$blue-light: #c6d4fa;
+$blue-medium: #4e6ab9;
+
+// social media icons
+$facebook-color: #1877f2;
+$whatsapp-color: #5bf099;
+$call-color: #2596be;
+$insta-primary-color: #833ab4;
+$insta-original-color: linear-gradient(
+  150deg,
+  rgba(131, 58, 180, 1) 0%,
+  rgba(253, 29, 29, 1) 50%,
+  rgba(252, 176, 69, 1) 100%
+);
+
+// backgrounds
+// $background-linear: linear-gradient(
+//   155deg,
+//   #5454d9 0%,
+//   rgb(255, 255, 255) 5%,
+//   rgb(255, 255, 255) 85%,
+//   #5454d9 100%
+// ); old background color
+$white: #ffffff;
+$bg-light: #e0e8ff;
+$bg-soft: #7f91ec14;
+$navbar-white: #ebebeb;
+$dark-blue: #303030;
+$footer-dark: #000135;
+
+// text colors
+$text-light: #f7f7f7;
+$text-medium: #7b808f;
+$text-blue: #7f91ec;
+
+// purple colors
+$dark-purple1: #484aee;
+$dark-purple2: #5454d9;
+$dark-purple: #26136d;
+
+// shadow
+$link-shadow: #ddddff;
+
+// fonts
+$font-primary: "Poppins", sans-serif;
+$font-secondary: "Exo 2", sans-serif;
+
+// font-sizes
+$font-size-h1: 2.6rem;
+$font-size-h1-m: 2.2rem;
+
+$font-size-h2: 2.5rem;
+$font-size-h2-m: 1.8rem;
+
+$font-size-h3: 1.5rem;
+$font-size-h3-m: 1.35rem;
+
+$font-size-body: 1rem;
+
+// font-weights
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+// font-styles
+$font-style-normal: normal;
+$font-style-italic: italic;
+
+// transitions
+$transition-fast: 0.3s ease;
+
+// breakpoints
+$breakpoint-small-mobile: 350px;
+$breakpoint-mobile: 600px;
+$breakpoint-tablet: 800px;
+$breakpoint-laptop: 1200px;
+$breakpoint-large-desktop: 1400px;
+
+// border-radius
+$border-radius-small: 0.5rem;
+$border-radius-medium: 1rem;
+$border-radius-large: 1.5rem;
+$border-radius-xlarge: 2rem;
+$border-radius-xxlarge: 3rem;
+$border-radius-circle: 50%;
+$border-radius-xsmall: 0.3rem;
+$border-radius-none: 0rem;
+$border-radius-styles: 0 0 1rem 1rem;
+$border-radius-styles2: 1rem 1rem 0 0;
+$border-radius-button: 0 1rem 1rem 0;
+$border-radius-input: 1rem 0 0 1rem;
+
+// shadows
+$shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.2);
+$shadow-dark: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+// z-index
+$z-index-header: 999;
+$z-index-footer: 998;
+$z-index-modal: 1000;
+$z-index-dropdown: 997;
+$z-index-tooltip: 996;
+$z-index-overlay: 995;
+$z-index-default: 1;
+$z-index-negative: -1;
+
+// paddings
+$padding-small: 0.5rem;
+$padding-medium: 1rem;
+$padding-large: 1.5rem;
+$padding-xlarge: 2rem;
+$padding-xsmall: 0.3rem;
+$padding-xxsmall: 0.1rem;
+$padding-none: 0;
+// $padding-styles: 0 ;
+
+// margins
+$margin-small: 0.5rem;
+$margin-medium: 1rem;
+$margin-large: 1.5rem;
+$margin-xlarge: 2rem;
+$margin-xsmall: 0.3rem;
+$margin-xxsmall: 0.1rem;
+$margin-none: 0;
+
+// container widths
+$container-width-small: 400px;
+$container-width-medium: 800px;
+$container-width-large: 1200px;
+$container-width-xlarge: 1600px;
+$container-width-xxlarge: 2000px;
+
+// container paddings
+$container-padding-small: 0.5rem;
+$container-padding-medium: 1rem;
+$container-padding-large: 1.5rem;
+$container-padding-xlarge: 2rem;
+$container-padding-xsmall: 0.3rem;
+
+// container margins
+$container-margin-small: 0.5rem;
+$container-margin-medium: 1rem;
+$container-margin-large: 1.5rem;
+$container-margin-xlarge: 2rem;
+$container-margin-xsmall: 0.3rem;
+
+// grid gaps
+$grid-gap-small: 0.5rem;
+$grid-gap-medium: 1rem;
+$grid-gap-large: 1.5rem;
+$grid-gap-xlarge: 2rem;
+
+// flex gaps
+$flex-gap-small: 0.5rem;
+$flex-gap-medium: 1rem;
+$flex-gap-large: 1.5rem;
+$flex-gap-xlarge: 2rem;
+
+// opacity levels
+$opacity-low: 0.3;
+$opacity-medium: 0.6;
+$opacity-high: 1;
+$opacity-none: 0;
+
+// animation durations
+$animation-duration-fast: 0.3s;
+$animation-duration-medium: 0.6s;
+$animation-duration-slow: 1s;
+
+// animation timing functions
+$animation-timing-ease: ease;
+$animation-timing-linear: linear;
+$animation-timing-ease-in: ease-in;
+$animation-timing-ease-out: ease-out;
+$animation-timing-ease-in-out: ease-in-out;
