@@ -8,7 +8,8 @@ import {
 } from "react-icons/fa6";
 import { FaRegUserCircle } from "react-icons/fa";
 
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 
 import NotificationCenter from "./NotificationCenter";
 
@@ -56,21 +57,47 @@ const Header = () => {
           <div
             className={`header-navbar ${isActive ? "nav-active" : ""}`}
             id="header-navbar">
-            <a href="#resources" onClick={toggleMenu}>
-              Resources
-            </a>
-            <a href="#classes" onClick={toggleMenu}>
-              Classes
-            </a>
-            <a href="#teachers" onClick={toggleMenu}>
-              Teachers
-            </a>
-            <a href="#about" onClick={toggleMenu}>
-              About us
-            </a>
-            <a href="#contacts" onClick={toggleMenu}>
-              Contact us
-            </a>
+            <Link
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "nav-active active" : ""
+              }>
+              Home
+            </Link>
+
+            <NavHashLink
+              smooth
+              to="/#resources"
+              className={({ isActive }) =>
+                isActive ? "nav-active active" : ""
+              }>
+              Learning Hub
+            </NavHashLink>
+
+            <NavHashLink
+              smooth
+              to="/#classes"
+              className={({ isActive }) =>
+                isActive ? "nav-active active" : ""
+              }>
+              Class Schedule
+            </NavHashLink>
+
+            <Link
+              to="/tools"
+              className={({ isActive }) =>
+                isActive ? "nav-active active" : ""
+              }>
+              Smart Tools
+            </Link>
+
+            <Link
+              to="/quizzes"
+              className={({ isActive }) =>
+                isActive ? "nav-active active" : ""
+              }>
+              Skill Test
+            </Link>
 
             <div className="header-copyrights">
               <a href="#home" className="header-logo">
