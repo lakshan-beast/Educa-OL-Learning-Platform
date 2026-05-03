@@ -84,7 +84,10 @@ const Contact = () => {
         </div>
 
         {/* Right Side: Contact Form */}
-        <div className="contact-content contact-right" data-aos="fade-right">
+        <div
+          className="contact-content contact-right"
+          id="contact-form"
+          data-aos="fade-right">
           <div className="form-containers">
             <h3>
               Have a Question? <span>Drop us a message</span>
