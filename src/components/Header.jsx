@@ -8,13 +8,16 @@ import {
 } from "react-icons/fa6";
 import { FaRegUserCircle } from "react-icons/fa";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import NotificationCenter from "./NotificationCenter";
+
+import Login from "../pages/Login"; // අපේ අලුත් ලොගින් එක
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const [showNotif, setShowNotif] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   const toggleMenu = () => {
     setIsActive(!isActive);
@@ -47,7 +50,7 @@ const Header = () => {
           />
 
           <a href="#home" className="header-logo">
-            educa<span>.</span>
+            <div className="logo-circle">E</div>educa<span>.</span>
           </a>
 
           <div
@@ -101,9 +104,11 @@ const Header = () => {
               />
             )}
 
-            <Link to="/login" className="sign-btn">
+            {/* <Link to="/login" className="sign-btn"></Link> */}
+
+            <button className="sign-btn" onClick={() => setShowLogin(true)}>
               <FaRegUserCircle />
-            </Link>
+            </button>
           </div>
         </nav>
       </header>
@@ -111,8 +116,45 @@ const Header = () => {
       <div
         className={`overlay ${isActive ? "active" : ""}`}
         onClick={toggleMenu}></div>
+
+      {/* Login Popup Overlay */}
+      {showLogin && (
+        <div className="login-overlay" onClick={() => setShowLogin(false)}>
+          <div className="login-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="close-modal" onClick={() => setShowLogin(false)}>
+              &times;
+            </button>
+            <Login />
+          </div>
+        </div>
+      )}
     </>
   );
 };
 
 export default Header;
+
+// import React, { useState } from 'react';
+
+// const Header = () => {
+//   const [showLogin, setShowLogin] = useState(false);
+
+//   return (
+//     <>
+//       <header className="header">
+//         {/* අනෙක් ලින්ක්ස්... */}
+//         <button className="sign-btn" onClick={() => setShowLogin(true)}>Sign In</button>
+//       </header>
+
+//       {/* Login Popup Overlay */}
+//       {showLogin && (
+//         <div className="login-overlay" onClick={() => setShowLogin(false)}>
+//           <div className="login-modal" onClick={(e) => e.stopPropagation()}>
+//             <button className="close-modal" onClick={() => setShowLogin(false)}>&times;</button>
+//             <Login />
+//           </div>
+//         </div>
+//       )}
+//     </>
+//   );
+// };
