@@ -301,3 +301,129 @@
 // };
 
 // export default App;
+
+// import React from 'react';
+// import { NavHashLink } from "react-router-hash-link";
+// import {
+//   FaRocket,
+//   FaSquareCheck,
+//   FaLaptopCode,
+//   FaUsers,
+//   FaRegCopyright,
+//   FaHeart,
+//   FaFacebook,
+//   FaWhatsapp,
+//   FaYoutube,
+// } from "react-icons/fa6";
+
+// const Footer = () => {
+//   const currentYear = new Date().getFullYear();
+
+//   return (
+//     <footer className="footer-section">
+//       <div className="system-container footer-grid">
+{
+  /* 1. Brand & Socials */
+}
+{
+  /* <div className="footer-card footer-brand">
+          <a href="/#home" className="footer-logo">
+            educa<span>.</span>
+          </a>
+          <p>Sri Lanka's most trusted learning ecosystem for O/L students.</p>
+          <div className="social-links">
+            <a href="https://facebook.com" target="_blank" rel="noreferrer">
+              <FaFacebook />
+            </a>
+            <a href="https://wa.me" target="_blank" rel="noreferrer">
+              <FaWhatsapp />
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noreferrer">
+              <FaYoutube />
+            </a> */
+}
+{
+  /* </div> */
+}
+{
+  /* </div> */
+}
+
+{
+  /* 2. Quick Links (Smooth Scroll across pages) */
+}
+{
+  /* <div className="footer-card footer-quick-links">
+          <h4>Quick Navigation</h4>
+          <ul>
+            <li>
+              <NavHashLink smooth to="/#resources">
+                Academic Resources
+              </NavHashLink>
+            </li>
+            <li>
+              <NavHashLink smooth to="/#classes">
+                Class Schedule
+              </NavHashLink>
+            </li>
+            <li>
+              <NavHashLink smooth to="/#teachers">
+                Our Faculty
+              </NavHashLink>
+            </li>
+            <li>
+              <NavHashLink smooth to="/#contacts">
+                Contact Support
+              </NavHashLink>
+            </li>
+          </ul>
+        </div> */
+}
+
+{
+  /* 3. Badge Level Info (ඔයා එවපු කොටස) */
+}
+{
+  /* <div className="footer-card badge-levelup">
+          <h3>For Sri Lanka | O/L</h3>
+          <p>
+            <FaRocket /> Version 1.0
+          </p>
+          <p>
+            <FaSquareCheck /> Verified Links
+          </p>
+          <p>
+            <FaLaptopCode /> Last updated <span> 2026 April</span>
+          </p>
+          <p>
+            <FaUsers /> Community reviewed
+          </p>
+        </div> */
+}
+
+{
+  /* 4. Copyright Info (ඔයා එවපු කොටස) */
+}
+{
+  /* <div className="footer-card footer-copyrights">
+          <p>
+            <FaRegCopyright /> {currentYear} All rights reserved.
+          </p>
+          <p>
+            This template is made with{" "}
+            <FaHeart style={{ color: "#ff4b2b", margin: "0 5px" }} /> by{" "}
+            <a
+              href="http://github.com"
+              target="_blank"
+              rel="noopener noreferrer">
+              Lakshan
+            </a>
+          </p>
+        </div> */
+}
+//       </div>
+//     </footer>
+//   );
+// };
+
+// export default Footer;
