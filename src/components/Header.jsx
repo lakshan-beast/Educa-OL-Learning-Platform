@@ -6,6 +6,7 @@ import {
   FaRegCircle,
   FaBell,
 } from "react-icons/fa6";
+import { FaRegUserCircle } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
@@ -101,7 +102,7 @@ const Header = () => {
             )}
 
             <Link to="/login" className="sign-btn">
-              Sign in
+              <FaRegUserCircle />
             </Link>
           </div>
         </nav>
