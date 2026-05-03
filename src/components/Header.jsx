@@ -47,7 +47,7 @@ const Header = () => {
           />
 
           <a href="#home" className="header-logo">
-            <FaRegCircle /> educa<span>.</span>
+            educa<span>.</span>
           </a>
 
           <div
