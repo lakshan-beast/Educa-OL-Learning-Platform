@@ -27,7 +27,6 @@ const Footer = () => {
         {/* footer logo */}
         <div className="footer-card footer-logo">
           <a href="#home" class="logo">
-            <FaRegCircle />
             educa<span>.</span>
           </a>
           <p>
