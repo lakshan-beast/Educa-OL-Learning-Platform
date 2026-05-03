@@ -100,7 +100,7 @@ const Header = () => {
               />
             )}
 
-            <Link to="/dashboard" className="sign-btn">
+            <Link to="/login" className="sign-btn">
               Sign in
             </Link>
           </div>
