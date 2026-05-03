@@ -1,16 +1,21 @@
+import { NavHashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
+
 import {
   FaFacebook,
   FaTwitter,
   FaInstagram,
-  FaMobile,
   FaRocket,
   FaSquareCheck,
   FaRegCopyright,
+  FaWhatsapp,
+  FaYoutube,
+  FaCaretRight,
+  FaPhone,
+  FaLocationDot,
 } from "react-icons/fa6";
 
 import { FaEnvelope, FaLaptopCode, FaUsers, FaHeart } from "react-icons/fa";
-
-import { RiTelegram2Fill } from "react-icons/ri";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -20,107 +25,133 @@ const Footer = () => {
       <div className="footer-contents">
         {/* footer logo */}
         <div className="footer-card footer-logo">
-          <a href="#home" class="logo">
-            educa<span>.</span>
+          <a href="/#home" class="logo">
+            <div className="logo-circle">E</div>educa<span>.</span>
           </a>
           <p>
             Helping students learn better with simple lessons & smart study
             tools.
           </p>
+
+          <div className="social-links">
+            <a href="https://facebook.com" target="_blank" rel="noreferrer">
+              <FaFacebook />
+            </a>
+            <a href="https://wa.me" target="_blank" rel="noreferrer">
+              <FaWhatsapp />
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noreferrer">
+              <FaYoutube />
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noreferrer">
+              <FaTwitter />
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noreferrer">
+              <FaInstagram />
+            </a>
+          </div>
         </div>
 
         {/* footer quick link */}
         <div className="footer-card footer-links">
-          <h3>Quick Links</h3>
+          <h3>Quick Navigation</h3>
           <ul>
             <li>
-              <a href="#home">Home</a>
+              <NavHashLink smooth to="/#resources">
+                <FaCaretRight /> Academic Resources
+              </NavHashLink>
             </li>
             <li>
-              <a href="#about">About</a>
+              <NavHashLink smooth to="/#classes">
+                <FaCaretRight /> Class Schedule
+              </NavHashLink>
             </li>
             <li>
-              <a href="#services">Services</a>
+              <NavHashLink smooth to="/#teachers">
+                <FaCaretRight /> Our Faculty
+              </NavHashLink>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <NavHashLink smooth to="/#about">
+                <FaCaretRight /> Why Choose
+              </NavHashLink>
+            </li>
+            <li>
+              <NavHashLink smooth to="/#contacts">
+                <FaCaretRight /> Contact Support
+              </NavHashLink>
+            </li>
+            <li>
+              <NavHashLink smooth to="/#reviews">
+                <FaCaretRight /> Students Feedbacks
+              </NavHashLink>
+            </li>
+            <li>
+              <a href="https://www.doenets.lk/examresults">
+                <FaCaretRight /> O/L Results
+              </a>
             </li>
           </ul>
         </div>
 
-        {/* footer resources links */}
         <div className="footer-card footer-links">
-          <h3>Resources</h3>
+          {" "}
+          <h3>Study Resources</h3>{" "}
           <ul>
             <li>
-              <a href="#">Teaching Philosoply</a>
-            </li>
+              <Link to="/tools">
+                <FaCaretRight /> Smart Study Tools
+              </Link>
+            </li>{" "}
             <li>
-              <a href="#">Papers</a>
-            </li>
+              <Link to="/quizzes">
+                <FaCaretRight /> Interactive Quizzes
+              </Link>
+            </li>{" "}
             <li>
-              <a href="#">Daily Quiz</a>
-            </li>
+              <Link to="/paper-hub">
+                <FaCaretRight /> Past & Target Papers
+              </Link>
+            </li>{" "}
             <li>
-              <a href="#">Study Tools</a>
-            </li>
-            <li>
-              <a href="https://www.doenets.lk/examresults">O/L Results</a>
-            </li>
-            <li>
-              <a href="reviews.html">Reviews</a>
-            </li>
-          </ul>
+              <Link to="/daily-questions">
+                <FaCaretRight /> Daily Mission
+              </Link>
+            </li>{" "}
+          </ul>{" "}
         </div>
 
-        {/* contact info */}
-        <div className="footer-card contact-info">
-          <h3>Contact us</h3>
-          <h4>Maths Class</h4>
-          <a href="tel:+" class="btnx">
-            <FaMobile />
-            +941234567
-          </a>
-          <a href="mailto:educa@maths.com">
-            <FaEnvelope />
-            educa@maths.com
-          </a>
-          <h4>Science Class</h4>
-          <a href="tel:+" class="btnx">
-            <FaMobile />
-            +941234567
-          </a>
-          <a href="mailto:educa@science.com">
-            <FaEnvelope />
-            educa@science.com
-          </a>
-          <h4>English Class</h4>
-          <a href="tel:+" class="btnx">
-            <FaMobile />
-            +941234567
-          </a>
-          <a href="mailto:educa@english.com">
-            <FaEnvelope />
-            educa@english.com
-          </a>
-        </div>
+        <div className="footer-card footer-contact">
+          <h3>Contact Info</h3>
+          <p>
+            <FaPhone />{" "}
+            <a href="tel:+94 77 123 4567" className="contact-link">
+              +94 77 123 4567
+            </a>
+          </p>
+          <p>
+            <FaEnvelope />{" "}
+            <a href="mailto:support@educa.lk" className="contact-link">
+              support@educa.lk
+            </a>
+          </p>
+          <p>
+            <FaLocationDot /> 123, Education Lane, Colombo
+          </p>
 
-        {/* footer social media links */}
-        <div className="footer-card social-content">
-          <h3>Follow Us</h3>
-          <div className="social-links">
-            <a href="#">
-              <FaFacebook />
-            </a>
-            <a href="#">
-              <FaTwitter />
-            </a>
-            <a href="#">
-              <FaInstagram />
-            </a>
-            <a href="#">
-              <RiTelegram2Fill />
-            </a>
+          <div
+            className="subject-contacts"
+            style={{
+              marginTop: "15px",
+              borderTop: "1px solid rgba(255,255,255,0.1)",
+              paddingTop: "10px",
+            }}>
+            <p style={{ fontSize: "0.8rem" }}>
+              For subject specific help, use our{" "}
+              <Link to="/#contact-form" style={{ color: "#ff4b2b" }}>
+                Contact Form
+              </Link>
+            </p>
           </div>
         </div>
       </div>
@@ -132,10 +163,14 @@ const Footer = () => {
           <h3>Legal</h3>
           <ul>
             <li>
-              <a href="#privacy">Privacy Policy</a>
+              <NavHashLink smooth to="/#privacy">
+                Privacy Policy
+              </NavHashLink>
             </li>
             <li>
-              <a href="#terms">Terms of Service</a>
+              <NavHashLink smooth to="/#terms">
+                Terms of Service
+              </NavHashLink>
             </li>
           </ul>
         </div>
@@ -167,7 +202,8 @@ const Footer = () => {
             <FaRegCopyright /> {currentYear} All rights reserved.
           </p>
           <p>
-            This template is made with <FaHeart /> by
+            This template is made with{" "}
+            <FaHeart style={{ color: "#ff4b2b", margin: "0 5px" }} /> by
             <a
               href="http://github.com/lakshan-beast"
               target="_blank"
