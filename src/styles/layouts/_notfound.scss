@@ -1,0 +1,67 @@
+.notfound-wrapper {
+  @include center-everything;
+  min-height: 100vh;
+  min-width: 100%;
+  text-align: center;
+  padding: 2rem;
+  background-color: $bg-light;
+  margin: 0;
+
+  .notfound-content {
+    max-width: 600px;
+    position: relative;
+
+    .error-code {
+      font-size: 10rem; // Responsive large text
+      font-weight: 900;
+      color: rgba($dark-purple1, 0.05); // Very subtle faded effect
+      line-height: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .error-icon {
+      font-size: 3rem;
+      color: $primary-orange;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: $dark-purple2;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    p {
+      color: $text-medium;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .start-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 35px;
+      position: relative;
+      z-index: 2;
+      box-shadow: $shadow-medium;
+      border-radius: 6px;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: $shadow-dark;
+      }
+    }
+  }
+}
