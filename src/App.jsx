@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import NotFound from "./pages/NotFound";
 
 import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 
 import Home from "./pages/Home";
 import Tools from "./pages/Tools";
@@ -29,7 +29,7 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
 
           <Route path="/tools" element={<Tools />} />
