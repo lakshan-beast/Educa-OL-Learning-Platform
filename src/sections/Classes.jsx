@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 // import React from 'react';
 import { FaChalkboardUser } from "react-icons/fa6";
-import mathsImg from "../assets/maths-class.jpg"; // එකම image එක නිසා එකක් import කළා
+// import mathsImg from "../assets/maths-class.jpg"; // එකම image එක නිසා එකක් import කළා
 
 const Classes = () => {
   // පන්ති වල විස්තර ටික මෙන්න මේ වගේ Array එකක ලස්සනට තියාගන්න පුළුවන්
@@ -14,7 +14,7 @@ const Classes = () => {
         "We simplify complex theories into easy-to-solve steps. From basic arithmetic to advanced geometry, we ensure every student masters the logic.",
       grade: "06 - 11",
       medium: "Sinhala",
-      image: mathsImg,
+      // image: mathsImg,
     },
     {
       title: "O/L Science",
@@ -23,7 +23,7 @@ const Classes = () => {
         "Dive deep into the world of Science with visual explanations & practical applications. We cover Physics, Chemistry & Biology.",
       grade: "06 - 11",
       medium: "English / Sinhala",
-      image: mathsImg,
+      // image: mathsImg,
     },
     {
       title: "O/L English",
@@ -32,7 +32,7 @@ const Classes = () => {
         "Beyond just grammar, we focus on essay writing, literature analysis, & spoken fluency. Prepare for your O/L English exam.",
       grade: "06 - 11",
       medium: "English / Sinhala",
-      image: mathsImg,
+      // image: mathsImg,
     },
   ];
 
