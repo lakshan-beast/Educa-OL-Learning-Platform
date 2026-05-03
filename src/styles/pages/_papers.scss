@@ -51,21 +51,21 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: $grid-gap-xlarge;
-}
 
-span {
-  color: $primary-orange;
-}
+  span {
+    color: $primary-orange;
+  }
 
-button {
-  background: $primary-orange;
-  color: $white;
-  padding: $padding-small $padding-medium;
-  border: none;
-  border-radius: $border-radius-small;
-  cursor: pointer;
+  button {
+    background: $primary-orange;
+    color: $white;
+    padding: $padding-small $padding-medium;
+    border: none;
+    border-radius: $border-radius-small;
+    cursor: pointer;
 
-  &:hover {
-    background-color: darken($primary-orange, 10%);
+    &:hover {
+      // background-color: darken($primary-orange, 10%);
+    }
   }
 }
