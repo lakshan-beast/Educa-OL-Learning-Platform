@@ -98,124 +98,585 @@
 //   }
 // }
 
-.login-wrapper {
-  background: $bg-light;
+// .login-wrapper {
+//   background: $bg-light;
+//   @include center-everything;
+//   height: 100vh;
+//   padding: 20px;
+
+//   .container {
+//     background: $white;
+//     border-radius: $border-radius-medium;
+//     box-shadow: $shadow-dark;
+//     position: relative;
+//     overflow: hidden;
+//     width: 768px;
+//     max-width: 100%;
+//     min-height: 480px;
+
+//     // Sliding logic
+//     &.right-panel-active .sign-in-container {
+//       transform: translateX(100%);
+//     }
+//     &.right-panel-active .sign-up-container {
+//       transform: translateX(100%);
+//       opacity: 1;
+//       z-index: 5;
+//       animation: show 0.6s;
+//     }
+//     &.right-panel-active .overlays-container {
+//       transform: translateX(-100%);
+//     }
+//     &.right-panel-active .overlays {
+//       transform: translateX(50%);
+//     }
+//   }
+
+//   // Overlay Container - මේක Container එක ඇතුළේ තියෙන්න ඕනේ
+//   .overlays-container {
+//     position: absolute;
+//     top: 0;
+//     left: 50%;
+//     width: 50%;
+//     height: 100%;
+//     overflow: hidden;
+//     transition: transform 0.6s ease-in-out;
+//     z-index: 100;
+//   }
+
+//   .overlays {
+//     background: linear-gradient(135deg, $dark-purple1 0%, $dark-purple2 100%);
+//     color: $white;
+//     position: relative;
+//     left: -100%;
+//     height: 100%;
+//     width: 200%;
+//     transform: translateX(0);
+//     transition: transform 0.6s ease-in-out;
+//   }
+
+//   .overlays-panel {
+//     position: absolute;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     padding: 0 40px;
+//     text-align: center;
+//     top: 0;
+//     height: 100%;
+//     width: 50%;
+//     transition: transform 0.6s ease-in-out;
+//   }
+
+//   .overlays-left {
+//     transform: translateX(-20%);
+//   }
+//   .overlays-right {
+//     right: 0;
+//     transform: translateX(0);
+//   }
+
+//   // බටන් සහ ඉන්පුට් ස්ටයිල්ස්
+//   button {
+//     cursor: pointer;
+//     border-radius: 20px;
+//     border: 1px solid $white;
+//     background-color: $dark-purple1;
+//     color: $white;
+//     padding: 12px 45px;
+//     letter-spacing: 1px;
+//     text-transform: uppercase;
+//     transition: transform 80ms ease-in;
+
+//     &:active {
+//       transform: scale(0.95);
+//     }
+//     &.ghost {
+//       background: transparent;
+//     }
+//   }
+
+//   input {
+//     background-color: #eee;
+//     border: none;
+//     padding: 12px 15px;
+//     margin: 8px 0;
+//     width: 100%;
+//     border-radius: 5px;
+//   }
+// }
+
+// @keyframes show {
+//   0%,
+//   49.99% {
+//     opacity: 0;
+//     z-index: 1;
+//   }
+//   50%,
+//   100% {
+//     opacity: 1;
+//     z-index: 5;
+//   }
+// }
+
+// .login-page-wrapper {
+//   background-color: $bg-light;
+//   height: 100vh;
+//   @include center-everything;
+//   padding: 20px;
+
+//   .login-container {
+//     background-color: $white;
+//     border-radius: 30px;
+//     box-shadow: $shadow-dark;
+//     position: relative;
+//     overflow: hidden;
+//     width: 850px;
+//     max-width: 100%;
+//     min-height: 550px;
+
+//     &.active {
+//       .login {
+//         transform: translateX(100%);
+//         opacity: 0;
+//       }
+//       .register {
+//         transform: translateX(100%);
+//         opacity: 1;
+//         z-index: 5;
+//         animation: move 0.6s;
+//       }
+//       .toggle-container {
+//         transform: translateX(-100%);
+//         border-radius: 0 150px 100px 0;
+//       }
+//       .toggle {
+//         transform: translateX(50%);
+//       }
+//     }
+//   }
+
+//   .form-box {
+//     position: absolute;
+//     top: 0;
+//     height: 100%;
+//     transition: all 0.6s ease-in-out;
+//     width: 50%;
+//     padding: 40px;
+//     @include flex-custom(center, center, column);
+
+//     form {
+//       width: 100%;
+//       h1 {
+//         margin-bottom: 20px;
+//         color: $dark-purple2;
+//       }
+//     }
+//   }
+
+//   .input-group {
+//     background: #eee;
+//     margin: 10px 0;
+//     padding: 12px 15px;
+//     border-radius: 10px;
+//     display: flex;
+//     align-items: center;
+//     gap: 10px;
+//     svg {
+//       color: $text-medium;
+//     }
+//     input {
+//       background: transparent;
+//       border: none;
+//       width: 100%;
+//       outline: none;
+//     }
+//   }
+
+//   .toggle-container {
+//     position: absolute;
+//     top: 0;
+//     left: 50%;
+//     width: 50%;
+//     height: 100%;
+//     overflow: hidden;
+//     transition: all 0.6s ease-in-out;
+//     z-index: 1000;
+//     border-radius: 150px 0 0 100px;
+//   }
+
+//   .toggle {
+//     background: linear-gradient(to right, $dark-purple1, $dark-purple2);
+//     color: $white;
+//     height: 100%;
+//     width: 200%;
+//     transform: translateX(0);
+//     transition: all 0.6s ease-in-out;
+//     left: -100%;
+//     position: relative;
+//   }
+
+//   .toggle-panel {
+//     position: absolute;
+//     width: 50%;
+//     height: 100%;
+//     @include flex-custom(center, center, column);
+//     padding: 0 30px;
+//     text-align: center;
+//     top: 0;
+//     transition: all 0.6s ease-in-out;
+
+//     &.toggle-left {
+//       transform: translateX(-200%);
+//     }
+//     &.toggle-right {
+//       right: 0;
+//       transform: translateX(0);
+//     }
+//   }
+
+//   .mobile-toggle {
+//     display: none; // Desktop එකේදී හංගමු
+//     margin-top: 15px;
+//     span {
+//       color: $primary-orange;
+//       font-weight: bold;
+//       cursor: pointer;
+//     }
+//   }
+
+//   @include respond(mobile) {
+//     .toggle-container {
+//       display: none;
+//     }
+//     .form-box {
+//       width: 100%;
+//       &.register {
+//         transform: translateX(0);
+//         opacity: 0;
+//         z-index: 1;
+//       }
+//     }
+//     .mobile-toggle {
+//       display: block;
+//     }
+//   }
+// }
+
+// @keyframes move {
+//   0%,
+//   49.99% {
+//     opacity: 0;
+//     z-index: 1;
+//   }
+//   50%,
+//   100% {
+//     opacity: 1;
+//     z-index: 5;
+//   }
+// }
+
+// .new-login-wrapper {
+//   display: flex;
+//   min-height: 100vh;
+//   background: $white;
+
+//   // වම් පැත්තේ පැනල් එක (Desktop එකේදී විතරක් පේනවා)
+//   .login-side-panel {
+//     flex: 1.2;
+//     background: linear-gradient(135deg, $dark-purple1, $dark-purple2);
+//     @include center-everything;
+//     color: $white;
+//     padding: 40px;
+//     text-align: center;
+
+//     @include respond(mobile) {
+//       display: none;
+//     }
+
+//     .panel-content {
+//       max-width: 450px;
+//       h1 {
+//         font-size: 3rem;
+//         margin-bottom: 1rem;
+//       }
+//       p {
+//         opacity: 0.8;
+//         margin-bottom: 2rem;
+//         font-size: 1.1rem;
+//       }
+//       img {
+//         width: 100%;
+//         filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.3));
+//       }
+//     }
+//   }
+
+//   // දකුණු පැත්තේ පැනල් එක (Form එක)
+//   .login-form-panel {
+//     flex: 1;
+//     @include center-everything;
+//     padding: 40px;
+
+//     .form-container {
+//       width: 100%;
+//       max-width: 400px;
+
+//       .form-header {
+//         margin-bottom: 2rem;
+//         h2 {
+//           font-size: 2.2rem;
+//           color: $dark-purple2;
+//         }
+//         p {
+//           color: $text-medium;
+//           margin-top: 5px;
+//         }
+//       }
+//     }
+//   }
+
+//   // Input styling
+//   .input-field {
+//     background: #f3f6ff;
+//     padding: 15px 20px;
+//     border-radius: 12px;
+//     display: flex;
+//     align-items: center;
+//     gap: 15px;
+//     margin-bottom: 1rem;
+//     border: 1px solid transparent;
+//     transition: 0.3s;
+
+//     &:focus-within {
+//       border-color: $dark-purple1;
+//       background: $white;
+//       box-shadow: $shadow-medium;
+//     }
+//     svg {
+//       color: $dark-purple1;
+//       font-size: 1.2rem;
+//     }
+//     input {
+//       border: none;
+//       background: transparent;
+//       width: 100%;
+//       outline: none;
+//       font-size: 1rem;
+//     }
+//   }
+
+//   .forgot-link {
+//     display: block;
+//     text-align: right;
+//     font-size: 0.9rem;
+//     color: $primary-orange;
+//     margin-bottom: 1.5rem;
+//   }
+
+//   .login-submit-btn {
+//     width: 100%;
+//     padding: 16px;
+//     border-radius: 12px;
+//     background: $dark-purple1;
+//     color: $white;
+//     font-weight: bold;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     gap: 10px;
+//     transition: 0.3s;
+//     &:hover {
+//       background: $dark-purple2;
+//       transform: translateY(-2px);
+//     }
+//   }
+
+//   .toggle-footer {
+//     margin-top: 2rem;
+//     text-align: center;
+//     color: $text-medium;
+//     button {
+//       background: none;
+//       border: none;
+//       color: $primary-orange;
+//       font-weight: bold;
+//       margin-left: 5px;
+//       cursor: pointer;
+//       &:hover {
+//         text-decoration: underline;
+//       }
+//     }
+//   }
+// }
+
+.modern-login-screen {
+  // min-height: 100vh;
+  width: 100%;
+  // background: radial-gradient(
+  //   circle at top left,
+  //   $dark-purple1,
+  //   $dark-purple2
+  // ); // ඔයාගේ variables
   @include center-everything;
-  height: 100vh;
-  padding: 20px;
+  // padding: 20px;
+  min-width: 300px;
 
-  .container {
-    background: $white;
-    border-radius: $border-radius-medium;
-    box-shadow: $shadow-dark;
-    position: relative;
-    overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
+  .glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 30px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
 
-    // Sliding logic
-    &.right-panel-active .sign-in-container {
-      transform: translateX(100%);
-    }
-    &.right-panel-active .sign-up-container {
-      transform: translateX(100%);
-      opacity: 1;
-      z-index: 5;
-      animation: show 0.6s;
-    }
-    &.right-panel-active .overlays-container {
-      transform: translateX(-100%);
-    }
-    &.right-panel-active .overlays {
-      transform: translateX(50%);
+  .logo-circle {
+    width: 60px;
+    height: 60px;
+    background: $primary-orange;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 18px;
+    @include center-everything;
+    margin: 0 auto 15px;
+    box-shadow: 0 10px 20px rgba($primary-orange, 0.3);
+  }
+
+  h2 {
+    color: $dark-purple2;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
+  p {
+    color: $text-medium;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  .modern-form {
+    .modern-input {
+      background: #f1f3f9;
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: 0.3s;
+      border: 2px solid transparent;
+
+      &:focus-within {
+        border-color: $primary-orange;
+        background: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      svg {
+        color: $dark-purple1;
+        font-size: 1.1rem;
+      }
+      input {
+        border: none;
+        background: transparent;
+        width: 100%;
+        outline: none;
+        font-weight: 500;
+        color: $dark-purple2;
+      }
     }
   }
 
-  // Overlay Container - මේක Container එක ඇතුළේ තියෙන්න ඕනේ
-  .overlays-container {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    transition: transform 0.6s ease-in-out;
-    z-index: 100;
-  }
-
-  .overlays {
-    background: linear-gradient(135deg, $dark-purple1 0%, $dark-purple2 100%);
-    color: $white;
-    position: relative;
-    left: -100%;
-    height: 100%;
-    width: 200%;
-    transform: translateX(0);
-    transition: transform 0.6s ease-in-out;
-  }
-
-  .overlays-panel {
-    position: absolute;
+  .login-main-btn {
+    width: 100%;
+    padding: 16px;
+    background: $dark-purple1;
+    color: white;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 15px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 40px;
-    text-align: center;
-    top: 0;
-    height: 100%;
-    width: 50%;
-    transition: transform 0.6s ease-in-out;
-  }
+    gap: 10px;
+    transition: 0.3s;
 
-  .overlays-left {
-    transform: translateX(-20%);
-  }
-  .overlays-right {
-    right: 0;
-    transform: translateX(0);
-  }
-
-  // බටන් සහ ඉන්පුට් ස්ටයිල්ස්
-  button {
-    cursor: pointer;
-    border-radius: 20px;
-    border: 1px solid $white;
-    background-color: $dark-purple1;
-    color: $white;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-
-    &:active {
-      transform: scale(0.95);
-    }
-    &.ghost {
-      background: transparent;
+    &:hover {
+      background: $primary-orange;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba($primary-orange, 0.3);
     }
   }
 
-  input {
-    background-color: #eee;
-    border: none;
-    padding: 12px 15px;
-    margin: 8px 0;
-    width: 100%;
-    border-radius: 5px;
+  .form-footer {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: $text-medium;
+    span {
+      color: $primary-orange;
+      font-weight: bold;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
-@keyframes show {
-  0%,
-  49.99% {
-    opacity: 0;
-    z-index: 1;
-  }
-  50%,
-  100% {
-    opacity: 1;
-    z-index: 5;
-  }
-}
+// .login-overlay {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100vh;
+//   background: rgba(0, 0, 0, 0.6); // පසුබිම අඳුරු කරන්න
+//   -webkit-backdrop-filter: blur(5px);
+//   backdrop-filter: blur(5px);
+//   @include center-everything;
+//   z-index: 9999;
+//   padding: 20px;
+// }
+
+// .login-modal {
+//   position: relative;
+//   width: 100%;
+//   max-width: 420px;
+//   animation: modalFadeIn 0.3s ease-out;
+
+//   .close-modal {
+//     position: absolute;
+//     top: 15px;
+//     right: 20px;
+//     font-size: 2rem;
+//     color: $dark-purple2;
+//     background: none;
+//     border: none;
+//     cursor: pointer;
+//     z-index: 10;
+//     &:hover {
+//       color: $primary-orange;
+//     }
+//   }
+
+//   // මෙතනදී අර කලින් හදපු .glass-card එකේ styles එහෙමම පාවිච්චි කරන්න පුළුවන්
+//   .glass-card {
+//     margin: 0; // Popup එකක් නිසා margin ඕනේ නෑ
+//   }
+// }
+
+// @keyframes modalFadeIn {
+//   from {
+//     transform: translateY(-50px);
+//     opacity: 0;
+//   }
+//   to {
+//     transform: translateY(0);
+//     opacity: 1;
+//   }
+// }
