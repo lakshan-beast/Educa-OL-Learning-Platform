@@ -8,13 +8,7 @@ import {
   FaRegCopyright,
 } from "react-icons/fa6";
 
-import {
-  FaEnvelope,
-  FaRegCircle,
-  FaLaptopCode,
-  FaUsers,
-  FaHeart,
-} from "react-icons/fa";
+import { FaEnvelope, FaLaptopCode, FaUsers, FaHeart } from "react-icons/fa";
 
 import { RiTelegram2Fill } from "react-icons/ri";
 
