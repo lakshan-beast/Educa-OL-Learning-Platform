@@ -102,6 +102,25 @@
     &:hover {
       text-decoration: underline;
       color: $blue-medium;
+      color: $dark-purple1;
+      background: rgba($dark-purple1, 0.05);
+    }
+    &.active {
+      // color: $white;
+      // background: $dark-purple1; // තද පාට පසුබිමක්
+      // box-shadow: 0 4px 15px rgba($dark-purple1, 0.3); //
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5px;
+        height: 5px;
+        background: $primary-orange;
+        border-radius: 50%;
+      }
     }
   }
   &.nav-active {
