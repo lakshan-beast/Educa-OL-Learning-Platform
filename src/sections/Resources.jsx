@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 // import React from "react";
-import { FaMedal, FaChartColumn } from "react-icons/fa6";
-import resultsImg from "../assets/results.webp"; // Image එක import කරගන්න
+// import { FaMedal, FaChartColumn } from "react-icons/fa6";
+// import resultsImg from "../assets/results.webp"; // Image එක import කරගන්න
 
 const Resources = () => {
   return (
@@ -160,7 +160,7 @@ const Resources = () => {
         {/* </div> */}
         {/* </section> */}
 
-        <div className="resources-card" data-aos="fade-up" data-aos-delay="600">
+        {/* <div className="resources-card" data-aos="fade-up" data-aos-delay="600">
           <span className="card-badge card-badge-official">
             <FaMedal /> Official
           </span>
@@ -179,7 +179,7 @@ const Resources = () => {
             rel="noopener noreferrer">
             Check Your Results
           </a>
-        </div>
+        </div> */}
 
         {/* තව කාඩ්ස් තියෙනවා නම් ඒවත් මේ වගේම පල්ලෙහයින් එකතු කරන්න පුළුවන් */}
       </div>
