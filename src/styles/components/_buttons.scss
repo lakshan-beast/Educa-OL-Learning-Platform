@@ -39,6 +39,17 @@
   color: $secondary-blue;
   transition: background 1s ease;
 
+  width: 100%;
+  max-width: 200px;
+  padding: 8px 10px;
+  // margin-top: $margin-small;
+  // margin-right: 6px;
+  border-radius: $border-radius-xlarge;
+  margin: 0 auto;
+  i {
+    margin-left: 0.5rem;
+  }
+
   &:hover {
     background-color: $blue-light;
     color: $blue-medium;
@@ -50,21 +61,21 @@
   box-shadow: 0px 0px 8px rgb(203, 203, 241);
 }
 
-.resources-card a {
-  outline: none;
-  border: none;
-  display: block;
-  background-size: 200% auto;
-  transition: all 0.5s ease;
-  letter-spacing: 1px;
-  background: #a6bdff;
+// .resources-card a {
+//   outline: none;
+//   border: none;
+//   display: block;
+//   background-size: 200% auto;
+//   transition: all 0.5s ease;
+//   letter-spacing: 1px;
+//   background: #a6bdff;
 
-  &:hover {
-    background-position: right center;
-    background: #4548ff;
-    color: #8aa9ff;
-  }
-}
+//   &:hover {
+//     background-position: right center;
+//     background: #4548ff;
+//     color: #8aa9ff;
+//   }
+// }
 
 .contact-btn,
 .reviews-btn {
