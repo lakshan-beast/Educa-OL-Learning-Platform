@@ -16,6 +16,9 @@ import DailyQuestions from "./pages/DailyQuestions";
 import DailyQuizzes from "./pages/DailyQuizzes";
 import PaperHub from "./pages/PaperHub";
 
+import FullTimetable from "./pages/Timetables";
+import ClassesDetails from "./pages/ClassesDetails";
+
 const App = () => {
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
@@ -36,6 +39,9 @@ const App = () => {
           <Route path="/daily-questions" element={<DailyQuestions />} />
           <Route path="/daily-quizzes" element={<DailyQuizzes />} />
           <Route path="/paper-hub" element={<PaperHub />} />
+
+          <Route path="/full-timetable" element={<FullTimetable />} />
+          <Route path="/classes-details" element={<ClassesDetails />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
