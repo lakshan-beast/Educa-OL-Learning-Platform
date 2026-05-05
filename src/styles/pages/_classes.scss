@@ -1,13 +1,14 @@
 .classes-section {
   padding: 2rem 0;
+  max-width: 800px;
 }
 
-.class-grid {
+.classes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: $grid-gap-large;
 
-  .class-card {
+  .classes-card {
     background: $white;
     border-radius: $border-radius-medium;
     padding: $padding-medium;
