@@ -52,9 +52,9 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: $grid-gap-xlarge;
 
-  span {
-    color: $primary-orange;
-  }
+  // span {
+  //   color: $primary-orange;
+  // }
 
   button {
     background: $primary-orange;
