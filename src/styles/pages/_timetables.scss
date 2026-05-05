@@ -1,0 +1,39 @@
+.timetable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  thead {
+    background: $dark-purple1;
+    color: $white;
+    th {
+      padding: 15px;
+      text-align: left;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #eee;
+      &:hover {
+        background: rgba($blue-light, 0.2);
+      }
+
+      td {
+        padding: 15px;
+        color: $dark-blue;
+        svg {
+          color: $primary-orange;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  // Mobile එකේදී scroll වෙන්න
+  @include respond(mobile) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
