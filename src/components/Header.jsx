@@ -1,19 +1,19 @@
 import { useState } from "react";
-import {
-  FaBarsStaggered,
-  FaRegCopyright,
-  FaRocket,
-  FaRegCircle,
-  FaBell,
-} from "react-icons/fa6";
-import { FaRegUserCircle } from "react-icons/fa";
-
 import { Link } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 
 import NotificationCenter from "./NotificationCenter";
+import Login from "../pages/Login";
 
-import Login from "../pages/Login"; // අපේ අලුත් ලොගින් එක
+import {
+  FaBarsStaggered,
+  // FaRegCopyright,
+  // FaRocket,
+  // FaRegCircle,
+  FaBell,
+  FaX,
+} from "react-icons/fa6";
+import { FaRegUserCircle } from "react-icons/fa";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -37,6 +37,12 @@ const Header = () => {
       message: "නව නිබන්ධනය Paper Hub එකට එක් කර ඇත.",
       time: "1 hour ago",
     },
+    {
+      id: 3,
+      subject: "English",
+      message: "Closed",
+      time: "2 hour ago",
+    },
   ];
 
   return (
@@ -58,7 +64,7 @@ const Header = () => {
             className={`header-navbar ${isActive ? "nav-active" : ""}`}
             id="header-navbar">
             <Link
-              to="/"
+              to="/#home"
               className={({ isActive }) =>
                 isActive ? "nav-active active" : ""
               }>
@@ -99,7 +105,7 @@ const Header = () => {
               Skill Test
             </Link>
 
-            <div className="header-copyrights">
+            {/* <div className="header-copyrights">
               <a href="#home" className="header-logo">
                 <FaRegCircle /> educa<span>.</span>
               </a>
@@ -111,7 +117,7 @@ const Header = () => {
                 <FaRegCopyright />
                 <span> {new Date().getFullYear()}</span> All rights reserved.
               </p>
-            </div>
+            </div> */}
           </div>
 
           <div className="header-actions">
@@ -131,8 +137,6 @@ const Header = () => {
               />
             )}
 
-            {/* <Link to="/login" className="sign-btn"></Link> */}
-
             <button className="sign-btn" onClick={() => setShowLogin(true)}>
               <FaRegUserCircle />
             </button>
@@ -149,7 +153,7 @@ const Header = () => {
         <div className="login-overlay" onClick={() => setShowLogin(false)}>
           <div className="login-modal" onClick={(e) => e.stopPropagation()}>
             <button className="close-modal" onClick={() => setShowLogin(false)}>
-              &times;
+              <FaX className="close-btn " />
             </button>
             <Login />
           </div>
@@ -160,28 +164,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// import React, { useState } from 'react';
-
-// const Header = () => {
-//   const [showLogin, setShowLogin] = useState(false);
-
-//   return (
-//     <>
-//       <header className="header">
-//         {/* අනෙක් ලින්ක්ස්... */}
-//         <button className="sign-btn" onClick={() => setShowLogin(true)}>Sign In</button>
-//       </header>
-
-//       {/* Login Popup Overlay */}
-//       {showLogin && (
-//         <div className="login-overlay" onClick={() => setShowLogin(false)}>
-//           <div className="login-modal" onClick={(e) => e.stopPropagation()}>
-//             <button className="close-modal" onClick={() => setShowLogin(false)}>&times;</button>
-//             <Login />
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// };
