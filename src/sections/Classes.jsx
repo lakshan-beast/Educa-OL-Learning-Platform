@@ -89,7 +89,8 @@
 
 // import React from 'react';
 import { Link } from "react-router-dom";
-import { FaChalkboardUser, FaCalendarDays, FaClock } from "react-icons/fa6";
+// import { FaChalkboardUser, FaCalendarDays } from "react-icons/fa6";
+import { FaChalkboardUser } from "react-icons/fa6";
 
 const Classes = () => {
   const classData = [
@@ -101,7 +102,7 @@ const Classes = () => {
         "Simplify complex theories into easy steps. We ensure every student masters the logic.",
       grade: "06 - 11",
       medium: "Sinhala",
-      time: "Sat: 8.00 AM", // ටයිම් ටේබල් එක මෙතනට දැම්මා
+      // time: "Sat: 8.00 AM", // ටයිම් ටේබල් එක මෙතනට දැම්මා
       // image: "/assets/maths-class.webp",
     },
     {
@@ -112,7 +113,7 @@ const Classes = () => {
         "Dive deep into Science with visual explanations covering Physics, Chemistry & Biology.",
       grade: "06 - 11",
       medium: "English / Sinhala",
-      time: "Sun: 1.30 PM",
+      // time: "Sun: 1.30 PM",
       // image: "/assets/science-class.webp",
     },
     {
@@ -123,18 +124,19 @@ const Classes = () => {
         "Focus on essay writing, literature analysis & fluency to ace your exam.",
       grade: "06 - 11",
       medium: "English / Sinhala",
-      time: "Tue: 3.30 PM",
+      // time: "Tue: 3.30 PM",
       // image: "/assets/english-class.webp",
     },
   ];
 
   return (
-    <section className="classes-section parts" id="classes">
-      <div className="class-container">
-        <h2>
-          our <span>classes</span>
-        </h2>
+    // <section className="classes-section parts" id="classes">
+    <section className="parts" id="classes">
+      <h2>
+        our <span>classes</span>
+      </h2>
 
+      <div className="class-container">
         <div className="classes-grid">
           {classData.map((item, index) => (
             <div className="classes-card card" key={index} data-aos="fade-up">
@@ -146,13 +148,13 @@ const Classes = () => {
                 <h4>{item.subtitle}</h4>
 
                 <div className="quick-schedule">
-                  <span>
+                  {/* <span>
                     <FaCalendarDays /> {item.time.split(":")[0]}
-                  </span>
-                  <span>
+                  </span> */}
+                  {/* <span>
                     <FaClock /> {item.time.split(" ")[1]}{" "}
                     {item.time.split(" ")[2]}
-                  </span>
+                  </span> */}
                 </div>
 
                 <p>{item.description}</p>
