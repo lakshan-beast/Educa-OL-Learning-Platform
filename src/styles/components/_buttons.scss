@@ -34,7 +34,8 @@
 //   );
 // }
 
-.browse-btn {
+.browse-btn,
+.contact-btn {
   border: 1px solid $secondary-blue;
   color: $secondary-blue;
   transition: background 1s ease;
@@ -45,7 +46,7 @@
   // margin-top: $margin-small;
   // margin-right: 6px;
   border-radius: $border-radius-xlarge;
-  margin: 0 auto;
+  // margin: 0 auto;
   i {
     margin-left: 0.5rem;
   }
@@ -77,7 +78,7 @@
 //   }
 // }
 
-.contact-btn,
+// .contact-btn,
 .reviews-btn {
   background: linear-gradient(to right, #ff5e53 0%, #474aff 100%);
 
@@ -85,6 +86,10 @@
     transform: scale(1.03);
     background: linear-gradient(to right, #ff5e5375 0%, #474aff80 100%);
   }
+}
+
+.contact-btn {
+  margin: 6px auto;
 }
 
 .class-btn,
