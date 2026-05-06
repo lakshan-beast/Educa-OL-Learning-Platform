@@ -4,9 +4,11 @@
 }
 
 .classes-grid {
+  padding: 1rem 0rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: $grid-gap-large;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $grid-gap-medium;
+  // background-color: red;
 
   .classes-card {
     background: $white;
