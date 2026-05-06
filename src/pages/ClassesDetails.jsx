@@ -38,7 +38,7 @@ const Classes = () => {
 
   return (
     <section className="classes-section" id="classes">
-      <div className="system-container">
+      <div className="class-container">
         <h2 style={{ textAlign: "center" }}>
           Weekly <span>Class Schedule</span>
         </h2>
