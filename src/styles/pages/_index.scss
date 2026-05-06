@@ -1,160 +1,33 @@
-// index html for style
-// full system conatiner div style
-// .system-container {
-//   width: 100%;
-//   max-width: 114rem;
-//   margin: 0 auto;
-//   padding: 0 1rem;
-
-//   @include respond(tablet) {
-//     padding: 0 2rem;
-//   }
-//   @include respond(desktop) {
-//     padding: 0 12rem;
-//   }
-// }
-
 // main part div style
 main {
   margin-bottom: $margin-xlarge;
   @include flex-custom;
 }
 
-// // home div style
-// .home {
-//   height: auto;
-//   width: 100%;
-//   min-height: 100svh;
-//   max-width: 1400px;
-//   min-width: 350px;
-//   z-index: 1;
-//   overflow: hidden;
-
-//   @include flex-custom;
-
-//   .columns {
-//     @include flex-custom(center, center, column-reverse);
-//     padding: 1rem;
-//     margin-top: 2rem;
-//     gap: 1rem;
-
-//     @include respond(desktop) {
-//       flex-direction: row;
-//     }
-//   }
-//   .column {
-//     // heading | main heading
-//     h1 {
-//       margin-bottom: $margin-small;
-//       color: $secondary-blue;
-//       font-weight: $font-weight-semi-bold;
-//       text-shadow: 0px 0px 3px $blue-medium;
-//       transition: $transition-fast;
-
-//       span {
-//         display: block;
-//         color: $primary-orange;
-//         font-weight: bold;
-//         text-shadow: none;
-//       }
-//     }
-//     // home buttons
-//     .home-buttons {
-//       display: block;
-//       margin-top: 0.8rem;
-//       padding: $padding-none;
-
-//       @include respond(tablet) {
-//         display: flex;
-//         flex-direction: row;
-//       }
-
-//       a {
-//         width: 100%;
-//         max-width: 200px;
-//         padding: 8px 10px;
-//         margin-top: $margin-small;
-//         margin-right: 6px;
-//         border-radius: $border-radius-xlarge;
-//         i {
-//           margin-left: 0.5rem;
-//         }
-//       }
-//     }
-//     // hero image
-//     img {
-//       margin: 2rem auto;
-//       height: auto;
-//       max-width: 100%;
-//       object-fit: cover;
-//       animation: updown 10s ease-in-out infinite;
-
-//       @include center-everything;
-//     }
-//   }
-//   // description
-//   .description {
-//     @include respond(desktop) {
-//       max-width: 400px;
-//     }
-//     p {
-//       color: $blue-medium;
-//       line-height: 1.6;
-//     }
-//   }
-// }
-
-// // hero image for updown animation
-// @keyframes updown {
-//   0% {
-//     transform: translateY(0px);
-//   }
-//   25% {
-//     transform: translateY(25px);
-//   }
-//   50% {
-//     transform: translateY(0px);
-//   }
-//   75% {
-//     transform: translateY(25px);
-//   }
-//   100% {
-//     transform: translateY(0px);
-//   }
-// }
-
-// slider - temporary disabled
-// .stats-slider {
-//   width: 100%;
-//   overflow: hidden;
-//   margin: 1rem 0;
-
-//   .stats-slides {
-//     display: flex;
-//     transition: 0.5s ease;
-//     text-align: center;
-
-//     .slides-para {
-//       min-width: 100%;
-//       padding: 6px 20px;
-//       background-color: $blue-light;
-
-//       i {
-//         margin-right: 12px;
-//       }
-//     }
-//   }
-// }
-
 // parts
 .parts {
   // main {
-  margin: 1rem auto 2rem auto;
-  padding: 1rem 0rem;
+  // margin: 1rem auto 2rem auto;
+  // padding: 0rem 1rem;
+  // width: 100%;
+  // max-width: 114rem;
+  // background: transparent;
+  // position: relative;
+
+  // margin: 1rem auto 2rem auto;
+  padding: 0rem 1rem;
   width: 100%;
-  max-width: 114rem;
+  max-width: 1140px;
   background: transparent;
   position: relative;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // flex-direction: column;
+  // gap: 0;
+  flex-wrap: nowrap;
+  /* background: red; */
+  margin: 1rem auto;
 
   @include flex-custom;
 
@@ -187,480 +60,440 @@ main {
 
 // featuers
 .resources-container {
-  padding: 2rem 0rem;
+  padding: 1rem 0rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $grid-gap-medium;
+  // background-color: red;
 
-  // .resources-card {
+  // cources container
+  .classes-content {
+    h3 {
+      color: $secondary-blue;
+      text-align: center;
+      text-shadow: 0px 1px 3px $link-shadow;
+    }
+    h4 {
+      color: $dark-purple1;
+      text-align: center;
+      margin: 0.8rem 0.5rem;
+    }
+
+    @include respond(desktop) {
+      padding: 1rem 3rem;
+      flex-direction: column;
+    }
+  }
+}
+// // teacher contaiener card
+// .teachers-container {
+// .teacher-card {
+//   border: 2px solid $blue-light;
+//   @include flex-custom(space-between, flex-start, column);
+//   margin-bottom: 1rem;
+//   border-radius: $border-radius-medium;
+//   box-shadow: 0px 4px 15px $blue-light;
+
+//   @include flex-custom(space-between, center);
+
+//   @include respond(laptop) {
+//     width: 900px;
+//     flex-direction: row;
+//     &:nth-child(even) {
+//       flex-direction: row-reverse;
+//     }
+//   }
+
+// img {
+//   width: 100%;
+//   max-width: 800px;
+//   height: auto;
+//   background-origin: border-box;
+//   background-attachment: fixed;
+//   background-clip: border-box;
+//   background-size: auto;
+//   background-position: center;
+//   object-fit: cover;
+//   /* border: 2px solid; */
+//   border-radius: 1rem;
+//   // margin: 1rem 0;
+// }
+
+// .share {
+//   @include flex-custom(space-between, center, column, nowrap);
+//   margin: $margin-medium;
+//   padding: 0 1rem;
+//   width: 100%;
+//   a {
+//     border-radius: $border-radius-medium;
+//     background-color: transparent;
+//     color: $dark-purple2;
+//     padding: 0.5rem;
+//     &:hover {
+//       scale: 1.05;
+//       transition: $transition-fast;
+//     }
+//   }
+//   i {
+//     // font-size: $font-size-xxhuge;
+//     padding-left: $padding-xlarge;
+//   }
+// }
+
+//   .teacher-info {
+//     @include flex-custom(center, center, column, 0, nowrap);
+//     margin: $margin-none;
+//     padding: 0.8rem 0.5rem;
+//     padding: 1rem;
+//     width: 100%;
+
+//     mark {
+//       background-color: #7f91ec;
+//       color: white;
+//       padding: 2px 6px;
+//       border-radius: 3px;
+
+//       &:hover {
+//         background-color: $dark-purple;
+//         border-radius: 5px;
+//         border-bottom: 2px solid $primary-orange;
+//       }
+//     }
+
+//     h3 {
+//       text-align: center;
+//       color: $secondary-blue;
+//       // font-size: $font-size-xhuge;
+//       margin-bottom: 0.5rem;
+
+//       span {
+//         color: $dark-purple;
+//         color: #4e6ab9;
+//         font-size: 1.2rem;
+//       }
+//     }
+//     .teacher-details {
+//       @include flex-custom(flex-start, flex-start, column);
+//       border-bottom: 2px solid $blue-light;
+//       padding-bottom: 0.5rem;
+//       width: 100%;
+//       p {
+//         color: $text-medium;
+//         // font-size: $font-size-p;
+//         display: flex;
+//         align-items: flex-start;
+//         margin: $margin-none;
+//         flex-direction: column;
+
+//         span {
+//           padding: 6px;
+//           color: $text-blue;
+//           background: $white;
+//           border-radius: 6px;
+//         }
+//       }
+//     }
+//   }
+// }
+// }
+
+.teachers-container {
+  padding: 1rem 0rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $grid-gap-medium;
+}
+
+.teachers-section {
+  // background: $bg-light;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    span {
+      color: $primary-orange;
+    }
+  }
+
+  // .teachers-container {
+  //   display: grid;
+  //   gap: 10px;
+  //   grid-template-columns: repeat(
+  //     auto-fit,
+  //     minmax(320px, 1fr)
+  //   ); // Responsive grid
+  // }
+  // .teacher-card {
   //   background: $white;
-  //   border-radius: $border-radius-medium;
-  //   box-shadow: 0px 1px 8px $blue-light;
-  //   transition: 0.3s ease-out;
-  //   @include flex-custom(center, center, column, 0, nowrap);
-  //   text-align: center;
-  //   position: relative;
+  //   border-radius: 20px;
+  //   overflow: hidden;
+  //   box-shadow: $shadow-light;
+  //   transition: all 0.4s ease;
+  //   border: 1px solid rgba($blue-light, 0.3);
+  //   display: flex;
+  //   flex-direction: column;
 
   //   &:hover {
   //     transform: translateY(-10px);
-  //     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  //     box-shadow: $shadow-dark;
+  //     border-color: $dark-purple1;
   //   }
 
-  //   @include respond(mobile) {
-  //     text-align: center;
-  //   }
-
-  //   img {
-  //     width: 180px;
-  //     height: 180px;
-  //     object-fit: cover;
-  //     margin: 1rem auto;
-  //   }
-
-  //   h3 {
-  //     color: $blue-medium;
-  //     text-align: center;
-  //     margin-bottom: 6px;
-
-  //     i {
-  //       margin-right: 0.3rem;
-  //     }
-  //   }
-  //   p {
-  //     color: $blue-medium;
-  //     text-align: center;
-  //     margin: 10px 18px;
-  //     margin: 6px 18px 16px 18px;
-  //     padding: $padding-none;
-  //   }
-  //   a {
-  //     box-shadow: 0px 0px 16px rgba(92, 92, 231, 0.397);
-  //     margin-top: auto;
-  //     border-radius: 0 0;
-  //     padding: 8px 0px;
-  //     /* margin-top: auto; */
-  //     /* margin-bottom: 6px; */
-  //     /* border-radius: 3px 0 1rem 0; */
-  //     position: relative;
-  //     bottom: 0;
-  //     /* margin: auto -0rem 0rem auto; */
+  //   &__img-box {
   //     width: 100%;
-  //     border-radius: 0 0 1rem 1rem;
-  //     color: #ffffff;
-  //     background: #f7786f;
+  //     height: 300px;
+  //     overflow: hidden;
 
-  //     &:hover {
-  //       opacity: 0.8;
-  //       border-top: 2px solid $blue-medium;
-  //     }
-  //   }
-  // }
-}
-
-// .card-badge {
-//   padding: 6px 16px;
-//   text-align: center;
-//   border-radius: 3px;
-//   position: absolute;
-//   top: -0.5rem;
-//   right: -0.3rem;
-//   font-size: 0.7rem;
-//   text-transform: uppercase;
-//   z-index: 10;
-//   width: auto;
-//   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.164);
-//   font-weight: 500;
-
-//   &.card-badge-official {
-//     background: gold;
-//     color: $white;
-//   }
-//   &.card-badge-update {
-//     color: $secondary-blue;
-//     background: rgb(218, 218, 218);
-//   }
-//   &.card-badge-popular {
-//     color: $secondary-blue;
-//     background: rgb(255, 251, 0);
-
-//     i {
-//       color: red;
-//     }
-//   }
-//   &.card-badge-new {
-//     background: red;
-//     color: $white;
-//   }
-//   &.card-badge-verified {
-//     color: $secondary-blue;
-//     background: rgb(51, 255, 0);
-//   }
-//   &.card-badge-free {
-//     background: rgb(40, 126, 255);
-//     color: $white;
-//   }
-//   &.card-badge-members {
-//     background: #2ecc71;
-//     color: $white;
-//   }
-//   i {
-//     margin-right: 8px;
-//   }
-// }
-
-// cources container
-.classes-content {
-  h3 {
-    color: $secondary-blue;
-    text-align: center;
-    text-shadow: 0px 1px 3px $link-shadow;
-  }
-  h4 {
-    color: $dark-purple1;
-    text-align: center;
-    margin: 0.8rem 0.5rem;
-  }
-
-  @include respond(desktop) {
-    padding: 1rem 3rem;
-    flex-direction: column;
-  }
-  // .classes-card {
-  //   padding: 1rem 0;
-  //   margin: 0.5rem 0;
-  //   gap: 6px;
-  //   max-width: 700px;
-  //   width: 100%;
-
-  //   background: $white;
-  //   border-radius: $border-radius-medium;
-  //   box-shadow: 0px 1px 8px $blue-light;
-  //   transition: 0.3s ease-out;
-  //   text-align: center;
-  //   position: relative;
-
-  //   @include flex-custom(space-between, center);
-
-  //   @include respond(desktop) {
-  //     width: 900px;
-  //     flex-direction: row;
-  //     &:nth-child(even) {
-  //       flex-direction: row-reverse;
-  //     }
-  //   }
-  //   .position {
-  //     background-color: $blue-medium;
-  //     color: $white;
-  //     padding: 8px 16px;
-
-  //     text-align: center;
-  //     box-shadow: 0px 0px 6px $blue-light;
-
-  //     margin: 12px auto 0px auto;
-  //     border-radius: 6px;
-  //     text-align: center;
-
-  //     i {
-  //       margin-right: 1rem;
+  //     img {
+  //       width: 100%;
+  //       height: 100%;
+  //       object-fit: cover; // පින්තූරය ගානට සෙට් වෙන්න
+  //       transition: transform 0.5s ease;
   //     }
   //   }
 
-  //   .classes-column img {
-  //     width: 100%;
-  //     max-width: 800px;
-  //     height: auto;
-  //     border-radius: $border-radius-styles2;
-  //     object-fit: cover;
-
-  //     @include respond(desktop) {
-  //       max-width: 100%;
-  //     }
-
-  //     &:hover {
-  //       transform: scale(1.05);
-  //     }
+  //   &:hover &__img-box img {
+  //     transform: scale(1.1); // Hover කරද්දී පින්තූරය zoom වෙනවා
   //   }
-  //   .classes-info {
-  //     @include flex-custom(flex-start, stretch, column, 2px, nowrap);
-  //     padding: 0 1rem;
-
-  //     p {
-  //       color: $blue-medium;
-  //       margin: 0rem 0.3rem;
-  //       text-align: left;
-
-  //       span {
-  //         background: transparent;
-  //         color: $dark-purple;
-  //         text-decoration: underline;
-  //         margin: 3px;
-  //         border: none;
-  //         box-shadow: none;
-  //       }
-  //     }
-  //   }
-  // }
-}
-
-// class more btn style
-// .more-btn {
-//   @include flex-custom(flex-end, flex-end, row);
-//   margin-top: 0;
-//   margin-bottom: 1rem;
-//   a {
-//     border-radius: $border-radius-xlarge;
-//     padding: 12px 25px;
-//     width: auto;
-//     margin: 0rem auto;
-//   }
-// }
-
-// // teacher contaiener card
-.teachers-container {
-  // .teacher-card {
-  //   border: 2px solid $blue-light;
-  //   @include flex-custom(space-between, flex-start, column);
-  //   margin-bottom: 1rem;
-  //   border-radius: $border-radius-medium;
-  //   box-shadow: 0px 4px 15px $blue-light;
-
-  //   @include flex-custom(space-between, center);
-
-  //   @include respond(laptop) {
-  //     width: 900px;
-  //     flex-direction: row;
-  //     &:nth-child(even) {
-  //       flex-direction: row-reverse;
-  //     }
-  //   }
-
-  // img {
-  //   width: 100%;
-  //   max-width: 800px;
-  //   height: auto;
-  //   background-origin: border-box;
-  //   background-attachment: fixed;
-  //   background-clip: border-box;
-  //   background-size: auto;
-  //   background-position: center;
-  //   object-fit: cover;
-  //   /* border: 2px solid; */
-  //   border-radius: 1rem;
-  //   // margin: 1rem 0;
-  // }
-
-  // .share {
-  //   @include flex-custom(space-between, center, column, nowrap);
-  //   margin: $margin-medium;
-  //   padding: 0 1rem;
-  //   width: 100%;
-  //   a {
-  //     border-radius: $border-radius-medium;
-  //     background-color: transparent;
-  //     color: $dark-purple2;
-  //     padding: 0.5rem;
-  //     &:hover {
-  //       scale: 1.05;
-  //       transition: $transition-fast;
-  //     }
-  //   }
-  //   i {
-  //     // font-size: $font-size-xxhuge;
-  //     padding-left: $padding-xlarge;
-  //   }
-  // }
 
   //   .teacher-info {
-  //     @include flex-custom(center, center, column, 0, nowrap);
-  //     margin: $margin-none;
-  //     padding: 0.8rem 0.5rem;
-  //     padding: 1rem;
-  //     width: 100%;
-
-  //     mark {
-  //       background-color: #7f91ec;
-  //       color: white;
-  //       padding: 2px 6px;
-  //       border-radius: 3px;
-
-  //       &:hover {
-  //         background-color: $dark-purple;
-  //         border-radius: 5px;
-  //         border-bottom: 2px solid $primary-orange;
-  //       }
-  //     }
+  //     padding: 25px;
 
   //     h3 {
-  //       text-align: center;
-  //       color: $secondary-blue;
-  //       // font-size: $font-size-xhuge;
-  //       margin-bottom: 0.5rem;
-
+  //       color: $dark-purple2;
+  //       font-size: 1.4rem;
+  //       margin-bottom: 15px;
   //       span {
-  //         color: $dark-purple;
-  //         color: #4e6ab9;
-  //         font-size: 1.2rem;
+  //         color: $text-medium;
+  //         font-size: 1rem;
+  //         font-weight: normal;
   //       }
   //     }
+
   //     .teacher-details {
-  //       @include flex-custom(flex-start, flex-start, column);
-  //       border-bottom: 2px solid $blue-light;
-  //       padding-bottom: 0.5rem;
-  //       width: 100%;
   //       p {
+  //         font-size: 0.9rem;
   //         color: $text-medium;
-  //         // font-size: $font-size-p;
+  //         line-height: 1.6;
+  //         margin-bottom: 10px;
   //         display: flex;
-  //         align-items: flex-start;
-  //         margin: $margin-none;
   //         flex-direction: column;
 
   //         span {
-  //           padding: 6px;
-  //           color: $text-blue;
-  //           background: $white;
-  //           border-radius: 6px;
+  //           color: $dark-blue;
+  //           font-weight: 500;
   //         }
+  //       }
+
+  //       .philosophy {
+  //         background: rgba($primary-orange, 0.05);
+  //         padding: 10px;
+  //         border-left: 3px solid $primary-orange;
+  //         border-radius: 0 8px 8px 0;
+  //       }
+  //     }
+  //   }
+
+  //   &__socials {
+  //     margin-top: 20px;
+  //     display: flex;
+  //     gap: 12px;
+  //     padding-top: 15px;
+  //     border-top: 1px solid #eee;
+
+  //     a {
+  //       width: 35px;
+  //       height: 35px;
+  //       background: #f1f3f9;
+  //       color: $dark-purple1;
+  //       border-radius: 50%;
+  //       @include center-everything;
+  //       transition: 0.3s;
+  //       font-size: 1.1rem;
+
+  //       &:hover {
+  //         background: $dark-purple1;
+  //         color: $white;
+  //         transform: translateY(-3px);
   //       }
   //     }
   //   }
   // }
-}
 
-.teacher-card {
-  // background-color: $white;
-  // border-radius: 1rem;
-  // overflow: hidden;
-  // box-shadow: $shadow-light;
-  // transition: all 0.3s ease;
-
-  &__img-box {
-    position: relative;
-    height: 30rem;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-  }
-  &__socials {
+  .teachers-container {
     display: flex;
-    gap: 0.5rem;
-    transition: all 0.4s ease;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    align-items: center;
-    padding-top: 1rem;
-    padding: 0.7rem 0.5rem 0 0.5rem;
-    width: 100%;
-    i {
-      background-color: $dark-purple2;
-      color: $white;
-      font-size: 1.5rem;
-      padding: 0.5rem;
-      border-radius: 8px;
+    flex-direction: column;
+    gap: 10px; // කාඩ් දෙකක් අතර ඉඩ
+    margin-top: 40px;
 
-      &:hover {
-        background-color: $blue-medium;
+    .teacher-row-card {
+      display: grid;
+      grid-template-columns: 1fr; // පැති දෙකකට බෙදන්න
+      gap: 10px;
+      align-items: center;
+      background: $white;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: $shadow-medium;
+      padding: 20px;
+
+      @include respond(desktop) {
+        grid-template-columns: 1fr 1fr; // Mobile එකේදී පල්ලෙහාට එන්න
+        direction: ltr !important;
+        padding: 15px;
       }
-      a {
-        width: 45px;
-        height: 45px;
+
+      // --- මැජික් එක: ඉරට්ටේ සංඛ්‍යා (2, 4...) තියෙන කාඩ්ස් වල පැති මාරු කරන්න ---
+      &:nth-child(even) {
+        direction: rtl; // මුළු පේළියම දකුණේ සිට වමට කරන්න
+        .info-content {
+          direction: ltr;
+          text-align: left;
+        } // Text එක ආයේ වමට හරවන්න
       }
-    }
-  }
-  &:hover {
-    transform: translateY(-1rem);
-    box-shadow: $shadow-dark;
 
-    .teacher-card_img-box img {
-      transform: scale(1.1);
-    }
-  }
-}
+      // @include respond(mobile) {
+      //   grid-template-columns: 1fr; // Mobile එකේදී පල්ලෙහාට එන්න
+      //   direction: ltr !important;
+      //   padding: 15px;
+      // }
 
-.testimonials {
-  .testimonials-container {
-    display: grid;
-    grid-template-columns: repeat(1fr);
-    padding: 0 1rem;
+      .teacher-image-column {
+        height: 400px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 20px;
+          box-shadow: $shadow-light;
+        }
+      }
 
-    @include respond(tablet) {
-      gap: 1rem;
-      grid-template-columns: repeat(2, 1fr);
-    }
-    @include respond(desktop) {
-      gap: 1rem;
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .comment-top {
-      h2 {
-        font-size: 1.2rem;
-        text-align: center;
-        text-shadow: none;
-        i {
-          color: #2ecc71;
+      .teacher-info-column {
+        padding: 20px;
+
+        .subject-tag {
+          background: rgba($primary-orange, 0.1);
+          color: $primary-orange;
+          padding: 5px 15px;
+          border-radius: 20px;
+          font-weight: bold;
+          font-size: 0.8rem;
+        }
+
+        h3 {
+          font-size: 2.2rem;
+          color: $dark-purple2;
+          margin: 10px 0 20px;
+        }
+
+        .detail-list {
+          p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: $text-medium;
+          }
+          .philosophy-box {
+            font-style: italic;
+            background: #f9faff;
+            padding: 15px;
+            border-left: 4px solid $dark-purple1;
+            margin-top: 20px;
+          }
+        }
+
+        .teacher-socials {
+          margin-top: 25px;
+          display: flex;
+          gap: 15px;
+          a {
+            width: 45px;
+            height: 45px;
+            background: $dark-purple1;
+            color: $white;
+            border-radius: 50%;
+            @include center-everything;
+            transition: 0.3s;
+            &:hover {
+              background: $primary-orange;
+              transform: scale(1.1);
+            }
+          }
         }
       }
     }
-    h3 {
-      font-size: 1.1rem;
-    }
-    .comment-content {
-      p {
-        padding: 0;
-      }
-    }
-    .comment-rate {
-      display: flex;
-      color: #ffaa00;
-      justify-content: flex-end;
-      align-items: center;
-      flex-direction: column;
-      padding: 10px 0;
-
-      i {
-        font-size: 1rem;
-      }
-    }
-  }
-  a {
-    width: 250px;
-    padding: 6px 16px;
-    margin: 6px 3%;
-    color: $white;
-    border-radius: $border-radius-small;
   }
 }
 
-.info-column {
+// .teacher-card {
+//   // &__img-box {
+//   //   img {
+//   //     width: 100%;
+//   //     // max-width: 800px;
+//   //     height: auto;
+//   //     object-fit: cover;
+//   //     transition: transform 0.5s ease;
+//   //   }
+//   // }
+//   &__socials {
+//     display: flex;
+//     gap: 0.5rem;
+//     transition: all 0.4s ease;
+//     flex-direction: row;
+//     flex-wrap: nowrap;
+//     justify-content: flex-end;
+//     align-items: center;
+//     padding-top: 1rem;
+//     padding: 0.7rem 0.5rem 0 0.5rem;
+//     width: 100%;
+//     i {
+//       background-color: $dark-purple2;
+//       color: $white;
+//       font-size: 1.5rem;
+//       padding: 0.5rem;
+//       border-radius: 8px;
+
+//       &:hover {
+//         background-color: $blue-medium;
+//       }
+//       a {
+//         width: 45px;
+//         height: 45px;
+//       }
+//     }
+//   }
+//   &:hover {
+//     transform: translateY(-1rem);
+//     box-shadow: $shadow-dark;
+
+//     .teacher-card_img-box img {
+//       transform: scale(1.1);
+//     }
+//   }
+// }
+
+.about-container {
   margin: 0;
   margin-bottom: 16px;
-  padding: 1rem;
+  // padding: 1rem;
   overflow: hidden;
   width: 100%;
-  // background-color: #2ecc71;
+  background-color: #2ecc71;
 
-  .information-conatiner {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
+  // .information-conatiner {
+  padding: 1rem 0rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $grid-gap-medium;
+  // }
+  display: none;
 
-    @include respond(desktop) {
-      gap: 3rem;
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .info-content-left {
+  .info-content {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: flex-start;
+    background-color: red;
+    // align-items: flex-start;
   }
   .about-info {
     background-color: $bg-soft;
@@ -771,227 +604,380 @@ main {
   }
 }
 
+.contact-container {
+  padding: 1rem 0rem;
+  display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(2, 1fr));
+  grid-template-columns: repeat(1, 1fr);
+  gap: $grid-gap-xlarge;
+
+  @include respond(desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 .contact-content {
   margin-top: 6px;
   border-radius: $border-radius-small;
-}
-.contact-content {
+
+  h3 {
+    margin: 0px auto 6px auto;
+    padding: 9px;
+    border-radius: $border-radius-small;
+    color: $blue-medium;
+    text-align: center;
+  }
+  p,
+  a {
+    color: $blue-medium;
+    padding-left: 16px;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
   .contact-cards {
     margin-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+
     .contact-card {
-      background-color: $white;
-
       @include flex-custom(flex-start, flex-start, column);
+      background-color: $blue-light;
+      margin: 3px 0;
+      border-radius: 6px;
 
-      h3 {
-        margin: 0px auto;
+      h4 {
+        margin: 6px auto;
         padding: 9px;
-        border-radius: $border-radius-small;
+        // border-radius: $border-radius-small;
         color: $blue-medium;
-      }
-      p,
-      a {
-        color: $blue-medium;
-        padding-left: 16px;
-        // font-size: $font-size-p;
-        background-color: $text-light;
+        // background-color: #2ecc71;
+        border-bottom: 1px solid $blue-light;
+        border-left: 6px solid $secondary-blue;
+        display: inline-block;
         width: 100%;
       }
-      i {
+      address,
+      a {
+        color: $blue-medium;
+        padding-left: 32px;
+        width: 100%;
+        margin: 6px 0;
+      }
+      .contact-icon {
         margin-right: 12px;
       }
     }
   }
 }
 
-// contact form in about section
-.contact-container {
-  border-radius: $border-radius-medium;
-  width: 100%;
-  background-color: $bg-soft;
-  margin-top: 2rem;
-  padding: 1rem;
-  box-shadow: $shadow-medium;
-  // display: grid;
-  // grid-template-columns: repeat(1fr, 1.5fr);
-  // grid-auto-flow: row;
-  // gap: 1rem;
+.contact-section {
+  background: $bg-light; // ලා පාට පසුබිමක්
 
-  @include respond(desktop) {
+  .contact-grid {
     display: grid;
-    grid-auto-flow: column;
-    justify-items: start;
+    grid-template-columns: 1fr 1.5fr; // Desktop එකේදී පැති දෙකකට
+    gap: 40px;
     align-items: start;
+
+    @include respond(mobile) {
+      grid-template-columns: 1fr;
+    }
   }
 
-  .contact-content {
-    h3 {
-      margin: 1rem 0;
-      color: $secondary-blue;
-      text-align: center;
-
+  .contact-info-card {
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
       span {
-        color: $text-blue;
-        display: block;
+        color: $primary-orange;
       }
     }
     p {
-      margin: 6px 0;
+      color: $text-medium;
+      line-height: 1.6;
+    }
+    .direct-contact {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        color: $dark-purple1;
+      }
     }
   }
 
-  .contact-left {
-    .class-details {
-      margin: 0 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      align-content: center;
-      gap: 6px;
+  .contact-form-card {
+    background: $white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: $shadow-dark;
+  }
 
-      @include respond(desktop) {
-        flex-direction: column;
-        align-content: center;
+  .styled-form {
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      @include respond(mobile) {
+        grid-template-columns: 1fr;
       }
     }
-    .class-contacts {
-      margin: 0.5rem 0;
-      padding: 1rem 2rem;
-      background-color: $bg-soft;
-      box-shadow: $shadow-medium;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      transition: 0.5s ease-in;
-      border-left: none;
-      border-radius: 12px;
 
-      h4 {
-        margin-bottom: 1rem;
-        color: $secondary-blue;
-      }
-      a,
+    .input-group {
+      margin-bottom: 20px;
       label {
-        color: $text-medium;
-        gap: 5px;
-
-        i {
-          margin-right: 1rem;
-          color: $dark-purple;
-        }
-
-        &:hover {
-          color: $text-blue;
-          text-decoration: underline;
-        }
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: $dark-purple2;
+        margin-bottom: 8px;
       }
-      a {
-        text-transform: lowercase;
-      }
-      address {
-        text-align: center;
-        color: $secondary-blue;
-        margin-top: 1rem;
-        gap: 0;
-        line-height: 1;
-        border-top: 2px solid $text-blue;
-        padding-top: 6px;
-      }
-    }
-    irame {
-      width: 100%;
-      height: 250px;
-      border: none;
-      filter: grayscale(0.5);
-      transition: 0.3s;
-      margin: 0.6rem 0;
 
-      &:hover {
-        filter: grayscale(0);
-      }
-    }
-  }
-
-  .contact-right {
-    form {
-      padding: 0.5rem;
-      margin: $margin-none;
-      width: 100%;
-      background: $white;
-      border-radius: 1rem;
-
-      label,
       input,
       select,
       textarea {
-        display: block;
-        width: 95%;
-        color: $dark-purple2;
-        padding: 3px 12px;
-        margin: $margin-none;
-        background-color: transparent;
-        margin-left: 12px;
-      }
-      label {
-        color: $text-blue;
-        margin: 0 10px;
-        padding: $padding-none;
-        margin-top: 8px;
-      }
-      input,
-      textarea {
-        background-color: $bg-soft;
-        margin-left: 12px;
-        border-bottom: 2px solid $link-shadow;
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: inherit;
+        transition: 0.3s;
+        background: #fcfcfc;
 
         &:focus {
-          border-bottom: none;
-          background-color: $link-shadow;
-          border-radius: 3px;
-        }
-      }
-      select {
-        background-color: $bg-soft;
-        margin-left: 12px;
-        border-bottom: 2px solid $link-shadow;
-        color: $text-medium;
-
-        &:focus {
-          background-color: $text-light;
+          border-color: $primary-orange;
+          outline: none;
+          box-shadow: 0 0 8px rgba($primary-orange, 0.1);
         }
       }
     }
-    p {
-      color: red;
-      line-height: 1.1;
-      padding: 0 1rem;
-      font-size: 0.8rem;
-      margin: 12px 0;
-      text-align: center;
-      display: none;
-    }
-    textarea {
-      resize: none;
 
-      &:hover p {
-        display: block;
-      }
-    }
-
-    input[type="submit"] {
-      width: 200px;
-      padding: 6px 16px;
-      margin: 6px 3%;
+    .contact-submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: $dark-purple1;
       color: $white;
-      border-radius: $border-radius-small;
-      // background-color: $;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+      cursor: pointer;
+
+      &:hover {
+        background: $primary-orange;
+        transform: translateY(-3px);
+        box-shadow: $shadow-medium;
+      }
     }
-  }
-  #privacy-label {
-    color: red;
-    display: flex;
-    font-size: 0.8rem;
   }
 }
+
+// contact form in about section
+// .contact-container {
+//   border-radius: $border-radius-medium;
+//   width: 100%;
+//   background-color: $bg-soft;
+//   margin-top: 2rem;
+//   padding: 1rem;
+//   box-shadow: $shadow-medium;
+//   // display: grid;
+//   // grid-template-columns: repeat(1fr, 1.5fr);
+//   // grid-auto-flow: row;
+//   // gap: 1rem;
+
+//   padding: 1rem 0rem;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+//   gap: $grid-gap-medium;
+//   // display: none;
+
+//   // @include respond(desktop) {
+//   //   display: grid;
+//   //   grid-auto-flow: column;
+//   //   justify-items: start;
+//   //   align-items: start;
+//   // }
+
+//   //   .contact-content {
+//   //     h3 {
+//   //       margin: 1rem 0;
+//   //       color: $secondary-blue;
+//   //       text-align: center;
+
+//   //       span {
+//   //         color: $text-blue;
+//   //         display: block;
+//   //       }
+//   //     }
+//   //     p {
+//   //       margin: 6px 0;
+//   //     }
+//   //   }
+
+//   //   .contact-left {
+//   //     .class-details {
+//   //       margin: 0 1rem;
+//   //       display: flex;
+//   //       flex-direction: column;
+//   //       justify-content: center;
+//   //       align-items: flex-start;
+//   //       flex-wrap: wrap;
+//   //       align-content: center;
+//   //       gap: 6px;
+
+//   //       @include respond(desktop) {
+//   //         flex-direction: column;
+//   //         align-content: center;
+//   //       }
+//   //     }
+//   //     .class-contacts {
+//   //       margin: 0.5rem 0;
+//   //       padding: 1rem 2rem;
+//   //       background-color: $bg-soft;
+//   //       box-shadow: $shadow-medium;
+//   //       display: flex;
+//   //       flex-direction: column;
+//   //       align-items: flex-start;
+//   //       transition: 0.5s ease-in;
+//   //       border-left: none;
+//   //       border-radius: 12px;
+
+//   //       h4 {
+//   //         margin-bottom: 1rem;
+//   //         color: $secondary-blue;
+//   //       }
+//   //       a,
+//   //       label {
+//   //         color: $text-medium;
+//   //         gap: 5px;
+
+//   //         i {
+//   //           margin-right: 1rem;
+//   //           color: $dark-purple;
+//   //         }
+
+//   //         &:hover {
+//   //           color: $text-blue;
+//   //           text-decoration: underline;
+//   //         }
+//   //       }
+//   //       a {
+//   //         text-transform: lowercase;
+//   //       }
+//   //       address {
+//   //         text-align: center;
+//   //         color: $secondary-blue;
+//   //         margin-top: 1rem;
+//   //         gap: 0;
+//   //         line-height: 1;
+//   //         border-top: 2px solid $text-blue;
+//   //         padding-top: 6px;
+//   //       }
+//   //     }
+//   //     irame {
+//   //       width: 100%;
+//   //       height: 250px;
+//   //       border: none;
+//   //       filter: grayscale(0.5);
+//   //       transition: 0.3s;
+//   //       margin: 0.6rem 0;
+
+//   //       &:hover {
+//   //         filter: grayscale(0);
+//   //       }
+//   //     }
+//   //   }
+
+//   //   .contact-right {
+//   //     form {
+//   //       padding: 0.5rem;
+//   //       margin: $margin-none;
+//   //       width: 100%;
+//   //       background: $white;
+//   //       border-radius: 1rem;
+
+//   //       label,
+//   //       input,
+//   //       select,
+//   //       textarea {
+//   //         display: block;
+//   //         width: 95%;
+//   //         color: $dark-purple2;
+//   //         padding: 3px 12px;
+//   //         margin: $margin-none;
+//   //         background-color: transparent;
+//   //         margin-left: 12px;
+//   //       }
+//   //       label {
+//   //         color: $text-blue;
+//   //         margin: 0 10px;
+//   //         padding: $padding-none;
+//   //         margin-top: 8px;
+//   //       }
+//   //       input,
+//   //       textarea {
+//   //         background-color: $bg-soft;
+//   //         margin-left: 12px;
+//   //         border-bottom: 2px solid $link-shadow;
+
+//   //         &:focus {
+//   //           border-bottom: none;
+//   //           background-color: $link-shadow;
+//   //           border-radius: 3px;
+//   //         }
+//   //       }
+//   //       select {
+//   //         background-color: $bg-soft;
+//   //         margin-left: 12px;
+//   //         border-bottom: 2px solid $link-shadow;
+//   //         color: $text-medium;
+
+//   //         &:focus {
+//   //           background-color: $text-light;
+//   //         }
+//   //       }
+//   //     }
+//   //     p {
+//   //       color: red;
+//   //       line-height: 1.1;
+//   //       padding: 0 1rem;
+//   //       font-size: 0.8rem;
+//   //       margin: 12px 0;
+//   //       text-align: center;
+//   //       display: none;
+//   //     }
+//   //     textarea {
+//   //       resize: none;
+
+//   //       &:hover p {
+//   //         display: block;
+//   //       }
+//   //     }
+
+//   //     input[type="submit"] {
+//   //       width: 200px;
+//   //       padding: 6px 16px;
+//   //       margin: 6px 3%;
+//   //       color: $white;
+//   //       border-radius: $border-radius-small;
+//   //       // background-color: $;
+//   //     }
+//   //   }
+//   //   #privacy-label {
+//   //     color: red;
+//   //     display: flex;
+//   //     font-size: 0.8rem;
+//   //   }
+// }
+// }
