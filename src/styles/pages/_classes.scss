@@ -1,35 +1,144 @@
 .classes-section {
   padding: 2rem 0;
-  max-width: 800px;
+  max-width: 1000px;
 }
 
+// .classes-grid {
+//   padding: 1rem 0rem;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+//   gap: $grid-gap-medium;
+//   // background-color: red;
+
+//   .classes-card {
+//     background: $white;
+//     border-radius: $border-radius-medium;
+//     padding: $padding-medium;
+//     display: flex;
+//     flex-direction: column;
+//     gap: $flex-gap-medium;
+
+//     h3 {
+//       color: $dark-purple;
+//       font-size: $font-size-h3-m;
+//     }
+
+//     .class-info {
+//       // classes content
+//       color: $text-medium;
+//       font-size: $font-size-body;
+
+//       span {
+//         color: $primary-orange;
+//         font-weight: bold;
+//       }
+//     }
+//   }
+// }
+
 .classes-grid {
-  padding: 1rem 0rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: $grid-gap-medium;
-  // background-color: red;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
 
-  .classes-card {
+  .class-card {
     background: $white;
-    border-radius: $border-radius-medium;
-    padding: $padding-medium;
-    display: flex;
-    flex-direction: column;
-    gap: $flex-gap-medium;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: $shadow-light;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba($blue-light, 0.2);
 
-    h3 {
-      color: $dark-purple;
-      font-size: $font-size-h3-m;
+    &:hover {
+      transform: translateY(-12px);
+      box-shadow: $shadow-dark;
+      border-color: $text-light;
     }
 
-    .class-info {
-      color: $text-medium;
-      font-size: $font-size-body;
+    // .class-image {
+    //   position: relative;
+    //   height: 200px;
+    //   overflow: hidden;
 
-      span {
-        color: $primary-orange;
-        font-weight: bold;
+    //   img {
+    //     width: 100%;
+    //     height: 100%;
+    //     object-fit: cover;
+    //     transition: transform 0.6s ease;
+    //   }
+
+    //   .class-id-tag {
+    //     position: absolute;
+    //     top: 15px;
+    //     right: 15px;
+    //     background: rgba($dark-purple1, 0.9);
+    //     color: $white;
+    //     padding: 5px 12px;
+    //     border-radius: 30px;
+    //     font-size: 0.75rem;
+    //     font-weight: bold;
+    //     -webkit-backdrop-filter: blur(5px);
+    //     backdrop-filter: blur(5px);
+    //   }
+    // }
+
+    // &:hover .class-image img {
+    //   transform: scale(1.1);
+    // }
+
+    .class-info {
+      padding: 15px 6px;
+
+      .class-header {
+        margin-bottom: 15px;
+
+        h3 {
+          color: $dark-purple2;
+          font-size: 1.5rem;
+          margin-bottom: 5px;
+        }
+        h4 {
+          color: $primary-orange;
+          font-size: 0.9rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+      }
+
+      .class-desc {
+        color: $text-medium;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        height: 60px; // එකම උසක් තියාගන්න
+        // overflow: hidden;
+      }
+
+      .class-meta {
+        display: flex;
+        justify-content: space-between;
+        background: #f8faff;
+        padding: 12px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+
+        .meta-item {
+          display: flex;
+          flex-direction: column;
+
+          .label {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 2px;
+          }
+          .value {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: $dark-purple1;
+          }
+        }
       }
     }
   }
