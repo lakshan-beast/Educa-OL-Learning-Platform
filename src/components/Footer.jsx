@@ -94,9 +94,9 @@ const Footer = () => {
           </ul>
         </div>
 
+        {/* footer links  */}
         <div className="footer-card footer-links">
-          {" "}
-          <h3>Study Resources</h3>{" "}
+          <h3>Study Resources</h3>
           <ul>
             <li>
               <Link to="/tools">
@@ -107,18 +107,18 @@ const Footer = () => {
               <Link to="/quizzes">
                 <FaCaretRight className="footer-icon" /> Interactive Quizzes
               </Link>
-            </li>{" "}
+            </li>
             <li>
               <Link to="/paper-hub">
                 <FaCaretRight className="footer-icon" /> Past & Target Papers
               </Link>
-            </li>{" "}
+            </li>
             <li>
               <Link to="/daily-questions">
                 <FaCaretRight className="footer-icon" /> Daily Mission
               </Link>
-            </li>{" "}
-          </ul>{" "}
+            </li>
+          </ul>
         </div>
 
         <div className="footer-card footer-contact">
@@ -146,7 +146,7 @@ const Footer = () => {
               paddingTop: "10px",
             }}>
             <p style={{ fontSize: "0.8rem" }}>
-              For subject specific help, use our{" "}
+              For subject specific help, use our
               <Link
                 to="/#contact-form"
                 style={{
@@ -171,12 +171,12 @@ const Footer = () => {
           <ul>
             <li>
               <NavHashLink smooth to="/#privacy">
-                Privacy Policy
+                <FaCaretRight className="footer-icon" /> Privacy Policy
               </NavHashLink>
             </li>
             <li>
               <NavHashLink smooth to="/#terms">
-                Terms of Service
+                <FaCaretRight className="footer-icon" /> Terms of Service
               </NavHashLink>
             </li>
           </ul>
