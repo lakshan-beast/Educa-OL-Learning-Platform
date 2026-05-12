@@ -35,7 +35,7 @@ const Resources = () => {
         {/* 1. Smart Tools Card */}
         <div className="resources-card" data-aos="fade-up" data-aos-delay="400">
           <span className="card-badge card-badge-new">
-            <FaRocket /> New Tools
+            <FaRocket className="icon" /> New Tools
           </span>
           <img src={Tools} loading="lazy" alt="Study Tools" />
           <h3>
@@ -53,7 +53,7 @@ const Resources = () => {
         {/* 2. Student Reviews Card */}
         <div className="resources-card" data-aos="fade-up" data-aos-delay="500">
           <span className="card-badge card-badge-verified">
-            <FaCircleCheck /> Verified
+            <FaCircleCheck className="icon" /> Verified
           </span>
           <img src={Comments} loading="lazy" alt="Student Reviews" />
           <h3>
@@ -75,7 +75,7 @@ const Resources = () => {
           data-aos="fade-up"
           data-aos-delay="600">
           <span className="card-badge card-badge-official">
-            <FaMedal /> Official
+            <FaMedal className="icon" /> Official
           </span>
           <img src={Results} loading="lazy" alt="O/L Results" />
           <h3>
@@ -97,7 +97,7 @@ const Resources = () => {
         {/* 4. Daily Questions Card */}
         <div className="resources-card" data-aos="fade-up" data-aos-delay="700">
           <span className="card-badge card-badge-daily">
-            <FaCircleCheck /> Everyday
+            <FaCircleCheck className="icon" /> Everyday
           </span>
           <img src={Quetions} loading="lazy" alt="Daily Questions" />
           <h3>
@@ -115,7 +115,7 @@ const Resources = () => {
         {/* 5. Interactive Quizzes Card */}
         <div className="resources-card" data-aos="fade-up" data-aos-delay="800">
           <span className="card-badge card-badge-hot">
-            <FaMedal /> Most Popular
+            <FaMedal className="icon" /> Most Popular
           </span>
           <img src={Quizes} loading="lazy" alt="Interactive Quizzes" />
           <h3>
@@ -132,7 +132,7 @@ const Resources = () => {
         {/* 6. Paper Hub Card */}
         <div className="resources-card" data-aos="fade-up" data-aos-delay="900">
           <span className="card-badge card-badge-new">
-            <FaRocket /> New Papers
+            <FaRocket className="icon" /> New Papers
           </span>
           <img src={PaperImg} loading="lazy" alt="Past Papers" />
           <h3>
