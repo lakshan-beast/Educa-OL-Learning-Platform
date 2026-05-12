@@ -26,11 +26,12 @@ footer {
     font-size: 0.9rem;
     text-decoration: none;
     transition: transform 0.3s ease;
+    cursor: pointer;
 
     &:hover {
       color: $primary-orange;
       transform: translateX(8px);
-      text-decoration: none;
+      text-decoration: underline;
     }
   }
 
@@ -70,6 +71,7 @@ footer {
 // footer logo
 .footer-logo {
   color: $white;
+
   .logo {
     color: $white;
     font-size: 2rem;
@@ -87,105 +89,58 @@ footer {
   }
 }
 
-// footer links
-.footer-links {
-  Link {
-    padding-left: 10px;
-    text-decoration: underline;
-  }
-}
-
-// contact info
-.contact-info {
-  h4 {
-    color: $text-medium;
-    margin: 6px;
-    padding-top: 1rem;
-  }
-  a {
-    margin: 3px 1.2rem;
-    text-decoration: underline;
-    text-transform: lowercase;
-  }
-  i {
-    margin-right: 10px;
-  }
-}
-
-// // social media
-// .social-content {
-//   @include flex-custom(flex-start, center, column);
-.contact-link {
-  color: rgba($white, 0.7);
-  text-decoration: none;
-  transition: 0.3s;
-  text-transform: lowercase;
-
-  &:hover {
-    color: $primary-orange;
-    text-decoration: underline;
-  }
-}
+// socail links
 .social-links {
   padding: 2rem 0;
+
   @include flex-custom(center, center, row, nowrap);
   a {
-    font-size: 1.5rem;
     margin: 0 0.5rem;
+    font-size: 1.5rem;
 
     &:hover {
       color: $primary-orange;
     }
   }
 }
-// }
 
 // footer bottom
 #footer-bottom {
-  border-top: none;
   margin-bottom: 6px;
+  border-top: none;
 
   @include flex-custom(space-between, center, column, wrap);
+
   @include respond(mobile) {
     border-top: 2px solid $text-blue;
   }
 
   .footer-card {
     margin: 1rem 0;
-    width: 100%;
     padding: 0rem;
+    width: 100%;
+
     @include flex-custom(flex-start, flex-start, column);
   }
 }
 
-// .footer-credits,
-.footer-copyrights {
-  color: $white;
-  display: flex;
-  flex-direction: column;
-}
-
 // footer legel
 .footer-legels {
-  a {
-    text-decoration: underline;
+  Link {
     margin: 0;
-  }
-}
-
-// badge level up
-.badge-levelup {
-  i {
-    margin-right: 10px;
+    text-decoration: underline;
   }
 }
 
 // footer copyrights
 .footer-copyrights {
-  a {
-    color: $dark-purple2;
-    display: inline-block;
+  display: flex;
+  flex-direction: column;
+  color: $white;
+
+  Link {
     margin-left: 10px;
+    display: inline-block;
+    color: $dark-purple2;
   }
 }
-// style end
