@@ -297,6 +297,83 @@
 // }
 
 // All Cards Base Style
+// .card-container,
+// .card,
+// .resources-card,
+// // .class-card,
+// .teacher-card {
+//   background: $white;
+//   border-radius: $border-radius-medium;
+//   // padding: $padding-large;
+//   box-shadow: $shadow-light;
+//   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+//   border: 1px solid rgba($blue-light, 0.3);
+//   position: relative;
+//   overflow: hidden;
+//   height: 100%;
+//   margin-bottom: 10px;
+//   @include flex-custom(flex-start, stretch, column, 1rem);
+
+//   &:hover {
+//     transform: translateY(-6px);
+//     box-shadow: $shadow-dark;
+
+//     img {
+//       transform: scale(1.05);
+//     }
+//   }
+
+//   img {
+//     width: 100%;
+//     height: 200px;
+//     object-fit: cover;
+//     border-radius: $border-radius-small;
+//     transition: transform 0.5s ease;
+//   }
+
+//   h1 {
+//     color: $dark-purple;
+//     font-size: $font-size-h3;
+//     margin-bottom: 0.5rem;
+//     text-align: center;
+//   }
+
+//   h3 {
+//     color: $dark-purple;
+//     font-size: $font-size-h3;
+//     margin-top: 0.5rem;
+//   }
+
+//   p {
+//     color: $text-medium;
+//     line-height: 1.6;
+//     font-size: 0.95rem;
+//   }
+
+//   // කාඩ් එකේ අගට එන බටන් එක
+//   .btn,
+//   // .class-btn,
+//   .browse-btn {
+//     align-self: flex-start;
+//     margin-top: auto; // බටන් එක හැමතිස්සෙම කාඩ් එකේ පල්ලෙහාටම යනවා
+//   }
+// }
+
+// // Special badge for cards (Official, Week 04 වගේ ඒවට)
+// .card-badge {
+//   position: absolute;
+//   top: 0px;
+//   right: 0px;
+//   background: #f7786f;
+//   color: white;
+//   padding: 12px 24px;
+//   border-radius: 0 20px;
+//   font-size: 0.9rem;
+//   font-weight: 700;
+//   z-index: 99;
+// }
+
+// All Cards Base Style
 .card-container,
 .card,
 .resources-card,
@@ -304,38 +381,34 @@
 .teacher-card {
   background: $white;
   border-radius: $border-radius-medium;
-  // padding: $padding-large;
+  padding: $padding-large;
   box-shadow: $shadow-light;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // ලස්සන bounce effect එකක්
   border: 1px solid rgba($blue-light, 0.3);
   position: relative;
   overflow: hidden;
   height: 100%;
-  margin-bottom: 10px;
-  @include flex-custom(flex-start, stretch, column, 1rem);
+  @include flex-custom(flex-start, stretch, column, 6px);
 
+  // කාඩ් එක උඩට මවුස් එක ගෙනිච්චම වෙන වෙනස
   &:hover {
-    transform: translateY(-6px);
+    transform: translateY(-10px);
     box-shadow: $shadow-dark;
+    // border-color: $dark-purple1;
 
+    // කාඩ් එක ඇතුළේ තියෙන ඉමේජ් එක පොඩ්ඩක් සූම් වෙන්න
     img {
       transform: scale(1.05);
     }
   }
 
+  // කාඩ් එකේ පින්තූරය සඳහා
   img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: $border-radius-small;
     transition: transform 0.5s ease;
-  }
-
-  h1 {
-    color: $dark-purple;
-    font-size: $font-size-h3;
-    margin-bottom: 0.5rem;
-    text-align: center;
   }
 
   h3 {
@@ -359,16 +432,25 @@
   }
 }
 
+.resources-card {
+  padding: 0rem 1.5rem 1rem 1.5rem;
+}
+
 // Special badge for cards (Official, Week 04 වගේ ඒවට)
 .card-badge {
   position: absolute;
-  top: 0px;
-  right: 0px;
-  background: #f7786f;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 0 20px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  z-index: 99;
+  top: 10px;
+  right: 10px;
+  background: $primary-orange;
+  color: $white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: $font-weight-bold;
+  z-index: 10;
+  display: none;
+  .icon {
+    margin-right: 6px;
+    font-size: 0.85rem;
+  }
 }
