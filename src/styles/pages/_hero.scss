@@ -53,8 +53,9 @@
         margin-top: $margin-small;
         margin-right: 6px;
         border-radius: $border-radius-xlarge;
-        i {
-          margin-left: 0.5rem;
+
+        .icon {
+          margin: 5px 0 0 10px;
         }
       }
     }
