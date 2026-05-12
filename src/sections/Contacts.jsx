@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FaMobile, FaEnvelope } from "react-icons/fa6";
 import { GiEarthAsiaOceania } from "react-icons/gi";
+
+// import { useForm, ValidationError } from "@formspree/react";
 import {
   // FaEnvelope,
   FaWhatsapp,
@@ -171,7 +173,6 @@ const Contact = () => {
     //   </div>
     // </section>
 
-    // ... (ඔයාගේ Component එක ඇතුළත return එක)
     <section className="contact-section section-padding" id="contacts">
       <div className="contact-container">
         <div className="contact-grid">
@@ -184,14 +185,18 @@ const Contact = () => {
               Have questions about classes or study materials? Message the
               relevant teacher directly.
             </p>
-            <div className="direct-contact">
-              <span>
-                <FaEnvelope /> support@educa.lk
-              </span>
-              <span>
-                <FaWhatsapp /> +94 77 123 4567
-              </span>
-            </div>
+            {/* <div className="direct-contact">
+              <p>
+                <a href="tel:+94 77 123 4567" className="contact-link">
+                  <FaPhone className="footer-icon" /> +94 77 123 4567
+                </a>
+              </p>
+              <p>
+                <a href="mailto:support@educa.lk" className="contact-link">
+                  <FaEnvelope className="footer-icon" /> support@educa.lk
+                </a>
+              </p>
+            </div> */}
 
             <div className="contact-cards">
               {classContacts.map((item, index) => (
@@ -206,11 +211,11 @@ const Contact = () => {
                   {/* <a href="#">
                  <FaLocationDot className="contact-icon" /> Visit Our Center
                </a> */}
-                  <iframe
+                  {/* <iframe
                     src={item.mapUrl}
                     allowFullScreen=""
                     loading="lazy"
-                    title={item.subject}></iframe>
+                    title={item.subject}></iframe> */}
                   <address>
                     <GiEarthAsiaOceania className="contact-icon" />
                     {item.address}
@@ -222,7 +227,11 @@ const Contact = () => {
 
           {/* 2. දකුණු පැත්තේ Form කාඩ් එක */}
           <div className="contact-form-card" data-aos="fade-left">
-            <form onSubmit={handleSubmit} className="styled-form">
+            <form
+              onSubmit={handleSubmit}
+              className="styled-form"
+              action="https://formspree.io/f/mqenwpgk"
+              method="POST">
               <div className="input-row">
                 <div className="input-group">
                   <label>
