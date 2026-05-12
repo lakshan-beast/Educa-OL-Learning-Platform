@@ -1,6 +1,8 @@
 // contact form in about section
 .form-containers {
   border-radius: $border-radius-medium;
+  min-width: 300px;
+  max-width: 400px;
   width: 100%;
   background-color: $bg-soft;
   margin-top: 2rem;
@@ -76,6 +78,10 @@
   }
   textarea {
     resize: none;
+    width: 100%;
+    min-width: 300px;
+    max-width: 350px;
+    margin: 0 auto;
     height: 100px;
     overflow: scroll;
   }
