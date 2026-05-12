@@ -84,7 +84,7 @@ import Resources from "../sections/Resources";
 import Classes from "../sections/Classes";
 import Teachers from "../sections/Teachers";
 import Information from "../sections/Information";
-import Testimonials from "../sections/Testimonials";
+// import Testimonials from "../sections/Testimonials";
 import Contact from "../sections/Contacts";
 
 const Home = () => {
@@ -96,7 +96,7 @@ const Home = () => {
       <Classes />
       <Teachers />
       <Information />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Contact />
     </>
   );
