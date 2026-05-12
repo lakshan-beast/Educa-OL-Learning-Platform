@@ -90,7 +90,7 @@
 // import React from 'react';
 import { Link } from "react-router-dom";
 // import { FaChalkboardUser, FaCalendarDays } from "react-icons/fa6";
-import { FaChalkboardUser } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
 
 const Classes = () => {
   const classData = [
@@ -139,13 +139,17 @@ const Classes = () => {
       <div className="class-container">
         <div className="classes-grid">
           {classData.map((item, index) => (
-            <div className="classes-card card" key={index} data-aos="fade-up">
+            <div className="class-card " key={index} data-aos="fade-up">
               {/* <div className="classes-column">
                 <img src={item.image} loading="lazy" alt={item.title} />
               </div> */}
-              <div className="classes-info">
-                <h3>{item.title}</h3>
-                <h4>{item.subtitle}</h4>
+              <div className="class-info">
+                <div className="class-header">
+                  <h3>{item.title}</h3>
+                  <h4>{item.subtitle}</h4>
+                </div>
+
+                <p className="class-desc">{item.description}</p>
 
                 <div className="quick-schedule">
                   {/* <span>
@@ -157,8 +161,18 @@ const Classes = () => {
                   </span> */}
                 </div>
 
-                <p>{item.description}</p>
-                <p>
+                <div className="class-meta">
+                  <div className="meta-item">
+                    <span className="label">Grade : </span>
+                    <span className="value">{item.grade}</span>
+                  </div>
+                  <div className="meta-item">
+                    <span className="label">Medium : </span>
+                    <span className="value">{item.medium}</span>
+                  </div>
+                </div>
+
+                {/* <p>
                   Grade : <span>{item.grade}</span>
                 </p>
                 <p>
@@ -167,11 +181,10 @@ const Classes = () => {
 
                 <span className="position">
                   <FaChalkboardUser /> Physicals only
-                </span>
+                </span> */}
 
-                {/* ID එක අනුව වෙනම පේජ් එකකට යන ලින්ක් එක */}
-                <Link to={`/class-details/${item.id}`} className="class-btn">
-                  View Class Details
+                <Link to={`/class-details/${item.id}`} className="class-btns">
+                  View Class Details <FaArrowRight />
                 </Link>
               </div>
             </div>
