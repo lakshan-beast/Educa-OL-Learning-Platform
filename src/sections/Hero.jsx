@@ -35,10 +35,10 @@ const Hero = () => {
             data-aos="fade-right"
             data-aos-delay="300">
             <a href="#resources" className="start-btn">
-              Get Started Now <FaRocket />
+              Get Started Now <FaRocket className="icon" />
             </a>
             <a href="#classes" className="browse-btn">
-              Browse classes <FaArrowRight />
+              Browse classes <FaArrowRight className="icon" />
             </a>
           </div>
         </div>
