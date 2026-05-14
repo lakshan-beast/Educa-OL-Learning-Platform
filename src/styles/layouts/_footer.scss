@@ -17,6 +17,7 @@ footer {
     margin: 0;
   }
   Link,
+  .secret-gen-link,
   a {
     display: block;
     margin: 5px 0;
@@ -102,6 +103,10 @@ footer {
       color: $primary-orange;
     }
   }
+}
+
+#contact-email {
+  text-transform: lowercase;
 }
 
 // footer bottom
