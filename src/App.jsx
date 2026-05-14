@@ -24,6 +24,32 @@ const App = () => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
+  // const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   // 2. Firebase User check ක
+  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //     setLoading(false);
+  //   });
+
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, []);
+
+  // if (loading) {
+  //   return (
+  //     <div className="loader-wrapper">
+  //       <div className="loader-content">
+  //         <div className="spinner"></div>
+  //         <h3>Dream Track</h3>
+  //         <p>Syncing your academic progress...</p>
+  //       </div>
+  //     </div>
+  //   );
+  // };
+
   return (
     <>
       <Header />
