@@ -37,9 +37,9 @@ const ScoreAnalytics = () => {
     "History",
     "Sinhala",
     "Religion",
-    "Group I (Art/Commerce...)",
-    "Group II (Music/ICT...)",
-    "Group III (Media/Agri...)",
+    "Group I (Agri/Commerce...)",
+    "Group II (Music/Dance...)",
+    "Group III (Health/ICT...)",
   ];
 
   // 2. States පාලනය
