@@ -284,7 +284,7 @@ const Dashboard = () => {
           <div className="main-dash-content">
             {/* 🎯 B. Daily Mission & Interactive Progress Bar */}
             <div
-              className="card-container tasks-card"
+              className="card-containers tasks-card"
               style={{
                 // background: "red",
                 padding: "25px",
