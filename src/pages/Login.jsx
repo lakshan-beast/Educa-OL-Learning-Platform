@@ -437,12 +437,12 @@ const Login = () => {
     <div
       className="card-container login-card"
       style={{ maxWidth: "400px", margin: "40px auto", padding: "30px" }}>
-      <h2>Student Login Portal 🔒</h2>
-      <p style={{ fontSize: "0.85rem", color: "#666", marginBottom: "20px" }}>
+      <h2>Student Login Portal </h2>
+      <p style={{ fontSize: "0.85rem", marginBottom: "20px" }}>
         Enter your approved student ID and PIN to enter the dashboard.
       </p>
 
-      <form onSubmit={handleLogin} className="style-card">
+      <form onSubmit={handleLogin} className="styled-form">
         <div className="input-group">
           <label>Approved Student ID</label>
           <input
