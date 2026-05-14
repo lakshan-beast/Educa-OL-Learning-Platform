@@ -1,3 +1,4 @@
+import  { useState } from 'react';
 import { NavHashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 
@@ -15,10 +16,50 @@ import {
   FaLocationDot,
 } from "react-icons/fa6";
 
+// import { NavHashLink } from 'react-router-hash-link';
+// import { Link } from 'react-router-dom';
+// import { 
+//   FaSquareCheck, FaLaptopCode, FaUsers, FaRegCopyright, FaHeart, 
+//   FaFacebook, FaWhatsapp, FaYoutube, FaPhone, FaEnvelope, FaLocationDot, 
+//   FaCaretRight, FaUser, FaKey, FaCopy, FaCheck 
+// } from "react-icons/fa6";
+
 import { FaEnvelope, FaLaptopCode, FaUsers, FaHeart } from "react-icons/fa";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+
+  
+  // ID Generator Popup එක පාලනය කරන State
+  const [showGenModal, setShowGenModal] = useState(false);
+  const [formData, setFormData] = useState({ name: '', pin: '', maths: false, english: false, science: false });
+  const [generatedID, setGeneratedID] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+  };
+
+  // ID එක හදන රටාව (Grade 11 විතරක් නිසා කෙලින්ම 11 දැම්මා)
+  const handleGenerate = (e) => {
+    e.preventDefault();
+    let subCode = '';
+    if (formData.maths) subCode += 'm';
+    if (formData.english) subCode += 'e';
+    if (formData.science) subCode += 's';
+    
+    if (!subCode) {
+      alert("Please select at least one subject!");
+      return;
+    }
+
+    const cleanName = formData.name.replace(/\s+/g, '').toUpperCase();
+    const finalID = `EDU-${subCode.toUpperCase()}-11-${cleanName}-${formData.pin}`;
+    setGeneratedID(finalID);
+    setCopied(false);
+  };
 
   return (
     <footer className="footer">
@@ -160,7 +201,23 @@ const Footer = () => {
               </Link>
             </p>
           </div>
-        </div>
+          </div>
+
+          <span
+            onClick={() => setShowGenModal(true)}
+            style={{
+              cursor: "pointer",
+              // color: "rgba(255,255,255,0.7)",
+              color: "#ff4b2b",
+              backgroundColor: "#ffefec",
+              padding: "6px 12px",
+              textAlign: "center",
+              borderRadius: "5px",
+            }}
+            className="secret-gen-link">
+    
+            <FaCaretRight /> Generate Student ID
+          </span>
       </div>
 
       {/* footer bottom section  */}
@@ -196,7 +253,7 @@ const Footer = () => {
           <p>
             <FaLaptopCode className="footer-icon" />
             last updated
-            <span> 2026 April</span>
+            <span> 2026 May</span>
           </p>
           <p>
             <FaUsers className="footer-icon" /> Community reviewed
@@ -219,6 +276,53 @@ const Footer = () => {
           </p>
         </div>
       </div>
+
+      {showGenModal && (
+        <div className="login-overlay" onClick={() => { setShowGenModal(false); setGeneratedID(''); }}>
+          <div className="login-modal-box" onClick={(e) => e.stopPropagation()} style={{ background: 'white', padding: '30px', borderRadius: '20px', maxWidth: '400px', width: '100%' }}>
+            <button className="close-x" onClick={() => { setShowGenModal(false); setGeneratedID(''); }} style={{ position: 'absolute', top: '10px', right: '20px', background: 'none', border: 'none', fontSize: '2rem', cursor: 'pointer' }}>&times;</button>
+            
+            <h3 style={{ color: '#26136d', marginBottom: '10px' }}>Generate Student ID</h3>
+            <p style={{ fontSize: '0.8rem', color: '#666', marginBottom: '20px' }}>Enter your details. Give the generated ID to your class card marker for activation.</p>
+
+            <form onSubmit={handleGenerate} className="styled-form">
+              <div className="input-group" style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', marginBottom: '5px' }}><FaUser /> Your Name (One Word)</label>
+                <input type="text" name="name" placeholder="ex: LAKSHAN" required onChange={handleChange} value={formData.name} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ddd' }} />
+              </div>
+
+              <div className="input-group" style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', marginBottom: '5px' }}>Select Enrolled Subjects</label>
+                <div style={{ display: 'flex', gap: '15px', marginTop: '5px', fontSize: '0.9rem' }}>
+                  <label><input type="checkbox" name="maths" onChange={handleChange} /> Maths</label>
+                  <label><input type="checkbox" name="english" onChange={handleChange} /> English</label>
+                  <label><input type="checkbox" name="science" onChange={handleChange} /> Science</label>
+                </div>
+              </div>
+
+              <div className="input-group" style={{ marginBottom: '20px' }}>
+                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: '600', marginBottom: '5px' }}><FaKey /> Create 4-Digit PIN</label>
+                <input type="text" name="pin" maxLength="4" placeholder="ex: 0305" required onChange={handleChange} value={formData.pin} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #ddd' }} />
+              </div>
+
+              <button type="submit" className="contact-submit-btn" style={{ width: '100%', padding: '12px', background: '#26136d', color: 'white', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' }}>
+                Generate ID
+              </button>
+            </form>
+
+            {generatedID && (
+              <div style={{ marginTop: '20px', padding: '15px', background: '#f4f7ff', borderRadius: '12px', border: '1px dashed #4b6bfb', textAlign: 'center' }}>
+                <span style={{ fontSize: '0.75rem', color: '#555', fontWeight: 'bold' }}>YOUR STUDENT ID:</span>
+                <div style={{ fontSize: '1.1rem', fontWeight: '800', color: '#26136d', margin: '8px 0', letterSpacing: '0.5px' }}>{generatedID}</div>
+
+                <button onClick={() => { navigator.clipboard.writeText(generatedID); setCopied(true); setTimeout(() => setCopied(false), 2000); }} style={{ width: '100%', padding: '8px', background: '#eef2ff', border: '1px solid #4b6bfb', borderRadius: '6px', cursor: 'pointer', fontWeight: '600', color: '#4b6bfb' }}>
+
+                {copied ? "✓ Copied!" : "Copy Student ID"}
+                </button>
+                </div>
+            )}
+            </div>
+            </div>
     </footer>
   );
 };
