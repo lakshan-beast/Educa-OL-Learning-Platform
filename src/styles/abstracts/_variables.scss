@@ -7,6 +7,7 @@ $primary-orange: #f7786f;
 $secondary-blue: #1d10ac;
 $blue-light: #c6d4fa;
 $blue-medium: #4e6ab9;
+$blue-soft: #4b6bfb;
 
 // social media icons
 $facebook-color: #1877f2;
@@ -19,6 +20,8 @@ $insta-original-color: linear-gradient(
   rgba(253, 29, 29, 1) 50%,
   rgba(252, 176, 69, 1) 100%
 );
+
+$linear-left: linear-gradient(135deg, #5454d9 0%, #4b6bfb 100%);
 
 // backgrounds
 // $background-linear: linear-gradient(
@@ -33,7 +36,7 @@ $bg-light: #e0e8ff;
 $bg-soft: #7f91ec14;
 $navbar-white: #ebebeb;
 $dark-blue: #303030;
-$footer-dark: #000135;
+$footer-dark: #000124;
 
 // text colors
 $text-light: #f7f7f7;
