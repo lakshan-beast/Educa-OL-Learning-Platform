@@ -314,6 +314,7 @@ const Footer = () => {
               <div style={{ marginTop: '20px', padding: '15px', background: '#f4f7ff', borderRadius: '12px', border: '1px dashed #4b6bfb', textAlign: 'center' }}>
                 <span style={{ fontSize: '0.75rem', color: '#555', fontWeight: 'bold' }}>YOUR STUDENT ID:</span>
                 <div style={{ fontSize: '1.1rem', fontWeight: '800', color: '#26136d', margin: '8px 0', letterSpacing: '0.5px' }}>{generatedID}</div>
+                
 
                 <button onClick={() => { navigator.clipboard.writeText(generatedID); setCopied(true); setTimeout(() => setCopied(false), 2000); }} style={{ width: '100%', padding: '8px', background: '#eef2ff', border: '1px solid #4b6bfb', borderRadius: '6px', cursor: 'pointer', fontWeight: '600', color: '#4b6bfb' }}>
 
