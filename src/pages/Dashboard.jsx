@@ -149,11 +149,18 @@ import {
 // import { ImOffice } from "react-icons/im";
 
 import ScoreAnalytics from "../components/ScorenAnalytics";
+import { premiumStudentsList } from "../data/approvedStudents"; // Premium ලැයිස්තුව ගත්තා
+import { FaCrown, FaWhatsapp } from "react-icons/fa6";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const studentId = localStorage.getItem("user_id") || "";
   const userSubjects = localStorage.getItem("user_subjects") || ""; // උදා: "MES", "M"
+
+  // 🧠 ළමයා සල්ලි ගෙවපු Premium කෙනෙක්ද කියලා බලන True/False Logic එක
+  const isPremiumUser = premiumStudentsList.includes(
+    studentId.trim().toUpperCase(),
+  );
 
   // 1. Tasks State (Daily Mission Progress Bar එකට)
   const [tasks, setTasks] = useState([
@@ -639,9 +646,152 @@ const Dashboard = () => {
           </button>
         </div>
 
-        <div>
-          <ScoreAnalytics />{" "}
+        {/* ================================================================ */}
+        {/* 👑 PREMIUM SCORE ANALYTICS ZONE */}
+        <div className="premium-tracker-zone" style={{ marginTop: "40px" }}>
+          {isPremiumUser ? (
+            // 🔓 A. ළමයා Premium නම්: කෙලින්ම Graph පද්ධතිය වැඩ කරනවා
+            <ScoreAnalytics />
+          ) : (
+            // 🔒 B. ළමයා සාමාන්‍ය කෙනෙක් නම්: පේන ලස්සන Paid Lock Wall එක
+            <div
+              className="premium-lock-card"
+              style={{
+                background: "linear-gradient(135deg, #fffdf6 0%, #fff9e6 100%)",
+                padding: "40px 30px",
+                borderRadius: "24px",
+                border: "2px solid #f1c40f",
+                textAlign: "center",
+                boxShadow: "0 10px 25px rgba(241,196,15,0.15)",
+                position: "relative",
+                overflow: "hidden",
+              }}>
+              {/* රන් පාට ඔටුන්න සහ ලොක් එක */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "-20px",
+                  left: "-20px",
+                  background: "#f1c40f",
+                  color: "#26136d",
+                  padding: "40px",
+                  transform: "rotate(-45deg)",
+                  display: "flex",
+                  alignItems: "flex-end",
+                  justifyContent: "center",
+                }}>
+                <FaCrown style={{ fontSize: "1.5rem" }} />
+              </div>
+
+              <div
+                style={{
+                  margin: "0 auto 20px",
+                  width: "70px",
+                  height: "70px",
+                  background: "#f1c40f",
+                  color: "white",
+                  borderRadius: "50%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  fontSize: "2rem",
+                  boxShadow: "0 8px 15px rgba(241,196,15,0.3)",
+                }}>
+                <FaLock />
+              </div>
+
+              <h3
+                style={{
+                  color: "#26136d",
+                  fontSize: "1.6rem",
+                  fontWeight: "800",
+                  margin: "0 0 10px",
+                }}>
+                Unlock O/L Progress Analytics Tracker 👑
+              </h3>
+              <p
+                style={{
+                  color: "#555",
+                  maxWidth: "500px",
+                  margin: "0 auto 25px",
+                  fontSize: "0.92rem",
+                  lineHeight: "1.6",
+                }}>
+                ඔබේ O/L විෂයන් 9යේම පේපර් ලකුණු තනි තනිව ප්‍රස්තාරගත (Line
+                Graph) කරමින්, වැරදුණු දුර්වලතා නිරීක්ෂණය කළ හැකි ලංකාවේ ප්‍රථම
+                ස්මාර්ට් පද්ධතිය සක්‍රිය කරගන්න.
+              </p>
+
+              {/* විශේෂ දීමනාව */}
+              <div
+                style={{
+                  background: "white",
+                  display: "inline-block",
+                  padding: "10px 30px",
+                  borderRadius: "15px",
+                  border: "1px dashed #f1c40f",
+                  marginBottom: "25px",
+                }}>
+                <span
+                  style={{
+                    fontSize: "0.8rem",
+                    textTransform: "uppercase",
+                    color: "#777",
+                    fontWeight: "bold",
+                  }}>
+                  Limited Lifetime Offer
+                </span>
+                <h2
+                  style={{
+                    margin: "5px 0 0",
+                    color: "#e67e22",
+                    fontWeight: "900",
+                    fontSize: "2rem",
+                  }}>
+                  LKR 490/-{" "}
+                  <span
+                    style={{
+                      fontSize: "1rem",
+                      color: "#aaa",
+                      textDecoration: "line-through",
+                      fontWeight: "normal",
+                    }}>
+                    Rs.990
+                  </span>
+                </h2>
+              </div>
+
+              {/* WhatsApp Payment Trigger Button */}
+              <div>
+                <a
+                  href={`https://wa.me/94740130305?text=Hello%20Sir,%20I%20want%20to%20activate%20the%20Educa%20Premium%20Progress%20Tracker.%20My%20Student%20ID%20is:%20${studentId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="start-btn"
+                  style={{
+                    background: "#2ecc71",
+                    color: "white",
+                    padding: "14px 30px",
+                    borderRadius: "12px",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                    boxShadow: "0 8px 20px rgba(46,204,113,0.3)",
+                  }}>
+                  <FaWhatsapp style={{ fontSize: "1.3rem" }} /> Activate via
+                  WhatsApp Now
+                </a>
+              </div>
+            </div>
+          )}
         </div>
+        {/* ================================================================ */}
+
+        {/* <div>
+          <ScoreAnalytics />{" "}
+        </div> */}
       </div>
     </div>
     // </div>
