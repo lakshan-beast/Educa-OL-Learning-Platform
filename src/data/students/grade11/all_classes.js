@@ -1,6 +1,6 @@
 export const grade11All = [
   "EDU-MES-11-LAKSHAN-0512",
-  "EDU-MES-11-KASUN-0914",
+  "EDU-MES-11-USER-0123",
   "EDU-MES-11-NIMAL-0322",
   "EDU-MES-11-WIHANGA-4567",
 ];
