@@ -256,7 +256,7 @@ const Dashboard = () => {
             marginBottom: "30px",
             boxShadow: "0 10px 20px rgba(75,107,251,0.15)",
           }}>
-          <h2>{getGreeting()}, Student! 👋</h2>
+          <h2>{getGreeting()}, Student!</h2>
           <p style={{ opacity: 0.8, marginTop: "5px", fontSize: "0.95rem" }}>
             ID: {studentId} | Grade 11 - 2026 O/L Batch
           </p>
@@ -273,18 +273,20 @@ const Dashboard = () => {
 
         <div
           className="dashboard-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "2fr 1fr",
-            gap: "30px",
-          }}>
+          style={
+            {
+              // display: "grid",
+              // gridTemplateColumns: "2fr 1fr",
+              // gap: "30px",
+            }
+          }>
           {/* වම් පැත්තේ කොටස: Daily Mission & Core Classes */}
           <div className="main-dash-content">
             {/* 🎯 B. Daily Mission & Interactive Progress Bar */}
             <div
               className="card-container tasks-card"
               style={{
-                background: "white",
+                // background: "red",
                 padding: "25px",
                 borderRadius: "20px",
                 marginBottom: "30px",
