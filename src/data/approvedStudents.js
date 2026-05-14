@@ -21,3 +21,9 @@ export const allApprovedStudents = [
   // 10 වසරේ ඒවා හැදුවම ඒ Arrays ටිකත් මෙතනින් පල්ලෙහාට දාන්න:
   // ...grade10All,
 ];
+
+// සල්ලි ගෙවලා Analytics Tracker එක Unlock කරගත්තු ළමයින්ගේ IDs විතරක් මෙතනට දාන්න
+
+import { premiumStudentsList } from "./students/premiumStudents";
+
+export { premiumStudentsList };
