@@ -245,62 +245,242 @@
 
 // export default Login;
 
+// import { useState } from "react";
+// import { FaEnvelope, FaLock, FaUser, FaArrowRight } from "react-icons/fa6";
+// import { useNavigate } from "react-router-dom";
+
+// const Login = () => {
+//   const [isLogin, setIsLogin] = useState(true);
+//   const navigate = useNavigate();
+
+//   return (
+//     <div className="modern-login-screen">
+//       <div className="glass-card" data-aos="zoom-in">
+//         <div className="login-header">
+//           <div className="logo-circle">E</div>
+//           <h2>{isLogin ? "Welcome Back!" : "Create Account"}</h2>
+//           <p>
+//             {isLogin
+//               ? "Login to access your Educa dashboard"
+//               : "Join the smartest O/L community"}
+//           </p>
+//         </div>
+
+//         <form
+//           className="modern-form"
+//           onSubmit={(e) => {
+//             e.preventDefault();
+//             navigate("/dashboard");
+//           }}>
+//           {!isLogin && (
+//             <div className="modern-input">
+//               <FaUser />
+//               <input type="text" placeholder="Full Name" required />
+//             </div>
+//           )}
+//           <div className="modern-input">
+//             <FaEnvelope />
+//             <input type="email" placeholder="Email Address" required />
+//           </div>
+//           <div className="modern-input">
+//             <FaLock />
+//             <input type="password" placeholder="Password" required />
+//           </div>
+
+//           <button type="submit" className="login-main-btn">
+//             {isLogin ? "Sign In" : "Register Now"} <FaArrowRight />
+//           </button>
+//         </form>
+
+//         <div className="form-footer">
+//           <p>
+//             {isLogin ? "New to Educa?" : "Already have an account?"}
+//             <span onClick={() => setIsLogin(!isLogin)}>
+//               {isLogin ? " Create an account" : " Login here"}
+//             </span>
+//           </p>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Login;
+
+// import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { approvedStudents } from "../data/studentsList"; // Approved ලැයිස්තුව ගත්තා
+
+// const Login = () => {
+//   const [studentId, setStudentId] = useState("");
+//   const [pin, setPin] = useState("");
+//   const [error, setError] = useState("");
+//   const navigate = useNavigate();
+
+//   const handleLogin = (e) => {
+//     e.preventDefault();
+//     const cleanId = studentId.trim().toUpperCase();
+
+//     // 1. ID එක ඔයා Approved කරපු ලැයිස්තුවේ තියෙනවාද බලනවා
+//     if (approvedStudents.includes(cleanId)) {
+//       // 2. ID එක ඇතුළේ තියෙන PIN එකයි ළමයා ගහපු PIN එකයි සමානද බලනවා (Last 4 characters check)
+//       if (cleanId.endsWith(pin.trim())) {
+//         // 3. ළමයාගේ විස්තර LocalStorage එකේ සේව් කරලා Dashboard එකට යවනවා
+//         localStorage.setItem("user_id", cleanId);
+//         localStorage.setItem("isLoggedIn", "true");
+//         navigate("/dashboard");
+//         window.location.reload();
+//       } else {
+//         setError("Incorrect 4-Digit PIN! ❌");
+//       }
+//     } else {
+//       setError(
+//         "Your ID is Not Approved or Invalid! Please contact the class card marker. ❌",
+//       );
+//     }
+//   };
+
+//   return (
+//     <div
+//       className="card-container login-card"
+//       style={{ maxWidth: "400px", margin: "40px auto", padding: "30px" }}>
+//       <h2>Student Login Portal 🔒</h2>
+//       <p style={{ fontSize: "0.85rem", color: "#666", marginBottom: "20px" }}>
+//         Enter your approved student ID and PIN to enter the dashboard.
+//       </p>
+
+//       <form onSubmit={handleLogin} className="styled-form">
+//         <div className="input-group">
+//           <label>Approved Student ID</label>
+//           <input
+//             type="text"
+//             placeholder="ex: EDU-MES-11-LAKSHAN-0305"
+//             required
+//             value={studentId}
+//             onChange={(e) => setStudentId(e.target.value)}
+//             style={{ textTransform: "uppercase" }}
+//           />
+//         </div>
+//         <div className="input-group">
+//           <label>4-Digit PIN</label>
+//           <input
+//             type="password"
+//             maxLength="4"
+//             placeholder="ex: 0305"
+//             required
+//             value={pin}
+//             onChange={(e) =>
+//               e.target.value.length <= 4 && setPin(e.target.value)
+//             }
+//           />
+//         </div>
+
+//         {error && (
+//           <p style={{ color: "red", fontSize: "0.85rem", marginTop: "5px" }}>
+//             {error}
+//           </p>
+//         )}
+
+//         <button
+//           type="submit"
+//           className="start-btn"
+//           style={{ width: "100%", marginTop: "15px" }}>
+//           Access Dashboard
+//         </button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default Login;
+
+// src/pages/Login.jsx
 import { useState } from "react";
-import { FaEnvelope, FaLock, FaUser, FaArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
+// 👑 අර අපි හදපු මධ්‍යම ෆයිල් එකෙන් ඔක්කොම එකතු කරපු ලැයිස්තුව විතරක් import කරගත්තා
+import { allApprovedStudents } from "../data/approvedStudents";
+
 const Login = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [studentId, setStudentId] = useState("");
+  const [pin, setPin] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const cleanId = studentId.trim().toUpperCase();
+
+    // 🔍 දැන් මෙතනින් මුළු ලැයිස්තුවම එකපාර පරීක්ෂා කරනවා
+    if (allApprovedStudents.includes(cleanId)) {
+      if (cleanId.endsWith(pin.trim())) {
+        localStorage.setItem("user_id", cleanId);
+        localStorage.setItem("isLoggedIn", "true");
+
+        // ID එකෙන් 'MES' වගේ Subject Code එක වෙන් කරගෙන LocalStorage එකට දැමීම
+        const idParts = cleanId.split("-");
+        const subjectCode = idParts[1]; // 2වෙනි කෑල්ල (MES / M / ME)
+        localStorage.setItem("user_subjects", subjectCode);
+
+        navigate("/dashboard");
+        window.location.reload();
+      } else {
+        setError("Incorrect 4-Digit PIN! ❌");
+      }
+    } else {
+      setError("Your ID is Not Approved or Invalid! ❌");
+    }
+  };
+
   return (
-    <div className="modern-login-screen">
-      <div className="glass-card" data-aos="zoom-in">
-        <div className="login-header">
-          <div className="logo-circle">E</div>
-          <h2>{isLogin ? "Welcome Back!" : "Create Account"}</h2>
-          <p>
-            {isLogin
-              ? "Login to access your Educa dashboard"
-              : "Join the smartest O/L community"}
-          </p>
+    // ... ඔයාගේ Login UI Form එක ...
+    <div
+      className="card-container login-card"
+      style={{ maxWidth: "400px", margin: "40px auto", padding: "30px" }}>
+      <h2>Student Login Portal 🔒</h2>
+      <p style={{ fontSize: "0.85rem", color: "#666", marginBottom: "20px" }}>
+        Enter your approved student ID and PIN to enter the dashboard.
+      </p>
+
+      <form onSubmit={handleLogin} className="style-card">
+        <div className="input-group">
+          <label>Approved Student ID</label>
+          <input
+            type="text"
+            placeholder="ex: EDU-MES-11-LAKSHAN-0305"
+            required
+            value={studentId}
+            onChange={(e) => setStudentId(e.target.value)}
+            style={{ textTransform: "uppercase" }}
+          />
+        </div>
+        <div className="input-group">
+          <label>4-Digit PIN</label>
+          <input
+            type="password"
+            maxLength="4"
+            placeholder="ex: 0305"
+            required
+            value={pin}
+            onChange={(e) =>
+              e.target.value.length <= 4 && setPin(e.target.value)
+            }
+          />
         </div>
 
-        <form
-          className="modern-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            navigate("/dashboard");
-          }}>
-          {!isLogin && (
-            <div className="modern-input">
-              <FaUser />
-              <input type="text" placeholder="Full Name" required />
-            </div>
-          )}
-          <div className="modern-input">
-            <FaEnvelope />
-            <input type="email" placeholder="Email Address" required />
-          </div>
-          <div className="modern-input">
-            <FaLock />
-            <input type="password" placeholder="Password" required />
-          </div>
-
-          <button type="submit" className="login-main-btn">
-            {isLogin ? "Sign In" : "Register Now"} <FaArrowRight />
-          </button>
-        </form>
-
-        <div className="form-footer">
-          <p>
-            {isLogin ? "New to Educa?" : "Already have an account?"}
-            <span onClick={() => setIsLogin(!isLogin)}>
-              {isLogin ? " Create an account" : " Login here"}
-            </span>
+        {error && (
+          <p style={{ color: "red", fontSize: "0.85rem", marginTop: "5px" }}>
+            {error}
           </p>
-        </div>
-      </div>
+        )}
+
+        <button
+          type="submit"
+          className="start-btn"
+          style={{ width: "100%", marginTop: "15px" }}>
+          Access Dashboard
+        </button>
+      </form>
     </div>
   );
 };
