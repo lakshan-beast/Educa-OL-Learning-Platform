@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from "react";
 import { NavHashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 
@@ -18,10 +18,10 @@ import {
 
 // import { NavHashLink } from 'react-router-hash-link';
 // import { Link } from 'react-router-dom';
-// import { 
-//   FaSquareCheck, FaLaptopCode, FaUsers, FaRegCopyright, FaHeart, 
-//   FaFacebook, FaWhatsapp, FaYoutube, FaPhone, FaEnvelope, FaLocationDot, 
-//   FaCaretRight, FaUser, FaKey, FaCopy, FaCheck 
+// import {
+//   FaSquareCheck, FaLaptopCode, FaUsers, FaRegCopyright, FaHeart,
+//   FaFacebook, FaWhatsapp, FaYoutube, FaPhone, FaEnvelope, FaLocationDot,
+//   FaCaretRight, FaUser, FaKey, FaCopy, FaCheck
 // } from "react-icons/fa6";
 
 import { FaEnvelope, FaLaptopCode, FaUsers, FaHeart } from "react-icons/fa";
@@ -29,33 +29,40 @@ import { FaEnvelope, FaLaptopCode, FaUsers, FaHeart } from "react-icons/fa";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-
-  
   // ID Generator Popup එක පාලනය කරන State
   const [showGenModal, setShowGenModal] = useState(false);
-  const [formData, setFormData] = useState({ name: '', pin: '', maths: false, english: false, science: false });
-  const [generatedID, setGeneratedID] = useState('');
+  const [formData, setFormData] = useState({
+    name: "",
+    pin: "",
+    maths: false,
+    english: false,
+    science: false,
+  });
+  const [generatedID, setGeneratedID] = useState("");
   const [copied, setCopied] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   // ID එක හදන රටාව (Grade 11 විතරක් නිසා කෙලින්ම 11 දැම්මා)
   const handleGenerate = (e) => {
     e.preventDefault();
-    let subCode = '';
-    if (formData.maths) subCode += 'm';
-    if (formData.english) subCode += 'e';
-    if (formData.science) subCode += 's';
-    
+    let subCode = "";
+    if (formData.maths) subCode += "m";
+    if (formData.english) subCode += "e";
+    if (formData.science) subCode += "s";
+
     if (!subCode) {
       alert("Please select at least one subject!");
       return;
     }
 
-    const cleanName = formData.name.replace(/\s+/g, '').toUpperCase();
+    const cleanName = formData.name.replace(/\s+/g, "").toUpperCase();
     const finalID = `EDU-${subCode.toUpperCase()}-11-${cleanName}-${formData.pin}`;
     setGeneratedID(finalID);
     setCopied(false);
@@ -201,23 +208,22 @@ const Footer = () => {
               </Link>
             </p>
           </div>
-          </div>
+        </div>
 
-          <span
-            onClick={() => setShowGenModal(true)}
-            style={{
-              cursor: "pointer",
-              // color: "rgba(255,255,255,0.7)",
-              color: "#ff4b2b",
-              backgroundColor: "#ffefec",
-              padding: "6px 12px",
-              textAlign: "center",
-              borderRadius: "5px",
-            }}
-            className="secret-gen-link">
-    
-            <FaCaretRight /> Generate Student ID
-          </span>
+        <span
+          onClick={() => setShowGenModal(true)}
+          style={{
+            cursor: "pointer",
+            // color: "rgba(255,255,255,0.7)",
+            color: "#ff4b2b",
+            backgroundColor: "#ffefec",
+            padding: "6px 12px",
+            textAlign: "center",
+            borderRadius: "5px",
+          }}
+          className="secret-gen-link">
+          <FaCaretRight /> Generate Student ID
+        </span>
       </div>
 
       {/* footer bottom section  */}
@@ -277,7 +283,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {showGenModal && (
+      {/* {showGenModal && (
         <div className="login-overlay" onClick={() => { setShowGenModal(false); setGeneratedID(''); }}>
           <div className="login-modal-box" onClick={(e) => e.stopPropagation()} style={{ background: 'white', padding: '30px', borderRadius: '20px', maxWidth: '400px', width: '100%' }}>
             <button className="close-x" onClick={() => { setShowGenModal(false); setGeneratedID(''); }} style={{ position: 'absolute', top: '10px', right: '20px', background: 'none', border: 'none', fontSize: '2rem', cursor: 'pointer' }}>&times;</button>
@@ -321,9 +327,9 @@ const Footer = () => {
                 {copied ? "✓ Copied!" : "Copy Student ID"}
                 </button>
                 </div>
-            )}
-            </div>
-            </div>
+            )} */}
+      {/* </div> */}
+      {/* // </div> */}
     </footer>
   );
 };
