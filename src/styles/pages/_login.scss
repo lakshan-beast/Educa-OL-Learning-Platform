@@ -721,7 +721,7 @@
   margin-bottom: 30px;
   box-shadow: 0 12px 30px rgba(75, 107, 251, 0.2);
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
 
   &::after {
     content: "";
