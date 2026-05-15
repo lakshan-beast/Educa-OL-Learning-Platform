@@ -5,4 +5,5 @@ export const premiumStudentsList = [
   "EDU-MES-11-USER-0123",
   "EDU-MES-11-NIMAL-0322",
   "EDU-MES-11-WIHANGA-4567",
+  "EDU-MES-11-TEACHER-0123",
 ];
