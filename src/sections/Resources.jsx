@@ -10,6 +10,7 @@ import {
   FaCircleQuestion,
   FaPenToSquare,
   FaFilePdf,
+  FaUserShield,
 } from "react-icons/fa6";
 
 import PaperImg from "../assets/resources.webp";
@@ -126,6 +127,28 @@ const Resources = () => {
           </p>
           <Link to="/quizzes" className="browse-btn">
             Take a Quiz
+          </Link>
+        </div>
+
+        {/* 7. දෙමාපිය පෝටලය (Parent Portal Card - ACTIVE) */}
+        <div className="resources-card" data-aos="fade-up" data-aos-delay="900">
+          {/* රන් පාට ලස්සන Verified Badge එකක් */}
+          <span
+            className="card-badge card-badge-verified"
+            style={{ background: "#f1c40f", color: "#26136d" }}>
+            <FaCircleCheck /> Parents Only
+          </span>
+          <img src="/assets/parents.jpg" loading="lazy" alt="Parent Portal" />
+          <h3>
+            <FaUserShield /> දෙමාපිය පෝටලය
+          </h3>
+          <p>
+            View your child's attendance, fees reports, and special public
+            announcements here.
+          </p>
+          {/* රහස් පේජ් එකට යන ලින්ක් එක */}
+          <Link to="/parent-portal" className="browse-btn">
+            Enter
           </Link>
         </div>
 
