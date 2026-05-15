@@ -316,7 +316,7 @@ const Header = () => {
               {isLoggedIn ? (
                 <FaUserCircle style={{ color: "#7e62e6" }} />
               ) : (
-                <FaRegUserCircle />
+                <FaRegUserCircle style={{ color: "#19dd43" }} />
               )}
             </button>
           </div>
