@@ -403,7 +403,8 @@ import { allApprovedStudents } from "../data/approvedStudents";
 
 const Login = () => {
   const [studentId, setStudentId] = useState("");
-  const [pin, setPin] = useState("");
+  // const [pin, setPin] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -413,26 +414,57 @@ const Login = () => {
     }
   }, [navigate]);
 
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+  //   const cleanId = studentId.trim().toUpperCase();
+  //   // const cleanPIn = pin.trim();
+
+  //   // 🔍 දැන් මෙතනින් මුළු ලැයිස්තුවම එකපාර පරීක්ෂා කරනවා
+  //   if (allApprovedStudents.includes(cleanId)) {
+  //     if (cleanId.endsWith(pin.trim())) {
+  //       localStorage.setItem("user_id", cleanId);
+  //       localStorage.setItem("isLoggedIn", "true");
+
+  //       // ID එකෙන් 'MES' වගේ Subject Code එක වෙන් කරගෙන LocalStorage එකට දැමීම
+  //       const idParts = cleanId.split("-");
+  //       const subjectCode = idParts[1]; // 2වෙනි කෑල්ල (MES / M / ME)
+  //       localStorage.setItem("user_subjects", subjectCode);
+
+  //       navigate("/dashboard");
+  //       window.location.reload();
+  //     } else {
+  //       setError("Incorrect 4-Digit PIN! ❌");
+  //     }
+  //   } else {
+  //     setError("Your ID is Not Approved or Invalid! ❌");
+  //   }
+  // };
+
   const handleLogin = (e) => {
     e.preventDefault();
     const cleanId = studentId.trim().toUpperCase();
-    // const cleanPIn = pin.trim();
+    const cleanPassword = password.trim(); // 🆕 Password එක ගත්තා
 
-    // 🔍 දැන් මෙතනින් මුළු ලැයිස්තුවම එකපාර පරීක්ෂා කරනවා
-    if (allApprovedStudents.includes(cleanId)) {
-      if (cleanId.endsWith(pin.trim())) {
+    // 🔍 1. මධ්‍යම ලැයිස්තුවෙන් මේ ශිෂ්‍ය ID එක තියෙන Object එක සොයාගන්නවා
+    const studentFound = allApprovedStudents.find(
+      (student) => student.id === cleanId,
+    );
+
+    if (studentFound) {
+      // 🔍 2. ID එක හමු වුණොත්, ඒ Object එක ඇතුළේ තියෙන රහස් Password එක සමානද බලනවා
+      if (studentFound.password === cleanPassword) {
         localStorage.setItem("user_id", cleanId);
         localStorage.setItem("isLoggedIn", "true");
 
-        // ID එකෙන් 'MES' වගේ Subject Code එක වෙන් කරගෙන LocalStorage එකට දැමීම
+        // ID එකෙන් Subject Code එක (MES) වෙන් කර ගැනීම
         const idParts = cleanId.split("-");
-        const subjectCode = idParts[1]; // 2වෙනි කෑල්ල (MES / M / ME)
+        const subjectCode = idParts[1];
         localStorage.setItem("user_subjects", subjectCode);
 
         navigate("/dashboard");
         window.location.reload();
       } else {
-        setError("Incorrect 4-Digit PIN! ❌");
+        setError("Incorrect Password! ❌");
       }
     } else {
       setError("Your ID is Not Approved or Invalid! ❌");
@@ -465,12 +497,12 @@ const Login = () => {
           <label>4-Digit PIN</label>
           <input
             type="password"
-            maxLength="4"
+            // maxLength="4"
             placeholder="ex: 0305"
             required
-            value={pin}
+            value={password}
             onChange={(e) =>
-              e.target.value.length <= 4 && setPin(e.target.value)
+              e.target.value.length <= setPassword(e.target.value)
             }
           />
         </div>
