@@ -19,7 +19,7 @@ import {
 const ParentPortal = () => {
   // Gate Security States
   const [studentId, setStudentId] = useState("");
-  const [pin, setPin] = useState("");
+  const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState("");
 
@@ -30,13 +30,18 @@ const ParentPortal = () => {
   const handleParentLogin = (e) => {
     e.preventDefault();
     const cleanId = studentId.trim().toUpperCase();
+    const cleanPassword = password.trim(); // 🆕
 
     // ගාස්තු වගුවේ හෝ පැමිණීම් වගුවේ මේ ID එක තියෙනවාද බලනවා
-    const isIdValid = parentFeesTable.some((r) => r.studentId === cleanId);
+    // const isIdValid = parentFeesTable.some((r) => r.studentId === cleanId);
 
-    if (isIdValid) {
+    const studentFound = parentFeesTable.find(
+      (student) => student.id === cleanId,
+    );
+
+    if (studentFound.password === cleanPassword) {
       // PIN එක ගැලපෙනවාද බැලීම (ID එක අග තියෙන PIN එක සමඟ සසඳයි)
-      if (cleanId.endsWith(pin.trim())) {
+      if (cleanId.endsWith(password.trim())) {
         setIsAuthenticated(true);
         setSearchQuery(cleanId); // ලොග් වුණු ගමන් තමන්ගේ ළමයාගේ ID එක ඔටෝ සර්ච් වෙනවා
         setError("");
@@ -178,11 +183,11 @@ const ParentPortal = () => {
                 </label>
                 <input
                   type="password"
-                  maxLength="4"
+                  // maxLength="4"
                   placeholder="XXXX"
                   required
-                  value={pin}
-                  onChange={(e) => setPin(e.target.value)}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   style={{
                     width: "100%",
                     padding: "12px",
