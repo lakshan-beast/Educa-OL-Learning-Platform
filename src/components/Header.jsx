@@ -314,7 +314,7 @@ const Header = () => {
                 fontSize: "1.4rem",
               }}>
               {isLoggedIn ? (
-                <FaUserCircle style={{ color: "#26136d" }} />
+                <FaUserCircle style={{ color: "#7e62e6" }} />
               ) : (
                 <FaRegUserCircle />
               )}
