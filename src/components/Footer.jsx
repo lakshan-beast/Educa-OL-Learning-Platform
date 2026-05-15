@@ -36,10 +36,12 @@ const Footer = () => {
   const [formData, setFormData] = useState({
     name: "",
     pin: "",
+    password: "",
     maths: false,
     english: false,
     science: false,
   });
+
   const [generatedID, setGeneratedID] = useState("");
   const [copied, setCopied] = useState(false);
 
@@ -240,6 +242,32 @@ const Footer = () => {
                 <FaCaretRight className="footer-icon" /> Generate Your Unique ID
               </span>
             </li>
+
+            <li>
+              <div
+                style={{
+                  textAlign: "right",
+                  marginTop: "5px",
+                  marginBottom: "15px",
+                }}>
+                <a
+                  href={
+                    `https://wa.me/94740130305?text=Hello%20Support20%Team,%20I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20` +
+                    formData.name
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    // fontSize: "0.8rem",
+                    color: "#ff4b2b",
+                    textDecoration: "none",
+                    // fontWeight: "600",
+                  }}>
+                  <FaCaretRight className="footer-icon" /> Password Forget?
+                  (Contact Support)
+                </a>
+              </div>
+            </li>
           </ul>
         </div>
 
@@ -431,6 +459,34 @@ const Footer = () => {
                   }}
                 />
               </div>
+              {/* Form එක ඇතුළත PIN field එකට යටින් මේ Password කොටස පේස්ට්
+              කරන්න: */}
+              <div className="input-group" style={{ marginBottom: "15px" }}>
+                <label
+                  style={{
+                    display: "block",
+                    fontSize: "0.85rem",
+                    fontWeight: "600",
+                    marginBottom: "5px",
+                  }}>
+                  <FaKey /> Create Secret Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter a strong password"
+                  required
+                  onChange={handleChange}
+                  value={formData.password}
+                  style={{
+                    width: "100%",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    border: "1px solid #ddd",
+                  }}
+                />
+              </div>
+
               <button
                 type="submit"
                 className="contact-submit-btn"
@@ -446,6 +502,30 @@ const Footer = () => {
                 }}>
                 Generate ID
               </button>
+
+              <div
+                style={{
+                  textAlign: "right",
+                  marginTop: "5px",
+                  marginBottom: "15px",
+                }}>
+                <a
+                  href={
+                    `https://wa.me/94740130305?text=Hello%20Support%20Team,%20I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20` +
+                    formData.name
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontSize: "0.8rem",
+                    color: "#ff4b2b",
+                    textDecoration: "none",
+                    fontWeight: "600",
+                    textAlign: "center",
+                  }}>
+                  Password Forget? (Contact Support)
+                </a>
+              </div>
             </form>
 
             {/* ID එක සාර්ථකව හැදුනට පස්සේ පේන කොටස */}
@@ -478,6 +558,35 @@ const Footer = () => {
                   }}>
                   {generatedID}
                 </div>
+
+                <form
+                  action="https://formspree.io"
+                  method="POST"
+                  style={{ marginTop: "10px" }}>
+                  <input
+                    type="hidden"
+                    name="Student_Name"
+                    value={formData.name}
+                  />
+                  <input
+                    type="hidden"
+                    name="Generated_ID"
+                    value={generatedID}
+                  />
+                  <input
+                    type="hidden"
+                    name="Account_Password"
+                    value={formData.password}
+                  />{" "}
+                  {/* 🆕 Password එක එකතු කළා */}
+                  <button
+                    type="submit"
+                    className="start-btn"
+                    style={{ width: "100%", padding: "10px" }}>
+                    Request Activation
+                  </button>
+                </form>
+
                 <button
                   onClick={() => {
                     navigator.clipboard.writeText(generatedID);
