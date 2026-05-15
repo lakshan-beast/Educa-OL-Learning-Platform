@@ -18,6 +18,7 @@ import PaperHub from "./pages/PaperHub";
 
 import FullTimetable from "./pages/Timetables";
 import ClassesDetails from "./pages/ClassesDetails";
+import ParentPortal from "./pages/ParentPortal";
 
 const App = () => {
   useEffect(() => {
@@ -68,6 +69,7 @@ const App = () => {
 
           <Route path="/full-timetable" element={<FullTimetable />} />
           <Route path="/classes-details" element={<ClassesDetails />} />
+          <Route path="/parent-portal" element={<ParentPortal />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
