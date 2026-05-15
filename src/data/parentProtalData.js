@@ -18,6 +18,7 @@ export const parentGeneralNotices = [
 export const parentFeesTable = [
   {
     studentId: "EDU-MES-11-LAKSHAN-0512",
+    password: "lakshan1234",
     class: "Maths/Sci/Eng",
     grade: "11",
     feesStatus: "Paid",
@@ -43,6 +44,8 @@ export const parentFeesTable = [
 export const parentAttendanceTable = [
   {
     studentId: "EDU-MES-11-LAKSHAN-0512",
+    password: "lakshan1234",
+
     class: "Mathematics",
     grade: "11",
     date: "2026-05-16 (Today)",
