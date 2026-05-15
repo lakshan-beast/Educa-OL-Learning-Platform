@@ -5,7 +5,7 @@ export const allClassData11 = [
     grade: "11",
     subject: "O/L Mathematics",
     teacher: "Sir 01",
-    day: "Saturday",
+    day: "Friday",
     startTime: "08:00", // 24-hour format වලින් දාන්න (HH:MM)
     endTime: "12:00",
     statusOverride: "Auto", // "Auto", "Canceled", "Holiday"
