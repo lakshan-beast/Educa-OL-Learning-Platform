@@ -176,9 +176,9 @@ const Resources = () => {
             Access a massive collection of Past Papers, Target Papers, and Short
             Notes.
           </p>
-          {/* <Link to="/paper-hub" className="browse-btn">
+          <Link to="/paper-hub" className="browse-btn">
             View Materials
-          </Link> */}
+          </Link>
           <button disabled="disabled" className="browse-btn">
             Maintenance Tool
           </button>
