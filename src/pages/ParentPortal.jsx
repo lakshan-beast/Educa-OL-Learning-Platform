@@ -184,7 +184,9 @@ const ParentPortal = () => {
                 <input
                   type="password"
                   // maxLength="4"
-                  placeholder="XXXX"
+                  placeholder="XXXXXXXX
+                  
+                  "
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -424,7 +426,13 @@ const ParentPortal = () => {
                             : "transparent",
                       }}>
                       <td style={{ padding: "12px", fontWeight: "bold" }}>
-                        {row.studentId}
+                        {row.studentId.split("-")[0] +
+                          "-" +
+                          row.studentId.split("-")[1] +
+                          "-" +
+                          row.studentId.split("-")[2] +
+                          "-XXXX-" +
+                          row.studentId.split("-")[4]}
                       </td>
                       <td style={{ padding: "12px" }}>{row.class}</td>
                       <td style={{ padding: "12px" }}>{row.date}</td>
