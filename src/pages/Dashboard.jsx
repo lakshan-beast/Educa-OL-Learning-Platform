@@ -136,7 +136,7 @@
 // export default Dashboard;
 
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   // FaClock,
   FaVideo,
@@ -369,7 +369,7 @@ const Dashboard = () => {
           </div>
 
           {/* 🔒 C. Core Subject Enrolment & Content Locking Area */}
-          <div className="subjects-section">
+          {/* <div className="subjects-section">
             <h3 style={{ marginBottom: "20px" }}>
               Your Enrolled Class Portals
             </h3>
@@ -380,7 +380,7 @@ const Dashboard = () => {
                 gridTemplateColumns: "1fr",
                 gap: "20px",
               }}>
-              {/* 1. MATHEMATICS PORTAL */}
+              {/* 1. MATHEMATICS PORTAL *
               <div
                 className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
                 style={{
@@ -434,7 +434,7 @@ const Dashboard = () => {
                 )}
               </div>
 
-              {/* 2. SCIENCE PORTAL */}
+              {/* 2. SCIENCE PORTAL 
               <div
                 className={`ubject-portal-card ${!hasAccess("S") ? "locked" : ""}`}
                 style={{
@@ -487,7 +487,7 @@ const Dashboard = () => {
                   </p>
                 )}
               </div>
-              {/* 3. ENGLISH PORTAL */}
+              {/* 3. ENGLISH PORTAL *
               <div
                 className={`subject-portal-card ${!hasAccess("E") ? "locked" : ""}`}
                 style={{
@@ -529,6 +529,209 @@ const Dashboard = () => {
                     style={{ padding: "8px 16px", fontSize: "0.85rem" }}>
                     <FaVideo /> Enter Live / Recordings
                   </button>
+                ) : (
+                  <p
+                    style={{
+                      fontSize: "0.8rem",
+                      color: "#cc0000",
+                      fontWeight: "bold",
+                    }}>
+                    Not enrolled in this subject. Contact card marker.
+                  </p>
+                )}
+              </div>
+            </div>
+          </div> */}
+
+          {/* 🔒 C. Core Subject Enrolment & Paper Hub Redirection Area */}
+          <div className="subjects-section">
+            <h3 style={{ marginBottom: "20px" }}>
+              Your Enrolled Class Portals
+            </h3>
+            <div
+              className="subjects-grid"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr",
+                gap: "20px",
+              }}>
+              {/* 1. MATHEMATICS PORTAL */}
+              <div
+                className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
+                style={{
+                  background: "white",
+                  padding: "20px",
+                  borderRadius: "15px",
+                  borderLeft: "5px solid #4b6bfb",
+                  opacity: hasAccess("M") ? 1 : 0.6,
+                  position: "relative",
+                }}>
+                {!hasAccess("M") && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "15px",
+                      right: "15px",
+                      background: "#ff4d4d",
+                      color: "white",
+                      padding: "4px 10px",
+                      borderRadius: "10px",
+                      fontSize: "0.75rem",
+                      fontWeight: "bold",
+                    }}>
+                    <FaLock /> Locked
+                  </div>
+                )}
+                <h4>O/L Mathematics</h4>
+                <p
+                  style={{
+                    fontSize: "0.85rem",
+                    color: "#666",
+                    margin: "5px 0 15px",
+                  }}>
+                  Instructor: Sir 01
+                </p>
+                {hasAccess("M") ? (
+                  // 🟢 දැන් මේක බටන් එකක් නෙවෙයි, කෙලින්ම maths id එක අරන් යන ස්මාර්ට් ලින්ක් එකක්
+                  <Link
+                    to="/paper-hub/maths"
+                    className="start-btn"
+                    style={{
+                      padding: "8px 16px",
+                      fontSize: "0.85rem",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}>
+                    <FaVideo /> Enter Subject Hub
+                  </Link>
+                ) : (
+                  <p
+                    style={{
+                      fontSize: "0.8rem",
+                      color: "#cc0000",
+                      fontWeight: "bold",
+                    }}>
+                    Not enrolled in this subject. Contact card marker.
+                  </p>
+                )}
+              </div>
+
+              {/* 2. SCIENCE PORTAL */}
+              <div
+                className={`subject-portal-card ${!hasAccess("S") ? "locked" : ""}`}
+                style={{
+                  background: "white",
+                  padding: "20px",
+                  borderRadius: "15px",
+                  borderLeft: "5px solid #2ecc71",
+                  opacity: hasAccess("S") ? 1 : 0.6,
+                  position: "relative",
+                }}>
+                {!hasAccess("S") && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "15px",
+                      right: "15px",
+                      background: "#ff4d4d",
+                      color: "white",
+                      padding: "4px 10px",
+                      borderRadius: "10px",
+                      fontSize: "0.75rem",
+                      fontWeight: "bold",
+                    }}>
+                    <FaLock /> Locked
+                  </div>
+                )}
+                <h4>O/L Science</h4>
+                <p
+                  style={{
+                    fontSize: "0.85rem",
+                    color: "#666",
+                    margin: "5px 0 15px",
+                  }}>
+                  Instructor: Sir 02
+                </p>
+                {hasAccess("S") ? (
+                  // 🟢 Science Paper Hub එකට යන ලින්ක් එක
+                  <Link
+                    to="/paper-hub/science"
+                    className="start-btn"
+                    style={{
+                      padding: "8px 16px",
+                      fontSize: "0.85rem",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}>
+                    <FaVideo /> Enter Subject Hub
+                  </Link>
+                ) : (
+                  <p
+                    style={{
+                      fontSize: "0.8rem",
+                      color: "#cc0000",
+                      fontWeight: "bold",
+                    }}>
+                    Not enrolled in this subject. Contact card marker.
+                  </p>
+                )}
+              </div>
+
+              {/* 3. ENGLISH PORTAL */}
+              <div
+                className={`subject-portal-card ${!hasAccess("E") ? "locked" : ""}`}
+                style={{
+                  background: "white",
+                  padding: "20px",
+                  borderRadius: "15px",
+                  borderLeft: "5px solid #ff9f43",
+                  opacity: hasAccess("E") ? 1 : 0.6,
+                  position: "relative",
+                }}>
+                {!hasAccess("E") && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "15px",
+                      right: "15px",
+                      background: "#ff4d4d",
+                      color: "white",
+                      padding: "4px 10px",
+                      borderRadius: "10px",
+                      fontSize: "0.75rem",
+                      fontWeight: "bold",
+                    }}>
+                    <FaLock /> Locked
+                  </div>
+                )}
+                <h4>O/L English</h4>
+                <p
+                  style={{
+                    fontSize: "0.85rem",
+                    color: "#666",
+                    margin: "5px 0 15px",
+                  }}>
+                  Instructor: Sir 03
+                </p>
+                {hasAccess("E") ? (
+                  // 🟢 English Paper Hub එකට යන ලින්ක් එක
+                  <Link
+                    to="/paper-hub/english"
+                    className="start-btn"
+                    style={{
+                      padding: "8px 16px",
+                      fontSize: "0.85rem",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}>
+                    <FaVideo /> Enter Subject Hub
+                  </Link>
                 ) : (
                   <p
                     style={{
