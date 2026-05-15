@@ -1,51 +1,51 @@
-.paper-hub-page {
-  .paper-hub-header {
-    text-align: center;
-    margin-bottom: $margin-large;
+// .paper-hub-page {
+//   .paper-hub-header {
+//     text-align: center;
+//     margin-bottom: $margin-large;
 
-    h2 {
-      color: $dark-purple;
-      font-size: $font-size-h2;
-      margin-bottom: $margin-small;
-    }
+//     h2 {
+//       color: $dark-purple;
+//       font-size: $font-size-h2;
+//       margin-bottom: $margin-small;
+//     }
 
-    p {
-      color: $text-medium;
-      font-size: $font-size-body;
-    }
-  }
+//     p {
+//       color: $text-medium;
+//       font-size: $font-size-body;
+//     }
+//   }
 
-  .papers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: $grid-gap-xlarge;
-  }
-}
+//   .papers-grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//     gap: $grid-gap-xlarge;
+//   }
+// }
 
-.category-filter {
-  display: flex;
-  justify-content: center;
-  gap: $flex-gap-medium;
-  margin-bottom: $margin-large;
-  flex-wrap: wrap;
+// .category-filter {
+//   display: flex;
+//   justify-content: center;
+//   gap: $flex-gap-medium;
+//   margin-bottom: $margin-large;
+//   flex-wrap: wrap;
 
-  button {
-    background: $white;
-    color: $dark-purple;
-    border: 2px solid $blue-light;
-    padding: $padding-small $padding-medium;
-    border-radius: $border-radius-small;
-    cursor: pointer;
-    font-size: $font-size-body;
+//   button {
+//     background: $white;
+//     color: $dark-purple;
+//     border: 2px solid $blue-light;
+//     padding: $padding-small $padding-medium;
+//     border-radius: $border-radius-small;
+//     cursor: pointer;
+//     font-size: $font-size-body;
 
-    &.active,
-    &:hover {
-      background: $blue-light;
-      color: $white;
-      border-color: $primary-orange;
-    }
-  }
-}
+//     &.active,
+//     &:hover {
+//       background: $blue-light;
+//       color: $white;
+//       border-color: $primary-orange;
+//     }
+//   }
+// }
 
 // .resources-grid {
 //   //   display: grid;
@@ -69,3 +69,190 @@
 //     // }
 //   }
 // }
+
+// --- Academic Paper Hub Component Styles ---
+
+.paper-hub-wrapper {
+  background-color: #f8faff;
+  min-height: 88vh;
+  padding: 40px 0;
+
+  // 👑 A. Premium Vault Header
+  .subject-vault-header {
+    background: linear-gradient(135deg, $dark-purple2 0%, #1a0a54 100%);
+    color: $white;
+    padding: 35px;
+    border-radius: 24px;
+    margin-bottom: 30px;
+    box-shadow: 0 12px 25px rgba(38, 19, 109, 0.12);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      // පසුබිමට ලස්සන සැරසිලි අර්ධ රවුමක්
+      content: "";
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      width: 150px;
+      height: 150px;
+      background: rgba($white, 0.03);
+      border-radius: 50%;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      svg {
+        color: $primary-orange;
+      }
+    }
+
+    p {
+      margin: 8px 0 0;
+      opacity: 0.8;
+      font-size: 0.92rem;
+    }
+  }
+
+  // 🎛️ B. Interactive Tabs Menu Layout
+  .paper-tabs-container {
+    display: flex;
+    gap: 12px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+
+    .tab-btn {
+      background: $white;
+      color: $text-medium;
+      border: 1px solid #cbd5e1;
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      svg {
+        font-size: 1.1rem;
+        opacity: 0.8;
+      }
+
+      &:hover {
+        background: rgba($dark-purple1, 0.05);
+        border-color: $dark-purple1;
+        color: $dark-purple1;
+        transform: translateY(-2px);
+      }
+
+      // 🔥 Active වෙන Tab එකට ලැබෙන Premium Style එක
+      &.active-paper-tab {
+        background: $dark-purple1;
+        color: $white;
+        border-color: $dark-purple1;
+        box-shadow: 0 6px 15px rgba($dark-purple1, 0.2);
+
+        svg {
+          opacity: 1;
+        }
+
+        &:hover {
+          color: $white;
+        } // Active එකේ හොවර් එකේදී අකුරු සුදුම තියයි
+      }
+    }
+  }
+
+  // 📄 C. PDF Download Rows Layout
+  .papers-list-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeIn 0.4s ease-out;
+
+    .paper-download-row {
+      background: $white;
+      padding: 20px 25px;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.015);
+      border: 1px solid #edf2f9;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateX(
+          6px
+        ); // Hover කරද්දී දකුණට ලාවට ඇදෙන ලස්සන effect එක
+        border-color: rgba($primary-orange, 0.3);
+        background: #fffcfb; // ලාවට තැඹිලි සෙවනක් පසුබිමට එනවා
+      }
+
+      // PDF රතු අයිකන් කොටුව
+      .pdf-icon-box {
+        width: 42px;
+        height: 42px;
+        background: #fff0f0;
+        color: #e74c3c;
+        border-radius: 10px;
+        @include center-everything;
+        font-size: 1.25rem;
+        transition: 0.3s;
+      }
+
+      &:hover .pdf-icon-box {
+        background: #e74c3c;
+        color: $white;
+        transform: scale(1.05);
+      }
+
+      h4 {
+        color: $dark-purple2;
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+
+      // 📥 Download Button Style
+      .start-btn {
+        padding: 10px 20px;
+        font-size: 0.88rem;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+          box-shadow: 0 6px 15px rgba(#ff4b2b, 0.3);
+          gap: 12px; // ඊතලය පල්ලෙහාට පනින effect එකක්
+        }
+      }
+    }
+  }
+}
+
+// 🎆 Tab දත්ත මාරු වෙද්දී සිදුවන සීරූ Fade-In ඇනිමේෂන් එක
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
