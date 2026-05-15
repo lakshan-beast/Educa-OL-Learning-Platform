@@ -66,7 +66,7 @@ const App = () => {
           <Route path="/tools" element={<Tools />} />
           <Route path="/daily-questions" element={<DailyQuestions />} />
           <Route path="/daily-quizzes" element={<DailyQuizzes />} />
-          <Route path="/paper-hub" element={<PaperHub />} />
+          <Route path="/paper-hub/:id" element={<PaperHub />} />
 
           <Route path="/full-timetable" element={<FullTimetable />} />
           <Route path="/classes-details" element={<ClassesDetails />} />
