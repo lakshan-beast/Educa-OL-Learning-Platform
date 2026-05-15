@@ -114,7 +114,7 @@ footer {
   margin-bottom: 6px;
   border-top: none;
 
-  @include flex-custom(space-between, center, column, wrap);
+  @include flex-custom(space-between, center, column, 0, wrap);
 
   @include respond(mobile) {
     border-top: 2px solid $text-blue;
