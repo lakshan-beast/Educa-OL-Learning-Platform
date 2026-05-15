@@ -395,7 +395,7 @@
 // export default Login;
 
 // src/pages/Login.jsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // 👑 අර අපි හදපු මධ්‍යම ෆයිල් එකෙන් ඔක්කොම එකතු කරපු ලැයිස්තුව විතරක් import කරගත්තා
@@ -406,6 +406,12 @@ const Login = () => {
   const [pin, setPin] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("isLoggedIn") === "true") {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -476,7 +482,7 @@ const Login = () => {
 
         <button
           type="submit"
-          className="start-btn"
+          className="login-btn"
           style={{ width: "100%", marginTop: "15px" }}>
           Access Dashboard
         </button>
