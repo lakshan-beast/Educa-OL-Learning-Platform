@@ -265,8 +265,9 @@ const Dashboard = () => {
           }}>
           <h2>{getGreeting()}, Student!</h2>
           <p style={{ opacity: 0.8, marginTop: "5px", fontSize: "0.95rem" }}>
-            ID: {studentId} | Grade 11 - 2026 O/L Batch
+            Your ID: {studentId}
           </p>
+          <span> Grade 11 - 2026 O/L Batch</span>
           <p
             style={{
               marginTop: "15px",
@@ -717,9 +718,9 @@ const Dashboard = () => {
                   fontSize: "0.92rem",
                   lineHeight: "1.6",
                 }}>
-                ඔබේ O/L විෂයන් 9යේම පේපර් ලකුණු තනි තනිව ප්‍රස්තාරගත (Line
-                Graph) කරමින්, වැරදුණු දුර්වලතා නිරීක්ෂණය කළ හැකි ලංකාවේ ප්‍රථම
-                ස්මාර්ට් පද්ධතිය සක්‍රිය කරගන්න.
+                Activate Sri Lanka's first smart system that can track your
+                mistakes and weaknesses by graphing your paper scores for all 9
+                of your O/L subjects individually (Line Graph).
               </p>
 
               {/* විශේෂ දීමනාව */}
@@ -789,10 +790,109 @@ const Dashboard = () => {
         </div>
         {/* ================================================================ */}
 
-        {/* <div>
-          <ScoreAnalytics />{" "}
-        </div> */}
+        {/* 👨‍👩‍👦 PARENT ADVISORY PORTAL */}
+        <div
+          className="card-container parent-portal-card"
+          style={{
+            background: "linear-gradient(135deg, #fffbf0 0%, #fff5d1 100%)",
+            padding: "25px",
+            borderRadius: "20px",
+            marginTop: "30px",
+            border: "1px solid #f1c40f",
+            boxShadow: "0 4px 15px rgba(241,196,15,0.05)",
+          }}>
+          <h3
+            style={{
+              color: "#26136d",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+            }}>
+            👨‍👩‍👦 Parent Advisory Portal
+          </h3>
+          <p
+            style={{
+              fontSize: "0.88rem",
+              color: "#555",
+              margin: "5px 0 20px",
+            }}>
+            දෙමාපියන් සඳහා වන විශේෂ නිවේදන සහ රැස්වීම් විස්තර මෙතැනින් ලබා ගත
+            හැක.
+          </p>
+
+          <div
+            style={{
+              background: "white",
+              padding: "15px",
+              borderRadius: "12px",
+              borderLeft: "4px solid #f1c40f",
+              marginBottom: "20px",
+            }}>
+            <h5 style={{ margin: "0 0 5px", color: "#26136d" }}>
+              🎯 ඊළඟ දෙමාපිය හමුව (Next Parent Meeting):
+            </h5>
+            <p
+              style={{
+                margin: 0,
+                fontSize: "0.9rem",
+                color: "#333",
+                fontWeight: "bold",
+              }}>
+              📅 2026 මැයි 24 (ඉරිදා) | ⏰ උදේ 09:00 ට
+            </p>
+            <p
+              style={{ margin: "5px 0 0", fontSize: "0.82rem", color: "#666" }}>
+              * සියලුම සිසුන්ගේ දෙමාපියන්ගේ සහභාගීත්වය අනිවාර්ය වේ.
+            </p>
+          </div>
+
+          {/* 📲 දෙමාපියන්ගේ WhatsApp එකට කෙලින්ම Class Progress එක යවන බටන් එක */}
+          <a
+            href={`https://wa.me/94740130305?text=Hello%20Sir,%20I%20want%20to%20activate%20the%20Educa%20Premium%20Progress%20Tracker.%20My%20Student%20ID%20is:%20${studentId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="browse-btn"
+            style={{
+              // display: "inline-flex",
+              // alignItems: "center",
+              // gap: "10px",
+              // padding: "10px 20px",
+              // borderRadius: "10px",
+              // textDecoration: "none",
+              // color: "#26136d",
+              // borderColor: "#f1c40f",
+              // fontWeight: "bold",
+
+              background: "#2ecc71",
+              color: "white",
+              padding: "14px 30px",
+              borderRadius: "12px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+              fontWeight: "bold",
+              textDecoration: "none",
+              boxShadow: "0 8px 20px rgba(46,204,113,0.3)",
+            }}>
+            <FaWhatsapp style={{ color: "#2ecc71" }} /> Send Notice to Parent's
+            Mobile
+          </a>
+        </div>
       </div>
+
+      <button
+        onClick={handleLogout}
+        className="browse-btn"
+        style={{
+          width: "100%",
+          marginTop: "20px",
+          padding: "12px",
+          borderRadius: "12px",
+          borderColor: "#ff4b2b",
+          color: "#ff4b2b",
+        }}>
+        Sign Out Account
+      </button>
     </div>
     // </div>
   );
