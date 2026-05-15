@@ -465,8 +465,9 @@ const Footer = () => {
                     color: "#555",
                     fontWeight: "bold",
                   }}>
-                  YOUR STUDENT ID:
+                  HI, YOUR STUDENT ID:
                 </span>
+
                 <div
                   style={{
                     fontSize: "1.1rem",
