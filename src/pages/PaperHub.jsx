@@ -171,7 +171,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { papersData11 } from "../data/papers/paperDate";
+import { paperHub11Data } from "../data/papers/paperHub11Data";
 import {
   FaBookBookmark,
   FaFilePdf,
@@ -216,7 +216,7 @@ const PaperHub = () => {
   }, [id, isLoggedIn, userSubjects, navigate]);
 
   // අදාළ විෂයට අදාළ පේපර් දත්ත වෙන් කර ගැනීම
-  const currentSubjectData = papersData11[id];
+  const currentSubjectData = paperHub11Data[id];
 
   // වැරදි විෂය ID එකක් ආවොත් බ්ලොක් වීම වැළැක්වීම
   if (!currentSubjectData) {
