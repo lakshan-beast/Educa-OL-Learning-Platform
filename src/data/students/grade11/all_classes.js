@@ -7,6 +7,6 @@
 
 // 💡 දැන් ID එක ඇතුළේ PIN එක නැහැ! PIN එක තියෙන්නේ වෙනමමයි.
 export const grade11All = [
-  { id: "EDU-MES-11-LAKSHAN-0512", password: "lakshan1234" }, // ළමයා කැමති PIN එකක් දාන්න පුළුවන්
-  { id: "EDU-MES-11-KASUN-0123", password: "1234" },
+  { id: "EDU-MES-11-LAKSHAN-0512", password: "lakshan1234" },
+  { id: "EDU-MES-11-TEACHER-0123", password: "teachers1234" },
 ];
