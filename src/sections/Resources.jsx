@@ -19,6 +19,7 @@ import Comments from "../assets/comments.webp";
 import Results from "../assets/results.webp";
 import Quizes from "../assets/quizs.webp";
 import Quetions from "../assets/questions.webp";
+import Parent from "../assets/parent.jpg";
 
 const Resources = () => {
   return (
@@ -33,6 +34,26 @@ const Resources = () => {
       </p>
 
       <div className="resources-container resources-grid">
+        {/* 7. දෙමාපිය පෝටලය (Parent Portal Card - ACTIVE) */}
+        <div className="resources-card" data-aos="fade-up" data-aos-delay="900">
+          {/* රන් පාට ලස්සන Verified Badge එකක් */}
+          <span className="card-badge card-badge-verified">
+            <FaCircleCheck /> Parents Only
+          </span>
+          <img src={Parent} loading="lazy" alt="Parent Portal" />
+          <h3>
+            <FaUserShield /> Perant Portal
+          </h3>
+          <p>
+            View your child's attendance, fees reports, and special public
+            announcements here.
+          </p>
+          {/* රහස් පේජ් එකට යන ලින්ක් එක */}
+          <Link to="/parent-portal" className="browse-btn">
+            View Details
+          </Link>
+        </div>
+
         {/* 1. Smart Tools Card */}
         <div className="resources-card" data-aos="fade-up" data-aos-delay="400">
           <span className="card-badge card-badge-new">
@@ -46,9 +67,12 @@ const Resources = () => {
             Boost your productivity with our specialized O/L study calculators
             and timers.
           </p>
-          <Link to="/tools" className="browse-btn">
+          {/* <Link to="/tools" className="browse-btn">
             Open Tools
-          </Link>
+          </Link> */}
+          <button disabled="disabled" className="browse-btn">
+            Maintenance Tool
+          </button>
         </div>
 
         {/* 2. Student Reviews Card */}
@@ -64,9 +88,12 @@ const Resources = () => {
             See what students say about classes & their learning experience with
             us.
           </p>
-          <Link to="/reviews" className="browse-btn">
+          {/* <Link to="/reviews" className="browse-btn">
             Read Reviews
-          </Link>
+          </Link> */}
+          <button disabled="disabled" className="browse-btn">
+            Maintenance Tool
+          </button>
         </div>
 
         {/* 3. Official Results Card */}
@@ -108,9 +135,12 @@ const Resources = () => {
             Challenge yourself with 5 new questions every day to keep your brain
             sharp.
           </p>
-          <Link to="/daily-questions" className="browse-btn">
+          {/* <Link to="/daily-questions" className="browse-btn">          
             Start Today
-          </Link>
+          </Link> */}
+          <button disabled="disabled" className="browse-btn">
+            Maintenance Tool
+          </button>
         </div>
 
         {/* 5. Interactive Quizzes Card */}
@@ -125,31 +155,12 @@ const Resources = () => {
           <p>
             Test your knowledge with timed quizzes covering all O/L core units.
           </p>
-          <Link to="/quizzes" className="browse-btn">
+          {/* <Link to="/quizzes" className="browse-btn">
             Take a Quiz
-          </Link>
-        </div>
-
-        {/* 7. දෙමාපිය පෝටලය (Parent Portal Card - ACTIVE) */}
-        <div className="resources-card" data-aos="fade-up" data-aos-delay="900">
-          {/* රන් පාට ලස්සන Verified Badge එකක් */}
-          <span
-            className="card-badge card-badge-verified"
-            style={{ background: "#f1c40f", color: "#26136d" }}>
-            <FaCircleCheck /> Parents Only
-          </span>
-          <img src="/assets/parents.jpg" loading="lazy" alt="Parent Portal" />
-          <h3>
-            <FaUserShield /> දෙමාපිය පෝටලය
-          </h3>
-          <p>
-            View your child's attendance, fees reports, and special public
-            announcements here.
-          </p>
-          {/* රහස් පේජ් එකට යන ලින්ක් එක */}
-          <Link to="/parent-portal" className="browse-btn">
-            Enter
-          </Link>
+          </Link> */}
+          <button disabled="disabled" className="browse-btn">
+            Maintenance Tool
+          </button>
         </div>
 
         {/* 6. Paper Hub Card */}
@@ -165,9 +176,12 @@ const Resources = () => {
             Access a massive collection of Past Papers, Target Papers, and Short
             Notes.
           </p>
-          <Link to="/paper-hub" className="browse-btn">
+          {/* <Link to="/paper-hub" className="browse-btn">
             View Materials
-          </Link>
+          </Link> */}
+          <button disabled="disabled" className="browse-btn">
+            Maintenance Tool
+          </button>
         </div>
       </div>
     </section>
