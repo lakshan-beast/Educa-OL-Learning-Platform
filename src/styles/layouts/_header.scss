@@ -461,94 +461,98 @@
   // Desktop Styles (ඔයාගේ පරණ කෝඩ් එක එහෙමම තියෙන්න දෙන්න)
 
   // 📱 Mobile View Setup
-  @include respond(mobile) {
-    position: fixed;
-    top: 0;
-    left: -100%; // මෙනු එක වමට හැංගී පවතී
-    width: 85%; // Full screen එකෙන් 85%ක් වසා ගනී
-    height: 100vh;
-    background: #1a0a54; // තද දම් පාටක්
-    z-index: 999999;
+  // @include respond(mobile) {
+  position: fixed;
+  top: 0;
+  left: -100%; // මෙනු එක වමට හැංගී පවතී
+  width: 85%; // Full screen එකෙන් 85%ක් වසා ගනී
+  height: 100vh;
+  // background: #1a0a54; // තද දම් පාටක්
+  background: $footer-dark; // තද දම් පාටක්
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // කොටස් 3 උඩ, මැද, පල්ලෙහාට වෙන් කරයි
+  padding: 30px 24px;
+  transition: all 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+
+  &.nav-active {
+    left: 0;
+  } // මෙනු එක සීරුවට දකුණට ඇදී එයි
+
+  // 1. Top Bar
+  .mobile-nav-header {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; // කොටස් 3 උඩ, මැද, පල්ලෙහාට වෙන් කරයි
-    padding: 30px 24px;
-    transition: all 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
 
-    &.nav-active {
-      left: 0;
-    } // මෙනු එක සීරුවට දකුණට ඇදී එයි
+    .mobile-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: $white;
+      span {
+        color: $primary-orange;
+      }
+    }
+    .mobile-close-btn {
+      background: none;
+      border: none;
+      color: $white;
+      font-size: 1.3rem;
+      cursor: pointer;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+  }
 
-    // 1. Top Bar
-    .mobile-nav-header {
+  // 2. Center Grid Links
+  .mobile-nav-links-grid {
+    display: grid;
+    grid-template-columns: 1fr; // පැති දෙකකට කාඩ්ස් බෙදේ
+    gap: 16px;
+    margin: 40px 0;
+
+    .mob-nav-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 16px;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 15px;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95rem;
+      transition: 0.3s;
 
-      .mobile-logo {
-        font-size: 1.8rem;
-        font-weight: 800;
+      svg {
+        font-size: 1.5rem;
+        color: $primary-orange;
+      } // Icons ලොකුවට පේන්න
+
+      &:hover {
+        background: rgba($primary-orange, 0.1);
+        border-color: $primary-orange;
         color: $white;
-        span {
-          color: $primary-orange;
-        }
-      }
-      .mobile-close-btn {
-        background: none;
-        border: none;
-        color: $white;
-        font-size: 1.3rem;
-        cursor: pointer;
-      }
-    }
-
-    // 2. Center Grid Links
-    .mobile-nav-links-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr; // පැති දෙකකට කාඩ්ස් බෙදේ
-      gap: 16px;
-      margin: 40px 0;
-
-      .mob-nav-card {
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 20px;
-        border-radius: 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 0.95rem;
-        transition: 0.3s;
-
-        svg {
-          font-size: 1.5rem;
-          color: $primary-orange;
-        } // Icons ලොකුවට පේන්න
-
-        &:hover {
-          background: rgba($primary-orange, 0.1);
-          border-color: $primary-orange;
-          color: $white;
-        }
-      }
-    }
-
-    // 3. Bottom Footer
-    .mobile-nav-footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 15px;
-      p {
-        font-size: 0.78rem;
-        color: rgba(255, 255, 255, 0.5);
-        line-height: 1.6;
-        margin: 0;
       }
     }
   }
+
+  // 3. Bottom Footer
+  .mobile-nav-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+    p {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+  // }
 }
