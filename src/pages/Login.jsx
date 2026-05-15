@@ -416,6 +416,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     const cleanId = studentId.trim().toUpperCase();
+    // const cleanPIn = pin.trim();
 
     // 🔍 දැන් මෙතනින් මුළු ලැයිස්තුවම එකපාර පරීක්ෂා කරනවා
     if (allApprovedStudents.includes(cleanId)) {
