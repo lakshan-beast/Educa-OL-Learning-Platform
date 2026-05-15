@@ -707,11 +707,15 @@
   position: relative;
   width: 100%;
   max-width: 420px;
+  height: 450px;
+  max-height: 100%;
   padding: 35px 30px;
   animation: scaleUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  // display: flex;
+  // justify-content: space-around;
 
-  background: $linear-left;
-  color: $white;
+  // background: $linear-left;
+  // color: $white;
   padding: 35px;
   border-radius: 24px;
   margin-bottom: 30px;
@@ -722,27 +726,27 @@
   &::after {
     content: "";
     position: absolute;
-    right: -50px;
-    top: -50px;
-    width: 200px;
-    height: 200px;
-    background: rgba($white, 0.15);
-    box-shadow: 0px -1px 50px rgba(235, 235, 235, 0.8);
+    right: -100px;
+    top: -100px;
+    width: 300px;
+    height: 300px;
+    background: rgba(rgb(218, 218, 218), 0.15);
+    box-shadow: 0px -1px 50px rgba(192, 192, 192, 0.8);
     border-radius: 50%;
   }
 
   h2,
   h3 {
-    // color: $dark-purple2;
-    font-size: 1.7rem;
+    color: $dark-purple;
+    font-size: 1.8rem;
     font-weight: 800;
     margin-bottom: 6px;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.2px;
     text-align: center;
   }
 
   p {
-    // color: $text-medium;
+    color: $text-medium;
     font-size: 0.88rem;
     line-height: 1.5;
     margin-bottom: 25px;
@@ -754,15 +758,17 @@
       margin-bottom: 18px;
       display: flex;
       flex-direction: column;
+      gap: 8px;
 
       label {
         font-size: 0.85rem;
         font-weight: 600;
-        // color: $dark-purple1;
+        color: $dark-purple1;
         margin-bottom: 6px;
         display: flex;
         align-items: center;
         gap: 8px;
+
         svg {
           color: $primary-orange;
         }
@@ -785,8 +791,9 @@
 
         &:focus {
           outline: none;
-          border-color: $primary-orange;
+          border: 2px solid $primary-orange;
           background: $white;
+          color: $secondary-blue;
           box-shadow: 0 0 0 4px rgba($primary-orange, 0.1);
         }
       }
@@ -794,13 +801,17 @@
       // Checkbox alignments
       div {
         display: flex;
-        align-items: center;
+        // align-items: center;
+        flex-direction: column;
         gap: 8px;
+        padding-left: 12px;
+
         label {
           margin: 0;
           cursor: pointer;
           font-weight: 500;
           color: $text-medium;
+
           input[type="checkbox"] {
             accent-color: $dark-purple1;
             width: 16px;
@@ -814,6 +825,7 @@
     .input-row {
       display: flex;
       gap: 15px;
+
       @include respond(mobile) {
         flex-direction: column;
         gap: 0;
@@ -822,13 +834,23 @@
   }
 
   // 🎁 Generated ID Preview Box
-  .generated-id-box {
+  .generated-id-box,
+  .login-btn {
     background: #f4f7ff;
     border: 1px dashed #4b6bfb;
     border-radius: 16px;
     padding: 18px;
     margin-top: 20px;
     text-align: center;
+
+    width: 100%;
+    padding: 12px;
+    background: #26136d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
 
     span {
       font-size: 0.75rem;
@@ -846,6 +868,17 @@
       letter-spacing: 0.5px;
     }
   }
+}
+
+.login-card,
+.login-modal-box {
+  display: flex;
+  justify-content: space-around;
+}
+
+.login-modal-box {
+  height: 550px;
+  flex-direction: column;
 }
 
 // Animations
