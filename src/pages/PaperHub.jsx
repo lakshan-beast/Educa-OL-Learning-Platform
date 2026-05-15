@@ -65,86 +65,304 @@
 
 // export default PaperHub;
 
-import { useState } from "react";
-// import Header from '../components/Header';
-// import Footer from '../components/Footer';
+// import { useState } from "react";
+// // import Header from '../components/Header';
+// // import Footer from '../components/Footer';
+// import {
+//   FaFilePdf,
+//   FaBookOpen,
+//   FaFlask,
+//   FaSquareRootVariable,
+//   FaDownload,
+// } from "react-icons/fa6";
+
+// const PaperHub = () => {
+//   // Category එක තෝරන්න state එකක් පාවිච්චි කරමු
+//   const [category, setCategory] = useState("Papers");
+
+//   const resources = [
+//     {
+//       type: "Papers",
+//       title: "Maths Week 04 Target Paper",
+//       icon: <FaFilePdf color="red" />,
+//     },
+//     {
+//       type: "Short Notes",
+//       title: "Science - ජීවයේ ඒකකය Short Note",
+//       icon: <FaBookOpen color="green" />,
+//     },
+//     {
+//       type: "Tutes",
+//       title: "English - Active/Passive Voice Tute",
+//       icon: <FaFlask color="blue" />,
+//     },
+//     {
+//       type: "Formulas",
+//       title: "Mathematics - Geometry Formulas",
+//       icon: <FaSquareRootVariable color="purple" />,
+//     },
+//   ];
+
+//   return (
+//     <div className="paper-hub-page">
+//       {/* <Header /> */}
+//       <main className="system-container" style={{ marginTop: "120px" }}>
+//         <h2 style={{ textAlign: "center" }}>
+//           Resource <span>Library</span>
+//         </h2>
+
+//         {/* Categories තෝරන තීරුව */}
+//         <div
+//           className="category-filter"
+//           style={{
+//             display: "flex",
+//             justifyContent: "center",
+//             gap: "10px",
+//             margin: "30px 0",
+//             flexWrap: "wrap",
+//           }}>
+//           {["Papers", "Short Notes", "Tutes", "Formulas"].map((cat) => (
+//             <button
+//               key={cat}
+//               className={category === cat ? "start-btn" : "browse-btn"}
+//               onClick={() => setCategory(cat)}>
+//               {cat}
+//             </button>
+//           ))}
+//         </div>
+
+//         {/* තෝරාගත් category එකට අදාළ දේවල් පෙන්වීම */}
+//         <div
+//           className="resources-grid"
+//           style={{ display: "grid", gap: "15px" }}>
+//           {resources
+//             .filter((item) => item.type === category)
+//             .map((item, index) => (
+//               <div
+//                 key={index}
+//                 className="card-container"
+//                 style={{
+//                   display: "flex",
+//                   justifyContent: "space-between",
+//                   alignItems: "center",
+//                 }}>
+//                 <div
+//                   style={{
+//                     display: "flex",
+//                     alignItems: "center",
+//                     gap: "15px",
+//                   }}>
+//                   <span style={{ fontSize: "24px" }}>{item.icon}</span>
+//                   <h4>{item.title}</h4>
+//                 </div>
+//                 <button className="browse-btn">
+//                   <FaDownload /> Download
+//                 </button>
+//               </div>
+//             ))}
+//         </div>
+//       </main>
+//       {/* <Footer /> */}
+//     </div>
+//   );
+// };
+
+// export default PaperHub;
+
+import { useState, useEffect } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { papersData11 } from "../data/papers/paperDate";
 import {
+  FaBookBookmark,
   FaFilePdf,
-  FaBookOpen,
-  FaFlask,
-  FaSquareRootVariable,
-  FaDownload,
+  FaArrowDown,
+  FaArrowLeft,
+  FaFileLines,
+  FaGraduationCap,
+  // FaLock,
 } from "react-icons/fa6";
 
 const PaperHub = () => {
-  // Category එක තෝරන්න state එකක් පාවිච්චි කරමු
-  const [category, setCategory] = useState("Papers");
+  const { id } = useParams(); // URL එකෙන් විෂය ID එක ගනී (maths, science, english)
+  const navigate = useNavigate();
 
-  const resources = [
-    {
-      type: "Papers",
-      title: "Maths Week 04 Target Paper",
-      icon: <FaFilePdf color="red" />,
-    },
-    {
-      type: "Short Notes",
-      title: "Science - ජීවයේ ඒකකය Short Note",
-      icon: <FaBookOpen color="green" />,
-    },
-    {
-      type: "Tutes",
-      title: "English - Active/Passive Voice Tute",
-      icon: <FaFlask color="blue" />,
-    },
-    {
-      type: "Formulas",
-      title: "Mathematics - Geometry Formulas",
-      icon: <FaSquareRootVariable color="purple" />,
-    },
-  ];
+  // 🧠 Tabs පාලනය කරන State (Default එක Tutes)
+  const [activeTab, setActiveTab] = useState("tutes");
+
+  // LocalStorage එකෙන් ළමයාගේ විස්තර පරීක්ෂා කිරීම
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const userSubjects = localStorage.getItem("user_subjects") || ""; // ex: "MES" or "M"
+
+  useEffect(() => {
+    // 1. ලොග් වෙලා නැත්නම් කෙලින්ම හෝම් පේජ් එකට හරවනවා
+    if (!isLoggedIn) {
+      navigate("/");
+      return;
+    }
+
+    // 2. 🧠 URL URL Guard Protection: ළමයා හොරෙන් URL එක ගහලා අවසර නැති විෂයකට යන්න හැදුවොත් වළක්වයි
+    const subLetter =
+      id === "maths"
+        ? "M"
+        : id === "science"
+          ? "S"
+          : id === "english"
+            ? "E"
+            : "";
+    if (!userSubjects.includes(subLetter)) {
+      alert("You do not have access to this subject portal! 🔒");
+      navigate("/dashboard");
+    }
+  }, [id, isLoggedIn, userSubjects, navigate]);
+
+  // අදාළ විෂයට අදාළ පේපර් දත්ත වෙන් කර ගැනීම
+  const currentSubjectData = papersData11[id];
+
+  // වැරදි විෂය ID එකක් ආවොත් බ්ලොක් වීම වැළැක්වීම
+  if (!currentSubjectData) {
+    return (
+      <div
+        className="page-container"
+        style={{ textAlign: "center", padding: "50px" }}>
+        <h3>Subject Hub Not Found! ❌</h3>
+        <Link to="/dashboard" className="start-btn">
+          Back to Dashboard
+        </Link>
+      </div>
+    );
+  }
 
   return (
-    <div className="paper-hub-page">
-      {/* <Header /> */}
-      <main className="system-container" style={{ marginTop: "120px" }}>
-        <h2 style={{ textAlign: "center" }}>
-          Resource <span>Library</span>
-        </h2>
-
-        {/* Categories තෝරන තීරුව */}
-        <div
-          className="category-filter"
+    <div
+      className="paper-hub-wrapper page-container"
+      style={{
+        padding: "40px 20px",
+        background: "#f8faff",
+        minHeight: "88vh",
+      }}>
+      <div
+        className="system-container"
+        style={{ maxWidth: "900px", margin: "0 auto" }}>
+        {/* Back to Dashboard ලින්ක් එක */}
+        <Link
+          to="/dashboard"
           style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "10px",
-            margin: "30px 0",
-            flexWrap: "wrap",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "20px",
+            color: "#4b6bfb",
+            textDecoration: "none",
+            fontWeight: "bold",
           }}>
-          {["Papers", "Short Notes", "Tutes", "Formulas"].map((cat) => (
-            <button
-              key={cat}
-              className={category === cat ? "start-btn" : "browse-btn"}
-              onClick={() => setCategory(cat)}>
-              {cat}
-            </button>
-          ))}
+          <FaArrowLeft /> Back to Dashboard
+        </Link>
+
+        {/* 👑 Subject Header Title */}
+        <div
+          className="subject-vault-header"
+          style={{
+            background: "linear-gradient(135deg, #26136d 0%, #1a0a54 100%)",
+            color: "white",
+            padding: "30px",
+            borderRadius: "20px",
+            marginBottom: "30px",
+            boxShadow: "0 10px 20px rgba(38,19,109,0.1)",
+          }}>
+          <h2
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              margin: 0,
+            }}>
+            <FaBookBookmark style={{ color: "#ff4b2b" }} />{" "}
+            {currentSubjectData.title}
+          </h2>
+          <p style={{ margin: "5px 0 0", opacity: 0.8, fontSize: "0.9rem" }}>
+            Grade 11 • All structural tutes, past papers and materials are
+            verified.
+          </p>
         </div>
 
-        {/* තෝරාගත් category එකට අදාළ දේවල් පෙන්වීම */}
+        {/* 🎛️ TABS MENU (Tutes, Past Papers, Formulas මාරු වෙන බටන්ස්) */}
         <div
-          className="resources-grid"
-          style={{ display: "grid", gap: "15px" }}>
-          {resources
-            .filter((item) => item.type === category)
-            .map((item, index) => (
+          className="paper-tabs-container"
+          style={{
+            display: "flex",
+            gap: "10px",
+            borderBottom: "2px solid #ddd",
+            paddingBottom: "10px",
+            marginBottom: "25px",
+            flexWrap: "wrap",
+          }}>
+          <button
+            className={`tab-btn ${activeTab === "tutes" ? "active-paper-tab" : ""}`}
+            onClick={() => setActiveTab("tutes")}
+            style={{
+              padding: "10px 20px",
+              borderRadius: "10px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              background: activeTab === "tutes" ? "#26136d" : "white",
+              color: activeTab === "tutes" ? "white" : "#555",
+              border: "1px solid #ddd",
+            }}>
+            <FaFileLines /> Class Tutes
+          </button>
+
+          <button
+            className={`tab-btn ${activeTab === "pastPapers" ? "active-paper-tab" : ""}`}
+            onClick={() => setActiveTab("pastPapers")}
+            style={{
+              padding: "10px 20px",
+              borderRadius: "10px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              background: activeTab === "pastPapers" ? "#26136d" : "white",
+              color: activeTab === "pastPapers" ? "white" : "#555",
+              border: "1px solid #ddd",
+            }}>
+            <FaFilePdf /> Past Papers
+          </button>
+          {/* සූත්‍ර බටන් එක පෙන්වන්නේ Maths සහ Science වලට විතරයි (English වලදී පේන්නේ නැත) */}
+          {currentSubjectData.formulas.length > 0 && (
+            <button
+              className={`tab-btn ${activeTab === "formulas" ? "active-paper-tab" : ""}`}
+              onClick={() => setActiveTab("formulas")}
+              style={{
+                padding: "10px 20px",
+                borderRadius: "10px",
+                fontWeight: "bold",
+                cursor: "pointer",
+                background: activeTab === "formulas" ? "#26136d" : "white",
+                color: activeTab === "formulas" ? "white" : "#555",
+                border: "1px solid #ddd",
+              }}>
+              <FaGraduationCap /> Formula Guides
+            </button>
+          )}
+        </div>
+
+        {/* 📄 CONTENT ZONE (තෝරාගත් Tab එකට අදාළ PDF ලැයිස්තුව ලස්සනට පෙන්වීම) */}
+        <div
+          className="papers-list-grid"
+          style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+          {currentSubjectData[activeTab] &&
+          currentSubjectData[activeTab].length > 0 ? (
+            currentSubjectData[activeTab].map((paper) => (
               <div
-                key={index}
-                className="card-container"
+                key={paper.id}
+                className="card-container paper-download-row"
                 style={{
+                  background: "white",
+                  padding: "18px 25px",
+                  borderRadius: "15px",
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.02)",
+                  border: "1px solid #edf2f9",
                 }}>
                 <div
                   style={{
@@ -152,17 +370,57 @@ const PaperHub = () => {
                     alignItems: "center",
                     gap: "15px",
                   }}>
-                  <span style={{ fontSize: "24px" }}>{item.icon}</span>
-                  <h4>{item.title}</h4>
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      background: "#fff0f0",
+                      color: "#e74c3c",
+                      borderRadius: "10px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: "1.2rem",
+                    }}>
+                    <FaFilePdf />
+                  </div>
+                  <h4
+                    style={{
+                      color: "#26136d",
+                      margin: 0,
+                      fontSize: "0.98rem",
+                      fontWeight: "700",
+                    }}>
+                    {paper.title}
+                  </h4>
                 </div>
-                <button className="browse-btn">
-                  <FaDownload /> Download
-                </button>
+
+                {/* Google Drive Link Download Button */}
+                <a
+                  href={paper.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="start-btn"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    padding: "8px 16px",
+                    fontSize: "0.85rem",
+                    textDecoration: "none",
+                  }}>
+                  Download <FaArrowDown />
+                </a>
               </div>
-            ))}
+            ))
+          ) : (
+            <p
+              style={{ textAlign: "center", color: "#777", marginTop: "20px" }}>
+              No documents uploaded in this category yet.
+            </p>
+          )}
         </div>
-      </main>
-      {/* <Footer /> */}
+      </div>
     </div>
   );
 };
