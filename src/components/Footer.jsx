@@ -357,7 +357,9 @@ const Footer = () => {
                   }}
                 />
               </div>
-              <div className="input-group" style={{ marginBottom: "15px" }}>
+              <div
+                className="input-group select-subjects"
+                style={{ marginBottom: "15px" }}>
                 <label
                   style={{
                     display: "block",
