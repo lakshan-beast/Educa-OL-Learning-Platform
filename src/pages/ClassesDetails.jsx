@@ -458,8 +458,15 @@
 // export default ClassesDetails;
 
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { completeShedules } from "../data/completeShedule";
-import { FaClock, FaVideo, FaBell, FaCalendarCheck } from "react-icons/fa6";
+import {
+  FaClock,
+  FaVideo,
+  FaBell,
+  FaCalendarCheck,
+  FaArrowLeft,
+} from "react-icons/fa6";
 
 const ClassesDetails = () => {
   // 1. පරිශීලකයා තෝරන ශ්‍රේණිය (Default එක 11 වසර)
@@ -532,7 +539,20 @@ const ClassesDetails = () => {
       style={{ padding: "40px 20px" }}>
       <div
         className="class-container"
-        style={{ maxWidth: "1200px", margin: "0 auto" }}>
+        style={{ maxWidth: "1200px", margin: "0 auto", paddingTop: "5rem" }}>
+        <Link
+          to="/"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "20px",
+            color: "#4b6bfb",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}>
+          <FaArrowLeft /> Back to Home
+        </Link>
         <h2 style={{ textAlign: "center" }}>
           Weekly <span>Class Schedule</span>
         </h2>
