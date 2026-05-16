@@ -86,3 +86,44 @@
             Mobile
           </a>
         </div>
+
+
+          const handleParentLogin = (e) => {
+    e.preventDefault();
+    const cleanId = studentId.trim().toUpperCase(); // 🆕 ID එක පිරිසිදු කර ගත්තා
+    const cleanPassword = password.trim(); // 🆕 මුරපදය පිරිසිදු කර ගත්තා
+
+    // 🔍 1. Approved සිසුන්ගේ ලැයිස්තුව ඇතුළෙන් මේ ශිෂ්‍ය ID එක තියෙන කෙනාව සොයාගන්නවා
+    const studentFound = approvedStudents.find(
+      (student) => student.id === cleanId,
+    );
+
+    // 🔍 2. ළමයෙක් හමු වුණොත් විතරක් ඇතුළත ආරක්ෂාව පරීක්ෂා කරනවා (Crash වීම වැළැක්වීමට)
+    if (studentFound) {
+      // 🔍 3. ළමයාගේ ගිණුමට අදාළ රහස් Password එක දෙමාපියන් ගැහුව Password එකට සමානද බලනවා
+      if (studentFound.password === cleanPassword) {
+        setIsAuthenticated(true);
+        setSearchQuery(cleanId); // ලොග් වුණු ගමන් තමන්ගේ ළමයාගේ ID එක වගු වල ඔටෝ සර්ච් (Filter) වෙනවා
+        setError("");
+      } else {
+        setError("ඇතුළත් කළ රහස් මුරපදය (Password) වැරදියි! ❌");
+      }
+    } else {
+      setError(
+        "වලංගු නොවන හෝ අනුමත නොකළ ශිෂ්‍ය ID අංකයකි. කරුණාකර කාඩ් මාකර් සම්බන්ධ කරගන්න. ❌",
+      );
+    }
+  };
+
+  // 📅 2. අද දින පන්ති පැමිණ නැති අයගේ (Absent) ලැයිස්තුව විතරක් වෙන් කරගැනීම
+  const todayAbsentList = parentAttendanceTable.filter(
+    (r) => r.status === "Absent",
+  );
+
+  // 🔍 3. සර්ච් බාර් එක අනුව වගු වල දත්ත Filter කරගැනීම
+  const filteredFees = parentFeesTable.filter((r) =>
+    r.studentId.includes(searchQuery.trim().toUpperCase()),
+  );
+  const filteredAttendance = parentAttendanceTable.filter((r) =>
+    r.studentId.includes(searchQuery.trim().toUpperCase()),
+  );
