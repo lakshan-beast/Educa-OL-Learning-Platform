@@ -163,19 +163,19 @@ const Dashboard = () => {
   );
 
   // 1. Tasks State (Daily Mission Progress Bar එකට)
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: "Watch this week's Mathematics recording",
-      completed: false,
-    },
-    {
-      id: 2,
-      text: "Complete the Science short-note summary",
-      completed: false,
-    },
-    { id: 3, text: "Check your active class notifications", completed: false },
-  ]);
+  // const [tasks, setTasks] = useState([
+  //   {
+  //     id: 1,
+  //     text: "Watch this week's Mathematics recording",
+  //     completed: false,
+  //   },
+  //   {
+  //     id: 2,
+  //     text: "Complete the Science short-note summary",
+  //     completed: false,
+  //   },
+  //   { id: 3, text: "Check your active class notifications", completed: false },
+  // ]);
 
   // 2. Countdown State (2026 O/L Exam - Target Date: Dec 1, 2026)
   const [countdown, setCountdown] = useState({
@@ -217,20 +217,20 @@ const Dashboard = () => {
   // ☀️ 3. Dynamic Greeting Calculator Logic
   const getGreeting = () => {
     const hr = new Date().getHours();
-    if (hr < 12) return "Good Morning ☀️";
+    if (hr < 12) return `Good Morning ☀️`;
     if (hr < 17) return "Good Afternoon ⛅";
     return "Good Evening 🌙";
   };
 
   // Progress Bar එකේ ප්‍රතිශතය හැදීම
-  const completedCount = tasks.filter((t) => t.completed).length;
-  const progressPercent = Math.round((completedCount / tasks.length) * 100);
+  // const completedCount = tasks.filter((t) => t.completed).length;
+  // const progressPercent = Math.round((completedCount / tasks.length) * 100);
 
-  const toggleTask = (id) => {
-    setTasks(
-      tasks.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)),
-    );
-  };
+  // const toggleTask = (id) => {
+  //   setTasks(
+  //     tasks.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)),
+  //   );
+  // };
 
   // 🔒 Subject Lock Checking Logic
   const hasAccess = (subLetter) => {
@@ -291,7 +291,7 @@ const Dashboard = () => {
           {/* වම් පැත්තේ කොටස: Daily Mission & Core Classes */}
           <div className="main-dash-content">
             {/* 🎯 B. Daily Mission & Interactive Progress Bar */}
-            <div
+            {/* <div
               className="card-containers tasks-card"
               style={{
                 // background: "red",
@@ -302,7 +302,7 @@ const Dashboard = () => {
               }}></div>
             <h3>Daily Focus Mission</h3>
 
-            {/* Progress Bar UI */}
+            {/* Progress Bar UI *
             <div
               className="progress-container"
               style={{ margin: "15px 0 25px" }}>
@@ -336,7 +336,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Task Checklist */}
+            {/* Task Checklist *
             <div
               className="tasks-list"
               style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -365,7 +365,7 @@ const Dashboard = () => {
                   {t.text}
                 </label>
               ))}
-            </div>
+            </div>*/}
           </div>
 
           {/* 🔒 C. Core Subject Enrolment & Content Locking Area */}
