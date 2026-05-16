@@ -242,7 +242,7 @@ const PaperHub = () => {
       }}>
       <div
         className="system-container"
-        style={{ maxWidth: "900px", margin: "0 auto" }}>
+        style={{ maxWidth: "900px", margin: "0 auto", paddingTop: "5rem" }}>
         {/* Back to Dashboard ලින්ක් එක */}
         <Link
           to="/dashboard"
