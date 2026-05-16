@@ -169,7 +169,7 @@ const ScoreAnalytics = () => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: filteredRecords.length > 0 ? "1fr 1fr" : "1fr",
+          gridTemplateColumns: filteredRecords.length > 0 ? "1fr" : "1fr",
           gap: "30px",
         }}>
         {/* 📝 A. පේපර් දත්ත ඇතුළත් කරන FORM එක */}
