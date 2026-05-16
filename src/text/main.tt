@@ -1,0 +1,293 @@
+<div className="parent-main-dashboard">
+            {/* 📢 A. GENERAL NOTICE BOARD */}
+            <div
+              className="card-container"
+              style={{
+                background: "white",
+                padding: "25px",
+                borderRadius: "20px",
+                marginBottom: "30px",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.02)",
+              }}>
+              <h3
+                style={{
+                  color: "#26136d",
+                  margin: "0 0 15px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                }}>
+                <FaBell style={{ color: "#ff4b2b" }} /> පොදු පන්ති නිවේදන පුවරුව
+                (Notice Board)
+              </h3>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                }}>
+                {parentGeneralNotices.map((notice) => (
+                  <div
+                    key={notice.id}
+                    style={{
+                      background: "#fff4f2",
+                      padding: "12px 15px",
+                      borderRadius: "10px",
+                      borderLeft: "4px solid #f7786f",
+                    }}>
+                    <p
+                      style={{
+                        margin: 0,
+                        fontSize: "0.9rem",
+                        color: "#333",
+                        lineHeight: "1.5",
+                      }}>
+                      <span
+                        style={{
+                          background: "#f7786f",
+                          color: "white",
+                          padding: "2px 8px",
+                          borderRadius: "5px",
+                          fontSize: "0.75rem",
+                          fontWeight: "bold",
+                          marginRight: "10px",
+                        }}>
+                        {notice.type}
+                      </span>
+                      {notice.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 🔍 B. SEARCH PORTAL BAR */}
+            <div
+              style={{
+                background: "white",
+                padding: "20px",
+                borderRadius: "15px",
+                display: "flex",
+                alignItems: "center",
+                gap: "15px",
+                marginBottom: "30px",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.01)",
+              }}>
+              <FaMagnifyingGlass
+                style={{ color: "#26136d", fontSize: "1.2rem" }}
+              />
+              <input
+                type="text"
+                placeholder="දරුවාගේ ID අංකය ගසා සර්ච් කරන්න (Search Student ID...)"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style={{
+                  width: "100%",
+                  border: "none",
+                  outline: "none",
+                  fontSize: "1rem",
+                  fontWeight: "600",
+                  textTransform: "uppercase",
+                }}
+              />
+            </div>
+
+            {/* 💰 C. FEES REPORT TABLE */}
+            <div
+              className="card-container"
+              style={{
+                background: "white",
+                padding: "25px",
+                borderRadius: "20px",
+                marginBottom: "30px",
+                overflowX: "auto",
+              }}>
+              <h3 style={{ color: "#26136d", marginBottom: "15px" }}>
+                <FaMoneyCheckDollar style={{ color: "#2ecc71" }} /> පන්ති ගාස්තු
+                වාර්තා වගුව (Class Fees Status)
+              </h3>
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  fontSize: "0.92rem",
+                  textAlign: "left",
+                }}>
+                <thead>
+                  <tr style={{ background: "#26136d", color: "white" }}>
+                    <th style={{ padding: "12px" }}>Student ID</th>
+                    <th style={{ padding: "12px" }}>Class</th>
+                    <th style={{ padding: "12px" }}>Grade</th>
+                    <th style={{ padding: "12px" }}>Status</th>
+                    <th style={{ padding: "12px" }}>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredFees.map((row, i) => (
+                    <tr
+                      key={i}
+                      style={{
+                        borderBottom: "1px solid #eee",
+                        background:
+                          row.studentId === studentId.toUpperCase()
+                            ? "#fffde9"
+                            : "transparent",
+                      }}>
+                      <td style={{ padding: "12px", fontWeight: "bold" }}>
+                        {row.studentId}
+                      </td>
+                      <td style={{ padding: "12px" }}>{row.class}</td>
+                      <td style={{ padding: "12px" }}>Grade {row.grade}</td>
+                      <td
+                        style={{
+                          padding: "12px",
+                          color: row.feesStatus === "Paid" ? "green" : "red",
+                          fontWeight: "bold",
+                        }}>
+                        {row.feesStatus === "Paid" ? "✓ Paid" : "✗ Unpaid"}
+                      </td>
+                      <td style={{ padding: "12px", fontWeight: "bold" }}>
+                        {row.amount}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* 📅 D. ATTENDANCE REPORT TABLE */}
+            <div
+              className="card-container"
+              style={{
+                background: "white",
+                padding: "25px",
+                borderRadius: "20px",
+                marginBottom: "30px",
+                overflowX: "auto",
+              }}>
+              <h3 style={{ color: "#26136d", marginBottom: "15px" }}>
+                <FaCalendarCheck style={{ color: "#4b6bfb" }} /> ශිෂ්‍ය පැමිණීමේ
+                වාර්තා වගුව (Student Attendance)
+              </h3>
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  fontSize: "0.92rem",
+                  textAlign: "left",
+                }}>
+                <thead>
+                  <tr style={{ background: "#26136d", color: "white" }}>
+                    <th style={{ padding: "12px" }}>Student ID</th>
+                    <th style={{ padding: "12px" }}>Subject</th>
+                    <th style={{ padding: "12px" }}>Date</th>
+                    <th style={{ padding: "12px" }}>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredAttendance.map((row, i) => (
+                    <tr
+                      key={i}
+                      style={{
+                        borderBottom: "1px solid #eee",
+                        background:
+                          row.studentId === studentId.toUpperCase()
+                            ? "#fffde9"
+                            : "transparent",
+                      }}>
+                      <td style={{ padding: "12px", fontWeight: "bold" }}>
+                        {row.studentId.split("-")[0] +
+                          "-" +
+                          row.studentId.split("-")[1] +
+                          "-" +
+                          row.studentId.split("-")[2] +
+                          "-XXXX-" +
+                          row.studentId.split("-")[4]}
+                      </td>
+                      <td style={{ padding: "12px" }}>{row.class}</td>
+                      <td style={{ padding: "12px" }}>{row.date}</td>
+                      <td
+                        style={{
+                          padding: "12px",
+                          color: row.status === "Present" ? "green" : "red",
+                          fontWeight: "bold",
+                        }}>
+                        {row.status}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* 📅 E. TODAY'S ABSENT LIST (පොදු ලැයිස්තුව) */}
+            <div
+              className="card-container"
+              style={{
+                background: "white",
+                padding: "25px",
+                borderRadius: "20px",
+                overflowX: "auto",
+                border: "1px solid rgba(231,76,60,0.2)",
+              }}>
+              <h3 style={{ color: "#c0392b", marginBottom: "15px" }}>
+                <FaUserXmark /> අද දින පන්තියට පැමිණ නැති සිසුන් (Today's Absent
+                Student IDs)
+              </h3>
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  fontSize: "0.92rem",
+                  textAlign: "left",
+                }}>
+                <thead>
+                  <tr style={{ background: "#e74c3c", color: "white" }}>
+                    <th style={{ padding: "12px" }}>Absent Student ID</th>
+                    <th style={{ padding: "12px" }}>Subject</th>
+                    <th style={{ padding: "12px" }}>Grade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {todayAbsentList.map((row, i) => (
+                    <tr
+                      key={i}
+                      style={{
+                        borderBottom: "1px solid #fdedec",
+                        background:
+                          row.studentId === studentId.toUpperCase()
+                            ? "#fdf2f2"
+                            : "transparent",
+                      }}>
+                      <td
+                        style={{
+                          padding: "12px",
+                          fontWeight: "bold",
+                          color: "#c0392b",
+                        }}>
+                        {row.studentId}
+                      </td>
+                      <td style={{ padding: "12px" }}>{row.class}</td>
+                      <td style={{ padding: "12px" }}>Grade {row.grade}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <button
+              onClick={() => setIsAuthenticated(false)}
+              className="start-btn"
+              style={{ width: "100%", marginTop: "30px", padding: "12px" }}>
+              පද්ධතියෙන් පිටවීම (Logout Portal)
+            </button>
+          </div>
+
+
+
+
+
+
+
+
+          
