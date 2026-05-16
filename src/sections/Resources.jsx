@@ -9,11 +9,11 @@ import {
   FaRocket,
   FaCircleQuestion,
   FaPenToSquare,
-  FaFilePdf,
+  // FaFilePdf,
   FaUserShield,
 } from "react-icons/fa6";
 
-import PaperImg from "../assets/resources.webp";
+// import PaperImg from "../assets/resources.webp";
 import Tools from "../assets/study.webp";
 import Comments from "../assets/comments.webp";
 import Results from "../assets/results.webp";
@@ -54,48 +54,6 @@ const Resources = () => {
           </Link>
         </div>
 
-        {/* 1. Smart Tools Card */}
-        <div className="resources-card" data-aos="fade-up" data-aos-delay="400">
-          <span className="card-badge card-badge-new">
-            <FaRocket className="icon" /> New Tools
-          </span>
-          <img src={Tools} loading="lazy" alt="Study Tools" />
-          <h3>
-            <FaToolbox /> Smart Study Tools
-          </h3>
-          <p>
-            Boost your productivity with our specialized O/L study calculators
-            and timers.
-          </p>
-          {/* <Link to="/tools" className="browse-btn">
-            Open Tools
-          </Link> */}
-          <button disabled="disabled" className="browse-btn">
-            Maintenance Tool
-          </button>
-        </div>
-
-        {/* 2. Student Reviews Card */}
-        <div className="resources-card" data-aos="fade-up" data-aos-delay="500">
-          <span className="card-badge card-badge-verified">
-            <FaCircleCheck className="icon" /> Verified
-          </span>
-          <img src={Comments} loading="lazy" alt="Student Reviews" />
-          <h3>
-            <FaComments /> Student Voices
-          </h3>
-          <p>
-            See what students say about classes & their learning experience with
-            us.
-          </p>
-          {/* <Link to="/reviews" className="browse-btn">
-            Read Reviews
-          </Link> */}
-          <button disabled="disabled" className="browse-btn">
-            Maintenance Tool
-          </button>
-        </div>
-
         {/* 3. Official Results Card */}
         <div
           className="resources-card result-check"
@@ -120,6 +78,48 @@ const Resources = () => {
             rel="noopener noreferrer">
             Check Your Results
           </a>
+        </div>
+
+        {/* 2. Student Reviews Card */}
+        <div className="resources-card" data-aos="fade-up" data-aos-delay="500">
+          <span className="card-badge card-badge-verified">
+            <FaCircleCheck className="icon" /> Verified
+          </span>
+          <img src={Comments} loading="lazy" alt="Student Reviews" />
+          <h3>
+            <FaComments /> Student Voices
+          </h3>
+          <p>
+            See what students say about classes & their learning experience with
+            us.
+          </p>
+          {/* <Link to="/reviews" className="browse-btn">
+            Read Reviews
+          </Link> */}
+          <button disabled="disabled" className="browse-btn">
+            Maintenance Tool
+          </button>
+        </div>
+
+        {/* 1. Smart Tools Card */}
+        <div className="resources-card" data-aos="fade-up" data-aos-delay="400">
+          <span className="card-badge card-badge-new">
+            <FaRocket className="icon" /> New Tools
+          </span>
+          <img src={Tools} loading="lazy" alt="Study Tools" />
+          <h3>
+            <FaToolbox /> Smart Study Tools
+          </h3>
+          <p>
+            Boost your productivity with our specialized O/L study calculators
+            and timers.
+          </p>
+          {/* <Link to="/tools" className="browse-btn">
+            Open Tools
+          </Link> */}
+          <button disabled="disabled" className="browse-btn">
+            Maintenance Tool
+          </button>
         </div>
 
         {/* 4. Daily Questions Card */}
@@ -164,7 +164,7 @@ const Resources = () => {
         </div>
 
         {/* 6. Paper Hub Card */}
-        <div className="resources-card" data-aos="fade-up" data-aos-delay="900">
+        {/* <div className="resources-card" data-aos="fade-up" data-aos-delay="900">
           <span className="card-badge card-badge-new">
             <FaRocket className="icon" /> New Papers
           </span>
@@ -182,7 +182,7 @@ const Resources = () => {
           <button disabled="disabled" className="browse-btn">
             Maintenance Tool
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
