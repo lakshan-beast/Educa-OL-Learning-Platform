@@ -4,7 +4,7 @@ import {
   parentGeneralNotices,
   parentFeesTable,
   parentAttendanceTable,
-} from "../data/parentProtalData";
+} from "../data/parentPortalData";
 import {
   FaUserShield,
   FaKey,
@@ -15,6 +15,8 @@ import {
   FaUserXmark,
   FaArrowLeft,
 } from "react-icons/fa6";
+
+import { allApprovedStudents } from "../data/approvedStudents";
 
 const ParentPortal = () => {
   // Gate Security States
@@ -27,50 +29,78 @@ const ParentPortal = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   // 🔒 1. Login Security Gate Handler
+  // const handleParentLogin = (e) => {
+  //   e.preventDefault();
+  //   // const cleanId = studentId.trim().toUpperCase();
+  //   const cleanPassword = password.trim(); // 🆕
+
+  //   // ගාස්තු වගුවේ හෝ පැමිණීම් වගුවේ මේ ID එක තියෙනවාද බලනවා
+  //   // const isIdValid = parentFeesTable.some((r) => r.studentId === cleanId);
+
+  //   const studentFound = allApprovedStudents.find(
+  //     (grade11All) => grade11All.id === cleanPassword,
+  //   );
+
+  //   if (studentFound.password === cleanPassword) {
+  //     // PIN එක ගැලපෙනවාද බැලීම (ID එක අග තියෙන PIN එක සමඟ සසඳයි)
+  //     if (cleanPassword.endsWith(password.trim())) {
+  //       setIsAuthenticated(true);
+  //       setSearchQuery(cleanPassword); // ලොග් වුණු ගමන් තමන්ගේ ළමයාගේ ID එක ඔටෝ සර්ච් වෙනවා
+  //       setError("");
+  //     } else {
+  //       setError("ඇතුළත් කළ රහස් අංකය (PIN) වැරදියි! ❌");
+  //     }
+  //   } else {
+  //     setError(
+  //       "වලංගු නොවන ශිෂ්‍ය ID අංකයකි. කරුණාකර කාඩ් මාකර් සම්බන්ධ කරගන්න. ❌",
+  //     );
+  //   }
+  // };
+
+  // 🔒 1. Login Security Gate Handler (දෙමාපිය මුරපද ලොගින් පද්ධතිය)
   const handleParentLogin = (e) => {
     e.preventDefault();
-    const cleanId = studentId.trim().toUpperCase();
-    const cleanPassword = password.trim(); // 🆕
+    const cleanId = studentId.trim().toUpperCase(); // 🆕 ළමයාගේ ID එක ගත්තා
+    const cleanPassword = password.trim(); // 🆕 ළමයාගේ රහස් Password එක ගත්තා
 
-    // ගාස්තු වගුවේ හෝ පැමිණීම් වගුවේ මේ ID එක තියෙනවාද බලනවා
-    // const isIdValid = parentFeesTable.some((r) => r.studentId === cleanId);
-
-    const studentFound = parentFeesTable.find(
+    // 🔍 1. Approved සිසුන්ගේ ලැයිස්තුව ඇතුළෙන් මේ ශිෂ්‍ය ID එක තියෙන කෙනාව සර්ච් කරලා හොයාගන්නවා
+    const studentFound = allApprovedStudents.find(
       (student) => student.id === cleanId,
     );
 
-    if (studentFound.password === cleanPassword) {
-      // PIN එක ගැලපෙනවාද බැලීම (ID එක අග තියෙන PIN එක සමඟ සසඳයි)
-      if (cleanId.endsWith(password.trim())) {
+    // 🔍 2. ළමයෙක් හමු වුණොත් විතරක් ඇතුළත ආරක්ෂාව පරීක්ෂා කරනවා (Crash වීම වැළැක්වීමට)
+    if (studentFound) {
+      // 🔍 3. ළමයාගේ ගිණුමට අදාළ රහස් Password එක දෙමාපියන් ගැහුව Password එකට සමානද බලනවා
+      if (studentFound.password === cleanPassword) {
         setIsAuthenticated(true);
-        setSearchQuery(cleanId); // ලොග් වුණු ගමන් තමන්ගේ ළමයාගේ ID එක ඔටෝ සර්ච් වෙනවා
+        setSearchQuery(cleanId); // ලොග් වුණු ගමන් තමන්ගේ ළමයාගේ ID එක වගු වල ඔටෝ සර්ච් (Filter) වෙනවා
         setError("");
       } else {
-        setError("ඇතුළත් කළ රහස් අංකය (PIN) වැරදියි! ❌");
+        setError("ඇතුළත් කළ රහස් මුරපදය (Password) වැරදියි! ❌");
       }
     } else {
       setError(
-        "වලංගු නොවන ශිෂ්‍ය ID අංකයකි. කරුණාකර කාඩ් මාකර් සම්බන්ධ කරගන්න. ❌",
+        "වලංගු නොවන හෝ අනුමත නොකළ ශිෂ්‍ය ID අංකයකි. කරුණාකර කාඩ් මාකර් සම්බන්ධ කරගන්න. ❌",
       );
     }
   };
-
-  // 📅 2. අද දින පන්ති පැමිණ නැති අයගේ (Absent) ලැයිස්තුව විතරක් වෙන් කරගැනීම
+  // 📅 2. අද දින පන්ති පැමිණ නැති අයගේ (Absent) ලැයිස්තුව වෙන් කරගැනීම (Not Defined Error Fix)
   const todayAbsentList = parentAttendanceTable.filter(
     (r) => r.status === "Absent",
   );
 
-  // 🔍 3. සර්ච් බාර් එක අනුව වගු වල දත්ත Filter කරගැනීම
+  // 🔍 3. සර්ච් බාර් එක අනුව වගු වල දත්ත Filter කරගැනීම (Not Defined Error Fix)
   const filteredFees = parentFeesTable.filter((r) =>
     r.studentId.includes(searchQuery.trim().toUpperCase()),
   );
+
   const filteredAttendance = parentAttendanceTable.filter((r) =>
     r.studentId.includes(searchQuery.trim().toUpperCase()),
   );
 
   return (
     <div
-      className="parent-portal-wrapper page-container"
+      className="parent-portal-wrapper"
       style={{
         padding: "40px 20px",
         background: "#f8faff",
@@ -78,7 +108,7 @@ const ParentPortal = () => {
       }}>
       <div
         className="system-container"
-        style={{ maxWidth: "1000px", margin: "0 auto" }}>
+        style={{ maxWidth: "1000px", margin: "0 auto", paddingTop: "5rem" }}>
         <Link
           to="/"
           style={{
@@ -179,14 +209,11 @@ const ParentPortal = () => {
                     display: "block",
                     marginBottom: "5px",
                   }}>
-                  <FaKey /> රහස් අංකය (4-Digit PIN)
+                  <FaKey /> රහස් මුරපදය (Password)
                 </label>
                 <input
                   type="password"
-                  // maxLength="4"
-                  placeholder="XXXXXXXX
-                  
-                  "
+                  placeholder="Enter your password"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -332,7 +359,7 @@ const ParentPortal = () => {
                 marginBottom: "30px",
                 overflowX: "auto",
               }}>
-              <h3 style={{ color: "#26136d", marginBottom: "15px" }}>
+              <h3>
                 <FaMoneyCheckDollar style={{ color: "#2ecc71" }} /> පන්ති ගාස්තු
                 වාර්තා වගුව (Class Fees Status)
               </h3>
@@ -342,6 +369,7 @@ const ParentPortal = () => {
                   borderCollapse: "collapse",
                   fontSize: "0.92rem",
                   textAlign: "left",
+                  marginTop: "15px",
                 }}>
                 <thead>
                   <tr style={{ background: "#26136d", color: "white" }}>
@@ -395,16 +423,18 @@ const ParentPortal = () => {
                 marginBottom: "30px",
                 overflowX: "auto",
               }}>
-              <h3 style={{ color: "#26136d", marginBottom: "15px" }}>
+              <h3>
                 <FaCalendarCheck style={{ color: "#4b6bfb" }} /> ශිෂ්‍ය පැමිණීමේ
                 වාර්තා වගුව (Student Attendance)
               </h3>
+
               <table
                 style={{
                   width: "100%",
                   borderCollapse: "collapse",
                   fontSize: "0.92rem",
                   textAlign: "left",
+                  marginTop: "15px",
                 }}>
                 <thead>
                   <tr style={{ background: "#26136d", color: "white" }}>
@@ -426,13 +456,7 @@ const ParentPortal = () => {
                             : "transparent",
                       }}>
                       <td style={{ padding: "12px", fontWeight: "bold" }}>
-                        {row.studentId.split("-")[0] +
-                          "-" +
-                          row.studentId.split("-")[1] +
-                          "-" +
-                          row.studentId.split("-")[2] +
-                          "-XXXX-" +
-                          row.studentId.split("-")[4]}
+                        {row.studentId}
                       </td>
                       <td style={{ padding: "12px" }}>{row.class}</td>
                       <td style={{ padding: "12px" }}>{row.date}</td>
@@ -479,36 +503,55 @@ const ParentPortal = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {todayAbsentList.map((row, i) => (
-                    <tr
-                      key={i}
-                      style={{
-                        borderBottom: "1px solid #fdedec",
-                        background:
-                          row.studentId === studentId.toUpperCase()
-                            ? "#fdf2f2"
-                            : "transparent",
-                      }}>
-                      <td
+                  {todayAbsentList.map((row, i) => {
+                    const idParts = row.studentId.split("-");
+                    // 🧠 Array Crash Error එක නිවැරදි කර නමේ මුල් අකුරු 3 පමණක් පෙන්වන සුරක්ෂිත Masking ලොජික් එක
+                    const maskedName = idParts[3]
+                      ? idParts[3].substring(0, 3) + "XXXX"
+                      : "XXXX";
+                    const finalMaskedId = `${idParts[0]}-${idParts[1]}-${idParts[2]}-${maskedName}-${idParts[4]}`;
+
+                    return (
+                      <tr
+                        key={i}
                         style={{
-                          padding: "12px",
-                          fontWeight: "bold",
-                          color: "#c0392b",
+                          borderBottom: "1px solid #fdedec",
+                          background:
+                            row.studentId === studentId.toUpperCase()
+                              ? "#fdf2f2"
+                              : "transparent",
                         }}>
-                        {row.studentId}
-                      </td>
-                      <td style={{ padding: "12px" }}>{row.class}</td>
-                      <td style={{ padding: "12px" }}>Grade {row.grade}</td>
-                    </tr>
-                  ))}
+                        <td
+                          style={{
+                            padding: "12px",
+                            fontWeight: "bold",
+                            color: "#c0392b",
+                          }}>
+                          {finalMaskedId}
+                        </td>
+                        <td style={{ padding: "12px" }}>{row.class}</td>
+                        <td style={{ padding: "12px" }}>Grade {row.grade}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
 
             <button
               onClick={() => setIsAuthenticated(false)}
-              className="browse-btn"
-              style={{ width: "100%", marginTop: "30px", padding: "12px" }}>
+              className="start-btn"
+              style={{
+                width: "100%",
+                marginTop: "30px",
+                padding: "12px",
+                background: "#26136d",
+                color: "white",
+                border: "none",
+                borderRadius: "10px",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}>
               පද්ධතියෙන් පිටවීම (Logout Portal)
             </button>
           </div>
