@@ -1,9 +1,11 @@
 // import React from 'react';
+import { Link } from "react-router-dom";
 import {
   FaClock,
   FaCalendarDays,
   FaUserTie,
   FaLocationDot,
+  FaArrowLeft,
 } from "react-icons/fa6";
 
 const FullTimetable = () => {
@@ -37,7 +39,20 @@ const FullTimetable = () => {
 
   return (
     <div className="timetable-page page-container">
-      <div className="system-container">
+      <div className="system-container" style={{ paddingTop: "5rem" }}>
+        <Link
+          to="/"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "20px",
+            color: "#4b6bfb",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}>
+          <FaArrowLeft /> Back to Home
+        </Link>
         <h2 className="section-title">
           Weekly <span>Class Schedule</span>
         </h2>
