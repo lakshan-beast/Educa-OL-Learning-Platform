@@ -131,7 +131,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
     };
 
     setPaymentRecords([newPayment, ...paymentRecords]);
-    setFormData({ studentId: "", month: "May", amount: "1500" });
+    setFormData({ studentId: "", month: "May", amount: "1000" });
   };
   // 📲 👑 [DYNAMIC WHATSAPP GENERATOR]: කිසිම backticks පටලැවිල්ලක් නැතිව String එකතු කරන ක්‍රමය
   const getWhatsAppLink = (row) => {
@@ -549,7 +549,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
             </thead>
             <tbody>
               {paymentRecords.map((row) => (
-                <tr key={row.id} style={{ borderBottom: "1px solid #eee" }}>
+                <tr key={row.id} style={{ borderBottom: "1px solid #eee" }}> 
                   <td style={{ padding: "12px" }}>
                     <span style={{ fontWeight: "bold", display: "block", color: "#1a0a54" }}>{row.studentId}</span>
                     <small style={{ color: "#777", fontWeight: "600" }}>Name: {row.studentName}</small>
@@ -583,11 +583,13 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
 
           </table>
         </div> {/* Grid content එක වහන div එක */}
-        
-      </div> {/* මුළු Layout එක වහන ප්‍රධාන system-container div එක */}
-//   👑 Fixed: කමෙන්ට් එක අයින් කරලා ප්‍රධාන wrapper div එක නිවැරදිව වැහුවා
+
+</div>
     </div>
-  );
+    );
 };
+      {/* </div> මුළු Layout එක වහන ප්‍රධාන system-container div එක */}
+ {/* 👑 Fixed: කමෙන්ට් එක අයින් කරලා ප්‍රධාන wrapper div එක නිවැරදිව වැහුවා */}
+    // </div>
 
 export default PaymentsVault;
