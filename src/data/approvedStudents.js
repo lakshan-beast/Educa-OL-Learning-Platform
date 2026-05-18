@@ -7,6 +7,12 @@ import { grade11Dual } from "./students/grade11/dual_classes";
 // import { grade11Science } from "./students/grade11/single_science";
 // import { grade11English } from "./students/grade11/single_english";
 
+import { grade10All } from "./students/grade10/all_classes";
+import { grade10Dual } from "./students/grade10/dual_classes";
+// import { grade10Maths } from "./students/grade10/single_maths";
+// import { grade10Science } from "./students/grade10/single_science";
+// import { grade10English } from "./students/grade10/single_english";
+
 // 10 වසරේ ලැයිස්තු (Arrays) - පසුව ඔයා මේවා හදපුවාම මෙතනට එකතු කරන්න
 // import { grade10All } from './students/grade10/all_classes';
 
@@ -14,15 +20,16 @@ import { grade11Dual } from "./students/grade11/dual_classes";
 export const allApprovedStudents = [
   ...grade11All,
   ...grade11Dual,
-  //   ...grade11Maths,
-  //   ...grade11Science,
-  //   ...grade11English,
+  // ...grade11Maths,
+  // ...grade11Science,
+  // ...grade11English,
 
-  // 10 වසරේ ඒවා හැදුවම ඒ Arrays ටිකත් මෙතනින් පල්ලෙහාට දාන්න:
-  // ...grade10All,
+  ...grade10All,
+  ...grade10Dual,
+  // ...grade10Maths,
+  // ...grade10Science,
+  // ...grade10English,
 ];
-
-// සල්ලි ගෙවලා Analytics Tracker එක Unlock කරගත්තු ළමයින්ගේ IDs විතරක් මෙතනට දාන්න
 
 import { premiumStudentsList } from "./students/premiumStudents";
 
