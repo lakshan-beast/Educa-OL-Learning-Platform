@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { allApprovedStudents } from "../../data/approvedStudents";
-import { parentAttendanceTable } from "../../data/parentPortalData";
+// import { parentAttendanceTable } from "../../data/parentPortalData";
 import {
   FaUserXmark,
   FaCirclePlus,
