@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 
 import Dashboard from "./pages/Dashboard";
 // import Login from "./pages/Login";
+import AdminDashboard from "./pages/AdminDashboard";
 
 import Home from "./pages/Home";
 import Tools from "./pages/Tools";
@@ -59,6 +60,8 @@ const App = () => {
 
       <main>
         <Routes>
+          <Route path="/admin/:subject" element={<AdminDashboard />} />
+
           <Route path="/" element={<Home />} />
           {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
