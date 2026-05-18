@@ -1,0 +1,584 @@
+
+// import { useState } from "react";
+// import { allApprovedStudents } from "../../data/approvedStudents";
+// import {
+//   FaMoneyCheckDollar,
+//   FaCirclePlus,
+//   FaUsers,
+//   FaCoins,
+//   FaMagnifyingGlass,
+//   FaWhatsapp,
+//   FaCalendarDays,
+// } from "react-icons/fa6";
+
+// const PaymentsVault = ({ selectedGrade, subject }) => {
+//   // 1. සාම්පල පන්ති ගාස්තු වාර්තා ලැයිස්තුව
+//   const [paymentRecords, setPaymentRecords] = useState([
+//     {
+//       id: 1,
+//       studentId: "EDU-MES-11-LAKSHAN-0102",
+//       studentName: "Lakshan",
+//       month: "May",
+//       amount: 1500,
+//       maths_fees: "Paid",
+//       science_fees: "Pending",
+//       english_fees: "Paid",
+//       parentMobile: "",
+//     },
+//   ]);
+
+//   const [formData, setFormData] = useState({
+//     studentId: "",
+//     month: "May",
+//     amount: "1500",
+//   });
+
+//   const [suggestions, setSuggestions] = useState([]);
+//   const [parentNumbers, setParentNumbers] = useState({}); // එක් එක් ළමයාගේ Parent Number එක තියාගන්න
+
+//   // 🕒 2. 📊 [SMART ACCOUNTING WIDGETS LOGIC]: අද දවසේ එකතු වූ මුළු මුදල සහ ළමයි ගණන සෙවීම
+//   const totalPaidStudents = paymentRecords.length;
+//   const totalRevenue = paymentRecords.reduce(
+//     (sum, record) => sum + record.amount,
+//     0,
+//   );
+
+//   // Auto-fill Input fields
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData((prev) => ({ ...prev, [name]: value }));
+//   };
+
+//   // 👑 Parent Contact Input Handler
+//   const handleParentNumberChange = (studentId, value) => {
+//     setParentNumbers((prev) => ({ ...prev, [studentId]: value }));
+//   };
+
+//   // 🧠 [SMART SEARCH LOGIC]: ID, නම, PIN හෝ Phone එකෙන් Auto-suggest වෙන හැටි
+//   const handleIdChange = (e) => {
+//     const value = e.target.value.toUpperCase();
+//     setFormData({ ...formData, studentId: value });
+
+//     if (value.trim() === "") {
+//       setSuggestions([]);
+//       return;
+//     }
+
+//     const currentSubLetter =
+//       subject === "maths"
+//         ? "M"
+//         : subject === "science"
+//           ? "S"
+//           : subject === "english"
+//             ? "E"
+//             : "";
+
+//     // මධ්‍යම ලැයිස්තුවෙන් ශ්‍රේණිය සහ විෂය ගැලපෙන ළමයි පෙරීම (Crash Guard සමඟ)
+//     const gradeFiltered = allApprovedStudents.filter((student) => {
+//       if (!student || !student.id) return false;
+//       const parts = student.id.split("-");
+//       const subCode = parts[1] || "";
+//       const currentGrade = parts[2] || "";
+//       return (
+//         currentGrade === selectedGrade && subCode.includes(currentSubLetter)
+//       );
+//     });
+
+//     // සැබෑ Filter පද්ධතිය
+//     const matched = gradeFiltered.filter((student) => {
+//       if (!student || !student.id) return false;
+//       const idParts = student.id.split("-");
+//       const namePart = idParts[3] || "";
+//       const pinPart = idParts[4] || "";
+//       const phonePart = student.parentMobile || "";
+
+//       return (
+//         student.id.includes(value) ||
+//         namePart.includes(value) ||
+//         pinPart.includes(value) ||
+//         phonePart.includes(value)
+//       );
+//     });
+
+//     setSuggestions(matched.map((student) => student.id));
+//   };
+
+//   const selectSuggestion = (id) => {
+//     setFormData({ ...formData, studentId: id });
+//     setSuggestions([]);
+//   };
+
+//   // 📥 Record Payment Submission
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     if (!formData.studentId) {
+//       alert("කරුණාකර වලංගු ශිෂ්‍ය ID එකක් තෝරන්න! ❌");
+//       return;
+//     }
+
+//     const idParts = formData.studentId.split("-");
+//     const extractedName = idParts[3] || "Student";
+
+//     // 🧠 විෂය අනුව අදාළ Fees Field එක විතරක් Cloud එකේ "Paid" වන ලොජික් එක
+//     const newPayment = {
+//       id: Date.now(),
+//       studentId: formData.studentId,
+//       studentName: extractedName,
+//       month: formData.month,
+//       amount: parseInt(formData.amount),
+//       maths_fees: subject === "maths" ? "Paid" : "Pending",
+//       science_fees: subject === "science" ? "Paid" : "Pending",
+//       english_fees: subject === "english" ? "Paid" : "Pending",
+//     };
+
+//     setPaymentRecords([newPayment, ...paymentRecords]);
+//     setFormData({ studentId: "", month: "May", amount: "1000" });
+//   };
+//   // 📲 👑 [DYNAMIC WHATSAPP GENERATOR]: කිසිම backticks පටලැවිල්ලක් නැතිව String එකතු කරන ක්‍රමය
+//   const getWhatsAppLink = (row) => {
+//     const customMobile = parentNumbers[row.studentId] || ""; // සර්ගේ අංකය හෝ ඇතුළත් කළ අංකය
+//     const cleanMobile = customMobile.trim().replace("+", "");
+
+//     // 🧠 බිංදුවෙන් පටන් ගන්න නම්බර් එකක් නම් (ex: 0771234567), බිංදුව අයින් කරලා 94 ඔටෝ එකතු කරයි
+//     if (cleanMobile.startsWith("0")) { cleanMobile = "/94" + cleanMobile.substring(1); // 0 අයින් කරලා 94 දමයි -> 94771234567 } // නම්බර් එකක් ටයිප් කරලා නැත්නම් ඔයාගේ නම්බර් එකට (Default) මැසේජ් එක යයි
+//     if (cleanMobile === "") { cleanMobile = ""; }
+
+//     // සිංහලෙන් සහ ඉංග්‍රීසියෙන් ලස්සනට හැදෙන පණිවිඩය
+//     const message =
+//       "Educa%20O/L%20Learning%20Platform%20-%20Payment%20Receipt%0A" +
+//       "---------------------------------------------%0A" +
+//       "Dear%20Parent,%20your%20child%20" +
+//       row.studentName +
+//       "%20(ID:%20" +
+//       row.studentId +
+//       ")%20" +
+//       "has%20successfully%20paid%20the%20fees%20for%20" +
+//       row.month +
+//       ".%0A%0A" +
+//       "🧠%20Maths:%20" +
+//       (row.maths_fees === "Paid" ? "✓%20Paid" : "✗%20Pending") +
+//       "%0A" +
+//       "🧪%20Science:%20" +
+//       (row.science_fees === "Paid" ? "✓%20Paid" : "✗%20Pending") +
+//       "%0A" +
+//       "🔤%20English:%20" +
+//       (row.english_fees === "Paid" ? "✓%20Paid" : "✗%20Pending") +
+//       "%0A" +
+//       "---------------------------------------------%0A" +
+//       "Thank%20You!";
+
+//     return "https://wa.me/" + cleanMobile + "?text=" + message;
+//   };
+
+//   return (
+//     <div
+//       className="vault-container"
+//       style={{ background: "white", padding: "30px", borderRadius: "20px" }}>
+//       {/* Vault Header */}
+//       <div style={{ marginBottom: "25px" }}>
+//         <h3
+//           style={{
+//             color: "#1a0a54",
+//             margin: 0,
+//             display: "flex",
+//             alignItems: "center",
+//             gap: "10px",
+//           }}>
+//           <FaMoneyCheckDollar /> Class Payments Vault ({subject?.toUpperCase()})
+//         </h3>
+//         <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
+//           ශ්‍රේණි සහ මාස අනුව ශිෂ්‍ය පන්ති ගාස්තු (Fees) වාර්තා සටහන් කර
+//           දෙමාපියන්ට WhatsApp යවන්න.
+//         </p>
+//       </div>
+
+//       {/* ==================== 📊 TOP AREA: SMART METRICS WIDGETS ==================== */}
+//       <div
+//         style={{
+//           display: "grid",
+//           gridTemplateColumns: "1fr 1fr",
+//           gap: "20px",
+//           marginBottom: "35px",
+//         }}>
+//         {/* Widget 1: Total Students */}
+//         <div
+//           style={{
+//             background: "linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%)",
+//             padding: "20px",
+//             borderRadius: "16px",
+//             display: "flex",
+//             alignItems: "center",
+//             gap: "20px",
+//             border: "1px solid #c7d2fe",
+//           }}>
+//           <div
+//             style={{
+//               width: "50px",
+//               height: "50px",
+//               background: "#4b6bfb",
+//               color: "white",
+//               borderRadius: "12px",
+//               display: "flex",
+//               justifyContent: "center",
+//               alignItems: "center",
+//               fontSize: "1.5rem",
+//             }}>
+//             <FaUsers />
+//           </div>
+//           <div>
+//             <h4
+//               style={{
+//                 margin: 0,
+//                 color: "#1e1b4b",
+//                 fontSize: "1.4rem",
+//                 fontWeight: "800",
+//               }}>
+//               {totalPaidStudents}
+//             </h4>
+//             <p
+//               style={{
+//                 margin: 0,
+//                 color: "#4338ca",
+//                 fontSize: "0.85rem",
+//                 fontWeight: "600",
+//               }}>
+//               Total Paid Students (오늘 ගෙවූ මුළු සිසුන්)
+//             </p>
+//           </div>
+//         </div>
+
+//         {/* Widget 2: Total Revenue */}
+//         <div
+//           style={{
+//             background: "linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)",
+//             padding: "20px",
+//             borderRadius: "16px",
+//             display: "flex",
+//             alignItems: "center",
+//             gap: "20px",
+//             border: "1px solid #a7f3d0",
+//           }}>
+//           <div
+//             style={{
+//               width: "50px",
+//               height: "50px",
+//               background: "#10b981",
+//               color: "white",
+//               borderRadius: "12px",
+//               display: "flex",
+//               justifyContent: "center",
+//               alignItems: "center",
+//               fontSize: "1.5rem",
+//             }}>
+//             <FaCoins />
+//           </div>
+//           <div>
+//             <h4
+//               style={{
+//                 margin: 0,
+//                 color: "#064e3b",
+//                 fontSize: "1.4rem",
+//                 fontWeight: "800",
+//               }}>
+//               Rs. {totalRevenue}/=
+//             </h4>
+//             <p
+//               style={{
+//                 margin: 0,
+//                 color: "#047857",
+//                 fontSize: "0.85rem",
+//                 fontWeight: "600",
+//               }}>
+//               Total Collected Income (එකතු වූ මුළු මුදල)
+//             </p>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* ==================== BOTTOM AREA: FORMS & TABLES ==================== */}
+//       <div
+//         style={{
+//           display: "grid",
+//           gridTemplateColumns: "1fr 1.5fr",
+//           gap: "30px",
+//         }}>
+//       {/* 📝 LEFT SIDE: RECORD NEW PAYMENT FORM */}
+//       <div
+//         style={{
+//           background: "#f8faff",
+//           padding: "20px",
+//           borderRadius: "16px",
+//           border: "1px solid #eef2ff",
+//           height: "fit-content",
+//         }}>
+//         <h4
+//           style={{
+//             margin: "0 0 15px",
+//             color: "#1a0a54",
+//             display: "flex",
+//             alignItems: "center",
+//             gap: "8px",
+//           }}>
+//           <FaCirclePlus /> Record Student Fee
+//         </h4>
+//         <form
+//           onSubmit={handleSubmit}
+//           style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+//           {/* Smart ID Search */}
+//           <div className="input-group" style={{ position: "relative" }}>
+//             <label
+//               style={{
+//                 fontWeight: "600",
+//                 fontSize: "0.85rem",
+//                 color: "#1a0a54",
+//                 display: "block",
+//                 marginBottom: "5px",
+//               }}>
+//               Search Student ID
+//             </label>
+//             <div
+//               style={{
+//                 display: "flex",
+//                 alignItems: "center",
+//                 position: "relative",
+//               }}>
+//               <input
+//                 type="text"
+//                 placeholder="Type Name, PIN or Phone..."
+//                 required
+//                 value={formData.studentId}
+//                 onChange={handleIdChange}
+//                 style={{
+//                   width: "100%",
+//                   padding: "11px 35px 11px 12px",
+//                   borderRadius: "8px",
+//                   border: "1px solid #ddd",
+//                 }}
+//               />
+//               <FaMagnifyingGlass
+//                 style={{ position: "absolute", right: "12px", color: "#aaa" }}
+//               />
+//             </div>
+
+//             {/* Auto-suggest drop-down */}
+//             {suggestions.length > 0 && (
+//               <div
+//                 style={{
+//                   position: "absolute",
+//                   top: "100%",
+//                   left: 0,
+//                   width: "100%",
+//                   background: "white",
+//                   border: "1px solid #ccc",
+//                   borderRadius: "8px",
+//                   zIndex: 10,
+//                   maxHeight: "150px",
+//                   overflowY: "auto",
+//                   boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
+//                   marginTop: "5px",
+//                 }}>
+//                 {suggestions.map((id, idx) => (
+//                   <div
+//                     key={idx}
+//                     onClick={() => selectSuggestion(id)}
+//                     style={{
+//                       padding: "10px 12px",
+//                       cursor: "pointer",
+//                       borderBottom: "1px solid #f0f0f0",
+//                       fontSize: "0.88rem",
+//                       fontWeight: "bold",
+//                       color: "#1a0a54",
+//                     }}
+//                     onMouseEnter={(e) =>
+//                       (e.target.style.background = "#f4f7ff")
+//                     }
+//                     onMouseLeave={(e) => (e.target.style.background = "white")}>
+//                     {id}
+//                   </div>
+//                 ))}
+//               </div>
+//             )}
+//           </div>
+
+//           {/* Month Selection */}
+//           <div className="input-group">
+//             <label
+//               style={{
+//                 fontWeight: "600",
+//                 fontSize: "0.85rem",
+//                 color: "#1a0a54",
+//                 display: "block",
+//                 marginBottom: "5px",
+//               }}>
+//               Select Fee Month
+//             </label>
+//             <select
+//               name="month"
+//               value={formData.month}
+//               onChange={handleInputChange}
+//               style={{
+//                 width: "100%",
+//                 padding: "10px",
+//                 borderRadius: "8px",
+//                 border: "1px solid #ddd",
+//                 fontWeight: "bold",
+//               }}>
+//               {[
+//                 "January",
+//                 "February",
+//                 "March",
+//                 "April",
+//                 "May",
+//                 "June",
+//                 "July",
+//                 "August",
+//                 "September",
+//                 "October",
+//                 "November",
+//                 "December",
+//               ].map((m) => (
+//                 <option key={m} value={m}>
+//                   {m}
+//                 </option>
+//               ))}
+//             </select>
+//           </div>
+
+//           {/* Fee Amount */}
+//           <div className="input-group">
+//             <label
+//               style={{
+//                 fontWeight: "600",
+//                 fontSize: "0.85rem",
+//                 color: "#1a0a54",
+//                 display: "block",
+//                 marginBottom: "5px",
+//               }}>
+//               Amount (LKR)
+//             </label>
+//             <input
+//               type="number"
+//               name="amount"
+//               required
+//               value={formData.amount}
+//               onChange={handleInputChange}
+//               style={{
+//                 width: "100%",
+//                 padding: "10px",
+//                 borderRadius: "8px",
+//                 border: "1px solid #ddd",
+//                 fontWeight: "bold",
+//               }}
+//             />
+//           </div>
+
+//           <button
+//             type="submit"
+//             className="start-btn"
+//             style={{
+//               width: "100%",
+//               padding: "12px",
+//               background: "#1a0a54",
+//               color: "white",
+//               border: "none",
+//               borderRadius: "8px",
+//               fontWeight: "bold",
+//               cursor: "pointer",
+//               marginTop: "5px",
+//             }}>
+//             Save & Mark Paid
+//           </button>
+//         </form>
+//       </div>
+
+// {/* 📊 RIGHT SIDE: MONTHLY PAYMENT STATUS LOG TABLE */}
+//         <div style={{ overflowX: "auto" }}>
+
+//           {/* 👑 🆕 [EXCEL DOWNLOAD HEADER BUTTON]: මාතෘකාව සහ Excel බටන් එක ලස්සනට එක පෙළට සෙට් කළා */}
+//           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "15px", flexWrap: "wrap", gap: "10px" }}>
+//             <h4 style={{ margin: 0, color: "#1a0a54", display: "flex", alignItems: "center", gap: "6px" }}>
+//               <FaCalendarDays style={{ color: "#4b6bfb" }} /> Recent Payments Entry Log (Grade {selectedGrade})
+//             </h4>
+
+//             {/* 📥 Excel ඩවුන්ලෝඩ් බටන් එක සහ එය ක්‍රියාත්මක වන ලොජික් එක */}
+//             <button
+//               onClick={() => {
+//                 if (paymentRecords.length === 0) {
+//                   alert("ඩවුන්ලෝඩ් කිරීමට දත්ත කිසිවක් නොමැත! ❌");
+//                   return;
+//                 }
+//                 // Excel එකේ උඩින්ම පේන Column මාතෘකා (Headers)
+//                 let csvContent = "data:text/csv;charset=utf-8,";
+//                 csvContent += "Student ID,Student Name,Month,Amount (LKR),Maths Fees,Science Fees,English Fees\n";
+//                 // දත්ත පේළියෙන් පේළියට එකතු කිරීම
+//                 paymentRecords.forEach((row) => {
+//                   const line = `${row.studentId},${row.studentName},${row.month},${row.amount},${row.maths_fees},${row.science_fees},${row.english_fees}`;
+//                   csvContent += line + "\n";
+//                 });
+//                 // බ්‍රවුසර් එක හරහා ඔටෝම ෆයිල් එක ලැප්ටොප් එකට ඩවුන්ලෝඩ් කරවන හැටි
+//                 const encodedUri = encodeURI(csvContent);
+//                 const link = document.createElement("a");
+//                 link.setAttribute("href", encodedUri);
+//                 link.setAttribute("download", `Payments_Report_Grade_${selectedGrade}.csv`);
+//                 document.body.appendChild(link);
+//                 link.click();
+//                 document.body.removeChild(link);
+//               }}
+//               style={{ background: "#26136d", color: "white", border: "none", padding: "8px 16px", borderRadius: "8px", fontWeight: "bold", cursor: "pointer", fontSize: "0.82rem", display: "inline-flex", alignItems: "center", gap: "8px", boxShadow: "0 4px 10px rgba(38,19,109,0.15)" }}
+//               onMouseEnter={(e) => (e.target.style.background = "#4338ca")}
+//               onMouseLeave={(e) => (e.target.style.background = "#26136d")}
+//             >
+//               📥 Export Excel Report
+//             </button>
+//           </div>
+
+// <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.88rem", textAlign: "left" }}>
+//             <thead>
+//               <tr style={{ background: "#1a0a54", color: "white" }}>
+//                 <th style={{ padding: "12px" }}>Student ID & Name</th>
+//                 <th style={{ padding: "12px" }}>Month</th>
+//                 <th style={{ padding: "12px" }}>Parent Mobile Input</th>
+//                 <th style={{ padding: "12px", textAlign: "center" }}>Action</th>
+//               </tr>
+//             </thead>
+//             <tbody>
+//               {paymentRecords.map((row) => (
+//                 <tr key={row.id} style={{ borderBottom: "1px solid #eee" }}>
+//                   <td style={{ padding: "12px" }}>
+//                     <span style={{ fontWeight: "bold", display: "block", color: "#1a0a54" }}>{row.studentId}</span>
+//                     <small style={{ color: "#777", fontWeight: "600" }}>Name: {row.studentName}</small>
+//                   </td>
+//                   <td style={{ padding: "12px", fontWeight: "bold" }}>
+//                     {row.month} <br />
+//                     <small style={{ color: "green" }}>Rs.{row.amount}/=</small>
+//                   </td>
+//                   <td style={{ padding: "12px" }}>
+//                     <input
+//                       type="text"
+//                       placeholder="Enter Parent Mobile..."
+//                       value={parentNumbers[row.studentId] || ""}
+//                       onChange={(e) => handleParentNumberChange(row.studentId, e.target.value)}
+//                       style={{ width: "135px", padding: "6px", borderRadius: "6px", border: "1px solid #ccc", fontSize: "0.8rem" }}
+//                     />
+//                   </td>
+//                   <td style={{ padding: "12px", textAlign: "center" }}>
+//                     <a
+//                       href={getWhatsAppLink(row)}
+//                       target="_blank"
+//                       rel="noopener noreferrer"
+//                       style={{ background: "#2ecc71", color: "white", padding: "8px 12px", borderRadius: "8px", display: "inline-flex", alignItems: "center", gap: "6px", textDecoration: "none", fontWeight: "bold", fontSize: "0.8rem" }}
+//                     >
+//                       <FaWhatsapp /> Share Receipt
+//                     </a>
+//                   </td>
+//                 </tr>
+//               ))}
+//             </tbody>
+
+//           </table>
+//      </div>
+//       </div>
+//     </div>
+//   );
+// };
+// export default PaymentsVault;
