@@ -1,0 +1,105 @@
+{/* 📊 RIGHT SIDE: MONTHLY PAYMENT STATUS LOG TABLE
+  <div style={{ overflowX: "auto" }}>
+    
+    {/* 👑 🆕 [EXCEL DOWNLOAD HEADER BUTTON]: මාතෘකාව සහ බටන් එක ලස්සනට එක පෙළට සෙට් කළා *
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "15px", flexWrap: "wrap", gap: "10px" }}>
+      <h4 style={{ margin: 0, color: "#1a0a54", display: "flex", alignItems: "center", gap: "6px" }}>
+        <FaCalendarDays style={{ color: "#4b6bfb" }} /> Recent Payments Entry Log (Grade {selectedGrade})
+      </h4>
+      <button 
+        onClick={exportToExcel}
+        style={{ background: "#26136d", color: "white", border: "none", padding: "8px 16px", borderRadius: "8px", fontWeight: "bold", cursor: "pointer", fontSize: "0.82rem", display: "inline-flex", alignItems: "center", gap: "8px", boxShadow: "0 4px 10px rgba(38,19,109,0.15)" }}
+        onMouseEnter={(e) => (e.target.style.background = "#4338ca")}
+        onMouseLeave={(e) => (e.target.style.background = "#26136d")}
+      >
+        📥 Export Excel Report
+      </button>
+    </div>
+
+    {/* <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.88rem", textAlign: "left" }}> */
+      {/* ... ඉතිරි ටේබල් එකේ කෝඩ් එක සාමාන්‍ය විදිහටම තියෙන්න දෙන්න ... 
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            fontSize: "0.88rem",
+            textAlign: "left",
+          }}>
+          <thead>
+            <tr style={{ background: "#1a0a54", color: "white" }}>
+              <th style={{ padding: "12px" }}>Student ID & Name</th>
+              <th style={{ padding: "12px" }}>Month</th>
+              <th style={{ padding: "12px" }}>Parent Mobile Input</th>
+              <th style={{ padding: "12px", textAlign: "center" }}>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {paymentRecords.map((row) => (
+              <tr key={row.id} style={{ borderBottom: "1px solid #eee" }}>
+                <td style={{ padding: "12px" }}>
+                  <span
+                    style={{
+                      fontWeight: "bold",
+                      display: "block",
+                      color: "#1a0a54",
+                    }}>
+                    {row.studentId}
+                  </span>
+                  <small style={{ color: "#777", fontWeight: "600" }}>
+                    Name: {row.studentName}
+                  </small>
+                </td>
+                <td style={{ padding: "12px", fontWeight: "bold" }}>
+                  {row.month} <br />
+                  <small style={{ color: "green" }}>Rs.{row.amount}/=</small>
+                </td>
+                {/* Dynamic Parent Number Input Field 
+                <td style={{ padding: "12px" }}>
+                  <input
+                    type="text"
+                    placeholder="Enter Parent Mobile..."
+                    value={parentNumbers[row.studentId] || ""}
+                    onChange={(e) =>
+                      handleParentNumberChange(row.studentId, e.target.value)
+                    }
+                    style={{
+                      width: "135px",
+                      padding: "6px",
+                      borderRadius: "6px",
+                      border: "1px solid #ccc",
+                      fontSize: "0.8rem",
+                    }}
+                  />
+                </td>
+                {/* WhatsApp Share Button Tool *
+                <td style={{ padding: "12px", textAlign: "center" }}>
+                  <a
+                    href={getWhatsAppLink(row)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      background: "#2ecc71",
+                      color: "white",
+                      padding: "8px 12px",
+                      borderRadius: "8px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      textDecoration: "none",
+                      fontWeight: "bold",
+                      fontSize: "0.8rem",
+                    }}>
+                    <FaWhatsapp /> Share Receipt
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+  );
+};
+
+export default PaymentsVault; */}
