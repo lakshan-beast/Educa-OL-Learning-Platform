@@ -438,7 +438,7 @@ import {
   FaLaptop,
   FaRightFromBracket,
   FaFolderOpen,
-  //   FaLock,
+  FaLock,
   FaUserShield,
   FaKey,
 } from "react-icons/fa6";
@@ -474,31 +474,12 @@ const AdminDashboard = () => {
   // 🔒 1. Mobile Lock Screen
   if (isMobile) {
     return (
-      <div
-        className="admin-mobile-lock"
-        style={{
-          height: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          background: "#1a0a54",
-          color: "white",
-          padding: "30px",
-          textAlign: "center",
-        }}>
-        <FaLaptop
-          style={{ fontSize: "4rem", color: "#f1c40f", marginBottom: "20px" }}
-        />
-        <h2 style={{ fontWeight: "800" }}>🔒 Restricted Access</h2>
-        <p
-          style={{
-            maxWidth: "450px",
-            fontSize: "0.95rem",
-            opacity: 0.8,
-            marginTop: "10px",
-            lineHeight: "1.6",
-          }}>
+      <div className="admin-mobile-lock">
+        <FaLaptop className="laptop" />
+        <h2>
+          <FaLock /> Restricted Access
+        </h2>
+        <p>
           ආරක්ෂිත හේතූන් මත කරුණාකර Laptop හෝ Desktop පරිගණකයකින් මෙම පද්ධතියට
           පිවිසෙන්න.
         </p>
@@ -538,57 +519,13 @@ const AdminDashboard = () => {
     <>
       {!isAuthenticated ? (
         // ==================== 🔒 SCREEN 01: ADMIN SECURE LOGIN GATEWAY ====================
-        <div
-          className="admin-login-wrapper"
-          style={{
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            background: "#f0f2f5",
-            paddingTop: "6rem",
-          }}>
-          <div
-            className="card-container"
-            style={{
-              maxWidth: "400px",
-              width: "100%",
-              padding: "35px 30px",
-              borderRadius: "20px",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.05)",
-              background: "white",
-              textAlign: "center",
-            }}>
-            <div
-              style={{
-                margin: "0 auto 15px",
-                width: "65px",
-                height: "65px",
-                background: "#1a0a54",
-                color: "white",
-                borderRadius: "50%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "1.8rem",
-              }}>
+        <div className="admin-login-wrapper">
+          <div className="card-container">
+            <div className="admin-logo">
               <FaUserShield />
             </div>
-            <h2
-              style={{
-                color: "#1a0a54",
-                fontWeight: "800",
-                textTransform: "uppercase",
-                fontSize: "1.4rem",
-              }}>
-              {subject} Faculty Login
-            </h2>
-            <p
-              style={{
-                fontSize: "0.85rem",
-                color: "#666",
-                marginBottom: "25px",
-              }}>
+            <h2>{subject} Faculty Login</h2>
+            <p>
               Enter official management credentials to unlock database hubs.
             </p>
             <form
@@ -609,7 +546,7 @@ const AdminDashboard = () => {
                     color: "#1a0a54",
                     marginBottom: "5px",
                   }}>
-                  Admin Username
+                  <FaUserShield /> Admin Username
                 </label>
                 <input
                   type="text"
@@ -653,30 +590,8 @@ const AdminDashboard = () => {
                   }}
                 />
               </div>
-              {loginError && (
-                <p
-                  style={{
-                    color: "red",
-                    fontSize: "0.85rem",
-                    marginBottom: "15px",
-                    fontWeight: "500",
-                  }}>
-                  {loginError}
-                </p>
-              )}
-              <button
-                type="submit"
-                className="start-btn"
-                style={{
-                  width: "100%",
-                  padding: "14px",
-                  background: "#1a0a54",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "10px",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}>
+              {loginError && <p className="error-message">{loginError}</p>}
+              <button type="submit" className="start-btn admin-btn">
                 Unlock Dashboard Gate
               </button>
             </form>
@@ -684,253 +599,95 @@ const AdminDashboard = () => {
         </div>
       ) : (
         // ==================== 🔓 SCREEN 02: DYNAMIC MAIN ADMIN PORTAL ====================
-        <div
-          className="admin-dashboard-wrapper"
-          style={{
-            display: "flex",
-            height: "100vh",
-            background: "#f4f7ff",
-            width: "100%",
-            paddingTop: "6rem",
-          }}>
+        <div className="admin-dashboard-wrapper">
           {/* LEFT SIDEBAR */}
-          <aside
-            className="admin-sidebar"
-            style={{
-              width: "280px",
-              background: "#1a0a54",
-              color: "white",
-              display: "flex",
-              flexDirection: "column",
-              padding: "25px 20px",
-            }}>
-            <div
-              style={{
-                borderBottom: "1px solid rgba(255,255,255,0.1)",
-                paddingBottom: "20px",
-                marginBottom: "25px",
-              }}>
-              <h3
-                style={{
-                  textTransform: "uppercase",
-                  fontSize: "1.15rem",
-                  letterSpacing: "1px",
-                  margin: 0,
-                  fontWeight: "800",
-                }}>
-                {subject} Control
-              </h3>
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  opacity: 0.6,
-                  fontWeight: "bold",
-                }}>
-                Official Faculty Management
-              </span>
+          <aside className="admin-sidebar">
+            <div className="sidebar-header">
+              <h3>{subject} Control</h3>
+              <span>Official Faculty Management</span>
             </div>
 
-            <nav
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "8px",
-                flex: 1,
-              }}>
+            <nav>
               <button
                 onClick={() => setActiveVault("add-student")}
                 style={{
-                  width: "100%",
-                  padding: "12px 15px",
-                  borderRadius: "10px",
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  fontSize: "0.92rem",
-                  fontWeight: "600",
                   background:
                     activeVault === "add-student" ? "#ff4b2b" : "transparent",
-                  color: "white",
-                  textAlign: "left",
                 }}>
-                <FaUserPlus /> <span>1. Add Student Vault</span>
+                <FaUserPlus /> <span> Add Student Vault</span>
               </button>
               <button
                 onClick={() => setActiveVault("class-marks")}
                 style={{
-                  width: "100%",
-                  padding: "12px 15px",
-                  borderRadius: "10px",
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  fontSize: "0.92rem",
-                  fontWeight: "600",
                   background:
                     activeVault === "class-marks" ? "#ff4b2b" : "transparent",
-                  color: "white",
-                  textAlign: "left",
                 }}>
-                <FaGraduationCap /> <span>2. Class Paper Marks</span>
+                <FaGraduationCap /> <span> Class Paper Marks</span>
               </button>
               <button
                 onClick={() => setActiveVault("payments")}
                 style={{
-                  width: "100%",
-                  padding: "12px 15px",
-                  borderRadius: "10px",
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  fontSize: "0.92rem",
-                  fontWeight: "600",
                   background:
                     activeVault === "payments" ? "#ff4b2b" : "transparent",
-                  color: "white",
-                  textAlign: "left",
                 }}>
-                <FaMoneyCheckDollar /> <span>3. Payments Vault</span>
+                <FaMoneyCheckDollar /> <span> Payments Vault</span>
               </button>
               <button
                 onClick={() => setActiveVault("absent-mark")}
                 style={{
-                  width: "100%",
-                  padding: "12px 15px",
-                  borderRadius: "10px",
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  fontSize: "0.92rem",
-                  fontWeight: "600",
                   background:
                     activeVault === "absent-mark" ? "#ff4b2b" : "transparent",
-                  color: "white",
-                  textAlign: "left",
                 }}>
-                <FaUserXmark /> <span>4. Today's Absent Vault</span>
+                <FaUserXmark /> <span>Today's Absent Vault</span>
               </button>
               <button
                 onClick={() => setActiveVault("notices")}
                 style={{
-                  width: "100%",
-                  padding: "12px 15px",
-                  borderRadius: "10px",
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  fontSize: "0.92rem",
-                  fontWeight: "600",
                   background:
                     activeVault === "notices" ? "#ff4b2b" : "transparent",
-                  color: "white",
-                  textAlign: "left",
                 }}>
-                <FaBullhorn /> <span>5. Class Notice Vault</span>
+                <FaBullhorn /> <span> Class Notice Vault</span>
               </button>
             </nav>
 
-            <button
-              onClick={handleLogout}
-              style={{
-                width: "100%",
-                padding: "12px",
-                borderRadius: "10px",
-                border: "1px solid rgba(255,255,255,0.2)",
-                background: "transparent",
-                color: "#ff4d4d",
-                cursor: "pointer",
-                fontWeight: "bold",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-              }}>
+            <button className="signout-btn" onClick={handleLogout}>
               <FaRightFromBracket /> Sign Out Panel
             </button>
           </aside>
 
           {/* RIGHT MAIN CONTENT SCREEN */}
-          <main
-            style={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              overflowY: "auto",
-            }}>
-            <header
-              style={{
-                background: "white",
-                padding: "15px 40px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                boxShadow: "0 2px 10px rgba(0,0,0,0.02)",
-              }}>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "10px",
-                  background: "#f0f2f5",
-                  padding: "5px",
-                  borderRadius: "12px",
-                }}>
-                <button
-                  onClick={() => setSelectedGrade("10")}
-                  style={{
-                    padding: "8px 24px",
-                    border: "none",
-                    borderRadius: "8px",
-                    fontWeight: "700",
-                    cursor: "pointer",
-                    background:
-                      selectedGrade === "10" ? "white" : "transparent",
-                    color: selectedGrade === "10" ? "#1a0a54" : "#777",
-                  }}>
-                  Grade 10
-                </button>
+          <main>
+            <header>
+              <div className="top-content">
                 <button
                   onClick={() => setSelectedGrade("11")}
                   style={{
-                    padding: "8px 24px",
-                    border: "none",
-                    borderRadius: "8px",
-                    fontWeight: "700",
-                    cursor: "pointer",
                     background:
                       selectedGrade === "11" ? "white" : "transparent",
                     color: selectedGrade === "11" ? "#1a0a54" : "#777",
                   }}>
                   Grade 11
                 </button>
+                <button
+                  onClick={() => setSelectedGrade("10")}
+                  style={{
+                    background:
+                      selectedGrade === "10" ? "white" : "transparent",
+                    color: selectedGrade === "10" ? "#1a0a54" : "#777",
+                  }}>
+                  Grade 10
+                </button>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  fontSize: "0.9rem",
-                  fontWeight: "600",
-                  color: "#555",
-                }}>
-                <FaFolderOpen style={{ color: "#ff4b2b" }} /> Managing:{" "}
-                <span style={{ color: "#1a0a54", fontWeight: "bold" }}>
+              <div className="desc-content">
+                <FaFolderOpen className="open-folder" /> Managing:{" "}
+                <span>
                   Grade {selectedGrade} ({subject})
                 </span>
               </div>
             </header>
 
             {/* DYNAMIC CONTENT VIEWS */}
-            <div style={{ padding: "40px", flex: 1 }}>
+            <div className="dynamic-content">
               {activeVault === "add-student" && (
                 <AddStudentVault
                   selectedGrade={selectedGrade}
@@ -959,53 +716,6 @@ const AdminDashboard = () => {
               {activeVault === "notices" && (
                 <NoticeBoard selectedGrade={selectedGrade} subject={subject} />
               )}
-
-              {/* {activeVault === "payments" && (
-                //   </button>
-                <div
-                  className="card-container"
-                  style={{
-                    background: "white",
-                    padding: "30px",
-                    borderRadius: "20px",
-                  }}>
-                  <h3>💰 Monthly Fees & Payments Management</h3>
-                  <p style={{ color: "#666", fontSize: "0.85rem" }}>
-                    මාසික පන්ති ගාස්තු ගෙවීම් සටහන් කිරීම සහ දෙමාපියන්ට WhatsApp
-                    මඟින් විස්තර යැවීම.
-                  </p>
-                </div>
-              )} */}
-              {/* {activeVault === "absent-mark" && (
-                <div
-                  className="card-container"
-                  style={{
-                    background: "white",
-                    padding: "30px",
-                    borderRadius: "20px",
-                  }}>
-                  <h3>📅 Today's Absent Log System</h3>
-                  <p style={{ color: "#666", fontSize: "0.85rem" }}>
-                    අද දින පන්තියට පැමිණ නැති සිසුන්ගේ පැමිණීම සටහන් කිරීමේ
-                    වගුව.
-                  </p>
-                </div>
-              )} */}
-              {/* {activeVault === "notices" && (
-                <div
-                  className="card-container"
-                  style={{
-                    background: "white",
-                    padding: "30px",
-                    borderRadius: "20px",
-                  }}>
-                  <h3>📢 Broadcast Class Notice Board</h3>
-                  <p style={{ color: "#666", fontSize: "0.85rem" }}>
-                    සිසුන්ගේ Dashboard එකට සහ දෙමාපිය පෝටලයට එකවර ලයිව් නිවේදන
-                    නිකුත් කිරීම.
-                  </p>
-                </div>
-              )} */}
             </div>
           </main>
         </div>
