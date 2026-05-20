@@ -169,12 +169,12 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 
-import NotificationCenter from "./NotificationCenter";
+// import NotificationCenter from "./NotificationCenter";
 import Login from "../pages/Login";
 
 import {
   FaBarsStaggered,
-  FaBell,
+  // FaBell,
   FaX,
   FaHouse,
   FaHubspot,
@@ -190,7 +190,7 @@ import { FaUserCircle, FaRegUserCircle } from "react-icons/fa";
 const Header = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
-  const [showNotif, setShowNotif] = useState(false);
+  // const [showNotif, setShowNotif] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
 
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
@@ -208,14 +208,14 @@ const Header = () => {
     setIsActive(false); // ඩෑෂ්බෝඩ් යද්දී මොබයිල් මෙනු එක වහන්න
   };
 
-  const notifications = [
-    {
-      id: 1,
-      subject: "Maths",
-      message: "අද රාත්‍රී 8ට විශේෂ අමතර පන්තියක් පැවැත්වේ.",
-      time: "10 mins ago",
-    },
-  ];
+  // const notifications = [
+  //   {
+  //     id: 1,
+  //     subject: "Maths",
+  //     message: "අද රාත්‍රී 8ට විශේෂ අමතර පන්තියක් පැවැත්වේ.",
+  //     time: "10 mins ago",
+  //   },
+  // ];
 
   return (
     <>
@@ -233,6 +233,8 @@ const Header = () => {
             <div className="logo-circle">E</div>educa<span>.</span>
           </a>
 
+          {/* <div className="dekstop"></div> */}
+
           {/* ========================================================================= */}
           {/* 📱 NEW APP-STYLE MOBILE TOGGLE NAVIGATION MENU */}
           <div
@@ -240,11 +242,12 @@ const Header = () => {
             id="header-navbar">
             {/* 1. TOP CONTAINER: Logo & Close Button */}
             <div className="mobile-nav-header">
-              <span className="mobile-logo">
-                educa<span>.</span>
-              </span>
+              <div className="header-logo">
+                <div className="logo-circle">E</div>educa<span>.</span>
+              </div>
+
               <button className="mobile-close-btn" onClick={toggleMenu}>
-                <FaX />
+                <FaX className="close-icon" />
               </button>
             </div>
 
@@ -289,34 +292,26 @@ const Header = () => {
           {/* ========================================================================= */}
 
           <div className="header-actions">
-            <div
+            {/* <div
               className="notif-bell-wrapper"
               onClick={() => setShowNotif(!showNotif)}>
               <FaBell className="notif-bell" />
               {notifications.length > 0 && (
                 <span className="notif-count"></span>
               )}
-            </div>
+            </div> */}
 
-            {showNotif && (
+            {/* {showNotif && (
               <NotificationCenter
                 notifications={notifications}
                 onClose={() => setShowNotif(false)}
               />
-            )}
-            <button
-              className="sign-btn"
-              onClick={handleUserClick}
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                fontSize: "1.4rem",
-              }}>
+            )} */}
+            <button className="sign-btn" onClick={handleUserClick}>
               {isLoggedIn ? (
-                <FaUserCircle style={{ color: "#7e62e6" }} />
+                <FaUserCircle style={{ color: "#1d10ac" }} />
               ) : (
-                <FaRegUserCircle style={{ color: "#19dd43" }} />
+                <FaRegUserCircle style={{ color: "#f7786f" }} />
               )}
             </button>
           </div>
