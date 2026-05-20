@@ -1,14 +1,15 @@
 import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom"; // මෙතන Router ඕනේ නෑ
+import { Routes, Route } from "react-router-dom";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+
 import NotFound from "./pages/NotFound";
 
 import Dashboard from "./pages/Dashboard";
-// import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
 
 import Home from "./pages/Home";
@@ -23,34 +24,8 @@ import ParentPortal from "./pages/ParentPortal";
 
 const App = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
+    AOS.init({ duration: 800, once: true });
   }, []);
-
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   // 2. Firebase User check ක
-  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-  //     setLoading(false);
-  //   });
-
-  //   return () => {
-  //     unsubscribe();
-  //   };
-  // }, []);
-
-  // if (loading) {
-  //   return (
-  //     <div className="loader-wrapper">
-  //       <div className="loader-content">
-  //         <div className="spinner"></div>
-  //         <h3>Dream Track</h3>
-  //         <p>Syncing your academic progress...</p>
-  //       </div>
-  //     </div>
-  //   );
-  // };
 
   return (
     <>
