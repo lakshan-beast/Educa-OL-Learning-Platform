@@ -1,198 +1,201 @@
-.dashboard-layout {
-  display: flex;
-  gap: $flex-gap-large;
-  padding: $padding-large;
-  min-height: 100vh;
-  margin-top: 70px;
-  width: 100%;
-  max-width: $container-width-large;
-}
+// .dashboard-layout {
+//   display: flex;
+//   gap: $flex-gap-large;
+//   padding: $padding-large;
+//   min-height: 100vh;
+//   margin-top: 70px;
+//   width: 100%;
+//   max-width: $container-width-large;
+// }
 
-.dashboard-slidebar {
-  display: flex;
-  flex-direction: column;
-  gap: $flex-gap-medium;
-  padding: $padding-medium;
-  background-color: $white;
-  border-radius: $border-radius-large;
-  box-shadow: $shadow-light;
+// .dashboard-slidebar {
+//   display: flex;
+//   flex-direction: column;
+//   gap: $flex-gap-medium;
+//   padding: $padding-medium;
+//   background-color: $white;
+//   border-radius: $border-radius-large;
+//   box-shadow: $shadow-light;
 
-  .sidebar-user {
-    display: flex;
-    align-items: center;
-    gap: $flex-gap-small;
+//   .sidebar-user {
+//     display: flex;
+//     align-items: center;
+//     gap: $flex-gap-small;
 
-    img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
+//     img {
+//       width: 40px;
+//       height: 40px;
+//       border-radius: 50%;
+//     }
 
-    .user-info {
-      display: flex;
-      flex-direction: column;
+//     .user-info {
+//       display: flex;
+//       flex-direction: column;
 
-      .user-name {
-        font-weight: bold;
-        color: $dark-purple;
-      }
+//       .user-name {
+//         font-weight: bold;
+//         color: $dark-purple;
+//       }
 
-      .user-role {
-        font-size: $font-size-body;
-        color: $text-medium;
-      }
-    }
-  }
+//       .user-role {
+//         font-size: $font-size-body;
+//         color: $text-medium;
+//       }
+//     }
+//   }
 
-  .sidebar-btn {
-    background: transparent;
-    color: $dark-purple;
-    border: none;
-    text-align: left;
-    padding: $padding-small;
-    border-radius: $border-radius-small;
-    transition: $transition-fast;
+//   .sidebar-btn {
+//     background: transparent;
+//     color: $dark-purple;
+//     border: none;
+//     text-align: left;
+//     padding: $padding-small;
+//     border-radius: $border-radius-small;
+//     transition: $transition-fast;
 
-    &:hover {
-      background-color: $bg-soft;
-      color: $dark-purple;
-      border-radius: $border-radius-medium;
-      box-shadow: 0 2px 4px rgba($link-shadow, 0.5);
-    }
-  }
-}
+//     &:hover {
+//       background-color: $bg-soft;
+//       color: $dark-purple;
+//       border-radius: $border-radius-medium;
+//       box-shadow: 0 2px 4px rgba($link-shadow, 0.5);
+//     }
+//   }
+// }
 
-.dashboard-layout {
-  display: flex;
-  flex-direction: column;
-  gap: $flex-gap-large;
-  padding: $padding-large;
-  min-height: 100vh;
-  margin-top: 70px;
+// .dashboard-layout {
+//   display: flex;
+//   flex-direction: column;
+//   gap: $flex-gap-large;
+//   padding: $padding-large;
+//   min-height: 100vh;
+//   margin-top: 70px;
 
-  .dashboard-sidebar {
-    flex: 0 0 250px;
-    background-color: $white;
-    border-radius: $border-radius-large;
-    padding: $padding-large;
-    box-shadow: $shadow-light;
-    width: 250px;
+//   .dashboard-sidebar {
+//     flex: 0 0 250px;
+//     background-color: $white;
+//     border-radius: $border-radius-large;
+//     padding: $padding-large;
+//     box-shadow: $shadow-light;
+//     width: 250px;
 
-    .sidebar-user {
-      display: flex;
-      align-items: center;
-      gap: $flex-gap-small;
-      margin-bottom: $margin-large;
+//     .sidebar-user {
+//       display: flex;
+//       align-items: center;
+//       gap: $flex-gap-small;
+//       margin-bottom: $margin-large;
 
-      h3 {
-        font-weight: bold;
-        color: $dark-purple;
-      }
-    }
-  }
+//       h3 {
+//         font-weight: bold;
+//         color: $dark-purple;
+//       }
+//     }
+//   }
 
-  .sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: $flex-gap-medium;
+//   .sidebar-nav {
+//     display: flex;
+//     flex-direction: column;
+//     gap: $flex-gap-medium;
 
-    button {
-      //   background: transparent;
-      color: $dark-purple;
-      border: none;
-      text-align: left;
-      padding: $padding-small;
-      border-radius: $border-radius-small;
-      transition: $transition-fast;
+//     button {
+//       //   background: transparent;
+//       color: $dark-purple;
+//       border: none;
+//       text-align: left;
+//       padding: $padding-small;
+//       border-radius: $border-radius-small;
+//       transition: $transition-fast;
 
-      &:hover {
-        background-color: $bg-soft;
-        color: $dark-purple;
-        border-radius: $border-radius-medium;
-        box-shadow: 0 2px 4px rgba($link-shadow, 0.5);
-      }
-    }
-  }
-}
+//       &:hover {
+//         background-color: $bg-soft;
+//         color: $dark-purple;
+//         border-radius: $border-radius-medium;
+//         box-shadow: 0 2px 4px rgba($link-shadow, 0.5);
+//       }
+//     }
+//   }
+// }
 
-.dashboard-main {
-  flex: 1;
-  background-color: $white;
-  border-radius: $border-radius-large;
-  padding: $padding-large;
-  box-shadow: $shadow-light;
+// .dashboard-main {
+//   flex: 1;
+//   background-color: $white;
+//   border-radius: $border-radius-large;
+//   padding: $padding-large;
+//   box-shadow: $shadow-light;
 
-  .other-contents {
-    display: flex;
-    flex-direction: row;
-    gap: $flex-gap-large;
-    margin-bottom: $margin-large;
-  }
+//   .other-contents {
+//     display: flex;
+//     flex-direction: row;
+//     gap: $flex-gap-large;
+//     margin-bottom: $margin-large;
+//   }
 
-  .overview-content {
-    h2 {
-      color: $dark-purple;
-      margin-bottom: $margin-medium;
-    }
-  }
+//   .overview-content {
+//     h2 {
+//       color: $dark-purple;
+//       margin-bottom: $margin-medium;
+//     }
+//   }
 
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: $grid-gap-medium;
-    margin-top: 20px;
+//   .stats-grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+//     gap: $grid-gap-medium;
+//     margin-top: 20px;
 
-    .card-container {
-      background-color: $bg-soft;
-      border-radius: $border-radius-medium;
-      padding: $padding-medium;
-      text-align: center;
+//     .card-container {
+//       background-color: $bg-soft;
+//       border-radius: $border-radius-medium;
+//       padding: $padding-medium;
+//       text-align: center;
 
-      h4 {
-        color: $dark-purple;
-        margin-bottom: $margin-small;
-      }
+//       h4 {
+//         color: $dark-purple;
+//         margin-bottom: $margin-small;
+//       }
 
-      p {
-        font-size: $font-size-body;
-        color: $text-medium;
-      }
-    }
-  }
-}
+//       p {
+//         font-size: $font-size-body;
+//         color: $text-medium;
+//       }
+//     }
+//   }
+// }
 
-.papers-content {
-  h2 {
-    text-align: center;
-    color: $dark-purple;
-    font-size: $font-size-h2-m;
-    margin-bottom: $margin-xlarge;
+// .papers-content {
+//   h2 {
+//     text-align: center;
+//     color: $dark-purple;
+//     font-size: $font-size-h2-m;
+//     margin-bottom: $margin-xlarge;
 
-    span {
-      color: $primary-orange;
-    }
-  }
-}
-.tools-content {
-  h2 {
-    text-align: center;
-    color: $dark-purple;
-    font-size: $font-size-h2-m;
-    margin-bottom: $margin-xlarge;
+//     span {
+//       color: $primary-orange;
+//     }
+//   }
+// }
+// .tools-content {
+//   h2 {
+//     text-align: center;
+//     color: $dark-purple;
+//     font-size: $font-size-h2-m;
+//     margin-bottom: $margin-xlarge;
 
-    span {
-      color: $primary-orange;
-    }
-  }
-}
+//     span {
+//       color: $primary-orange;
+//     }
+//   }
+// }
 
 // --- Grade 11 Student Dashboard Styles ---
 
 .dashboard-wrapper {
   background-color: #f8faff;
-  min-height: 90vh;
-  padding: 40px 0;
+  min-height: 95vh;
+  padding: 40px 20px;
   margin-top: 5rem;
+  max-width: $container-width-large;
+  min-width: $container-width-small;
+  width: $container-width-default;
 
   // 👑 A. Premium Welcome Banner
   .welcome-banner {
@@ -220,73 +223,83 @@
     h2 {
       font-size: 2.2rem;
       font-weight: 800;
-      margin-bottom: 5px;
+      margin-bottom: 15px;
       letter-spacing: -0.5px;
     }
-    p {
+    .student-id {
       font-size: 0.95rem;
-      opacity: 0.85;
+      opacity: 0.8;
+      margin-top: 5px;
+      font-size: 0.95rem;
+      border-bottom: 2px solid;
+      padding-bottom: 6px;
+      margin-bottom: 6px;
+    }
+    .motivation-text {
+      margin-top: 15px;
+      font-style: italic;
+      font-size: 0.9rem;
+      background-color: #fffbf0;
+      color: $blue-soft;
+      padding: 6px 12px;
+      border-radius: 6px;
     }
   }
 
   // 🎚️ Dashboard Layout Grid
   .dashboard-grid {
     display: grid;
-    grid-template-columns: 1fr; // Mobile එකේදී පල්ලෙහාට එනවා
+    grid-template-columns: 1fr;
     gap: 30px;
-
-    @include respond(desktop) {
-      grid-template-columns: 2.2fr 1fr; // වම් පැත්ත පළලයි
-    }
   }
 
   // 🎯 B. Daily Mission Card
-  .tasks-card {
-    background: $white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    border: 1px solid #edf2f9;
-    margin-bottom: 30px;
+  // .tasks-card {
+  //   background: $white;
+  //   padding: 30px;
+  //   border-radius: 20px;
+  //   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  //   border: 1px solid #edf2f9;
+  //   margin-bottom: 30px;
 
-    h3 {
-      color: $dark-purple2;
-      font-size: 1.3rem;
-      font-weight: 700;
-    }
+  //   h3 {
+  //     color: $dark-purple2;
+  //     font-size: 1.3rem;
+  //     font-weight: 700;
+  //   }
 
-    .progress-container {
-      margin: 20px 0;
+  //   .progress-container {
+  //     margin: 20px 0;
 
-      div {
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: $dark-blue;
-      }
-    }
+  //     div {
+  //       font-size: 0.85rem;
+  //       font-weight: 700;
+  //       color: $dark-blue;
+  //     }
+  //   }
 
-    .tasks-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+  //   .tasks-list {
+  //     display: flex;
+  //     flex-direction: column;
+  //     gap: 14px;
 
-      label {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 0.95rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
+  //     label {
+  //       display: flex;
+  //       align-items: center;
+  //       gap: 12px;
+  //       font-size: 0.95rem;
+  //       font-weight: 500;
+  //       transition: all 0.3s ease;
 
-        input[type="checkbox"] {
-          width: 18px;
-          height: 18px;
-          accent-color: #2ecc71; // ඉවර වුණාම කොළ පාට වෙනවා
-          cursor: pointer;
-        }
-      }
-    }
-  }
+  //       input[type="checkbox"] {
+  //         width: 18px;
+  //         height: 18px;
+  //         accent-color: #2ecc71; // ඉවර වුණාම කොළ පාට වෙනවා
+  //         cursor: pointer;
+  //       }
+  //     }
+  //   }
+  // }
 
   // 🔒 C. Subject Portals & Locking Design
   .subjects-section {
@@ -295,30 +308,58 @@
       font-size: 1.3rem;
       font-weight: 700;
       margin-bottom: 20px;
+      text-align: center;
     }
 
     .subjects-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 12px 20px;
+      margin-bottom: 3rem;
+      padding: 1rem 0 2rem 0;
 
       .subject-portal-card {
         background: $white;
-        padding: 24px;
-        border-radius: 18px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        padding: 24px 16px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         border: 1px solid #edf2f9;
         transition: all 0.3s ease;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        // position: relative;
 
         h4 {
           color: $dark-purple2;
           font-size: 1.25rem;
           font-weight: 700;
+          display: inline;
         }
         p {
-          margin: 4px 0 15px;
+          margin: 5px 0 15px;
+          font-size: 0.85rem;
+          color: $text-medium;
+        }
+
+        .not-allowed {
+          font-size: 0.8rem;
+          font-weight: bold;
+          color: #cc0000;
+        }
+
+        .paper-btn {
+          padding: 8px 16px;
+          font-size: 0.85rem;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: 200px;
+          margin: 0;
         }
 
         // 🔒 විෂය ලොක් වී ඇති විට ලැබෙන පෙනුම
@@ -326,10 +367,29 @@
           background: #fdfdfe;
           border-left-color: #e74c3c !important; // රතු පාට ඉරක්
           cursor: not-allowed;
+          display: flex;
+          justify-content: space-around;
+          flex-direction: row;
+          align-items: center;
+          background: #ff7e7e;
+          color: white;
+          padding: 4px 10px;
+          border-radius: 10px;
+          font-weight: bold;
+          padding: 24px 16px;
+          opacity: 0.5;
+          text-align: center;
 
-          h4,
-          p {
-            opacity: 0.5;
+          h4 {
+            font-size: 0.65rem;
+            margin: 0 16px;
+            color: white;
+            border-left: 2px solid;
+            padding-left: 6px;
+          }
+          .lock-icon {
+            font-size: 2rem;
+            color: red;
           }
         }
       }
@@ -349,11 +409,15 @@
       color: $dark-purple1;
       font-size: 1.1rem;
       font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
     .countdown-tiles {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 12px;
       margin: 20px 0;
 
@@ -367,7 +431,10 @@
           font-size: 1.8rem;
           font-weight: 800;
           color: $dark-purple2;
-          line-height: 1.2;
+          margin: 0;
+        }
+        .seconds {
+          color: #ff4b2b;
         }
         small {
           font-size: 0.75rem;
@@ -377,5 +444,123 @@
         }
       }
     }
+    p {
+      font-size: 0.8rem;
+      text-align: right;
+    }
   }
+}
+
+// Premium tracker zone
+.premium-tracker-zone {
+  margin-top: 40px;
+
+  .premium-lock-card {
+    background: linear-gradient(135deg, #fffdf6 0%, #fff9e6 100%);
+    padding: 30px;
+    border-radius: 24px;
+    border: 2px solid #f1c40f;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(241, 196, 15, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .premium-crown-logo {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    background: #f1bc0f;
+    color: #513e6b;
+    padding: 30px;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-radius: 50%;
+
+    .crown {
+      font-size: 2rem;
+    }
+  }
+
+  .premium-lock-logo {
+    margin: 0 auto 20px;
+    width: 70px;
+    height: 70px;
+    background: #f1c40f;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    box-shadow: 0 8px 15px rgba(241, 196, 15, 0.3);
+  }
+
+  h3 {
+    color: #26136d;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 0 0 10px;
+  }
+  .premium-desc {
+    color: #555;
+    max-width: 500px;
+    margin: 0 auto 25px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .offer-content {
+    background: white;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px dashed #f1c40f;
+    margin-bottom: 25px;
+
+    .offer-text {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: #777;
+      font-weight: bold;
+    }
+
+    h2 {
+      margin: 5px 0 0;
+      color: #e67e22;
+      font-weight: 900;
+      font-size: 2rem;
+    }
+
+    .old-price {
+      font-size: 1rem;
+      color: #aaa;
+      text-decoration: line-through;
+      font-weight: normal;
+    }
+  }
+  .claim-btn {
+    background: #2ecc71;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+  }
+}
+
+.signout-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 12px;
+  border-color: #ff4b2b;
+  color: #ffc4b9;
+  background-color: #ff2f0a;
 }
