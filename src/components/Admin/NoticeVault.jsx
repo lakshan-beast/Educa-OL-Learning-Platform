@@ -92,7 +92,7 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1.4fr",
+          gridTemplateColumns: "1fr",
           gap: "30px",
         }}>
         {/* 📝 LEFT SIDE: POST NEW NOTICE FORM */}
