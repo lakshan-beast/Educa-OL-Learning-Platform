@@ -320,3 +320,53 @@
 };
 
 export default Footer; 
+
+
+
+// admin 
+ {/* {activeVault === "payments" && (
+                //   </button>
+                <div
+                  className="card-container"
+                  style={{
+                    background: "white",
+                    padding: "30px",
+                    borderRadius: "20px",
+                  }}>
+                  <h3>💰 Monthly Fees & Payments Management</h3>
+                  <p style={{ color: "#666", fontSize: "0.85rem" }}>
+                    මාසික පන්ති ගාස්තු ගෙවීම් සටහන් කිරීම සහ දෙමාපියන්ට WhatsApp
+                    මඟින් විස්තර යැවීම.
+                  </p>
+                </div>
+              )} */}
+              {/* {activeVault === "absent-mark" && (
+                <div
+                  className="card-container"
+                  style={{
+                    background: "white",
+                    padding: "30px",
+                    borderRadius: "20px",
+                  }}>
+                  <h3>📅 Today's Absent Log System</h3>
+                  <p style={{ color: "#666", fontSize: "0.85rem" }}>
+                    අද දින පන්තියට පැමිණ නැති සිසුන්ගේ පැමිණීම සටහන් කිරීමේ
+                    වගුව.
+                  </p>
+                </div>
+              )} */}
+              {/* {activeVault === "notices" && (
+                <div
+                  className="card-container"
+                  style={{
+                    background: "white",
+                    padding: "30px",
+                    borderRadius: "20px",
+                  }}>
+                  <h3>📢 Broadcast Class Notice Board</h3>
+                  <p style={{ color: "#666", fontSize: "0.85rem" }}>
+                    සිසුන්ගේ Dashboard එකට සහ දෙමාපිය පෝටලයට එකවර ලයිව් නිවේදන
+                    නිකුත් කිරීම.
+                  </p>
+                </div>
+              )} */}
