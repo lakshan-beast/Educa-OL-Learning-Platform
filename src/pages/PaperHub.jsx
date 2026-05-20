@@ -173,7 +173,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { paperHub11Data } from "../data/papers/paperHub11Data";
 import {
-  FaBookBookmark,
+  // FaBookBookmark,
   FaFilePdf,
   FaArrowDown,
   FaArrowLeft,
@@ -221,9 +221,7 @@ const PaperHub = () => {
   // වැරදි විෂය ID එකක් ආවොත් බ්ලොක් වීම වැළැක්වීම
   if (!currentSubjectData) {
     return (
-      <div
-        className="page-container"
-        style={{ textAlign: "center", padding: "50px" }}>
+      <div className="page-container">
         <h3>Subject Hub Not Found! ❌</h3>
         <Link to="/dashboard" className="start-btn">
           Back to Dashboard
@@ -233,69 +231,24 @@ const PaperHub = () => {
   }
 
   return (
-    <div
-      className="paper-hub-wrapper page-container"
-      style={{
-        padding: "40px 20px",
-        background: "#f8faff",
-        minHeight: "88vh",
-      }}>
-      <div
-        className="system-container"
-        style={{ maxWidth: "900px", margin: "0 auto", paddingTop: "5rem" }}>
+    <div className="paper-hub-wrapper page-container">
+      <div className="system-container">
         {/* Back to Dashboard ලින්ක් එක */}
-        <Link
-          to="/dashboard"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "20px",
-            color: "#4b6bfb",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}>
+        <Link className="back-btn" to="/dashboard">
           <FaArrowLeft /> Back to Dashboard
         </Link>
 
         {/* 👑 Subject Header Title */}
-        <div
-          className="subject-vault-header"
-          style={{
-            background: "linear-gradient(135deg, #26136d 0%, #1a0a54 100%)",
-            color: "white",
-            padding: "30px",
-            borderRadius: "20px",
-            marginBottom: "30px",
-            boxShadow: "0 10px 20px rgba(38,19,109,0.1)",
-          }}>
-          <h2
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              margin: 0,
-            }}>
-            <FaBookBookmark style={{ color: "#ff4b2b" }} />{" "}
-            {currentSubjectData.title}
-          </h2>
-          <p style={{ margin: "5px 0 0", opacity: 0.8, fontSize: "0.9rem" }}>
+        <div className="subject-vault-header">
+          <h2>{currentSubjectData.title}</h2>
+          <p>
             Grade 11 • All structural tutes, past papers and materials are
             verified.
           </p>
         </div>
 
         {/* 🎛️ TABS MENU (Tutes, Past Papers, Formulas මාරු වෙන බටන්ස්) */}
-        <div
-          className="paper-tabs-container"
-          style={{
-            display: "flex",
-            gap: "10px",
-            borderBottom: "2px solid #ddd",
-            paddingBottom: "10px",
-            marginBottom: "25px",
-            flexWrap: "wrap",
-          }}>
+        <div className="paper-tabs-container">
           <button
             className={`tab-btn ${activeTab === "tutes" ? "active-paper-tab" : ""}`}
             onClick={() => setActiveTab("tutes")}
@@ -345,9 +298,7 @@ const PaperHub = () => {
         </div>
 
         {/* 📄 CONTENT ZONE (තෝරාගත් Tab එකට අදාළ PDF ලැයිස්තුව ලස්සනට පෙන්වීම) */}
-        <div
-          className="papers-list-grid"
-          style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+        <div className="papers-list-grid">
           {currentSubjectData[activeTab] &&
           currentSubjectData[activeTab].length > 0 ? (
             currentSubjectData[activeTab].map((paper) => (
@@ -400,24 +351,14 @@ const PaperHub = () => {
                   href={paper.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="start-btn"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "8px 16px",
-                    fontSize: "0.85rem",
-                    textDecoration: "none",
-                  }}>
-                  Download <FaArrowDown />
+                  className="browse-btn">
+                  Download
+                  <FaArrowDown className="download-icon" />
                 </a>
               </div>
             ))
           ) : (
-            <p
-              style={{ textAlign: "center", color: "#777", marginTop: "20px" }}>
-              No documents uploaded in this category yet.
-            </p>
+            <p>No documents uploaded in this category yet.</p>
           )}
         </div>
       </div>
