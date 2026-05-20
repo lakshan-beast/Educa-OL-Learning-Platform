@@ -1,19 +1,20 @@
 .home {
+  max-width: $container-width-large;
+  min-width: $container-width-small;
+  width: $container-width-default;
   height: auto;
-  width: 100%;
   min-height: 100svh;
-  max-width: 1400px;
-  min-width: 350px;
-  z-index: 1;
   overflow: hidden;
+  z-index: 1;
 
   @include flex-custom;
 
   .columns {
+    padding: $padding-medium;
+    margin-top: $margin-xlarge;
+
     @include flex-custom(center, center, column-reverse);
-    padding: 1rem;
-    margin-top: 2rem;
-    gap: 1rem;
+    gap: $flex-gap-medium;
 
     @include respond(desktop) {
       flex-direction: row;
@@ -35,19 +36,26 @@
         text-shadow: none;
       }
     }
+
     // home buttons
     .home-buttons {
-      display: block;
       margin-top: 0.8rem;
       padding: $padding-none;
+
+      display: flex;
+      flex-direction: column;
+      align-content: flex-start;
+      flex-wrap: wrap;
 
       @include respond(tablet) {
         display: flex;
         flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
       }
 
       a {
-        width: 100%;
+        width: $container-width-default;
         max-width: 200px;
         padding: 8px 10px;
         margin-top: $margin-small;
@@ -59,17 +67,19 @@
         }
       }
     }
+
     // hero image
     img {
       margin: 2rem auto;
       height: auto;
-      max-width: 100%;
+      max-width: $container-width-default;
       object-fit: cover;
       animation: updown 10s ease-in-out infinite;
 
       @include center-everything;
     }
   }
+
   // description
   .description {
     @include respond(desktop) {
