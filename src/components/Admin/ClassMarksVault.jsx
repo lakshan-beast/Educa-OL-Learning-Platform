@@ -497,7 +497,7 @@ const ClassMarksVault = ({ selectedGrade, subject }) => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1.3fr",
+          gridTemplateColumns: "1fr",
           gap: "30px",
         }}>
         {/* 📝 FORM AREA WITH SMART SUGGESTIONS */}
