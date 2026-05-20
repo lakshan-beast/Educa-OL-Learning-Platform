@@ -139,18 +139,20 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   // FaClock,
-  FaVideo,
-  // FaBookOpen,
+  // FaVideo,
+  FaBookOpen,
   // FaUser,
   FaLock,
   // FaCheckCircle,
+  FaArrowLeft,
   FaHourglassHalf,
+  FaRightFromBracket,
 } from "react-icons/fa6";
 // import { ImOffice } from "react-icons/im";
 
 import ScoreAnalytics from "../components/ScorenAnalytics";
 import { premiumStudentsList } from "../data/approvedStudents"; // Premium ලැයිස්තුව ගත්තා
-import { FaCrown, FaWhatsapp } from "react-icons/fa6";
+import { FaCrown } from "react-icons/fa6";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -244,375 +246,53 @@ const Dashboard = () => {
   };
 
   return (
-    <div
-      className="dashboard-wrapper page-container"
-      style={{
-        padding: "40px 20px",
-        background: "#f8faff",
-        minHeight: "90vh",
-      }}>
+    <div className="dashboard-wrapper page-container">
       <div className="system-container">
+        <Link className="back-btn" to="/">
+          <FaArrowLeft /> Back to Home Page
+        </Link>
         {/* 👑 A. Dynamic Welcome Banner */}
-        <div
-          className="welcome-banner"
-          style={{
-            background: "linear-gradient(135deg, #26136d 0%, #4b6bfb 100%)",
-            color: "white",
-            padding: "30px",
-            borderRadius: "20px",
-            marginBottom: "30px",
-            boxShadow: "0 10px 20px rgba(75,107,251,0.15)",
-          }}>
+        <div className="welcome-banner">
           <h2>{getGreeting()}, Student!</h2>
-          <p style={{ opacity: 0.8, marginTop: "5px", fontSize: "0.95rem" }}>
-            Your ID: {studentId}
-          </p>
+          <p className="student-id">Your ID: {studentId}</p>
           <span> Grade 11 - 2026 O/L Batch</span>
-          <p
-            style={{
-              marginTop: "15px",
-              fontStyle: "italic",
-              fontSize: "0.9rem",
-              color: "#fffbf0",
-            }}>
+          <p className="motivation-text">
             "Success is the sum of small efforts, repeated day in and day out."
           </p>
+
+          <button onClick={handleLogout} className="browse-btn signout-btn">
+            <FaRightFromBracket />
+            Sign Out
+          </button>
         </div>
 
-        <div
-          className="dashboard-grid"
-          style={
-            {
-              // display: "grid",
-              // gridTemplateColumns: "2fr 1fr",
-              // gap: "30px",
-            }
-          }>
-          {/* වම් පැත්තේ කොටස: Daily Mission & Core Classes */}
-          <div className="main-dash-content">
-            {/* 🎯 B. Daily Mission & Interactive Progress Bar */}
-            {/* <div
-              className="card-containers tasks-card"
-              style={{
-                // background: "red",
-                padding: "25px",
-                borderRadius: "20px",
-                marginBottom: "30px",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.03)",
-              }}></div>
-            <h3>Daily Focus Mission</h3>
-
-            {/* Progress Bar UI *
-            <div
-              className="progress-container"
-              style={{ margin: "15px 0 25px" }}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  fontSize: "0.85rem",
-                  fontWeight: "bold",
-                  marginBottom: "5px",
-                  color: "#555",
-                }}>
-                <span>Mission Progress</span>
-                <span>{progressPercent}% Done</span>
-              </div>
-              <div
-                style={{
-                  width: "100%",
-                  height: "10px",
-                  background: "#eee",
-                  borderRadius: "10px",
-                  overflow: "hidden",
-                }}>
-                <div
-                  style={{
-                    width: `${progressPercent}%`,
-                    height: "100%",
-                    background: "#2ecc71",
-                    transition: "width 0.4s ease",
-                  }}></div>
-              </div>
-            </div>
-
-            {/* Task Checklist *
-            <div
-              className="tasks-list"
-              style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              {tasks.map((t) => (
-                <label
-                  key={t.id}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "12px",
-                    fontSize: "0.95rem",
-                    color: t.completed ? "#aaa" : "#333",
-                    textDecoration: t.completed ? "line-through" : "none",
-                    cursor: "pointer",
-                  }}>
-                  <input
-                    type="checkbox"
-                    checked={t.completed}
-                    onChange={() => toggleTask(t.id)}
-                    style={{
-                      width: "18px",
-                      height: "18px",
-                      accentColor: "#2ecc71",
-                    }}
-                  />
-                  {t.text}
-                </label>
-              ))}
-            </div>*/}
-          </div>
-
-          {/* 🔒 C. Core Subject Enrolment & Content Locking Area */}
-          {/* <div className="subjects-section">
-            <h3 style={{ marginBottom: "20px" }}>
-              Your Enrolled Class Portals
-            </h3>
-            <div
-              className="subjects-grid"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr",
-                gap: "20px",
-              }}>
-              {/* 1. MATHEMATICS PORTAL *
-              <div
-                className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
-                style={{
-                  background: "white",
-                  padding: "20px",
-                  borderRadius: "15px",
-                  borderLeft: "5px solid #4b6bfb",
-                  opacity: hasAccess("M") ? 1 : 0.6,
-                  position: "relative",
-                }}>
-                {!hasAccess("M") && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "15px",
-                      right: "15px",
-                      background: "#ff4d4d",
-                      color: "white",
-                      padding: "4px 10px",
-                      borderRadius: "10px",
-                      fontSize: "0.75rem",
-                      fontWeight: "bold",
-                    }}>
-                    <FaLock /> Locked
-                  </div>
-                )}
-                <h4>O/L Mathematics</h4>
-                <p
-                  style={{
-                    fontSize: "0.85rem",
-                    color: "#666",
-                    margin: "5px 0 15px",
-                  }}>
-                  Instructor: Sir 01
-                </p>
-                {hasAccess("M") ? (
-                  <button
-                    className="start-btn"
-                    style={{ padding: "8px 16px", fontSize: "0.85rem" }}>
-                    <FaVideo /> Enter Live / Recordings
-                  </button>
-                ) : (
-                  <p
-                    style={{
-                      fontSize: "0.8rem",
-                      color: "#cc0000",
-                      fontWeight: "bold",
-                    }}>
-                    Not enrolled in this subject. Contact card marker.
-                  </p>
-                )}
-              </div>
-
-              {/* 2. SCIENCE PORTAL 
-              <div
-                className={`ubject-portal-card ${!hasAccess("S") ? "locked" : ""}`}
-                style={{
-                  background: "white",
-                  padding: "20px",
-                  borderRadius: "15px",
-                  borderLeft: "5px solid #2ecc71",
-                  opacity: hasAccess("S") ? 1 : 0.6,
-                  position: "relative",
-                }}>
-                {!hasAccess("S") && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "15px",
-                      right: "15px",
-                      background: "#ff4d4d",
-                      color: "white",
-                      padding: "4px 10px",
-                      borderRadius: "10px",
-                      fontSize: "0.75rem",
-                      fontWeight: "bold",
-                    }}>
-                    <FaLock /> Locked
-                  </div>
-                )}
-                <h4>O/L Science</h4>
-                <p
-                  style={{
-                    fontSize: "0.85rem",
-                    color: "#666",
-                    margin: "5px 0 15px",
-                  }}>
-                  Instructor: Sir 02
-                </p>
-                {hasAccess("S") ? (
-                  <button
-                    className="start-btn"
-                    style={{ padding: "8px 16px", fontSize: "0.85rem" }}>
-                    <FaVideo /> Enter Live / Recordings
-                  </button>
-                ) : (
-                  <p
-                    style={{
-                      fontSize: "0.8rem",
-                      color: "#cc0000",
-                      fontWeight: "bold",
-                    }}>
-                    Not enrolled in this subject. Contact card marker.
-                  </p>
-                )}
-              </div>
-              {/* 3. ENGLISH PORTAL *
-              <div
-                className={`subject-portal-card ${!hasAccess("E") ? "locked" : ""}`}
-                style={{
-                  background: "white",
-                  padding: "20px",
-                  borderRadius: "15px",
-                  borderLeft: "5px solid #ff9f43",
-                  opacity: hasAccess("E") ? 1 : 0.6,
-                  position: "relative",
-                }}>
-                {!hasAccess("E") && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "15px",
-                      right: "15px",
-                      background: "#ff4d4d",
-                      color: "white",
-                      padding: "4px 10px",
-                      borderRadius: "10px",
-                      fontSize: "0.75rem",
-                      fontWeight: "bold",
-                    }}>
-                    <FaLock /> Locked
-                  </div>
-                )}
-                <h4>O/L English</h4>
-                <p
-                  style={{
-                    fontSize: "0.85rem",
-                    color: "#666",
-                    margin: "5px 0 15px",
-                  }}>
-                  Instructor: Sir 03
-                </p>
-                {hasAccess("E") ? (
-                  <button
-                    className="start-btn"
-                    style={{ padding: "8px 16px", fontSize: "0.85rem" }}>
-                    <FaVideo /> Enter Live / Recordings
-                  </button>
-                ) : (
-                  <p
-                    style={{
-                      fontSize: "0.8rem",
-                      color: "#cc0000",
-                      fontWeight: "bold",
-                    }}>
-                    Not enrolled in this subject. Contact card marker.
-                  </p>
-                )}
-              </div>
-            </div>
-          </div> */}
-
+        <div className="dashboard-grid">
           {/* 🔒 C. Core Subject Enrolment & Paper Hub Redirection Area */}
+
           <div className="subjects-section">
-            <h3 style={{ marginBottom: "20px" }}>
-              Your Enrolled Class Portals
-            </h3>
-            <div
-              className="subjects-grid"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr",
-                gap: "20px",
-              }}>
+            <h3>Your Enrolled Class Portals</h3>
+            <div className="subjects-grid">
               {/* 1. MATHEMATICS PORTAL */}
               <div
                 className={`subject-portal-card ${!hasAccess("M") ? "locked" : ""}`}
                 style={{
-                  background: "white",
-                  padding: "20px",
-                  borderRadius: "15px",
-                  borderLeft: "5px solid #4b6bfb",
+                  borderLeft: "5px solid #2e78cc",
                   opacity: hasAccess("M") ? 1 : 0.6,
-                  position: "relative",
                 }}>
                 {!hasAccess("M") && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "15px",
-                      right: "15px",
-                      background: "#ff4d4d",
-                      color: "white",
-                      padding: "4px 10px",
-                      borderRadius: "10px",
-                      fontSize: "0.75rem",
-                      fontWeight: "bold",
-                    }}>
-                    <FaLock /> Locked
+                  <div className="locked">
+                    <FaLock className="lock-icon" /> Locked
                   </div>
                 )}
-                <h4>O/L Mathematics</h4>
-                <p
-                  style={{
-                    fontSize: "0.85rem",
-                    color: "#666",
-                    margin: "5px 0 15px",
-                  }}>
-                  Instructor: Sir 01
-                </p>
+
+                <h4>Mathematics Papers</h4>
                 {hasAccess("M") ? (
                   // 🟢 දැන් මේක බටන් එකක් නෙවෙයි, කෙලින්ම maths id එක අරන් යන ස්මාර්ට් ලින්ක් එකක්
-                  <Link
-                    to="/paper-hub/maths"
-                    className="start-btn"
-                    style={{
-                      padding: "8px 16px",
-                      fontSize: "0.85rem",
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}>
-                    <FaVideo /> Enter Subject Hub
+                  <Link to="/paper-hub/maths" className="browse-btn paper-btn">
+                    <FaBookOpen /> Paper Hub
                   </Link>
                 ) : (
-                  <p
-                    style={{
-                      fontSize: "0.8rem",
-                      color: "#cc0000",
-                      fontWeight: "bold",
-                    }}>
+                  <p className="not-allowed ">
                     Not enrolled in this subject. Contact card marker.
                   </p>
                 )}
@@ -622,60 +302,24 @@ const Dashboard = () => {
               <div
                 className={`subject-portal-card ${!hasAccess("S") ? "locked" : ""}`}
                 style={{
-                  background: "white",
-                  padding: "20px",
-                  borderRadius: "15px",
                   borderLeft: "5px solid #2ecc71",
                   opacity: hasAccess("S") ? 1 : 0.6,
-                  position: "relative",
                 }}>
                 {!hasAccess("S") && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "15px",
-                      right: "15px",
-                      background: "#ff4d4d",
-                      color: "white",
-                      padding: "4px 10px",
-                      borderRadius: "10px",
-                      fontSize: "0.75rem",
-                      fontWeight: "bold",
-                    }}>
-                    <FaLock /> Locked
+                  <div className="locked">
+                    <FaLock className="lock-icon" />
                   </div>
                 )}
-                <h4>O/L Science</h4>
-                <p
-                  style={{
-                    fontSize: "0.85rem",
-                    color: "#666",
-                    margin: "5px 0 15px",
-                  }}>
-                  Instructor: Sir 02
-                </p>
+                <h4>Science Papers</h4>
                 {hasAccess("S") ? (
                   // 🟢 Science Paper Hub එකට යන ලින්ක් එක
                   <Link
                     to="/paper-hub/science"
-                    className="start-btn"
-                    style={{
-                      padding: "8px 16px",
-                      fontSize: "0.85rem",
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}>
-                    <FaVideo /> Enter Subject Hub
+                    className="browse-btn paper-btn">
+                    <FaBookOpen /> Paper Hub
                   </Link>
                 ) : (
-                  <p
-                    style={{
-                      fontSize: "0.8rem",
-                      color: "#cc0000",
-                      fontWeight: "bold",
-                    }}>
+                  <p className="not-allowed ">
                     Not enrolled in this subject. Contact card marker.
                   </p>
                 )}
@@ -685,60 +329,24 @@ const Dashboard = () => {
               <div
                 className={`subject-portal-card ${!hasAccess("E") ? "locked" : ""}`}
                 style={{
-                  background: "white",
-                  padding: "20px",
-                  borderRadius: "15px",
                   borderLeft: "5px solid #ff9f43",
                   opacity: hasAccess("E") ? 1 : 0.6,
-                  position: "relative",
                 }}>
                 {!hasAccess("E") && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "15px",
-                      right: "15px",
-                      background: "#ff4d4d",
-                      color: "white",
-                      padding: "4px 10px",
-                      borderRadius: "10px",
-                      fontSize: "0.75rem",
-                      fontWeight: "bold",
-                    }}>
-                    <FaLock /> Locked
+                  <div className="locked">
+                    <FaLock className="lock-icon" /> Locked
                   </div>
                 )}
-                <h4>O/L English</h4>
-                <p
-                  style={{
-                    fontSize: "0.85rem",
-                    color: "#666",
-                    margin: "5px 0 15px",
-                  }}>
-                  Instructor: Sir 03
-                </p>
+                <h4>English Papers</h4>
                 {hasAccess("E") ? (
                   // 🟢 English Paper Hub එකට යන ලින්ක් එක
                   <Link
                     to="/paper-hub/english"
-                    className="start-btn"
-                    style={{
-                      padding: "8px 16px",
-                      fontSize: "0.85rem",
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}>
-                    <FaVideo /> Enter Subject Hub
+                    className="browse-btn paper-btn">
+                    <FaBookOpen /> Paper Hub
                   </Link>
                 ) : (
-                  <p
-                    style={{
-                      fontSize: "0.8rem",
-                      color: "#cc0000",
-                      fontWeight: "bold",
-                    }}>
+                  <p className="not-allowed">
                     Not enrolled in this subject. Contact card marker.
                   </p>
                 )}
@@ -750,229 +358,70 @@ const Dashboard = () => {
         {/* දකුණු පැත්තේ කොටස: Countdown Clock & Actions */}
         <div className="side-dash-content">
           {/* ⏰ D. 2026 O/L Exam Countdown Clock Area */}
-          <div
-            className="card-container countdown-card"
-            style={{
-              background: "white",
-              padding: "20px",
-              borderRadius: "20px",
-              textAlign: "center",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.03)",
-            }}>
-            <h4
-              style={{
-                color: "#26136d",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-              }}>
+          <div className="card-container countdown-card">
+            <h4>
               <FaHourglassHalf /> O/L 2026 Countdown
             </h4>
-            <div
-              className="countdown-tiles"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "10px",
-                margin: "20px 0",
-              }}>
-              <div
-                style={{
-                  background: "#f4f7ff",
-                  padding: "10px",
-                  borderRadius: "10px",
-                }}>
-                <h3 style={{ color: "#26136d", margin: 0 }}>
-                  {countdown.days}
-                </h3>
-                <small style={{ fontSize: "0.75rem", color: "#666" }}>
-                  Days
-                </small>
+            <div className="countdown-tiles">
+              <div>
+                <h3>{countdown.days}</h3>
+                <small>Days</small>
               </div>
-              <div
-                style={{
-                  background: "#f4f7ff",
-                  padding: "10px",
-                  borderRadius: "10px",
-                }}>
-                <h3 style={{ color: "#26136d", margin: 0 }}>
-                  {countdown.hours}
-                </h3>
-                <small style={{ fontSize: "0.75rem", color: "#666" }}>
-                  Hours
-                </small>
+              <div>
+                <h3>{countdown.hours}</h3>
+                <small>Hours</small>
               </div>
-              <div
-                style={{
-                  background: "#f4f7ff",
-                  padding: "10px",
-                  borderRadius: "10px",
-                }}>
-                <h3 style={{ color: "#26136d", margin: 0 }}>
-                  {countdown.mins}
-                </h3>
-                <small style={{ fontSize: "0.75rem", color: "#666" }}>
-                  Mins
-                </small>
+              <div>
+                <h3>{countdown.mins}</h3>
+                <small>Mins</small>
               </div>
-              <div
-                style={{
-                  background: "#f4f7ff",
-                  padding: "10px",
-                  borderRadius: "10px",
-                }}>
-                <h3 style={{ color: "#ff4b2b", margin: 0 }}>
-                  {countdown.secs}
-                </h3>
-                <small style={{ fontSize: "0.75rem", color: "#666" }}>
-                  Secs
-                </small>
+              <div>
+                <h3 className="seconds">{countdown.secs}</h3>
+                <small>Secs</small>
               </div>
             </div>
-            <p style={{ fontSize: "0.8rem", color: "#777" }}>
-              * Target Date: December 01, 2026
-            </p>
+            <p>* Target Date: December 01, 2026</p>
           </div>
         </div>
 
         {/* ================================================================ */}
         {/* 👑 PREMIUM SCORE ANALYTICS ZONE */}
-        <div className="premium-tracker-zone" style={{ marginTop: "40px" }}>
+        <div className="premium-tracker-zone">
           {isPremiumUser ? (
             // 🔓 A. ළමයා Premium නම්: කෙලින්ම Graph පද්ධතිය වැඩ කරනවා
             <ScoreAnalytics />
           ) : (
             // 🔒 B. ළමයා සාමාන්‍ය කෙනෙක් නම්: පේන ලස්සන Paid Lock Wall එක
-            <div
-              className="premium-lock-card"
-              style={{
-                background: "linear-gradient(135deg, #fffdf6 0%, #fff9e6 100%)",
-                padding: "40px 30px",
-                borderRadius: "24px",
-                border: "2px solid #f1c40f",
-                textAlign: "center",
-                boxShadow: "0 10px 25px rgba(241,196,15,0.15)",
-                position: "relative",
-                overflow: "hidden",
-              }}>
+            <div className="premium-lock-card">
               {/* රන් පාට ඔටුන්න සහ ලොක් එක */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: "-20px",
-                  left: "-20px",
-                  background: "#f1c40f",
-                  color: "#26136d",
-                  padding: "40px",
-                  transform: "rotate(-45deg)",
-                  display: "flex",
-                  alignItems: "flex-end",
-                  justifyContent: "center",
-                }}>
-                <FaCrown style={{ fontSize: "1.5rem" }} />
+              <div className="premium-crown-logo">
+                <FaCrown className="crown" />
               </div>
 
-              <div
-                style={{
-                  margin: "0 auto 20px",
-                  width: "70px",
-                  height: "70px",
-                  background: "#f1c40f",
-                  color: "white",
-                  borderRadius: "50%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  fontSize: "2rem",
-                  boxShadow: "0 8px 15px rgba(241,196,15,0.3)",
-                }}>
-                <FaLock />
+              <div>
+                <FaLock className="premium-lock-logo" />
               </div>
 
-              <h3
-                style={{
-                  color: "#26136d",
-                  fontSize: "1.6rem",
-                  fontWeight: "800",
-                  margin: "0 0 10px",
-                }}>
-                Unlock O/L Progress Analytics Tracker 👑
-              </h3>
-              <p
-                style={{
-                  color: "#555",
-                  maxWidth: "500px",
-                  margin: "0 auto 25px",
-                  fontSize: "0.92rem",
-                  lineHeight: "1.6",
-                }}>
+              <h3>Unlock O/L Progress Analytics Tracker 👑</h3>
+              <p className="premium-desc">
                 Activate Sri Lanka's first smart system that can track your
                 mistakes and weaknesses by graphing your paper scores for all 9
                 of your O/L subjects individually (Line Graph).
               </p>
 
               {/* විශේෂ දීමනාව */}
-              <div
-                style={{
-                  background: "white",
-                  display: "inline-block",
-                  padding: "10px 30px",
-                  borderRadius: "15px",
-                  border: "1px dashed #f1c40f",
-                  marginBottom: "25px",
-                }}>
-                <span
-                  style={{
-                    fontSize: "0.8rem",
-                    textTransform: "uppercase",
-                    color: "#777",
-                    fontWeight: "bold",
-                  }}>
-                  Limited Lifetime Offer
-                </span>
-                <h2
-                  style={{
-                    margin: "5px 0 0",
-                    color: "#e67e22",
-                    fontWeight: "900",
-                    fontSize: "2rem",
-                  }}>
-                  LKR 490/-{" "}
-                  <span
-                    style={{
-                      fontSize: "1rem",
-                      color: "#aaa",
-                      textDecoration: "line-through",
-                      fontWeight: "normal",
-                    }}>
-                    Rs.990
-                  </span>
+              <div className="offer-content">
+                <span className="offer-text">Limited Lifetime Offer</span>
+                <h2>
+                  Free Claim <span className="old-price">Rs.990</span>
                 </h2>
               </div>
 
               {/* WhatsApp Payment Trigger Button */}
               <div>
-                <a
-                  href={`https://wa.me/94740130305?text=Hello%20Sir,%20I%20want%20to%20activate%20the%20Educa%20Premium%20Progress%20Tracker.%20My%20Student%20ID%20is:%20${studentId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="start-btn"
-                  style={{
-                    background: "#2ecc71",
-                    color: "white",
-                    padding: "14px 30px",
-                    borderRadius: "12px",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    fontWeight: "bold",
-                    textDecoration: "none",
-                    boxShadow: "0 8px 20px rgba(46,204,113,0.3)",
-                  }}>
-                  <FaWhatsapp style={{ fontSize: "1.3rem" }} /> Activate via
-                  WhatsApp Now
-                </a>
+                <button type="button" className="claim-btn start-btn">
+                  Free Claim
+                </button>
               </div>
             </div>
           )}
@@ -980,19 +429,9 @@ const Dashboard = () => {
         {/* ================================================================ */}
       </div>
 
-      <button
-        onClick={handleLogout}
-        className="browse-btn"
-        style={{
-          width: "100%",
-          marginTop: "20px",
-          padding: "12px",
-          borderRadius: "12px",
-          borderColor: "#ff4b2b",
-          color: "#ff4b2b",
-        }}>
-        Sign Out Account
-      </button>
+      {/* <button onClick={handleLogout} className="browse-btn signout-btn">
+        Sign Out
+      </button> */}
     </div>
   );
 };
