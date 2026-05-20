@@ -4,7 +4,8 @@
 
 // brand colors
 $primary-orange: #f7786f;
-$secondary-blue: #1d10ac;
+// $secondary-blue: #1d10ac;
+$secondary-blue: #1a0a54;
 $blue-light: #c6d4fa;
 $blue-medium: #4e6ab9;
 $blue-soft: #4b6bfb;
@@ -21,7 +22,7 @@ $insta-original-color: linear-gradient(
   rgba(252, 176, 69, 1) 100%
 );
 
-$linear-left: linear-gradient(135deg, #5454d9 0%, #4b6bfb 100%);
+$linear-left: linear-gradient(135deg, #4e4ef1da 0%, #000b3b 100%);
 
 // backgrounds
 // $background-linear: linear-gradient(
@@ -136,11 +137,12 @@ $margin-xxsmall: 0.1rem;
 $margin-none: 0;
 
 // container widths
-$container-width-small: 400px;
+$container-width-small: 350px;
 $container-width-medium: 800px;
-$container-width-large: 1200px;
+$container-width-large: 1400px;
 $container-width-xlarge: 1600px;
 $container-width-xxlarge: 2000px;
+$container-width-default: 100%;
 
 // container paddings
 $container-padding-small: 0.5rem;
@@ -185,3 +187,5 @@ $animation-timing-linear: linear;
 $animation-timing-ease-in: ease-in;
 $animation-timing-ease-out: ease-out;
 $animation-timing-ease-in-out: ease-in-out;
+
+// logo
