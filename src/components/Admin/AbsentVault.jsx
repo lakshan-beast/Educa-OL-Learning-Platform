@@ -140,22 +140,13 @@ const AbsentVault = ({ selectedGrade, subject }) => {
     }
   };
   return (
-    <div
-      className="vault-container"
-      style={{ background: "white", padding: "30px", borderRadius: "20px" }}>
+    <div className="vault-container">
       {/* Vault Header */}
-      <div style={{ marginBottom: "25px" }}>
-        <h3
-          style={{
-            color: "#1a0a54",
-            margin: 0,
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-          }}>
+      <div className="vault-content">
+        <h3>
           <FaUserXmark /> Today's Absent Vault ({subject?.toUpperCase()})
         </h3>
-        <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
+        <p>
           අද දින පන්තියට පැමිණ නැති සිසුන් සටහන් කරන්න. මෙම ලැයිස්තුව දෙමාපිය
           පෝටලයේ ඔටෝම අප්ඩේට් වේ.
         </p>
@@ -268,7 +259,7 @@ const AbsentVault = ({ selectedGrade, subject }) => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1.4fr",
+          gridTemplateColumns: "1fr",
           gap: "30px",
         }}>
         {/* 📝 LEFT SIDE: MARK ABSENT FORM */}
