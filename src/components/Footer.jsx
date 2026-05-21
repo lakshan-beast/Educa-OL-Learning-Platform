@@ -236,9 +236,15 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <NavHashLink smooth to="/#terms">
+              {/* <NavHashLink smooth to="/#terms">
                 <FaCaretRight className="footer-icon" /> Terms of Service
-              </NavHashLink>
+              </NavHashLink> */}
+              <Link
+                to="/terms"
+                onMouseEnter={(e) => (e.target.style.color = "#ff4b2b")}
+                onMouseLeave={(e) => (e.target.style.color = "#aaa")}>
+                <FaCaretRight className="footer-icon" /> Terms of Services
+              </Link>
             </li>
 
             <li>
