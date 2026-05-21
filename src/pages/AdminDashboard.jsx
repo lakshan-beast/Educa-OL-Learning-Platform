@@ -443,6 +443,7 @@ import {
   FaLock,
   FaUserShield,
   FaKey,
+  FaCalendarCheck,
 } from "react-icons/fa6";
 
 const AdminDashboard = () => {
@@ -656,7 +657,7 @@ const AdminDashboard = () => {
                   background:
                     activeVault === "class-shedule" ? "#ff4b2b" : "transparent",
                 }}>
-                <FaBullhorn /> <span> Class Shedule Vault</span>
+                <FaCalendarCheck /> <span> Class Shedule Vault</span>
               </button>
               <button
                 onClick={() => setActiveVault("paper-upload")}
