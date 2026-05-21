@@ -225,9 +225,15 @@ const Footer = () => {
           <h3>Legal</h3>
           <ul>
             <li>
-              <NavHashLink smooth to="/#privacy">
+              {/* <NavHashLink smooth to="/#privacy">
                 <FaCaretRight className="footer-icon" /> Privacy Policy
-              </NavHashLink>
+              </NavHashLink> */}
+              <Link
+                to="/privacy"
+                onMouseEnter={(e) => (e.target.style.color = "#ff4b2b")}
+                onMouseLeave={(e) => (e.target.style.color = "#aaa")}>
+                <FaCaretRight className="footer-icon" /> Privacy Policy
+              </Link>
             </li>
             <li>
               <NavHashLink smooth to="/#terms">
