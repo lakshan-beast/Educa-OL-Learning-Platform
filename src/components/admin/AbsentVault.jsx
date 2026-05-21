@@ -259,8 +259,8 @@ const AbsentVault = ({ selectedGrade, subject }) => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr",
-          gap: "30px",
+          gridTemplateColumns: "1fr 1.5fr",
+          gap: "50px",
         }}>
         {/* 📝 LEFT SIDE: MARK ABSENT FORM */}
         <div
