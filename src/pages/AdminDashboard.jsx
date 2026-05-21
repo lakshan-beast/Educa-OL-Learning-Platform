@@ -428,6 +428,7 @@ import ClassMarksVault from "../components/admin/ClassMarksVault";
 import PaymentsVault from "../components/admin/PaymentsVault";
 import AbsentMark from "../components/admin/AbsentVault";
 import NoticeBoard from "../components/admin/NoticeVault";
+// import NoticeBoard from "../components/admin";
 
 import {
   FaUserPlus,
