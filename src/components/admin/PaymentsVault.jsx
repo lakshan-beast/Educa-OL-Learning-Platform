@@ -194,7 +194,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns: "1fr 1.5fr",
           gap: "20px",
           marginBottom: "35px",
         }}>
@@ -327,7 +327,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1.5fr",
-          gap: "30px",
+          gap: "50px",
         }}>
         <div
           style={{
