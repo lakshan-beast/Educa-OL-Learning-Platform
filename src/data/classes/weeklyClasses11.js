@@ -46,20 +46,20 @@ export const allClassData11 = [
     },
   },
   // --- GRADE 10 CLASSES (සාම්පලයක් ලෙස) ---
-  {
-    id: "m10",
-    grade: "10",
-    subject: "Grade 10 Mathematics",
-    teacher: "Sir 01",
-    day: "Saturday",
-    startTime: "13:00",
-    endTime: "16:00",
-    statusOverride: "Canceled", // සර් නිවාඩු දුන්නොත් කෙලින්ම "Canceled" දාන්න
-    link: "#",
-    notice: {
-      lesson: "පන්තිය නොපැවැත්වේ",
-      specialNote:
-        "සර්ට සනීප නොමැති බැවින් හෙට පන්තිය නොපැවැත්වේ. ලබන සතියේ සුපුරුදු පරිදි පැවැත්වේ.",
-    },
-  },
+  // {
+  //   id: "m10",
+  //   grade: "10",
+  //   subject: "Grade 10 Mathematics",
+  //   teacher: "Sir 01",
+  //   day: "Saturday",
+  //   startTime: "13:00",
+  //   endTime: "16:00",
+  //   statusOverride: "Canceled", // සර් නිවාඩු දුන්නොත් කෙලින්ම "Canceled" දාන්න
+  //   link: "#",
+  //   notice: {
+  //     lesson: "පන්තිය නොපැවැත්වේ",
+  //     specialNote:
+  //       "සර්ට සනීප නොමැති බැවින් හෙට පන්තිය නොපැවැත්වේ. ලබන සතියේ සුපුරුදු පරිදි පැවැත්වේ.",
+  //   },
+  // },
 ];
