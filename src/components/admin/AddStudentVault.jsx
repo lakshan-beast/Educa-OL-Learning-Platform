@@ -93,8 +93,8 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
         className="styled-form"
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr",
-          gap: "20px",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "50px",
         }}>
         {/* Left Form Column */}
         <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
@@ -180,10 +180,10 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               }}
             />
           </div>
-          {/* </div> */}
+        </div>
 
-          {/* Right Form Column */}
-          {/* <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}> */}
+        {/* Right Form Column */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
           <div className="input-group">
             <label
               style={{
