@@ -428,7 +428,8 @@ import ClassMarksVault from "../components/admin/ClassMarksVault";
 import PaymentsVault from "../components/admin/PaymentsVault";
 import AbsentMark from "../components/admin/AbsentVault";
 import NoticeBoard from "../components/admin/NoticeVault";
-// import NoticeBoard from "../components/admin";
+import ClassScheduleVault from "../components/admin/ClassSheduleVault";
+import PaperHubUploadVault from "../components/admin/PaperHubUploadVault";
 
 import {
   FaUserPlus,
@@ -649,6 +650,14 @@ const AdminDashboard = () => {
                 }}>
                 <FaBullhorn /> <span> Class Notice Vault</span>
               </button>
+              <button
+                onClick={() => setActiveVault("class-shedule")}
+                style={{
+                  background:
+                    activeVault === "class-shedule" ? "#ff4b2b" : "transparent",
+                }}>
+                <FaBullhorn /> <span> Class Shedule Vault</span>
+              </button>
             </nav>
 
             <button className="signout-btn" onClick={handleLogout}>
@@ -716,6 +725,20 @@ const AdminDashboard = () => {
 
               {activeVault === "notices" && (
                 <NoticeBoard selectedGrade={selectedGrade} subject={subject} />
+              )}
+
+              {activeVault === "class-shedule" && (
+                <ClassScheduleVault
+                  selectedGrade={selectedGrade}
+                  subject={subject}
+                />
+              )}
+
+              {activeVault === "paper-hub-upload" && (
+                <PaperHubUploadVault
+                  selectedGrade={selectedGrade}
+                  subject={subject}
+                />
               )}
             </div>
           </main>
