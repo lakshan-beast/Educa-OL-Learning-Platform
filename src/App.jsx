@@ -38,10 +38,10 @@ const App = () => {
 
       <main>
         <Routes>
+          <Route path="/admin/:subject" element={<AdminDashboard />} />
+
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
-
-          <Route path="/admin/:subject" element={<AdminDashboard />} />
 
           <Route path="/" element={<Home />} />
           {/* <Route path="/login" element={<Login />} /> */}
