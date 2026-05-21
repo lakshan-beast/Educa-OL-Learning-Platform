@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  parentGeneralNotices,
+  // parentGeneralNotices,
   parentFeesTable,
   parentAttendanceTable,
 } from "../data/parentPortalData";
@@ -17,6 +17,7 @@ import {
 } from "react-icons/fa6";
 
 import { allApprovedStudents } from "../data/approvedStudents";
+import { NoticeBoard } from "../components/admin/NoticeVault";
 
 const ParentPortal = () => {
   // Gate Security States
@@ -283,7 +284,7 @@ const ParentPortal = () => {
                   flexDirection: "column",
                   gap: "12px",
                 }}>
-                {parentGeneralNotices.map((notice) => (
+                {NoticeBoard.map((notice) => (
                   <div
                     key={notice.id}
                     style={{
