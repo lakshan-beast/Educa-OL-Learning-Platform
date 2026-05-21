@@ -531,8 +531,8 @@ const PaperHubUploadVault = () => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1.3fr",
-          gap: "30px",
+          gridTemplateColumns: "1fr 1.5fr",
+          gap: "50px",
         }}>
         <div
           style={{
