@@ -158,7 +158,7 @@ const ParentPortal = () => {
                 fontWeight: "800",
                 marginBottom: "8px",
               }}>
-              දෙමාපිය පෝටලය
+              Parent Portal
             </h2>
             <p
               style={{
@@ -167,8 +167,8 @@ const ParentPortal = () => {
                 marginBottom: "25px",
                 lineHeight: "1.5",
               }}>
-              දරුවාගේ ගාස්තු වාර්තා, පැමිණීම සහ පන්ති නිවේදන රහසිගතව පරීක්ෂා
-              කිරීම සඳහා ලොග් වන්න.
+              Log in to confidentially check your child's fee records,
+              attendance, and class announcements.
             </p>
 
             <form
