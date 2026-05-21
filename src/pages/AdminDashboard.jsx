@@ -658,6 +658,17 @@ const AdminDashboard = () => {
                 }}>
                 <FaBullhorn /> <span> Class Shedule Vault</span>
               </button>
+
+              <button
+                onClick={() => setActiveVault("paper-hub-upload")}
+                style={{
+                  background:
+                    activeVault === "paper-hub-upload"
+                      ? "#ff4b2b"
+                      : "transparent",
+                }}>
+                <FaBullhorn /> <span> Class Shedule Vault</span>
+              </button>
             </nav>
 
             <button className="signout-btn" onClick={handleLogout}>
