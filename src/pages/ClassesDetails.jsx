@@ -567,7 +567,7 @@ const ClassesDetails = () => {
             margin: "20px 0",
             flexWrap: "wrap",
           }}>
-          {["6", "7", "8", "9", "10", "11"].map((grade) => (
+          {["6", "7", "8", "9", "10", "11", "Paper Class"].map((grade) => (
             <button
               key={grade}
               className={`grade-tab-btn ${selectedGrade === grade ? "active-tab" : ""}`}
