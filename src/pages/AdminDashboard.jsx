@@ -660,12 +660,10 @@ const AdminDashboard = () => {
               </button>
 
               <button
-                onClick={() => setActiveVault("paper-hub-upload")}
+                onClick={() => setActiveVault("paper-upload")}
                 style={{
                   background:
-                    activeVault === "paper-hub-upload"
-                      ? "#ff4b2b"
-                      : "transparent",
+                    activeVault === "paper-upload" ? "#ff4b2b" : "transparent",
                 }}>
                 <FaBullhorn /> <span> Paper Upload Vault</span>
               </button>
@@ -745,7 +743,7 @@ const AdminDashboard = () => {
                 />
               )}
 
-              {activeVault === "paper-hub-upload" && (
+              {activeVault === "paper-upload" && (
                 <PaperHubUploadVault
                   selectedGrade={selectedGrade}
                   subject={subject}
