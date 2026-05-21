@@ -22,6 +22,9 @@ import FullTimetable from "./pages/Timetables";
 import ClassesDetails from "./pages/ClassesDetails";
 import ParentPortal from "./pages/ParentPortal";
 
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
+
 const App = () => {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -35,6 +38,9 @@ const App = () => {
 
       <main>
         <Routes>
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+
           <Route path="/admin/:subject" element={<AdminDashboard />} />
 
           <Route path="/" element={<Home />} />
