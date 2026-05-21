@@ -427,7 +427,7 @@ import ClassMarksVault from "../components/admin/ClassMarksVault";
 import PaymentsVault from "../components/admin/PaymentsVault";
 import AbsentMark from "../components/admin/AbsentVault";
 import NoticeBoard from "../components/admin/NoticeVault";
-import ClassScheduleVault from "../components/admin/ClassscheduleVault";
+import ClassScheduleVault from "../components/admin/ClassScheduleVault";
 import PaperHubUploadVault from "../components/admin/PaperHubUploadVault";
 
 import {
