@@ -420,7 +420,7 @@
 // export default AdminDashboard;
 
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 import AddStudentVault from "../components/admin/AddStudentVault";
 import ClassMarksVault from "../components/admin/ClassMarksVault";
@@ -522,12 +522,91 @@ const AdminDashboard = () => {
     <>
       {!isAuthenticated ? (
         // ==================== 🔒 SCREEN 01: ADMIN SECURE LOGIN GATEWAY ====================
+        // <div className="admin-login-wrapper">
+        //   <div className="card-container">
+        //     <div className="admin-logo">
+        //       <FaUserShield />
+        //     </div>
+        //     <h2>{subject} Faculty Login</h2>
+        //     <p>
+        //       Enter official management credentials to unlock database hubs.
+        //     </p>
+        //     <form
+        //       onSubmit={handleAdminLogin}
+        //       className="styled-form"
+        //       style={{ textAlign: "left" }}>
+        //       <div
+        //         className="input-group"
+        //         style={{
+        //           marginBottom: "15px",
+        //           display: "flex",
+        //           flexDirection: "column",
+        //         }}>
+        //         <label
+        //           style={{
+        //             fontWeight: "600",
+        //             fontSize: "0.85rem",
+        //             color: "#1a0a54",
+        //             marginBottom: "5px",
+        //           }}>
+        //           <FaUserShield /> Admin Username
+        //         </label>
+        //         <input
+        //           type="text"
+        //           placeholder="Please Enter Your Admin User Name"
+        //           required
+        //           value={inputUsername}
+        //           onChange={(e) => setInputUsername(e.target.value)}
+        //           style={{
+        //             padding: "12px",
+        //             borderRadius: "10px",
+        //             border: "1px solid #ddd",
+        //           }}
+        //         />
+        //       </div>
+        //       <div
+        //         className="input-group"
+        //         style={{
+        //           marginBottom: "20px",
+        //           display: "flex",
+        //           flexDirection: "column",
+        //         }}>
+        //         <label
+        //           style={{
+        //             fontWeight: "600",
+        //             fontSize: "0.85rem",
+        //             color: "#1a0a54",
+        //             marginBottom: "5px",
+        //           }}>
+        //           <FaKey /> Admin Password
+        //         </label>
+        //         <input
+        //           type="password"
+        //           placeholder="••••••••••••••••"
+        //           required
+        //           value={inputPassword}
+        //           onChange={(e) => setInputPassword(e.target.value)}
+        //           style={{
+        //             padding: "12px",
+        //             borderRadius: "10px",
+        //             border: "1px solid #ddd",
+        //           }}
+        //         />
+        //       </div>
+        //       {loginError && <p className="error-message">{loginError}</p>}
+        //       <button type="submit" className="start-btn admin-btn">
+        //         Unlock Dashboard Gate
+        //       </button>
+        //     </form>
+        //   </div>
+        // </div>
+
         <div className="admin-login-wrapper">
           <div className="card-container">
             <div className="admin-logo">
               <FaUserShield />
             </div>
-            <h2>{subject} Faculty Login</h2>
+            <h2>{subject?.toUpperCase()} Faculty Login</h2>
             <p>
               Enter official management credentials to unlock database hubs.
             </p>
@@ -593,8 +672,79 @@ const AdminDashboard = () => {
                   }}
                 />
               </div>
+
+              {/* 👑 🆕 [THE LEGAL CHECKBOX MODULE]: ලොගින් එකට දැමූ නීතිමය ආරක්ෂක වැට */}
+              <div
+                className="legal-checkbox-group"
+                style={{
+                  marginBottom: "20px",
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "10px",
+                  background: "#f8faff",
+                  padding: "12px",
+                  borderRadius: "8px",
+                  border: "1px solid #eef2ff",
+                }}>
+                <input
+                  type="checkbox"
+                  id="adminLegalAgree"
+                  checked={isAgreed} // 💡 උඩින් const [isAgreed, setIsAgreed] = useState(false); ලෙස ලියන්න
+                  onChange={(e) => setIsAgreed(e.target.checked)}
+                  style={{
+                    marginTop: "3px",
+                    cursor: "pointer",
+                    width: "16px",
+                    height: "16px",
+                  }}
+                />
+                <label
+                  htmlFor="adminLegalAgree"
+                  style={{
+                    fontSize: "0.8rem",
+                    color: "#444",
+                    lineHeight: "1.4",
+                    cursor: "pointer",
+                    fontWeight: "500",
+                  }}>
+                  දත්ත හැසිරවීමේ නීතිමය වගකීමක් ලෙස මම මෙහි ඇති{" "}
+                  <Link
+                    to="/terms"
+                    target="_blank"
+                    style={{
+                      color: "#ff4b2b",
+                      fontWeight: "bold",
+                      textDecoration: "none",
+                    }}>
+                    Terms of Service
+                  </Link>{" "}
+                  සහ{" "}
+                  <Link
+                    to="/privacy"
+                    target="_blank"
+                    style={{
+                      color: "#ff4b2b",
+                      fontWeight: "bold",
+                      textDecoration: "none",
+                    }}>
+                    Privacy Policy
+                  </Link>{" "}
+                  කොන්දේසි කියවා ඒවාට එකඟ වෙමි.
+                </label>
+              </div>
+
               {loginError && <p className="error-message">{loginError}</p>}
-              <button type="submit" className="start-btn admin-btn">
+
+              {/* 👑 Checkbox එක ටික් කරනකන් බටන් එක ඔබන්න බැරි වෙන්න Lock කර ඇත */}
+              <button
+                type="submit"
+                className="start-btn admin-btn"
+                disabled={!isAgreed}
+                style={{
+                  opacity: isAgreed ? 1 : 0.5,
+                  cursor: isAgreed ? "pointer" : "not-allowed",
+                  transition: "0.3s",
+                }}>
                 Unlock Dashboard Gate
               </button>
             </form>
