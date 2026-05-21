@@ -667,7 +667,7 @@ const AdminDashboard = () => {
                       ? "#ff4b2b"
                       : "transparent",
                 }}>
-                <FaBullhorn /> <span> Class Shedule Vault</span>
+                <FaBullhorn /> <span> Paper Upload Vault</span>
               </button>
             </nav>
 
