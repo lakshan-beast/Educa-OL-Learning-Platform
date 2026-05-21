@@ -422,7 +422,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-// import { AddStudentVault } from "/src/components/Admin/AddStudentVault";
 import AddStudentVault from "../components/admin/AddStudentVault";
 import ClassMarksVault from "../components/admin/ClassMarksVault";
 import PaymentsVault from "../components/admin/PaymentsVault";
@@ -738,8 +737,8 @@ const AdminDashboard = () => {
 
               {activeVault === "class-shedule" && (
                 <ClassScheduleVault
-                  selectedGrade={selectedGrade}
-                  subject={subject}
+                // selectedGrade={selectedGrade}
+                // subject={subject}
                 />
               )}
 
@@ -749,6 +748,14 @@ const AdminDashboard = () => {
                   subject={subject}
                 />
               )}
+
+              {/* 👑 වෝල්ට් එක Schedule හෝ Paper Hub නොවන්නේ නම් පමණක් Top Tabs පෙන්වයි */}
+              {activeVault !== "class-schedule" &&
+                activeVault !== "paper-upload" && (
+                  <div className="top-grade-tabs">
+                    {/* Grade 10 & 11 Tabs... */}
+                  </div>
+                )}
             </div>
           </main>
         </div>
