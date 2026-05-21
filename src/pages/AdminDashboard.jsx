@@ -658,7 +658,6 @@ const AdminDashboard = () => {
                 }}>
                 <FaBullhorn /> <span> Class Shedule Vault</span>
               </button>
-
               <button
                 onClick={() => setActiveVault("paper-upload")}
                 style={{
