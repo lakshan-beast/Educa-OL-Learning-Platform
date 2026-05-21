@@ -458,6 +458,7 @@ const AdminDashboard = () => {
   };
 
   // 🎛️ States ਪාලනය
+  const [isAgreed, setIsAgreed] = useState(false);
   const [inputUsername, setInputUsername] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
