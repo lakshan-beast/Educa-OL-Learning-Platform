@@ -439,6 +439,7 @@ import {
   FaLaptop,
   FaRightFromBracket,
   FaFolderOpen,
+  FaFolderPlus,
   FaLock,
   FaUserShield,
   FaKey,
@@ -601,11 +602,171 @@ const AdminDashboard = () => {
         </div>
       ) : (
         // ==================== 🔓 SCREEN 02: DYNAMIC MAIN ADMIN PORTAL ====================
+        // <div className="admin-dashboard-wrapper">
+        //   {/* LEFT SIDEBAR */}
+        //   <aside className="admin-sidebar">
+        //     <div className="sidebar-header">
+        //       <h3>{subject} Control</h3>
+        //       <span>Official Faculty Management</span>
+        //     </div>
+
+        //     <nav>
+        //       <button
+        //         onClick={() => setActiveVault("add-student")}
+        //         style={{
+        //           background:
+        //             activeVault === "add-student" ? "#ff4b2b" : "transparent",
+        //         }}>
+        //         <FaUserPlus /> <span> Add Student Vault</span>
+        //       </button>
+        //       <button
+        //         onClick={() => setActiveVault("class-marks")}
+        //         style={{
+        //           background:
+        //             activeVault === "class-marks" ? "#ff4b2b" : "transparent",
+        //         }}>
+        //         <FaGraduationCap /> <span> Class Paper Marks</span>
+        //       </button>
+        //       <button
+        //         onClick={() => setActiveVault("payments")}
+        //         style={{
+        //           background:
+        //             activeVault === "payments" ? "#ff4b2b" : "transparent",
+        //         }}>
+        //         <FaMoneyCheckDollar /> <span> Payments Vault</span>
+        //       </button>
+        //       <button
+        //         onClick={() => setActiveVault("absent-mark")}
+        //         style={{
+        //           background:
+        //             activeVault === "absent-mark" ? "#ff4b2b" : "transparent",
+        //         }}>
+        //         <FaUserXmark /> <span>Today's Absent Vault</span>
+        //       </button>
+        //       <button
+        //         onClick={() => setActiveVault("notices")}
+        //         style={{
+        //           background:
+        //             activeVault === "notices" ? "#ff4b2b" : "transparent",
+        //         }}>
+        //         <FaBullhorn /> <span> Class Notice Vault</span>
+        //       </button>
+        //       <button
+        //         onClick={() => setActiveVault("class-schedule")}
+        //         style={{
+        //           background:
+        //             activeVault === "class-schedule"
+        //               ? "#ff4b2b"
+        //               : "transparent",
+        //         }}>
+        //         <FaCalendarCheck /> <span> Class schedule Vault</span>
+        //       </button>
+        //       <button
+        //         onClick={() => setActiveVault("paper-upload")}
+        //         style={{
+        //           background:
+        //             activeVault === "paper-upload" ? "#ff4b2b" : "transparent",
+        //         }}>
+        //         <FaBullhorn /> <span> Paper Upload Vault</span>
+        //       </button>
+        //     </nav>
+
+        //     <button className="signout-btn" onClick={handleLogout}>
+        //       <FaRightFromBracket /> Sign Out Panel
+        //     </button>
+        //   </aside>
+
+        //   {/* RIGHT MAIN CONTENT SCREEN */}
+        //   <main>
+        //     <header>
+        //       <div className="top-content">
+        //         <button
+        //           onClick={() => setSelectedGrade("11")}
+        //           style={{
+        //             background:
+        //               selectedGrade === "11" ? "white" : "transparent",
+        //             color: selectedGrade === "11" ? "#1a0a54" : "#777",
+        //           }}>
+        //           Grade 11
+        //         </button>
+        //         <button
+        //           onClick={() => setSelectedGrade("10")}
+        //           style={{
+        //             background:
+        //               selectedGrade === "10" ? "white" : "transparent",
+        //             color: selectedGrade === "10" ? "#1a0a54" : "#777",
+        //           }}>
+        //           Grade 10
+        //         </button>
+        //       </div>
+        //       <div className="desc-content">
+        //         <FaFolderOpen className="open-folder" /> Managing:{" "}
+        //         <span>
+        //           Grade {selectedGrade} ({subject})
+        //         </span>
+        //       </div>
+        //     </header>
+
+        //     {/* DYNAMIC CONTENT VIEWS */}
+        //     <div className="dynamic-content">
+        //       {activeVault === "add-student" && (
+        //         <AddStudentVault
+        //           selectedGrade={selectedGrade}
+        //           subject={subject}
+        //         />
+        //       )}
+
+        //       {activeVault === "class-marks" && (
+        //         <ClassMarksVault
+        //           selectedGrade={selectedGrade}
+        //           subject={subject}
+        //         />
+        //       )}
+
+        //       {activeVault === "payments" && (
+        //         <PaymentsVault
+        //           selectedGrade={selectedGrade}
+        //           subject={subject}
+        //         />
+        //       )}
+
+        //       {activeVault === "absent-mark" && (
+        //         <AbsentMark selectedGrade={selectedGrade} subject={subject} />
+        //       )}
+
+        //       {activeVault === "notices" && (
+        //         <NoticeBoard selectedGrade={selectedGrade} subject={subject} />
+        //       )}
+
+        //       {activeVault === "class-schedule" && (
+        //         <ClassScheduleVault
+        //         // selectedGrade={selectedGrade}
+        //         // subject={subject}
+        //         />
+        //       )}
+
+        //       {activeVault === "paper-upload" && (
+        //         <PaperHubUploadVault
+        //           selectedGrade={selectedGrade}
+        //           subject={subject}
+        //         />
+        //       )}
+
+        //       {/* 👑 වෝල්ට් එක Schedule හෝ Paper Hub නොවන්නේ නම් පමණක් Top Tabs පෙන්වයි */}
+        //       {activeVault !== "class-schedule" &&
+        //         activeVault !== "paper-upload" && (
+        //           <div className="top-grade-tabs">
+        //             {/* Grade 10 & 11 Tabs... */}
+        //           </div>
+        //         )}
+        //     </div>
+        //   </main>
+        // </div>
         <div className="admin-dashboard-wrapper">
-          {/* LEFT SIDEBAR */}
+          {/* 🏢 1. LEFT SIDEBAR (වම් පැත්තේ මෙනු තීරුව) */}
           <aside className="admin-sidebar">
             <div className="sidebar-header">
-              <h3>{subject} Control</h3>
+              <h3>{subject?.toUpperCase()} Control</h3>
               <span>Official Faculty Management</span>
             </div>
 
@@ -618,6 +779,7 @@ const AdminDashboard = () => {
                 }}>
                 <FaUserPlus /> <span> Add Student Vault</span>
               </button>
+
               <button
                 onClick={() => setActiveVault("class-marks")}
                 style={{
@@ -626,6 +788,7 @@ const AdminDashboard = () => {
                 }}>
                 <FaGraduationCap /> <span> Class Paper Marks</span>
               </button>
+
               <button
                 onClick={() => setActiveVault("payments")}
                 style={{
@@ -634,6 +797,7 @@ const AdminDashboard = () => {
                 }}>
                 <FaMoneyCheckDollar /> <span> Payments Vault</span>
               </button>
+
               <button
                 onClick={() => setActiveVault("absent-mark")}
                 style={{
@@ -642,6 +806,7 @@ const AdminDashboard = () => {
                 }}>
                 <FaUserXmark /> <span>Today's Absent Vault</span>
               </button>
+
               <button
                 onClick={() => setActiveVault("notices")}
                 style={{
@@ -650,23 +815,23 @@ const AdminDashboard = () => {
                 }}>
                 <FaBullhorn /> <span> Class Notice Vault</span>
               </button>
+
               <button
-                onClick={() => setActiveVault("class-schedule")}
+                onClick={() => setActiveVault("class-shedule")}
                 style={{
                   background:
-                    activeVault === "class-schedule"
-                      ? "#ff4b2b"
-                      : "transparent",
+                    activeVault === "class-shedule" ? "#ff4b2b" : "transparent",
                 }}>
-                <FaCalendarCheck /> <span> Class schedule Vault</span>
+                <FaCalendarCheck /> <span> Class Schedule Vault</span>
               </button>
+
               <button
                 onClick={() => setActiveVault("paper-upload")}
                 style={{
                   background:
                     activeVault === "paper-upload" ? "#ff4b2b" : "transparent",
                 }}>
-                <FaBullhorn /> <span> Paper Upload Vault</span>
+                <FaFolderPlus /> <span> Paper Upload Vault</span>
               </button>
             </nav>
 
@@ -674,40 +839,43 @@ const AdminDashboard = () => {
               <FaRightFromBracket /> Sign Out Panel
             </button>
           </aside>
-
-          {/* RIGHT MAIN CONTENT SCREEN */}
+          {/* 💻 2. RIGHT MAIN CONTENT SCREEN (දකුණු පැත්තේ ප්‍රධාන තිරය) */}
           <main>
-            <header>
-              <div className="top-content">
-                <button
-                  onClick={() => setSelectedGrade("11")}
-                  style={{
-                    background:
-                      selectedGrade === "11" ? "white" : "transparent",
-                    color: selectedGrade === "11" ? "#1a0a54" : "#777",
-                  }}>
-                  Grade 11
-                </button>
-                <button
-                  onClick={() => setSelectedGrade("10")}
-                  style={{
-                    background:
-                      selectedGrade === "10" ? "white" : "transparent",
-                    color: selectedGrade === "10" ? "#1a0a54" : "#777",
-                  }}>
-                  Grade 10
-                </button>
-              </div>
-              <div className="desc-content">
-                <FaFolderOpen className="open-folder" /> Managing:{" "}
-                <span>
-                  Grade {selectedGrade} ({subject})
-                </span>
-              </div>
-            </header>
+            {/* 👑 🆕 [THE EXCLUSIVE FIX]: වෝල්ට් එක Class Schedule හෝ Paper Upload නොවන්නේ නම් පමණක් මේ මුළු හෙඩර් එකම පෙන්වයි */}
+            {activeVault !== "class-shedule" &&
+              activeVault !== "paper-upload" && (
+                <header>
+                  <div className="top-content">
+                    <button
+                      onClick={() => setSelectedGrade("11")}
+                      style={{
+                        background:
+                          selectedGrade === "11" ? "white" : "transparent",
+                        color: selectedGrade === "11" ? "#1a0a54" : "#777",
+                      }}>
+                      Grade 11
+                    </button>
+                    <button
+                      onClick={() => setSelectedGrade("10")}
+                      style={{
+                        background:
+                          selectedGrade === "10" ? "white" : "transparent",
+                        color: selectedGrade === "10" ? "#1a0a54" : "#777",
+                      }}>
+                      Grade 10
+                    </button>
+                  </div>
+                  <div className="desc-content">
+                    <FaFolderOpen className="open-folder" /> Managing:{" "}
+                    <span>
+                      Grade {selectedGrade} ({subject?.toUpperCase()})
+                    </span>
+                  </div>
+                </header>
+              )}
 
-            {/* DYNAMIC CONTENT VIEWS */}
-            <div className="dynamic-content">
+            {/* 📋 DYNAMIC CONTENT VIEWS (ඔබන බටන් එක අනුව පිටු මාරු වන කොටස) */}
+            <div className="dynamic-content" style={{ marginTop: "20px" }}>
               {activeVault === "add-student" && (
                 <AddStudentVault
                   selectedGrade={selectedGrade}
@@ -736,30 +904,12 @@ const AdminDashboard = () => {
               {activeVault === "notices" && (
                 <NoticeBoard selectedGrade={selectedGrade} subject={subject} />
               )}
+              {activeVault === "class-shedule" && <ClassScheduleVault />}
 
-              {activeVault === "class-schedule" && (
-                <ClassScheduleVault
-                // selectedGrade={selectedGrade}
-                // subject={subject}
-                />
-              )}
-
-              {activeVault === "paper-upload" && (
-                <PaperHubUploadVault
-                  selectedGrade={selectedGrade}
-                  subject={subject}
-                />
-              )}
-
-              {/* 👑 වෝල්ට් එක Schedule හෝ Paper Hub නොවන්නේ නම් පමණක් Top Tabs පෙන්වයි */}
-              {activeVault !== "class-schedule" &&
-                activeVault !== "paper-upload" && (
-                  <div className="top-grade-tabs">
-                    {/* Grade 10 & 11 Tabs... */}
-                  </div>
-                )}
+              {activeVault === "paper-upload" && <PaperHubUploadVault />}
             </div>
-          </main>
+          </main>{" "}
+          {/* 👑 Fixed: අතහැරී තිබුණු main closing tag එක නිවැරදිව වැහුවා */}
         </div>
       )}
     </>
