@@ -427,7 +427,7 @@ import ClassMarksVault from "../components/admin/ClassMarksVault";
 import PaymentsVault from "../components/admin/PaymentsVault";
 import AbsentMark from "../components/admin/AbsentVault";
 import NoticeBoard from "../components/admin/NoticeVault";
-import ClassScheduleVault from "../components/admin/ClassSheduleVault";
+import ClassScheduleVault from "../components/admin/ClassscheduleVault";
 import PaperHubUploadVault from "../components/admin/PaperHubUploadVault";
 
 import {
@@ -482,8 +482,8 @@ const AdminDashboard = () => {
           <FaLock /> Restricted Access
         </h2>
         <p>
-          ආරක්ෂිත හේතූන් මත කරුණාකර Laptop හෝ Desktop පරිගණකයකින් මෙම පද්ධතියට
-          පිවිසෙන්න.
+          For security reasons, please access this system from a laptop or
+          desktop computer.
         </p>
       </div>
     );
@@ -651,12 +651,14 @@ const AdminDashboard = () => {
                 <FaBullhorn /> <span> Class Notice Vault</span>
               </button>
               <button
-                onClick={() => setActiveVault("class-shedule")}
+                onClick={() => setActiveVault("class-schedule")}
                 style={{
                   background:
-                    activeVault === "class-shedule" ? "#ff4b2b" : "transparent",
+                    activeVault === "class-schedule"
+                      ? "#ff4b2b"
+                      : "transparent",
                 }}>
-                <FaCalendarCheck /> <span> Class Shedule Vault</span>
+                <FaCalendarCheck /> <span> Class schedule Vault</span>
               </button>
               <button
                 onClick={() => setActiveVault("paper-upload")}
@@ -735,7 +737,7 @@ const AdminDashboard = () => {
                 <NoticeBoard selectedGrade={selectedGrade} subject={subject} />
               )}
 
-              {activeVault === "class-shedule" && (
+              {activeVault === "class-schedule" && (
                 <ClassScheduleVault
                 // selectedGrade={selectedGrade}
                 // subject={subject}
