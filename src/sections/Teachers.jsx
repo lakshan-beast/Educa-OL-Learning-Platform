@@ -1,9 +1,10 @@
 // import React from 'react';
 import { FaFacebook, FaWhatsapp, FaPhone } from "react-icons/fa6";
 
-import scienceTeacher from "../assets/science-teacher.webp";
-import mathsTeacher from "../assets/science-teacher.webp";
-import englishTeacher from "../assets/english-teacher.jpg";
+// import scienceTeacher from "../assets/science-teacher.webp";
+// import mathsTeacher from "../assets/science-teacher.webp";
+// import englishTeacher from "../assets/english-teacher.jpg";
+import tutor from "../assets/tutor.jpg";
 
 const Teachers = () => {
   // const teacherData = [
@@ -38,7 +39,7 @@ const Teachers = () => {
     {
       name: "Sir 01",
       subject: "Mathematics Teacher",
-      img: mathsTeacher,
+      img: tutor,
       background: "B.Sc. (Physical Science) / Trained Mathematics Educator.",
       expertise:
         "15+ Years of experience in producing 'A' passes for O/L Mathematics.",
@@ -51,7 +52,7 @@ const Teachers = () => {
     {
       name: "Sir 02",
       subject: "Science Teacher",
-      img: scienceTeacher,
+      img: tutor,
       background: "B.Sc. in Biological Science",
       expertise: "10+ Years of proven success in O/L Science.",
       approach:
@@ -63,7 +64,7 @@ const Teachers = () => {
     {
       name: "Sir 03",
       subject: "English Teacher",
-      img: englishTeacher,
+      img: tutor,
       background: "B.A. in English Language & Literature / Trained Educator.",
       expertise:
         "Expert in O/L English Syllabus & Spoken Fluency for 10+ Years.",
