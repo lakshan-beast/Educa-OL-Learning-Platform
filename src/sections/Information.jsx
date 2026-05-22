@@ -26,7 +26,7 @@ const Information = () => {
       <div className="about-container info-column" id="about">
         {/* <div className="information-conatiner"> */}
         {/* Left Content */}
-        <div className="info-content info-left" data-aos="fade-right">
+        <div className="info-content info-left card" data-aos="fade-right">
           <p data-aos="fade-up">
             At Educa, we understand that every student learns differently. Our
             mission is to bridge the gap between complex theories and exam
