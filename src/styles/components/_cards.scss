@@ -379,49 +379,51 @@
 .resources-card,
 .class-card,
 .teacher-card {
-  background: $white;
-  border-radius: $border-radius-medium;
-  padding: $padding-large;
-  box-shadow: $shadow-light;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // ලස්සන bounce effect එකක්
-  border: 1px solid rgba($blue-light, 0.3);
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  @include flex-custom(flex-start, stretch, column, 6px);
+  // background: $white;
+  // border-radius: $border-radius-medium;
+  // padding: $padding-large;
+  // box-shadow: $shadow-light;
+  // transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // ලස්සන bounce effect එකක්
+  // border: 1px solid rgba($blue-light, 0.3);
+  // position: relative;
+  // overflow: hidden;
+  // height: 100%;
+  // @include flex-custom(flex-start, stretch, column, 6px);
 
-  // කාඩ් එක උඩට මවුස් එක ගෙනිච්චම වෙන වෙනස
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: $shadow-dark;
-    // border-color: $dark-purple1;
+  // // කාඩ් එක උඩට මවුස් එක ගෙනිච්චම වෙන වෙනස
+  // &:hover {
+  //   transform: translateY(-10px);
+  //   box-shadow: $shadow-dark;
+  //   // border-color: $dark-purple1;
 
-    // කාඩ් එක ඇතුළේ තියෙන ඉමේජ් එක පොඩ්ඩක් සූම් වෙන්න
-    img {
-      transform: scale(1.05);
-    }
-  }
+  //   // කාඩ් එක ඇතුළේ තියෙන ඉමේජ් එක පොඩ්ඩක් සූම් වෙන්න
+  //   img {
+  //     transform: scale(1.05);
+  //   }
+  // }
 
-  // කාඩ් එකේ පින්තූරය සඳහා
-  img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: $border-radius-small;
-    transition: transform 0.5s ease;
-  }
+  // // කාඩ් එකේ පින්තූරය සඳහා
+  // img {
+  //   width: 100%;
+  //   height: 250px;
+  //   object-fit: cover;
+  //   border-radius: $border-radius-small;
+  //   transition: transform 0.5s ease;
+  // }
 
-  h3 {
-    color: $dark-purple;
-    font-size: $font-size-h3;
-    margin-top: 0.5rem;
-  }
+  // h3 {
+  //   color: $dark-purple;
+  //   font-size: $font-size-h3;
+  //   margin-top: 0.5rem;
+  // }
 
-  p {
-    color: $text-medium;
-    line-height: 1.6;
-    font-size: 0.95rem;
-  }
+  // p {
+  //   color: $text-medium;
+  //   line-height: 1.6;
+  //   font-size: 0.95rem;
+  // }
+
+  @include card-style;
 
   // කාඩ් එකේ අගට එන බටන් එක
   .btn,
@@ -449,6 +451,7 @@
   font-weight: $font-weight-bold;
   z-index: 10;
   display: none;
+
   .icon {
     margin-right: 6px;
     font-size: 0.85rem;
