@@ -11,9 +11,12 @@ import {
 const Privacy = () => {
   const navigate = useNavigate();
 
+  //const [showGenModal, setShowGenModal] = useState(false);
+
   return (
     <div
-      className="legal-wrapper"
+      //className="legal-wrapper"
+      className="login-overlay"
       style={{
         padding: "50px 20px",
         background: "#f8faff",
@@ -23,8 +26,10 @@ const Privacy = () => {
         alignItems: "center",
       }}>
       <div
-        className="legal-container"
+        //className="legal-container"
+        className="login-modal-box"
         style={{
+          position: "relative",
           maxWidth: "750px",
           background: "white",
           padding: "40px",
@@ -32,6 +37,19 @@ const Privacy = () => {
           boxShadow: "0 15px 35px rgba(0,0,0,0.05)",
           border: "1px solid #eef2ff",
         }}>
+        <button
+          className="close-x"
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "20px",
+            background: "none",
+            border: "none",
+            fontSize: "2rem",
+            cursor: "pointer",
+          }}>
+          &times;
+        </button>
         {/* Header Icon */}
         <div style={{ textAlign: "center", marginBottom: "30px" }}>
           <div
