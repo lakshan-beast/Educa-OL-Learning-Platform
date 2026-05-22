@@ -1,0 +1,44 @@
+   {/* <div className="teachers-container">
+        {teacherData.map((teacher, index) => (
+          <div className="teacher-card" key={index} data-aos="fade-up">
+            <div className="teacher-card__img-box">
+              <img src={teacher.img} loading="lazy" alt={teacher.name} />
+            </div>
+
+            <div className="card-column teacher-info">
+              <h3>
+                {teacher.name} - <span>{teacher.subject}</span>
+              </h3>
+              <div className="teacher-details">
+                <p>
+                  Academic Background : <span>{teacher.background}</span>
+                </p>
+                <p>
+                  Professional Expertise : <span>{teacher.expertise}</span>
+                </p>
+                <p>
+                  Learning Approach : <span>{teacher.approach}</span>
+                </p>
+                <p className="philosophy">
+                  Teaching Philosophy : <span>{teacher.philosophy}</span>
+                </p>
+              </div>
+
+              <div className="teacher-card__socials">
+                <a href="#" title="Follow Page">
+                  <FaFacebook />
+                </a>
+                <a href="#" title="Follow Page">
+                  <FaInstagram />
+                </a>
+                <a href="#" title="Follow Page">
+                  <FaWhatsapp />
+                </a>
+                <a href={`tel:${teacher.phone}`} title="call">
+                  <FaPhone />
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div> */}

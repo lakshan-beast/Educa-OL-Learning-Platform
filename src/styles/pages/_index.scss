@@ -1,35 +1,19 @@
 // main part div style
 main {
   margin-bottom: $margin-xlarge;
+
   @include flex-custom;
 }
 
 // parts
 .parts {
-  // main {
-  // margin: 1rem auto 2rem auto;
-  // padding: 0rem 1rem;
-  // width: 100%;
-  // max-width: 114rem;
-  // background: transparent;
-  // position: relative;
-
-  // margin: 1rem auto 2rem auto;
+  margin: 3rem auto;
   padding: 0rem 1rem;
   width: 100%;
   max-width: 1140px;
   background: transparent;
   position: relative;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // flex-direction: column;
-  // gap: 0;
   flex-wrap: nowrap;
-  /* background: red; */
-  margin: 3rem auto;
-
-  // @include flex-custom;
 
   @include respond(tablet) {
     padding: 2rem;
@@ -46,959 +30,133 @@ main {
     font-weight: $font-weight-bold;
     text-align: center;
     letter-spacing: 1px;
+    line-height: 1;
 
     span {
-      color: $text-blue;
+      color: $primary-orange;
       display: block;
     }
   }
+
   p {
     color: $blue-medium;
-    line-height: 1.3;
+    line-height: 1.2;
     padding: 0 1rem;
+    text-align: center;
   }
 }
 
-// featuers
-.resources-container {
+// resources grid styles
+.resources-grid,
+.teachers-grid {
   padding: 3rem 0rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: $grid-gap-medium;
-  // background-color: red;
-
-  // cources container
-  .classes-content {
-    h3 {
-      color: $secondary-blue;
-      text-align: center;
-      text-shadow: 0px 1px 3px $link-shadow;
-    }
-    h4 {
-      color: $dark-purple1;
-      text-align: center;
-      margin: 0.8rem 0.5rem;
-    }
-
-    @include respond(desktop) {
-      padding: 1rem 3rem;
-      flex-direction: column;
-    }
-  }
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: $grid-gap-small $grid-gap-large;
 }
-// // teacher contaiener card
-// .teachers-container {
-// .teacher-card {
-//   border: 2px solid $blue-light;
-//   @include flex-custom(space-between, flex-start, column);
-//   margin-bottom: 1rem;
-//   border-radius: $border-radius-medium;
-//   box-shadow: 0px 4px 15px $blue-light;
 
-//   @include flex-custom(space-between, center);
-
-//   @include respond(laptop) {
-//     width: 900px;
-//     flex-direction: row;
-//     &:nth-child(even) {
-//       flex-direction: row-reverse;
-//     }
-//   }
-
-// img {
-//   width: 100%;
-//   max-width: 800px;
-//   height: auto;
-//   background-origin: border-box;
-//   background-attachment: fixed;
-//   background-clip: border-box;
-//   background-size: auto;
-//   background-position: center;
-//   object-fit: cover;
-//   /* border: 2px solid; */
-//   border-radius: 1rem;
-//   // margin: 1rem 0;
-// }
-
-// .share {
-//   @include flex-custom(space-between, center, column, nowrap);
-//   margin: $margin-medium;
-//   padding: 0 1rem;
-//   width: 100%;
-//   a {
-//     border-radius: $border-radius-medium;
-//     background-color: transparent;
-//     color: $dark-purple2;
-//     padding: 0.5rem;
-//     &:hover {
-//       scale: 1.05;
-//       transition: $transition-fast;
-//     }
-//   }
-//   i {
-//     // font-size: $font-size-xxhuge;
-//     padding-left: $padding-xlarge;
-//   }
-// }
-
-//   .teacher-info {
-//     @include flex-custom(center, center, column, 0, nowrap);
-//     margin: $margin-none;
-//     padding: 0.8rem 0.5rem;
-//     padding: 1rem;
-//     width: 100%;
-
-//     mark {
-//       background-color: #7f91ec;
-//       color: white;
-//       padding: 2px 6px;
-//       border-radius: 3px;
-
-//       &:hover {
-//         background-color: $dark-purple;
-//         border-radius: 5px;
-//         border-bottom: 2px solid $primary-orange;
-//       }
-//     }
-
-//     h3 {
-//       text-align: center;
-//       color: $secondary-blue;
-//       // font-size: $font-size-xhuge;
-//       margin-bottom: 0.5rem;
-
-//       span {
-//         color: $dark-purple;
-//         color: #4e6ab9;
-//         font-size: 1.2rem;
-//       }
-//     }
-//     .teacher-details {
-//       @include flex-custom(flex-start, flex-start, column);
-//       border-bottom: 2px solid $blue-light;
-//       padding-bottom: 0.5rem;
-//       width: 100%;
-//       p {
-//         color: $text-medium;
-//         // font-size: $font-size-p;
-//         display: flex;
-//         align-items: flex-start;
-//         margin: $margin-none;
-//         flex-direction: column;
-
-//         span {
-//           padding: 6px;
-//           color: $text-blue;
-//           background: $white;
-//           border-radius: 6px;
-//         }
-//       }
-//     }
-//   }
-// }
-// }
-
-.teachers-container {
-  padding: 1rem 0rem;
+.teacher-row-card {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: $grid-gap-medium;
-}
+  grid-template-columns: 1fr; // පැති දෙකකට බෙදන්න
+  gap: 10px;
+  align-items: center;
+  background: $white;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: $shadow-medium;
+  padding: 20px;
 
-.teachers-section {
-  // background: $bg-light;
+  @include respond(desktop) {
+    grid-template-columns: 1fr 1fr; // Mobile එකේදී පල්ලෙහාට එන්න
+    direction: ltr !important;
+    padding: 15px;
+    // width: 300px;
+  }
 
-  h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    span {
+  // --- මැජික් එක: ඉරට්ටේ සංඛ්‍යා (2, 4...) තියෙන කාඩ්ස් වල පැති මාරු කරන්න ---
+  &:nth-child(even) {
+    direction: rtl; // මුළු පේළියම දකුණේ සිට වමට කරන්න
+    .info-content {
+      direction: ltr;
+      text-align: left;
+    } // Text එක ආයේ වමට හරවන්න
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr; // Mobile එකේදී පල්ලෙහාට එන්න
+    direction: ltr !important;
+    padding: 15px;
+  }
+
+  .teacher-image-column {
+    height: 200px;
+    img {
+      width: 250px;
+      // width: 100%;
+      height: 250px;
+      // height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: $shadow-light;
+    }
+  }
+
+  .teacher-info-column {
+    padding: 20px 0;
+
+    .subject-tag {
+      background: rgba($primary-orange, 0.1);
       color: $primary-orange;
-    }
-  }
-
-  // .teachers-container {
-  //   display: grid;
-  //   gap: 10px;
-  //   grid-template-columns: repeat(
-  //     auto-fit,
-  //     minmax(320px, 1fr)
-  //   ); // Responsive grid
-  // }
-  // .teacher-card {
-  //   background: $white;
-  //   border-radius: 20px;
-  //   overflow: hidden;
-  //   box-shadow: $shadow-light;
-  //   transition: all 0.4s ease;
-  //   border: 1px solid rgba($blue-light, 0.3);
-  //   display: flex;
-  //   flex-direction: column;
-
-  //   &:hover {
-  //     transform: translateY(-10px);
-  //     box-shadow: $shadow-dark;
-  //     border-color: $dark-purple1;
-  //   }
-
-  //   &__img-box {
-  //     width: 100%;
-  //     height: 300px;
-  //     overflow: hidden;
-
-  //     img {
-  //       width: 100%;
-  //       height: 100%;
-  //       object-fit: cover; // පින්තූරය ගානට සෙට් වෙන්න
-  //       transition: transform 0.5s ease;
-  //     }
-  //   }
-
-  //   &:hover &__img-box img {
-  //     transform: scale(1.1); // Hover කරද්දී පින්තූරය zoom වෙනවා
-  //   }
-
-  //   .teacher-info {
-  //     padding: 25px;
-
-  //     h3 {
-  //       color: $dark-purple2;
-  //       font-size: 1.4rem;
-  //       margin-bottom: 15px;
-  //       span {
-  //         color: $text-medium;
-  //         font-size: 1rem;
-  //         font-weight: normal;
-  //       }
-  //     }
-
-  //     .teacher-details {
-  //       p {
-  //         font-size: 0.9rem;
-  //         color: $text-medium;
-  //         line-height: 1.6;
-  //         margin-bottom: 10px;
-  //         display: flex;
-  //         flex-direction: column;
-
-  //         span {
-  //           color: $dark-blue;
-  //           font-weight: 500;
-  //         }
-  //       }
-
-  //       .philosophy {
-  //         background: rgba($primary-orange, 0.05);
-  //         padding: 10px;
-  //         border-left: 3px solid $primary-orange;
-  //         border-radius: 0 8px 8px 0;
-  //       }
-  //     }
-  //   }
-
-  //   &__socials {
-  //     margin-top: 20px;
-  //     display: flex;
-  //     gap: 12px;
-  //     padding-top: 15px;
-  //     border-top: 1px solid #eee;
-
-  //     a {
-  //       width: 35px;
-  //       height: 35px;
-  //       background: #f1f3f9;
-  //       color: $dark-purple1;
-  //       border-radius: 50%;
-  //       @include center-everything;
-  //       transition: 0.3s;
-  //       font-size: 1.1rem;
-
-  //       &:hover {
-  //         background: $dark-purple1;
-  //         color: $white;
-  //         transform: translateY(-3px);
-  //       }
-  //     }
-  //   }
-  // }
-
-  .teachers-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; // කාඩ් දෙකක් අතර ඉඩ
-    margin-top: 40px;
-    // width: 600px;
-    // overflow: scroll;
-
-    @include respond(desktop) {
-      flex-direction: row;
-
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      // overflow: scroll;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.8rem;
     }
 
-    .teacher-row-card {
-      display: grid;
-      grid-template-columns: 1fr; // පැති දෙකකට බෙදන්න
-      gap: 10px;
-      align-items: center;
-      background: $white;
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: $shadow-medium;
-      padding: 20px;
+    h3 {
+      font-size: 2.2rem;
+      color: $dark-purple2;
+      margin: 10px 0 20px;
+    }
 
-      @include respond(desktop) {
-        // grid-template-columns: 1fr 1fr 1fr; // Mobile එකේදී පල්ලෙහාට එන්න
-        direction: ltr !important;
+    .detail-list {
+      p {
+        margin-bottom: 12px;
+        line-height: 1.6;
+        color: $text-medium;
+      }
+      .philosophy-box {
+        font-style: italic;
+        background: #f9faff;
         padding: 15px;
-        width: 300px;
+        border-left: 4px solid $dark-purple1;
+        margin-top: 20px;
       }
+    }
 
-      // --- මැජික් එක: ඉරට්ටේ සංඛ්‍යා (2, 4...) තියෙන කාඩ්ස් වල පැති මාරු කරන්න ---
-      &:nth-child(even) {
-        direction: rtl; // මුළු පේළියම දකුණේ සිට වමට කරන්න
-        .info-content {
-          direction: ltr;
-          text-align: left;
-        } // Text එක ආයේ වමට හරවන්න
-      }
+    .teacher-socials {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
 
-      // @include respond(mobile) {
-      //   grid-template-columns: 1fr; // Mobile එකේදී පල්ලෙහාට එන්න
-      //   direction: ltr !important;
-      //   padding: 15px;
-      // }
+      a {
+        width: 45px;
+        height: 45px;
+        background: $dark-purple1;
+        color: $white;
+        border-radius: 16px;
+        @include center-everything;
+        transition: 0.3s;
+        font-size: 1.3rem;
 
-      .teacher-image-column {
-        height: 200px;
-        img {
-          width: 250px;
-          // width: 100%;
-          height: 250px;
-          // height: 100%;
-          object-fit: cover;
+        &:hover {
+          background: $primary-orange;
+          transform: scale(1.1);
           border-radius: 50%;
-          box-shadow: $shadow-light;
-        }
-      }
-
-      .teacher-info-column {
-        padding: 20px 0;
-
-        .subject-tag {
-          background: rgba($primary-orange, 0.1);
-          color: $primary-orange;
-          padding: 5px 15px;
-          border-radius: 20px;
-          font-weight: bold;
-          font-size: 0.8rem;
-        }
-
-        h3 {
-          font-size: 2.2rem;
-          color: $dark-purple2;
-          margin: 10px 0 20px;
-        }
-
-        .detail-list {
-          p {
-            margin-bottom: 12px;
-            line-height: 1.6;
-            color: $text-medium;
-          }
-          .philosophy-box {
-            font-style: italic;
-            background: #f9faff;
-            padding: 15px;
-            border-left: 4px solid $dark-purple1;
-            margin-top: 20px;
-          }
-        }
-
-        .teacher-socials {
-          margin-top: 25px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 15px;
-
-          a {
-            width: 45px;
-            height: 45px;
-            background: $dark-purple1;
-            color: $white;
-            border-radius: 16px;
-            @include center-everything;
-            transition: 0.3s;
-            font-size: 1.3rem;
-
-            &:hover {
-              background: $primary-orange;
-              transform: scale(1.1);
-              border-radius: 50%;
-            }
-          }
         }
       }
     }
   }
 }
-
-// .teacher-card {
-//   // &__img-box {
-//   //   img {
-//   //     width: 100%;
-//   //     // max-width: 800px;
-//   //     height: auto;
-//   //     object-fit: cover;
-//   //     transition: transform 0.5s ease;
-//   //   }
-//   // }
-//   &__socials {
-//     display: flex;
-//     gap: 0.5rem;
-//     transition: all 0.4s ease;
-//     flex-direction: row;
-//     flex-wrap: nowrap;
-//     justify-content: flex-end;
-//     align-items: center;
-//     padding-top: 1rem;
-//     padding: 0.7rem 0.5rem 0 0.5rem;
-//     width: 100%;
-//     i {
-//       background-color: $dark-purple2;
-//       color: $white;
-//       font-size: 1.5rem;
-//       padding: 0.5rem;
-//       border-radius: 8px;
-
-//       &:hover {
-//         background-color: $blue-medium;
-//       }
-//       a {
-//         width: 45px;
-//         height: 45px;
-//       }
-//     }
-//   }
-//   &:hover {
-//     transform: translateY(-1rem);
-//     box-shadow: $shadow-dark;
-
-//     .teacher-card_img-box img {
-//       transform: scale(1.1);
-//     }
-//   }
-// }
-
-// .about-container {
-//   margin: 0;
-//   margin-bottom: 16px;
-//   // padding: 1rem;
-//   overflow: hidden;
-//   width: 100%;
-//   background-color: #2ecc71;
-
-//   // .information-conatiner {
-//   padding: 1rem 0rem;
-//   display: grid;
-//   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-//   gap: $grid-gap-medium;
-//   // }
-//   // display: none;
-
-//   .info-content {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-evenly;
-//     background-color: red;
-//     // align-items: flex-start;
-//   }
-//   .about-info {
-//     background-color: $bg-soft;
-//     padding: 1rem;
-//     margin: 1rem 0;
-//     box-shadow: $shadow-medium;
-//     border-radius: $border-radius-medium;
-
-//     h4 {
-//       color: $blue-medium;
-//       font-size: 1.2rem;
-//       text-align: center;
-//       margin: 12px 0;
-
-//       i {
-//         margin-right: 6px;
-//       }
-//     }
-//     p {
-//       font-size: $font-size-body;
-//       margin: 6px 0;
-//     }
-//   }
-
-//   .about-status {
-//     display: grid;
-//     grid-template-columns: repeat(2, 1fr);
-//     gap: 0.8rem;
-//     background-color: $bg-soft;
-//     margin: 1rem 0;
-//     @include respond(desktop) {
-//       grid-template-columns: repeat(4, 1fr);
-//     }
-
-//     background-color: $bg-soft;
-//     border-radius: 0.5rem;
-//     .box {
-//       padding: 6px 1rem;
-//       padding-top: 1rem;
-//       background-color: $white;
-//       border-radius: 0.5rem;
-//       box-shadow: $shadow-light;
-
-//       @include flex-custom(space-between, center, column);
-
-//       i {
-//         font-weight: 800;
-//         color: $blue-medium;
-//         text-align: center;
-//         font-size: $border-radius-large;
-//       }
-//       h3 {
-//         font-weight: $font-weight-extra-bold;
-//         text-align: center;
-//         margin: 0.3rem;
-//         color: $primary-orange;
-//         font-weight: 800;
-//         text-align: center;
-//       }
-
-//       p {
-//         font-weight: 600;
-//         margin: 0;
-//         text-align: center;
-//         color: rgba(30, 80, 161, 0.5);
-//         font-weight: 600;
-//         margin: 0;
-//         text-align: center;
-//         border-top: 2px solid $bg-light;
-//         width: 100%;
-//       }
-//     }
-//   }
-
-//   .result-container {
-//     background: transparent;
-//     margin-top: 12px;
-//     background-color: $bg-soft;
-//     border-radius: 0.5rem;
-//     width: 100%;
-//     max-width: 500px;
-//     margin: 0 auto;
-
-//     canvas {
-//       display: block;
-//       height: auto !important;
-//       width: 100% !important;
-//       padding: 1rem 0;
-//       margin: 1rem 0;
-//     }
-
-//     h3 {
-//       margin: 1rem 0;
-//       text-align: center;
-//       border: none;
-//     }
-
-//     .year-results {
-//       padding: 0.5rem;
-//       border-radius: $border-radius-medium;
-//       margin: 30px 0;
-//       text-align: center;
-
-//       h2 {
-//         margin-bottom: 20px;
-//       }
-//     }
-//   }
-// }
-
-// .contact-container {
-//   padding: 1rem 0rem;
-//   display: grid;
-//   // grid-template-columns: repeat(auto-fill, minmax(2, 1fr));
-//   grid-template-columns: repeat(1, 1fr);
-//   gap: $grid-gap-xlarge;
-
-//   @include respond(desktop) {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-// }
-// .contact-content {
-//   margin-top: 6px;
-//   border-radius: $border-radius-small;
-
-//   h3 {
-//     margin: 0px auto 6px auto;
-//     padding: 9px;
-//     border-radius: $border-radius-small;
-//     color: $blue-medium;
-//     text-align: center;
-//   }
-//   p,
-//   a {
-//     color: $blue-medium;
-//     padding-left: 16px;
-//     width: 100%;
-//     margin-bottom: 12px;
-//   }
-
-//   .contact-cards {
-//     margin-bottom: 6px;
-//     display: flex;
-//     flex-direction: column;
-
-//     .contact-card {
-//       @include flex-custom(flex-start, flex-start, column);
-//       background-color: $blue-light;
-//       margin: 3px 0;
-//       border-radius: 6px;
-
-//       h4 {
-//         margin: 6px auto;
-//         padding: 9px;
-//         // border-radius: $border-radius-small;
-//         color: $blue-medium;
-//         // background-color: #2ecc71;
-//         border-bottom: 1px solid $blue-light;
-//         border-left: 6px solid $secondary-blue;
-//         display: inline-block;
-//         width: 100%;
-//       }
-//       address,
-//       a {
-//         color: $blue-medium;
-//         padding-left: 32px;
-//         width: 100%;
-//         margin: 6px 0;
-//       }
-//       .contact-icon {
-//         margin-right: 12px;
-//       }
-//     }
-//   }
-// }
-
-// .contact-section {
-//   background: $bg-light; // ලා පාට පසුබිමක්
-
-//   .contact-grid {
-//     display: grid;
-//     grid-template-columns: 1fr 1.5fr; // Desktop එකේදී පැති දෙකකට
-//     gap: 40px;
-//     align-items: start;
-
-//     @include respond(mobile) {
-//       grid-template-columns: 1fr;
-//     }
-//   }
-
-//   .contact-info-card {
-//     h2 {
-//       font-size: 2.5rem;
-//       margin-bottom: 1rem;
-//       span {
-//         color: $primary-orange;
-//       }
-//     }
-//     p {
-//       color: $text-medium;
-//       line-height: 1.6;
-//     }
-//     .direct-contact {
-//       margin-top: 20px;
-//       display: flex;
-//       flex-direction: column;
-//       gap: 10px;
-//       span {
-//         display: flex;
-//         align-items: center;
-//         gap: 10px;
-//         font-weight: 500;
-//         color: $dark-purple1;
-//       }
-//     }
-//   }
-
-//   .contact-form-card {
-//     background: $white;
-//     padding: 40px;
-//     border-radius: 20px;
-//     box-shadow: $shadow-dark;
-//   }
-
-//   .styled-form {
-//     .input-row {
-//       display: grid;
-//       grid-template-columns: 1fr 1fr;
-//       gap: 20px;
-//       @include respond(mobile) {
-//         grid-template-columns: 1fr;
-//       }
-//     }
-
-//     .input-group {
-//       margin-bottom: 20px;
-//       label {
-//         display: flex;
-//         align-items: center;
-//         gap: 8px;
-//         font-size: 0.9rem;
-//         font-weight: 600;
-//         color: $dark-purple2;
-//         margin-bottom: 8px;
-//       }
-
-//       input,
-//       select,
-//       textarea {
-//         width: 100%;
-//         padding: 12px 15px;
-//         border: 1px solid #ddd;
-//         border-radius: 8px;
-//         font-family: inherit;
-//         transition: 0.3s;
-//         background: #fcfcfc;
-
-//         &:focus {
-//           border-color: $primary-orange;
-//           outline: none;
-//           box-shadow: 0 0 8px rgba($primary-orange, 0.1);
-//         }
-//       }
-//     }
-
-//     .contact-submit-btn {
-//       width: 100%;
-//       padding: 15px;
-//       background: $dark-purple1;
-//       color: $white;
-//       border: none;
-//       border-radius: 10px;
-//       font-weight: bold;
-//       display: flex;
-//       justify-content: center;
-//       align-items: center;
-//       gap: 10px;
-//       transition: 0.3s;
-//       cursor: pointer;
-
-//       &:hover {
-//         background: $primary-orange;
-//         transform: translateY(-3px);
-//         box-shadow: $shadow-medium;
-//       }
-//     }
-//   }
-// }
-
-// contact form in about section
-// .contact-container {
-//   border-radius: $border-radius-medium;
-//   width: 100%;
-//   background-color: $bg-soft;
-//   margin-top: 2rem;
-//   padding: 1rem;
-//   box-shadow: $shadow-medium;
-//   // display: grid;
-//   // grid-template-columns: repeat(1fr, 1.5fr);
-//   // grid-auto-flow: row;
-//   // gap: 1rem;
-
-//   padding: 1rem 0rem;
-//   display: grid;
-//   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-//   gap: $grid-gap-medium;
-//   // display: none;
-
-//   // @include respond(desktop) {
-//   //   display: grid;
-//   //   grid-auto-flow: column;
-//   //   justify-items: start;
-//   //   align-items: start;
-//   // }
-
-//   //   .contact-content {
-//   //     h3 {
-//   //       margin: 1rem 0;
-//   //       color: $secondary-blue;
-//   //       text-align: center;
-
-//   //       span {
-//   //         color: $text-blue;
-//   //         display: block;
-//   //       }
-//   //     }
-//   //     p {
-//   //       margin: 6px 0;
-//   //     }
-//   //   }
-
-//   //   .contact-left {
-//   //     .class-details {
-//   //       margin: 0 1rem;
-//   //       display: flex;
-//   //       flex-direction: column;
-//   //       justify-content: center;
-//   //       align-items: flex-start;
-//   //       flex-wrap: wrap;
-//   //       align-content: center;
-//   //       gap: 6px;
-
-//   //       @include respond(desktop) {
-//   //         flex-direction: column;
-//   //         align-content: center;
-//   //       }
-//   //     }
-//   //     .class-contacts {
-//   //       margin: 0.5rem 0;
-//   //       padding: 1rem 2rem;
-//   //       background-color: $bg-soft;
-//   //       box-shadow: $shadow-medium;
-//   //       display: flex;
-//   //       flex-direction: column;
-//   //       align-items: flex-start;
-//   //       transition: 0.5s ease-in;
-//   //       border-left: none;
-//   //       border-radius: 12px;
-
-//   //       h4 {
-//   //         margin-bottom: 1rem;
-//   //         color: $secondary-blue;
-//   //       }
-//   //       a,
-//   //       label {
-//   //         color: $text-medium;
-//   //         gap: 5px;
-
-//   //         i {
-//   //           margin-right: 1rem;
-//   //           color: $dark-purple;
-//   //         }
-
-//   //         &:hover {
-//   //           color: $text-blue;
-//   //           text-decoration: underline;
-//   //         }
-//   //       }
-//   //       a {
-//   //         text-transform: lowercase;
-//   //       }
-//   //       address {
-//   //         text-align: center;
-//   //         color: $secondary-blue;
-//   //         margin-top: 1rem;
-//   //         gap: 0;
-//   //         line-height: 1;
-//   //         border-top: 2px solid $text-blue;
-//   //         padding-top: 6px;
-//   //       }
-//   //     }
-//   //     irame {
-//   //       width: 100%;
-//   //       height: 250px;
-//   //       border: none;
-//   //       filter: grayscale(0.5);
-//   //       transition: 0.3s;
-//   //       margin: 0.6rem 0;
-
-//   //       &:hover {
-//   //         filter: grayscale(0);
-//   //       }
-//   //     }
-//   //   }
-
-//   //   .contact-right {
-//   //     form {
-//   //       padding: 0.5rem;
-//   //       margin: $margin-none;
-//   //       width: 100%;
-//   //       background: $white;
-//   //       border-radius: 1rem;
-
-//   //       label,
-//   //       input,
-//   //       select,
-//   //       textarea {
-//   //         display: block;
-//   //         width: 95%;
-//   //         color: $dark-purple2;
-//   //         padding: 3px 12px;
-//   //         margin: $margin-none;
-//   //         background-color: transparent;
-//   //         margin-left: 12px;
-//   //       }
-//   //       label {
-//   //         color: $text-blue;
-//   //         margin: 0 10px;
-//   //         padding: $padding-none;
-//   //         margin-top: 8px;
-//   //       }
-//   //       input,
-//   //       textarea {
-//   //         background-color: $bg-soft;
-//   //         margin-left: 12px;
-//   //         border-bottom: 2px solid $link-shadow;
-
-//   //         &:focus {
-//   //           border-bottom: none;
-//   //           background-color: $link-shadow;
-//   //           border-radius: 3px;
-//   //         }
-//   //       }
-//   //       select {
-//   //         background-color: $bg-soft;
-//   //         margin-left: 12px;
-//   //         border-bottom: 2px solid $link-shadow;
-//   //         color: $text-medium;
-
-//   //         &:focus {
-//   //           background-color: $text-light;
-//   //         }
-//   //       }
-//   //     }
-//   //     p {
-//   //       color: red;
-//   //       line-height: 1.1;
-//   //       padding: 0 1rem;
-//   //       font-size: 0.8rem;
-//   //       margin: 12px 0;
-//   //       text-align: center;
-//   //       display: none;
-//   //     }
-//   //     textarea {
-//   //       resize: none;
-
-//   //       &:hover p {
-//   //         display: block;
-//   //       }
-//   //     }
-
-//   //     input[type="submit"] {
-//   //       width: 200px;
-//   //       padding: 6px 16px;
-//   //       margin: 6px 3%;
-//   //       color: $white;
-//   //       border-radius: $border-radius-small;
-//   //       // background-color: $;
-//   //     }
-//   //   }
-//   //   #privacy-label {
-//   //     color: red;
-//   //     display: flex;
-//   //     font-size: 0.8rem;
-//   //   }
-// }
-// }
