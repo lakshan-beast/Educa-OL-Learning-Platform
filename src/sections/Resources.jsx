@@ -19,7 +19,7 @@ import Comments from "../assets/comments.webp";
 import Results from "../assets/results.webp";
 import Quizes from "../assets/quizs.webp";
 import Quetions from "../assets/questions.webp";
-import Parent from "../assets/parent.jpg";
+import Parent from "../assets/parent.webp";
 
 const Resources = () => {
   return (
@@ -35,7 +35,10 @@ const Resources = () => {
 
       <div className="resources-container resources-grid">
         {/* 7. දෙමාපිය පෝටලය (Parent Portal Card - ACTIVE) */}
-        <div className="resources-card" data-aos="fade-up" data-aos-delay="900">
+        <div
+          className="resources-card card-style"
+          data-aos="fade-up"
+          data-aos-delay="900">
           {/* රන් පාට ලස්සන Verified Badge එකක් */}
           <span className="card-badge card-badge-verified">
             <FaCircleCheck /> Parents Only
@@ -56,7 +59,7 @@ const Resources = () => {
 
         {/* 3. Official Results Card */}
         <div
-          className="resources-card result-check"
+          className="resources-card card-style result-check"
           id="result-check"
           data-aos="fade-up"
           data-aos-delay="600">
@@ -81,7 +84,10 @@ const Resources = () => {
         </div>
 
         {/* 2. Student Reviews Card */}
-        <div className="resources-card" data-aos="fade-up" data-aos-delay="500">
+        <div
+          className="resources-card card-style"
+          data-aos="fade-up"
+          data-aos-delay="500">
           <span className="card-badge card-badge-verified">
             <FaCircleCheck className="icon" /> Verified
           </span>
@@ -97,12 +103,15 @@ const Resources = () => {
             Read Reviews
           </Link> */}
           <button disabled="disabled" className="browse-btn">
-            Maintenance Tool
+            Developing Mode
           </button>
         </div>
 
         {/* 1. Smart Tools Card */}
-        <div className="resources-card" data-aos="fade-up" data-aos-delay="400">
+        <div
+          className="resources-card card-style"
+          data-aos="fade-up"
+          data-aos-delay="400">
           <span className="card-badge card-badge-new">
             <FaRocket className="icon" /> New Tools
           </span>
@@ -118,12 +127,15 @@ const Resources = () => {
             Open Tools
           </Link> */}
           <button disabled="disabled" className="browse-btn">
-            Maintenance Tool
+            Developing Mode
           </button>
         </div>
 
         {/* 4. Daily Questions Card */}
-        <div className="resources-card" data-aos="fade-up" data-aos-delay="700">
+        <div
+          className="resources-card card-style"
+          data-aos="fade-up"
+          data-aos-delay="700">
           <span className="card-badge card-badge-daily">
             <FaCircleCheck className="icon" /> Everyday
           </span>
@@ -139,12 +151,15 @@ const Resources = () => {
             Start Today
           </Link> */}
           <button disabled="disabled" className="browse-btn">
-            Maintenance Tool
+            Developing Mode
           </button>
         </div>
 
         {/* 5. Interactive Quizzes Card */}
-        <div className="resources-card" data-aos="fade-up" data-aos-delay="800">
+        <div
+          className="resources-card card-style"
+          data-aos="fade-up"
+          data-aos-delay="800">
           <span className="card-badge card-badge-hot">
             <FaMedal className="icon" /> Most Popular
           </span>
@@ -159,12 +174,12 @@ const Resources = () => {
             Take a Quiz
           </Link> */}
           <button disabled="disabled" className="browse-btn">
-            Maintenance Tool
+            Developing Mode
           </button>
         </div>
 
         {/* 6. Paper Hub Card */}
-        {/* <div className="resources-card" data-aos="fade-up" data-aos-delay="900">
+        {/* <div className="resources-card card-style" data-aos="fade-up" data-aos-delay="900">
           <span className="card-badge card-badge-new">
             <FaRocket className="icon" /> New Papers
           </span>
@@ -180,7 +195,7 @@ const Resources = () => {
             View Materials
           </Link>
           <button disabled="disabled" className="browse-btn">
-            Maintenance Tool
+            Developing Tool
           </button>
         </div> */}
       </div>
