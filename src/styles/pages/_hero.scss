@@ -82,15 +82,15 @@
 
   // description
   .description {
+    @include respond(desktop) {
+      max-width: 400px;
+    }
+
     p {
       color: $blue-medium;
       line-height: 1.2;
-    }
 
-    @include respond(desktop) {
-      max-width: 400px;
-
-      p {
+      @include respond(desktop) {
         line-height: 1.6;
       }
     }
