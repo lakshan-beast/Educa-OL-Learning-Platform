@@ -264,7 +264,8 @@ const Footer = () => {
             <span> 2026 May</span>
           </p>
           <p>
-            <FaUsers className="footer-icon" /> Community reviewed
+            <FaUsers className="footer-icon" />
+            Community reviewed
           </p>
         </div>
 
