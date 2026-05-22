@@ -503,6 +503,11 @@
       line-height: 1.6;
       margin-bottom: 20px;
       height: 60px;
+      text-align: left;
+
+      @include respond(tablet) {
+        text-align: center;
+      }
     }
 
     .class-meta {
