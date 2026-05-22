@@ -87,7 +87,7 @@
     }
 
     p {
-      color: $blue-medium;
+      color: $text-medium;
       line-height: 1.2;
 
       @include respond(desktop) {
