@@ -377,7 +377,7 @@
 .card-container,
 .card,
 .resources-card,
-.class-card,
+// .class-card,
 .teacher-card {
   // background: $white;
   // border-radius: $border-radius-medium;
@@ -455,5 +455,79 @@
   .icon {
     margin-right: 6px;
     font-size: 0.85rem;
+  }
+}
+
+// classes cards
+.class-card {
+  padding: $padding-large;
+  background: $white;
+  border-radius: $border-radius-medium;
+  overflow: hidden;
+  box-shadow: $shadow-light;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba($blue-light, 0.2);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-medium;
+    border-color: $text-light;
+  }
+
+  .class-info {
+    padding: 15px 0px;
+
+    .class-header {
+      margin-bottom: 15px;
+
+      h3 {
+        color: $dark-purple2;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+      h4 {
+        background: rgba($primary-orange, 0.9);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: $white;
+        padding: 3px 0 3px 6px;
+        border-radius: 6px;
+      }
+    }
+
+    .class-desc {
+      color: $text-medium;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      height: 60px;
+    }
+
+    .class-meta {
+      display: flex;
+      justify-content: space-between;
+      background: #f8faff;
+      padding: 12px;
+      border-radius: 15px;
+      margin-bottom: 12px;
+
+      .meta-item {
+        display: flex;
+        flex-direction: column;
+
+        .label {
+          font-size: 0.75rem;
+          color: #999;
+          margin-bottom: 2px;
+        }
+        .value {
+          font-size: 0.9rem;
+          font-weight: 700;
+          color: $dark-purple1;
+        }
+      }
+    }
   }
 }
