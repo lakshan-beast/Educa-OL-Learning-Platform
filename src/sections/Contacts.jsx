@@ -226,7 +226,10 @@ const Contact = () => {
           </div>
 
           {/* 2. දකුණු පැත්තේ Form කාඩ් එක */}
-          <div className="contact-form-card" data-aos="fade-left">
+          <div
+            className="contact-form-card"
+            data-aos="fade-left"
+            id="contact-form">
             <form
               onSubmit={handleSubmit}
               className="styled-form"
