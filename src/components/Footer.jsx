@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 
 import {
   FaFacebook,
-  FaTwitter,
-  FaInstagram,
   FaRocket,
   FaSquareCheck,
   FaRegCopyright,
@@ -18,15 +16,13 @@ import {
   FaKey,
 } from "react-icons/fa6";
 
-// import { NavHashLink } from 'react-router-hash-link';
-// import { Link } from 'react-router-dom';
-// import {
-//   FaSquareCheck, FaLaptopCode, FaUsers, FaRegCopyright, FaHeart,
-//   FaFacebook, FaWhatsapp, FaYoutube, FaPhone, FaEnvelope, FaLocationDot,
-//   FaCaretRight, FaUser, FaKey, FaCopy, FaCheck
-// } from "react-icons/fa6";
-
-import { FaEnvelope, FaLaptopCode, FaUsers, FaHeart } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaLaptopCode,
+  FaUsers,
+  FaTelegram,
+  FaHeart,
+} from "react-icons/fa";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -73,7 +69,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer">
+    <footer className="footer" data-aos="fade-up">
       <div className="footer-contents">
         {/* footer logo */}
         <div className="footer-card ">
@@ -89,17 +85,14 @@ const Footer = () => {
             <a href="https://facebook.com" target="_blank" rel="noreferrer">
               <FaFacebook />
             </a>
+            <a href="https://youtube.com" target="_blank" rel="noreferrer">
+              <FaTelegram />
+            </a>
             <a href="https://wa.me" target="_blank" rel="noreferrer">
               <FaWhatsapp />
             </a>
             <a href="https://youtube.com" target="_blank" rel="noreferrer">
               <FaYoutube />
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer">
-              <FaTwitter />
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer">
-              <FaInstagram />
             </a>
           </div>
         </div>
@@ -114,9 +107,20 @@ const Footer = () => {
               </NavHashLink>
             </li>
             <li>
+              <NavHashLink smooth to="/#reviews">
+                <FaCaretRight className="footer-icon" /> Students Feedbacks
+              </NavHashLink>
+            </li>
+            <li>
               <NavHashLink smooth to="/#classes">
                 <FaCaretRight className="footer-icon" /> Class Schedule
               </NavHashLink>
+            </li>
+
+            <li>
+              <a href="https://www.doenets.lk/examresults">
+                <FaCaretRight className="footer-icon" /> O/L Results
+              </a>
             </li>
             <li>
               <NavHashLink smooth to="/#teachers">
@@ -133,16 +137,6 @@ const Footer = () => {
                 <FaCaretRight className="footer-icon" /> Contact Support
               </NavHashLink>
             </li>
-            <li>
-              <NavHashLink smooth to="/#reviews">
-                <FaCaretRight className="footer-icon" /> Students Feedbacks
-              </NavHashLink>
-            </li>
-            <li>
-              <a href="https://www.doenets.lk/examresults">
-                <FaCaretRight className="footer-icon" /> O/L Results
-              </a>
-            </li>
           </ul>
         </div>
 
@@ -151,12 +145,12 @@ const Footer = () => {
           <h3>Study Resources</h3>
           <ul>
             <li>
-              <Link to="/tools">
+              <Link to="/tool">
                 <FaCaretRight className="footer-icon" /> Smart Study Tools
               </Link>
             </li>
             <li>
-              <Link to="/quizzes">
+              <Link to="/quizze">
                 <FaCaretRight className="footer-icon" /> Interactive Quizzes
               </Link>
             </li>
@@ -166,7 +160,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="/daily-questions">
+              <Link to="/daily-question">
                 <FaCaretRight className="footer-icon" /> Daily Mission
               </Link>
             </li>
@@ -193,26 +187,12 @@ const Footer = () => {
             Colombo
           </p>
 
-          <div
-            className="subject-contacts"
-            style={{
-              marginTop: "15px",
-              borderTop: "1px solid rgba(255,255,255,0.1)",
-              paddingTop: "10px",
-            }}>
-            <p style={{ fontSize: "0.8rem" }}>
+          <div className="subject-contacts">
+            <p>
               For subject specific help, use our
-              <Link
-                to="/#contact-form"
-                style={{
-                  color: "#ff4b2b",
-                  backgroundColor: "#ffefec",
-                  padding: "6px 12px",
-                  textAlign: "center",
-                  borderRadius: "5px",
-                }}>
+              <NavHashLink className="contact-button" to="/#contact-form">
                 Contact Form
-              </Link>
+              </NavHashLink>
             </p>
           </div>
         </div>
@@ -225,20 +205,15 @@ const Footer = () => {
           <h3>Legal</h3>
           <ul>
             <li>
-              {/* <NavHashLink smooth to="/#privacy">
-                <FaCaretRight className="footer-icon" /> Privacy Policy
-              </NavHashLink> */}
               <Link
                 to="/privacy"
+                onClick={() => setShowGenModal(true)}
                 onMouseEnter={(e) => (e.target.style.color = "#ff4b2b")}
                 onMouseLeave={(e) => (e.target.style.color = "#aaa")}>
                 <FaCaretRight className="footer-icon" /> Privacy Policy
               </Link>
             </li>
             <li>
-              {/* <NavHashLink smooth to="/#terms">
-                <FaCaretRight className="footer-icon" /> Terms of Service
-              </NavHashLink> */}
               <Link
                 to="/terms"
                 onMouseEnter={(e) => (e.target.style.color = "#ff4b2b")}
@@ -256,25 +231,14 @@ const Footer = () => {
             </li>
 
             <li>
-              <div
-                style={{
-                  textAlign: "right",
-                  marginTop: "5px",
-                  marginBottom: "15px",
-                }}>
+              <div className="contact-support">
                 <a
                   href={
-                    `https://wa.me/94740130305?text=Hello%20Support20%Team,%20I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20` +
+                    `https://wa.me/94740130305?text=Hello%20eEduca%20Support%20Team,%30I%20forgot%20my%20Educa%20account%20Password.%20Please%20help%20me%20to%20recover%20it.%20My%20Name%20is:%20` +
                     formData.name
                   }
                   target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    // fontSize: "0.8rem",
-                    color: "#ff4b2b",
-                    textDecoration: "none",
-                    // fontWeight: "600",
-                  }}>
+                  rel="noopener noreferrer">
                   <FaCaretRight className="footer-icon" /> Password Forget?
                   (Contact Support)
                 </a>
@@ -288,7 +252,7 @@ const Footer = () => {
           <h3>for Sri Lanka | O/L Students</h3>
           <p>
             <FaRocket className="footer-icon" />
-            Version 1.0
+            Version 1.5
           </p>
           <p>
             <FaSquareCheck className="footer-icon" />
@@ -312,6 +276,7 @@ const Footer = () => {
           <p>
             This template is made with <FaHeart /> by
             <a
+              className="author-link"
               href="http://github.com/lakshan-beast"
               target="_blank"
               rel="noopener noreferrer">
