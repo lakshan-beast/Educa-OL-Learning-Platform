@@ -9,11 +9,9 @@ import {
   FaRocket,
   FaCircleQuestion,
   FaPenToSquare,
-  // FaFilePdf,
   FaUserShield,
 } from "react-icons/fa6";
 
-// import PaperImg from "../assets/resources.webp";
 import Tools from "../assets/study.webp";
 import Comments from "../assets/comments.webp";
 import Results from "../assets/results.webp";
@@ -23,8 +21,7 @@ import Parent from "../assets/parent.webp";
 
 const Resources = () => {
   return (
-    // <section className="resources-section parts" id="resources">
-    <section className=" parts" id="resources">
+    <section className="parts" id="resources">
       <h2>
         Explore Our Powerful <span>Learning Tools</span>
       </h2>
@@ -33,13 +30,11 @@ const Resources = () => {
         preparation easy, fun, & effective.
       </p>
 
-      <div className="resources-container resources-grid">
-        {/* 7. දෙමාපිය පෝටලය (Parent Portal Card - ACTIVE) */}
+      <div className="resources-grid">
         <div
           className="resources-card card-style"
           data-aos="fade-up"
-          data-aos-delay="900">
-          {/* රන් පාට ලස්සන Verified Badge එකක් */}
+          data-aos-delay="100">
           <span className="card-badge card-badge-verified">
             <FaCircleCheck /> Parents Only
           </span>
@@ -62,7 +57,7 @@ const Resources = () => {
           className="resources-card card-style result-check"
           id="result-check"
           data-aos="fade-up"
-          data-aos-delay="600">
+          data-aos-delay="120">
           <span className="card-badge card-badge-official">
             <FaMedal className="icon" /> Official
           </span>
@@ -87,7 +82,7 @@ const Resources = () => {
         <div
           className="resources-card card-style"
           data-aos="fade-up"
-          data-aos-delay="500">
+          data-aos-delay="140">
           <span className="card-badge card-badge-verified">
             <FaCircleCheck className="icon" /> Verified
           </span>
@@ -111,7 +106,7 @@ const Resources = () => {
         <div
           className="resources-card card-style"
           data-aos="fade-up"
-          data-aos-delay="400">
+          data-aos-delay="160">
           <span className="card-badge card-badge-new">
             <FaRocket className="icon" /> New Tools
           </span>
@@ -135,7 +130,7 @@ const Resources = () => {
         <div
           className="resources-card card-style"
           data-aos="fade-up"
-          data-aos-delay="700">
+          data-aos-delay="180">
           <span className="card-badge card-badge-daily">
             <FaCircleCheck className="icon" /> Everyday
           </span>
@@ -159,7 +154,7 @@ const Resources = () => {
         <div
           className="resources-card card-style"
           data-aos="fade-up"
-          data-aos-delay="800">
+          data-aos-delay="200">
           <span className="card-badge card-badge-hot">
             <FaMedal className="icon" /> Most Popular
           </span>
@@ -177,27 +172,6 @@ const Resources = () => {
             Developing Mode
           </button>
         </div>
-
-        {/* 6. Paper Hub Card */}
-        {/* <div className="resources-card card-style" data-aos="fade-up" data-aos-delay="900">
-          <span className="card-badge card-badge-new">
-            <FaRocket className="icon" /> New Papers
-          </span>
-          <img src={PaperImg} loading="lazy" alt="Past Papers" />
-          <h3>
-            <FaFilePdf /> Academic Paper Hub
-          </h3>
-          <p>
-            Access a massive collection of Past Papers, Target Papers, and Short
-            Notes.
-          </p>
-          <Link to="/paper-hub" className="browse-btn">
-            View Materials
-          </Link>
-          <button disabled="disabled" className="browse-btn">
-            Developing Tool
-          </button>
-        </div> */}
       </div>
     </section>
   );
