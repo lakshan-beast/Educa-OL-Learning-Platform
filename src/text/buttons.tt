@@ -1,0 +1,86 @@
+
+// // Base Button Style
+// .btn-base {
+//   outline: none;
+//   border: none;
+//   display: block;
+//   text-align: center;
+//   border-radius: $border-radius-small; // Variables වලින් ගත්තා
+//   transition: $transition-fast; // 0.3s ease
+//   cursor: pointer;
+//   background-size: 200% auto;
+//   box-shadow: $shadow-light;
+
+//   &:hover {
+//     transform: translateY(-3px) scale(1.02);
+//     box-shadow: $shadow-medium;
+//   }
+// }
+
+// Start Button (Primary Gradient)
+// .start-btn {
+//   @extend .btn-base;
+//   background-image: linear-gradient(to right, #ff5a4e 0%, #4548ff 51%, #c0ccf3 100%);
+//   color: $white;
+
+//   &:hover {
+//     background-position: right center;
+//   }
+// }
+
+// // Browse Button (Outline Style)
+// .browse-btn {
+//   @extend .btn-base;
+//   border: 1px solid $secondary-blue;
+//   color: $secondary-blue;
+//   background-color: transparent;
+
+//   &:hover {
+//     background-color: $blue-light;
+//     color: $blue-medium;
+//     border-color: $blue-medium;
+//   }
+// }
+
+// // Contact & Review Buttons
+// .contact-btn,
+// .reviews-btn,
+// .fullclass-btn {
+//   @extend .btn-base;
+//   background: linear-gradient(to right, #ff5e53 0%, #474aff 100%);
+//   color: $white;
+//   padding: 10px 20px;
+
+//   &:hover {
+//     background: linear-gradient(to right, #ff5e5375 0%, #474aff80 100%);
+//   }
+// }
+
+// // Class View Button
+// .class-btn {
+//   @extend .btn-base;
+//   background-color: $dark-purple1;
+//   color: $white;
+//   padding: 6px 0;
+//   width: 100%;
+// }
+
+// .card-container {
+//   background: $white;
+//   border-radius: $border-radius-medium;
+//   padding: $padding-large;
+//   box-shadow: $shadow-light;
+//   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // ලස්සන bounce effect එකක්
+//   border: 1px solid rgba($blue-light, 0.3);
+//   position: relative;
+//   overflow: hidden;
+//   height: 100%;
+//   @include flex-custom(flex-start, stretch, column, 1rem);
+
+//   // කාඩ් එක උඩට මවුස් එක ගෙනිච්චම වෙන වෙනස
+//   &:hover {
+//     transform: translateY(-10px);
+//     box-shadow: $shadow-dark;
+//     border-color: $dark-purple1;
+//   }
+// }
