@@ -17,7 +17,7 @@ main {
   // margin: 1rem auto 2rem auto;
   padding: 0rem 1rem;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1140px;
   background: transparent;
   position: relative;
   // display: flex;
@@ -350,10 +350,10 @@ main {
       padding: 20px;
 
       @include respond(desktop) {
-        // grid-template-columns: 1fr 1fr; // Mobile එකේදී පල්ලෙහාට එන්න
+        // grid-template-columns: 1fr 1fr 1fr; // Mobile එකේදී පල්ලෙහාට එන්න
         direction: ltr !important;
         padding: 15px;
-        width: 500px;
+        width: 300px;
       }
 
       // --- මැජික් එක: ඉරට්ටේ සංඛ්‍යා (2, 4...) තියෙන කාඩ්ස් වල පැති මාරු කරන්න ---
@@ -374,10 +374,12 @@ main {
       .teacher-image-column {
         height: 200px;
         img {
-          width: 100%;
-          height: 100%;
+          width: 250px;
+          // width: 100%;
+          height: 250px;
+          // height: 100%;
           object-fit: cover;
-          border-radius: 20px;
+          border-radius: 50%;
           box-shadow: $shadow-light;
         }
       }
