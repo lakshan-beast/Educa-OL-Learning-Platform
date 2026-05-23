@@ -570,7 +570,7 @@
   border-radius: 12px;
 
   .teacher-image-column {
-    @include flex-custom(space-between, center, row, 0, nowrap);
+    @include center-everything;
 
     img {
       width: 250px;
@@ -625,44 +625,101 @@
       }
     }
   }
-  .teacher-socials {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-direction: column;
+  // .teacher-socials {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   gap: 15px;
+  //   flex-direction: column;
 
-    a {
-      width: 45px;
-      height: 45px;
-      border-radius: 16px;
-      transition: 0.3s;
-      font-size: 1.3rem;
+  //   a {
+  //     width: 45px;
+  //     height: 45px;
+  //     border-radius: 16px;
+  //     transition: 0.3s;
+  //     // font-size: 1.3rem;
 
-      @include center-everything;
+  //     @include center-everything;
 
-      &:hover {
-        transform: scale(1.1);
-      }
+  //     &:hover {
+  //       transform: scale(1.1);
+  //     }
 
-      .icon {
-        color: $white;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-      }
+  //     // .icon {
+  //     //   color: $white;
+  //     //   width: 30px;
+  //     //   height: 30px;
+  //     //   border-radius: 50%;
+  //     // }
 
-      .facebook-icon {
-        background-color: $facebook-color;
-      }
+  //     // .facebook-icon {
+  //     //   background-color: $facebook-color;
+  //     // }
 
-      .whatsapp-icon {
-        background-color: $whatsapp-color;
-      }
+  //     // .whatsapp-icon {
+  //     //   background-color: $whatsapp-color;
+  //     // }
 
-      .call-icon {
-        background-color: $call-color;
-      }
-    }
-  }
+  //     // .call-icon {
+  //     //   background-color: $call-color;
+  //     // }
+  //   }
+  // }
+}
+
+/* 👑 PREMIUM FLOATING RIBBON SOCIAL BAR */
+.teacher-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // flex-direction: column;
+  background: #ecf1ff; /* ලස්සන ලා දම්/නිල් පසුබිම් පටිය */
+  padding: 8px 20px;
+  border-radius: 30px; /* Ribbon එකක් වගේ දෙපැත්ත සම්පූර්ණයෙන්ම වටකුරු කරයි */
+  gap: 22px; /* අයිකන අතර පරතරය */
+  margin-top: 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(26, 10, 84, 0.06); /* ලාවට පාවෙන පෙනුමක් (Shadow) */
+  transition: all 0.3s ease;
+  margin: 16px auto 0 auto;
+  width: 200px;
+}
+
+/* Ribbon එක උඩට මවුස් එක ගෙනිච්චම සිදුවන ලස්සන Shadow මාරුව */
+.teacher-socials:hover {
+  box-shadow: 0 6px 20px rgba(26, 10, 84, 0.1);
+  background: #ffffff;
+}
+
+/* අයිකන ලින්ක්ස් සඳහා පොදු ස්ටයිල් */
+.teacher-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s ease; /* Micro-animation speed */
+  font-size: 1.5rem;
+}
+
+/* ළමයෙක් අයිකන් එකක් උඩට මවුස් එක ගෙනිච්චම ඒක විතරක් ලස්සනට scale වේ */
+.teacher-socials a:hover {
+  transform: scale(1.25);
+}
+
+/* 🔵 Facebook නිල වර්ණය */
+.teacher-socials .facebook-icon {
+  color: #1877f2;
+  // font-size: 1.25rem;
+}
+
+/* 🟢 WhatsApp නිල වර්ණය */
+.teacher-socials .whatsapp-icon {
+  color: #25d366;
+  // font-size: 1.3rem;
+}
+
+/* 🔴 Direct Call නිල වර්ණය */
+.teacher-socials .call-icon {
+  color: #e74c3c;
+  // font-size: 1.15rem;
 }
