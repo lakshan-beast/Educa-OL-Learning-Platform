@@ -111,16 +111,14 @@ a {
   .input-row {
     display: grid;
     grid-template-columns: 1fr;
-    display: flex;
-    flex-direction: row;
 
-    display: grid;
-    grid-template-columns: 1fr;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
+    @include respond(dekstop) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+    }
   }
 
   .input-group {
