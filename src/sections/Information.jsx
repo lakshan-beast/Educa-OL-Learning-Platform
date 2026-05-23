@@ -1,4 +1,3 @@
-// import React from 'react';
 import {
   FaBrain,
   FaFilePen,
@@ -13,7 +12,6 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 
 const Information = () => {
   return (
-    // <section className="information parts" id="information">
     <section className="parts" id="information">
       <h2>
         Why <span>Choose Us?</span>
@@ -24,9 +22,8 @@ const Information = () => {
       </p>
 
       <div className="about-container info-column" id="about">
-        {/* <div className="information-conatiner"> */}
         {/* Left Content */}
-        <div className="info-content info-left card" data-aos="fade-right">
+        <div className="info-left card" data-aos="fade-right">
           <p data-aos="fade-up">
             At Educa, we understand that every student learns differently. Our
             mission is to bridge the gap between complex theories and exam
@@ -36,7 +33,7 @@ const Information = () => {
 
           <div className="about-info" data-aos="fade-up">
             <h4>
-              <FaBrain /> Simplified Concept Mapping
+              <FaBrain className="icon" /> Simplified Concept Mapping
             </h4>
             <p>
               Breaking down complex theories into easy-to-understand diagrams
@@ -44,7 +41,7 @@ const Information = () => {
             </p>
 
             <h4>
-              <FaFilePen /> Exam-Oriented Training
+              <FaFilePen className="icon" /> Exam-Oriented Training
             </h4>
             <p>
               Focused sessions on Past Papers, Model Papers, and Time Management
@@ -52,7 +49,7 @@ const Information = () => {
             </p>
 
             <h4>
-              <FaHeadset /> 24/7 Academic Support
+              <FaHeadset className="icon" /> 24/7 Academic Support
             </h4>
             <p>
               A dedicated community where students can clarify doubts at any
@@ -60,7 +57,7 @@ const Information = () => {
             </p>
 
             <h4>
-              <FaChartLine /> Proven Track Record
+              <FaChartLine className="icon" /> Proven Track Record
             </h4>
             <p>
               Over 2500+ students have successfully transformed their grades
@@ -70,7 +67,7 @@ const Information = () => {
         </div>
 
         {/* Right Content - Stats Boxes */}
-        <div className="info-content info-right" data-aos="fade-right">
+        <div className="info-right" data-aos="fade-right">
           <div className="about-status">
             <div className="courses-box box" data-aos="fade-right">
               <FaChalkboard />
@@ -96,7 +93,6 @@ const Information = () => {
 
           {/* Chart Area */}
           <div className="result-container" data-aos="fade-up">
-            {/* මෙතන දැනට canvas එක තිබ්බට React වලදී අපිට Chart.js පාවිච්චි කරන්න වෙනවා */}
             <canvas id="olResultChart" width="400" height="250"></canvas>
             <p
               style={{
@@ -109,7 +105,6 @@ const Information = () => {
           </div>
         </div>
       </div>
-      {/* </div> */}
     </section>
   );
 };
