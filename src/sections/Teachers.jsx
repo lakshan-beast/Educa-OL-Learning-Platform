@@ -52,11 +52,23 @@ const Teachers = () => {
       <div className="teachers-container teachers-grid">
         {teacherData.map((teacher, index) => (
           <div
-            className="teacher-row-card"
+            className="teacher-card"
             key={index}
             data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}>
             <div className="teacher-image-column">
               <img src={teacher.img} alt={teacher.name} />
+
+              <div className="teacher-socials">
+                <a href="#">
+                  <FaFacebook className="facebook-icon icon" />
+                </a>
+                <a href="#">
+                  <FaWhatsapp className="whatsapp-icon icon" />
+                </a>
+                <a href={`tel:${teacher.phone}`}>
+                  <FaPhone className="call-icon icon" />
+                </a>
+              </div>
             </div>
 
             <div className="teacher-info-column">
@@ -65,16 +77,18 @@ const Teachers = () => {
                 <h3>{teacher.name}</h3>
 
                 <div className="detail-list">
-                  <p>
-                    <b>Academic:</b> {teacher.background}
-                  </p>
-                  <p>
-                    <b>Experience:</b> {teacher.expertise}
-                  </p>
+                  <div className="detail-header">
+                    <p>
+                      <b>Academic:</b> {teacher.background}
+                    </p>
+                    <p>
+                      <b>Experience:</b> {teacher.expertise}
+                    </p>
+                  </div>
                   <p className="philosophy-box">{teacher.philosophy}</p>
                 </div>
 
-                <div className="teacher-socials">
+                {/* <div className="teacher-socials">
                   <a href="#">
                     <FaFacebook />
                   </a>
@@ -84,7 +98,7 @@ const Teachers = () => {
                   <a href={`tel:${teacher.phone}`}>
                     <FaPhone />
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
