@@ -272,13 +272,16 @@ const Footer = () => {
         {/* footer copyright info */}
         <div className="footer-card footer-copyrights">
           <p>
-            <FaRegCopyright /> {currentYear} All rights reserved.
+            Copyright <FaRegCopyright /> {currentYear} <span>Educa.</span> - A
+            Product of <span>NexusLabs</span> Sri Lanka. All rights reserved.
           </p>
+          <br />
           <p>
-            This template is made with <FaHeart /> by
+            Designed & Engineered <FaHeart /> by
             <a
               className="author-link"
-              href="http://github.com/lakshan-beast"
+              // href="http://github.com/lakshan-beast"
+              href="https://lakshan-sandeepa-dev.vercel.app/"
               target="_blank"
               rel="noopener noreferrer">
               Lakshan
