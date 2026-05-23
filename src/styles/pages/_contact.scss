@@ -168,9 +168,11 @@ a {
     gap: 10px;
     cursor: pointer;
     transition: 0.3s;
+
     &:hover {
       background: $primary-orange;
       transform: translateY(-3px);
+      gap: 15px;
     }
   }
 }
