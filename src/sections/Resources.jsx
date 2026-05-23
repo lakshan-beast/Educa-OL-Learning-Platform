@@ -31,16 +31,13 @@ const Resources = () => {
       </p>
 
       <div className="resources-grid">
-        <div
-          className="resources-card card-style"
-          data-aos="fade-up"
-          data-aos-delay="100">
+        <div className="resources-card" data-aos="fade-up" data-aos-delay="100">
           <span className="card-badge card-badge-verified">
-            <FaCircleCheck /> Parents Only
+            <FaCircleCheck className="icon" /> Parents Only
           </span>
           <img src={Parent} loading="lazy" alt="Parent Portal" />
           <h3>
-            <FaUserShield /> Perant Portal
+            <FaUserShield className="icon" /> Perant Portal
           </h3>
           <p>
             View your child's attendance, fees reports, and special public
@@ -63,7 +60,7 @@ const Resources = () => {
           </span>
           <img src={Results} loading="lazy" alt="O/L Results" />
           <h3>
-            <FaChartColumn /> O/L Result Portal
+            <FaChartColumn className="icon" /> O/L Result Portal
           </h3>
           <p>
             Quickly access the official Department of Examinations portal to
@@ -88,7 +85,7 @@ const Resources = () => {
           </span>
           <img src={Comments} loading="lazy" alt="Student Reviews" />
           <h3>
-            <FaComments /> Student Voices
+            <FaComments className="icon" /> Student Voices
           </h3>
           <p>
             See what students say about classes & their learning experience with
@@ -112,7 +109,7 @@ const Resources = () => {
           </span>
           <img src={Tools} loading="lazy" alt="Study Tools" />
           <h3>
-            <FaToolbox /> Smart Study Tools
+            <FaToolbox className="icon" /> Smart Study Tools
           </h3>
           <p>
             Boost your productivity with our specialized O/L study calculators
@@ -136,7 +133,7 @@ const Resources = () => {
           </span>
           <img src={Quetions} loading="lazy" alt="Daily Questions" />
           <h3>
-            <FaCircleQuestion /> Daily Mission
+            <FaCircleQuestion className="icon" /> Daily Mission
           </h3>
           <p>
             Challenge yourself with 5 new questions every day to keep your brain
@@ -160,7 +157,7 @@ const Resources = () => {
           </span>
           <img src={Quizes} loading="lazy" alt="Interactive Quizzes" />
           <h3>
-            <FaPenToSquare /> Skill Test Quizzes
+            <FaPenToSquare className="icon" /> Skill Test Quizzes
           </h3>
           <p>
             Test your knowledge with timed quizzes covering all O/L core units.
