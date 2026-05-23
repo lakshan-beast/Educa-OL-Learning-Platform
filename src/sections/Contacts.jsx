@@ -173,10 +173,9 @@ const Contact = () => {
     //   </div>
     // </section>
 
-    <section className="contact-section section-padding" id="contacts">
+    <section className="parts" id="contacts">
       <div className="contact-container">
         <div className="contact-grid">
-          {/* 1. වම් පැත්තේ විස්තර කාඩ් එක (Contact Details) */}
           <div className="contact-info-card" data-aos="fade-right">
             <h2>
               Get in <span>Touch</span>
@@ -185,18 +184,6 @@ const Contact = () => {
               Have questions about classes or study materials? Message the
               relevant teacher directly.
             </p>
-            {/* <div className="direct-contact">
-              <p>
-                <a href="tel:+94 77 123 4567" className="contact-link">
-                  <FaPhone className="footer-icon" /> +94 77 123 4567
-                </a>
-              </p>
-              <p>
-                <a href="mailto:support@educa.lk" className="contact-link">
-                  <FaEnvelope className="footer-icon" /> support@educa.lk
-                </a>
-              </p>
-            </div> */}
 
             <div className="contact-cards">
               {classContacts.map((item, index) => (
@@ -205,7 +192,7 @@ const Contact = () => {
                   <a href={`tel:${item.phone}`} className="btnx">
                     <FaMobile className="contact-icon" /> {item.phone}
                   </a>
-                  <a href={`mailto:${item.email}`}>
+                  <a className="contact-mail" href={`mailto:${item.email}`}>
                     <FaEnvelope className="contact-icon" /> {item.email}
                   </a>
                   {/* <a href="#">
@@ -260,9 +247,9 @@ const Contact = () => {
                     onChange={handleChange}
                   />
                 </div>
-              </div>
+                {/* </div> */}
 
-              <div className="input-row">
+                {/* <div className="input-row"> */}
                 <div className="input-group">
                   <label>
                     <FaBookOpen /> Subject
