@@ -5,17 +5,15 @@ import {
   FaUserPlus,
   FaKey,
   FaMobileScreen,
-  FaIdCard,
+  // FaIdCard,
   FaCopy,
-  FaCheck,
+  // FaCheck,
+  FaUserCheck,
+  FaWhatsapp,
 } from "react-icons/fa6";
 
 const AddStudentVault = ({ selectedGrade, subject }) => {
   // 3rd code
-  const [generatedID, setGeneratedID] = useState("");
-  const [copied, setCopied] = useState(false);
-  const [error, setError] = useState(""); // 👑 🆕 ලස්සන රතු Alert එකට ස්ටේට් එක
-  const [success, setSuccess] = useState(""); // 👑 🆕 ලස්සන කොළ Alert එකට ස්ටේට් එක
 
   // Form එකේ දත්ත තබා ගන්නා State
   const [formData, setFormData] = useState({
@@ -23,10 +21,17 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
     password: "",
     pin: "",
     parentMobile: "",
+    studentMobile: "",
     maths: subject === "maths", // ලොග් වී ඉන්න සර්ගේ විෂය ඔටෝ ටික් වේ
     science: subject === "science",
     english: subject === "english",
   });
+
+  const [generatedID, setGeneratedID] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState(""); // 👑 🆕 ලස්සන රතු Alert එකට ස්ටේට් එක
+  const [success, setSuccess] = useState(""); // 👑 🆕 ලස්සන කොළ Alert එකට ස්ටේට් එක
+  const [registeredData, setRegisterData] = useState(null);
 
   // 1. Input Fields වල දත්ත වෙනස් වන ලොජික් එක
   const handleChange = (e) => {
@@ -82,6 +87,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       password: formData.password,
       pin: cleanPin,
       parentMobile: formData.parentMobile,
+      studentMobile: formData.studentMobile,
       maths: formData.maths,
       science: formData.science,
       english: formData.english,
@@ -95,6 +101,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       await addDoc(collection(db, "students"), studentCloudData);
 
       setGeneratedID(finalID);
+      setRegisterData(studentCloudData);
       setCopied(false);
 
       // ලස්සන කොළ පාට Notification Card එක සක්‍රීය කරයි
@@ -108,6 +115,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
         password: "",
         pin: "",
         parentMobile: "",
+        studentMobile: "",
         maths: subject === "maths",
         science: subject === "science",
         english: subject === "english",
@@ -123,6 +131,46 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
       setSuccess("");
       setError("");
     }, 5000);
+  };
+
+  // 👑 🆕 [WHATSAPP STRUCTURAL MESSAGE BUILDER]: පේමන්ට්ස් වල වගේම මැසේජ් එකක් හදන ලොජික් එක
+  const sendWelcomeWhatsApp = () => {
+    if (!registeredData) return;
+
+    // const formattedMobile = registeredData.studentMobile
+    //   .trim()
+    //   .replace(/^0/, "94");
+
+    let subjectsList = [];
+
+    if (registeredData.maths) subjectsList.push("Mathematics");
+    if (registeredData.science) subjectsList.push("Science");
+    if (registeredData.english) subjectsList.push("English");
+
+    const message =
+      `*🎓 educa. Official Student Registration* \n\n` +
+      `Dear *${registeredData.fullName}*,\n` +
+      `You have been successfully onboarded to the *educa. LMS Platform*.\n\n` +
+      `📌 *Your Student ID:* ${registeredData.id}\n` +
+      `🔑 *Your Password:* ${registeredData.password}\n` +
+      `🔒 *Your PIN Number:* ${registeredData.pin}\n` +
+      `🏫 *Grade:* Grade ${registeredData.grade}\n` +
+      `📚 *Enrolled Classes:* ${subjectsList.join(", ")}\n\n` +
+      `> 💻 *Login Portal:* https://educa-ol-learning-platform.vercel.app\n\n` +
+      `\n Thank you!\n\n*NexusLabs Software Studios* 🦾`;
+
+    const sendRegistrationDetails = registeredData.studentMobile
+      .trim()
+      .replace(/^0/, "94");
+
+    // const whatsappUrl = `https://wa.me{sendRegistrationDetails}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl =
+      "https://wa.me/" +
+      sendRegistrationDetails +
+      "?text=" +
+      encodeURIComponent(message);
+    window.open(whatsappUrl, "_blank");
+    // 🚀 ළමයාගේ වට්ස්ඇප් එකට මැසේජ් එක ලයිව් අරන් යයි!
   };
 
   return (
@@ -200,7 +248,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
             <input
               type="text"
               name="fullName"
-              placeholder="ex: LAKSHAN SANDEEPA"
+              placeholder="ex: SADUN UMAYANGA"
               required
               value={formData.fullName}
               onChange={handleChange}
@@ -308,6 +356,33 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
                 display: "block",
                 marginBottom: "5px",
               }}>
+              <FaMobileScreen /> Student's Mobile Number
+            </label>
+            <input
+              type="text"
+              name="studentMobile"
+              placeholder="ex: 07X-XXX XXXX"
+              required
+              value={formData.studentMobile}
+              onChange={handleChange}
+              style={{
+                width: "100%",
+                padding: "10px",
+                borderRadius: "8px",
+                border: "1px solid #ddd",
+              }}
+            />
+          </div>
+
+          <div className="input-group">
+            <label
+              style={{
+                fontWeight: "600",
+                fontSize: "0.85rem",
+                color: "#1a0a54",
+                display: "block",
+                marginBottom: "5px",
+              }}>
               Select Enrolled Subjects (විෂයන්)
             </label>
             <div
@@ -390,8 +465,118 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
         </div>
       </form>
 
+      {/* DISPLAY GENERATED ID & WHATSAPP BUTTON PANEL */}
+      {/* 🚀 [FIXED]: DISPLAY GENERATED ID & WHATSAPP BUTTON PANEL */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          background: "#fdfdfd",
+          border: "2px dashed #ff4b2b",
+          borderRadius: "16px",
+          padding: "30px",
+          gap: "15px",
+        }}>
+        {generatedID ? (
+          <div style={{ textAlign: "center", width: "100%" }}>
+            <div
+              style={{
+                fontSize: "3.5rem",
+                color: "#2ecc71",
+                marginBottom: "10px",
+              }}>
+              <FaUserCheck />
+            </div>
+
+            <h4 style={{ margin: "0 0 5px", color: "#1a0a54" }}>
+              Generated Student ID
+            </h4>
+
+            <div
+              style={{
+                background: "#f4f7ff",
+                padding: "15px",
+                borderRadius: "10px",
+                fontSize: "1.05rem",
+                fontWeight: "bold",
+                color: "#1a0a54",
+                letterSpacing: "0.5px",
+                margin: "15px 0",
+                border: "1px solid #c7d2fe",
+                wordBreak: "break-all",
+              }}>
+              {generatedID}
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "10px",
+                width: "100%",
+                alignItems: "center",
+                marginTop: "6px",
+              }}>
+              {/* බටන් 1: WhatsApp එකෙන් ළමයට විස්තර යැවීම */}
+              <button
+                type="button"
+                onClick={sendWelcomeWhatsApp}
+                style={{
+                  width: "80%",
+                  background: "#25D366",
+                  color: "white",
+                  border: "none",
+                  padding: "12px 20px",
+                  borderRadius: "8px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  boxShadow: "0 4px 12px rgba(37,211,102,0.2)",
+                }}>
+                <FaWhatsapp /> Share Credentials via WhatsApp
+              </button>
+
+              {/* බටන් 2: Clipboard එකට කොපි කිරීම */}
+              <button
+                type="button"
+                onClick={copyToClipboard}
+                style={{
+                  width: "80%",
+                  background: copied ? "#2ecc71" : "#1a0a54",
+                  color: "white",
+                  border: "none",
+                  padding: "12px 20px",
+                  borderRadius: "8px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                }}>
+                <FaCopy /> {copied ? "Copied!" : "Copy to Clipboard"}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div style={{ textAlign: "center", color: "#aaa" }}>
+            <p style={{ margin: 0, fontWeight: "bold", fontSize: "0.9rem" }}>
+              විස්තර පුරවා බටන් එක ඔබන්න.
+            </p>
+            <small style={{ display: "block", marginTop: "4px" }}>
+              ID එක හැදුණු ගමන් WhatsApp Share බටන් එක මෙතන මතු වේවි.
+            </small>
+          </div>
+        )}
+      </div>
+
       {/* ID එක සාර්ථකව හැදුනට පස්සේ පේන කොටස */}
-      {generatedID && (
+      {/* {generatedID && (
         <div
           style={{
             marginTop: "30px",
@@ -448,7 +633,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
             )}
           </button>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
