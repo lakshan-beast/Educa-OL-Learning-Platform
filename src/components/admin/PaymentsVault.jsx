@@ -18,7 +18,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
       studentId: "EDU-MES-11-LAKSHAN-0102",
       studentName: "Lakshan",
       month: "May",
-      amount: 1500,
+      amount: 1000,
       maths_fees: "Paid",
       science_fees: "Pending",
       english_fees: "Paid",
@@ -29,7 +29,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
   const [formData, setFormData] = useState({
     studentId: "",
     month: "May",
-    amount: "1500",
+    amount: "1000",
   });
 
   const [suggestions, setSuggestions] = useState([]);
@@ -539,7 +539,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
             <button
               onClick={() => {
                 if (paymentRecords.length === 0) {
-                  alert("ඩවුන්ලෝඩ් කිරීමට දත්ත කිසිවක් නොමැත! ❌");
+                  alert("There is no data to download! ❌");
 
                   return;
                 }
