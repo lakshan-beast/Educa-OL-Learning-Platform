@@ -571,7 +571,7 @@ const ClassScheduleVault = () => {
       className: `Grade ${localGrade} ${subject?.toUpperCase()}`,
       teacherName:
         subject === "maths"
-          ? "Amila Sir"
+          ? "Janaka Sir"
           : subject === "science"
             ? "Science Sir"
             : "English Teacher",
