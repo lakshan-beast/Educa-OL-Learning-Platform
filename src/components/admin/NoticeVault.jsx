@@ -7,6 +7,8 @@ import {
   FaCircleExclamation,
 } from "react-icons/fa6";
 
+import ConfirmationModal from "../ConfirmationModal";
+
 const ClassNoticeVault = ({ selectedGrade, subject }) => {
   // 1. දැනට සයිට් එකේ ලයිව් තියෙන නිවේදන ලැයිස්තුව (State)
   const [notices, setNotices] = useState([
@@ -20,7 +22,7 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
   ]);
 
   const [formData, setFormData] = useState({
-    type: "💡 සාමාන්‍ය නිවේදනය",
+    type: "💡 General announcement",
     text: "",
   });
 
@@ -33,7 +35,7 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.text.trim() === "") {
-      alert("කරුණාකර නිවේදන පණිවිඩය ඇතුළත් කරන්න! ❌");
+      alert("Please enter the announcement message! ❌");
       return;
     }
 
@@ -47,23 +49,42 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
 
     // 🚀 Firebase Cloud එකට සහ ලෝකල් ස්ටේට් එකට දත්ත එකතු වේ
     setNotices([newNotice, ...notices]);
-    setFormData({ type: "💡 සාමාන්‍ය නිවේදනය", text: "" });
-    alert("නිවේදනය සාර්ථකව මුළු සයිට් එකටම ලයිව් විකාශනය විය! 🟢📣");
-  };
-
-  // 🗑️ Delete Notice Handler
-  const handleDeleteNotice = (id) => {
-    if (
-      window.confirm(
-        "මෙම නිවේදනය සයිට් එකෙන් සම්පූර්ණයෙන්ම ඉවත් කිරීමට අවශ්‍යද? 😮",
-      )
-    ) {
-      setNotices(notices.filter((notice) => notice.id !== id));
-    }
+    setFormData({ type: "💡 General announcement", text: "" });
+    alert(
+      "The announcement was successfully broadcast live to the entire site! 🟢📣",
+    );
   };
 
   // දැනට තෝරාගෙන ඇති ශ්‍රේණියට (Grade 10 / 11) අදාළ නිවේදන පමණක් වෙන් කර ගැනීම
   const filteredNotices = notices.filter((n) => n.grade === selectedGrade);
+
+  // 🗑️ Delete Notice Handler
+  // const handleDeleteNotice = (id) => {
+  //   if (
+  //     window.confirm(
+  //       "Do you want to completely remove this announcement from the site? 😮",
+  //     )
+  //   ) {
+  //     setNotices(notices.filter((notice) => notice.id !== id));
+  //   }
+  // };
+
+  // 🟢 නිවැරදි අලුත් ක්‍රමය (States පාවිච්චි කරමින්):
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectNoticeId, setSelectNoticeId] = useState(null);
+
+  const handleDeleteNotice = (id) => {
+    setSelectNoticeId(id);
+    setIsModalOpen(true); // 👑 ලස්සන පොප්-අප් කාඩ් එක ඕපන් කරයි
+  };
+
+  const confirmRemoveAbsent = () => {
+    setNotices(
+      // notices.filter((record) => record.id !== selectedRecordId),
+      setNotices(notices.filter((notice) => notice.id !== selectNoticeId)),
+    );
+    setIsModalOpen(false);
+  };
 
   return (
     <div
@@ -83,8 +104,8 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
           {subject?.toUpperCase()})
         </h3>
         <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
-          මෙහි ඇතුළත් කරන නිවේදන ශිෂ්‍ය Dashboard එකේ සහ Parent Portal එකේ එකවර
-          සජීවීව ප්‍රකාශයට පත් වේ.
+          Announcements entered here will be published live on the Student
+          Dashboard and Parent Portal simultaneously.
         </p>
       </div>
 
@@ -127,7 +148,7 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
                   display: "block",
                   marginBottom: "5px",
                 }}>
-                Notice Type (නිවේදන වර්ගය)
+                Notice Type
               </label>
               <select
                 name="type"
@@ -172,7 +193,7 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
               <textarea
                 name="text"
                 rows="5"
-                placeholder="උදා: ලබන සතියේ පොහෝ දින නිමිත්තෙන් පන්තිය පැවැත්වෙන්නේ නැත..."
+                placeholder="For example: There will be no class next week on the occasion of Poya Day..."
                 required
                 value={formData.text}
                 onChange={handleInputChange}
@@ -331,6 +352,15 @@ const ClassNoticeVault = ({ selectedGrade, subject }) => {
           </div>
         </div>
       </div>
+
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        title="Are You Sure?"
+        message="Do you want to completely remove this data from the system? This action cannot be undone."
+        type="danger"
+        onConfirm={confirmRemoveAbsent}
+        onCancel={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };
