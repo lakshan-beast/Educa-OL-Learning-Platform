@@ -781,34 +781,52 @@ const ClassScheduleVault = () => {
               />
             </div>
 
-            <div className="input-group">
-              <label
+            {(localGrade === "10" || localGrade === "11") && (
+              <div className="input-group">
+                <label
+                  style={{
+                    fontWeight: "600",
+                    fontSize: "0.85rem",
+                    color: "#1a0a54",
+                    display: "block",
+                    marginBottom: "5px",
+                  }}>
+                  Live Zoom Link
+                </label>
+                <input
+                  type="url"
+                  name="zoomLink"
+                  placeholder="https://zoom.us..."
+                  required
+                  value={formData.zoomLink}
+                  onChange={handleInputChange}
+                  style={{
+                    width: "100%",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    border: "1px solid #ddd",
+                    color: "#4b6bfb",
+                    fontWeight: "bold",
+                  }}
+                />
+              </div>
+            )}
+
+            {localGrade !== "10" && localGrade !== "11" && (
+              <div
                 style={{
-                  fontWeight: "600",
-                  fontSize: "0.85rem",
-                  color: "#1a0a54",
-                  display: "block",
-                  marginBottom: "5px",
-                }}>
-                Live Zoom Link
-              </label>
-              <input
-                type="url"
-                name="zoomLink"
-                placeholder="https://zoom.us..."
-                required
-                value={formData.zoomLink}
-                onChange={handleInputChange}
-                style={{
-                  width: "100%",
+                  background: "#fff9e6",
+                  borderLeft: "4px solid #f39c12",
                   padding: "10px",
-                  borderRadius: "8px",
-                  border: "1px solid #ddd",
-                  color: "#4b6bfb",
-                  fontWeight: "bold",
-                }}
-              />
-            </div>
+                  borderRadius: "6px",
+                  fontSize: "0.8rem",
+                  color: "#7d5a00",
+                  fontWeight: "600",
+                }}>
+                {" "}
+                6 - 9
+              </div>
+            )}
 
             <button
               type="submit"
