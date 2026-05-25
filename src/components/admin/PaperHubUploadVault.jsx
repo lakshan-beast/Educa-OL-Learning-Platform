@@ -442,7 +442,7 @@ const PaperHubUploadVault = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.title.trim() === "" || formData.link.trim() === "") {
-      setError("කරුණාකර සියලුම විස්තර නිවැරදිව ඇතුළත් කරන්න! ⚠️");
+      setError("Please enter all details correctly! ⚠️");
       return;
     }
 
@@ -457,16 +457,20 @@ const PaperHubUploadVault = () => {
 
     setUploadedMaterials((prevMaterials) => [newMaterial, ...prevMaterials]);
     setFormData({ category: "tutes", title: "", link: "" });
-    setSuccess(`Grade ${localGrade} සඳහා ද්‍රව්‍ය සාර්ථකව අප්ලෝඩ් විය! 🟢📄`);
+    setSuccess(
+      `Grade ${localGrade} The material for was successfully uploaded! 🟢📄`,
+    );
     setTimeout(() => setSuccess(""), 4000);
   };
 
   const handleDeleteMaterial = (id) => {
     if (
-      window.confirm("මෙම නිබන්ධනය ශිෂ්‍ය පෝටලයෙන් ඉවත් කිරීමට අවශ්‍යද? 😮")
+      window.confirm(
+        "Do you want to remove this tutorial from the student portal? 😮",
+      )
     ) {
       setUploadedMaterials(uploadedMaterials.filter((m) => m.id !== id));
-      setSuccess("ද්‍රව්‍ය සාර්ථකව පද්ධතියෙන් ඉවත් කරන ලදී! 🔴");
+      setSuccess("The material was successfully removed from the system! 🔴");
       setTimeout(() => setSuccess(""), 3000);
     }
   };
@@ -492,8 +496,8 @@ const PaperHubUploadVault = () => {
           <FaFolderPlus /> Paper Hub Upload Vault ({subject?.toUpperCase()})
         </h3>
         <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
-          ශ්‍රේණි (6-11) අනුව Paper Hub එකට අවශ්‍ය Tutes, Past Papers සහ
-          Formulas මෙතනින් අප්ලෝඩ් කරන්න.
+          Upload the required Tutes, Past Papers and Formulas for Paper Hub
+          according to grades (6-11) here.
         </p>
       </div>
 
@@ -565,7 +569,7 @@ const PaperHubUploadVault = () => {
                   display: "block",
                   marginBottom: "5px",
                 }}>
-                Select School Grade (ශ්‍රේණිය)
+                Select School Grade
               </label>
               <select
                 value={localGrade}
@@ -607,13 +611,9 @@ const PaperHubUploadVault = () => {
                   border: "1px solid #ddd",
                   fontWeight: "bold",
                 }}>
-                <option value="tutes">📄 පන්ති නිබන්ධන (Class Tutes)</option>
-                <option value="pastPapers">
-                  📕 පසුගිය ප්‍රශ්න පත්‍ර (Past Papers)
-                </option>
-                <option value="formulas">
-                  🎓 සූත්‍ර එකතුව (Formula Guides)
-                </option>
+                <option value="tutes">📄 Class Tutes</option>
+                <option value="pastPapers">📕 Past Papers</option>
+                <option value="formulas">🎓 Formula Guides</option>
               </select>
             </div>
 
