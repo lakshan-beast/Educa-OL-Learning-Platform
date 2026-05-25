@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { allApprovedStudents } from "../../data/approvedStudents";
 // import { parentAttendanceTable } from "../../data/parentPortalData";
+
+import ConfirmationModal from "../ConfirmationModal";
+
 import {
   FaUserXmark,
   FaCirclePlus,
@@ -96,7 +99,7 @@ const AbsentVault = ({ selectedGrade, subject }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!studentIdInput) {
-      alert("කරුණාකර වලංගု ශිෂ්‍ය ID එකක් තෝරන්න! ❌");
+      alert("Please select a valid student ID! ❌");
       return;
     }
 
@@ -105,7 +108,7 @@ const AbsentVault = ({ selectedGrade, subject }) => {
       (r) => r.studentId === studentIdInput,
     );
     if (isAlreadyAbsent) {
-      alert("මේ ශිෂ්‍යයාට දැනටමත් Absent සටහන් කර ඇත! ⚠️");
+      alert("This student has already been marked Absent! ⚠️");
       return;
     }
 
@@ -129,15 +132,30 @@ const AbsentVault = ({ selectedGrade, subject }) => {
   };
 
   // 🟢 [UNDO LOGIC]: වැරදීමකින් Absent දැමූ ළමයෙක්ව නැවත අයින් කිරීම (Delete/Present බටන් එක)
-  const handleRemoveAbsent = (id) => {
-    if (
-      window.confirm(
-        "මෙම ශිෂ්‍යයා පැමිණ ඇත (Present) ලෙස නැවත සකස් කිරීමට අවශ්‍යද? 🤔",
-      )
-    ) {
-      // ලෝකල් State එකෙන් අයින් කිරීම (Firebase එකේදී මෙතනින් Cloud Document එක Delete වේ)
-      setAbsentRecords(absentRecords.filter((record) => record.id !== id));
-    }
+  // const handleRemoveAbsent = (id) => {
+  //   if (window.confirm("Do you want to reset this student to Present? 🤔")) {
+  //     // ලෝකල් State එකෙන් අයින් කිරීම (Firebase එකේදී මෙතනින් Cloud Document එක Delete වේ)
+  //     setAbsentRecords(absentRecords.filter((record) => record.id !== id));
+  //   }
+  // };
+
+  // ❌ පරණ කැත ක්‍රමය:
+  // if (window.confirm("මෙම ශිෂ්‍යයා පැමිණ ඇත ලෙස සකස් කිරීමට අවශ්‍යද?")) { ... }
+
+  // 🟢 නිවැරදි අලුත් ක්‍රමය (States පාවිච්චි කරමින්):
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRecordId, setSelectedRecordId] = useState(null);
+
+  const handleRemoveClick = (id) => {
+    setSelectedRecordId(id);
+    setIsModalOpen(true); // 👑 ලස්සන පොප්-අප් කාඩ් එක ඕපන් කරයි
+  };
+
+  const confirmRemoveAbsent = () => {
+    setAbsentRecords(
+      absentRecords.filter((record) => record.id !== selectedRecordId),
+    );
+    setIsModalOpen(false);
   };
   return (
     <div className="vault-container">
@@ -147,8 +165,8 @@ const AbsentVault = ({ selectedGrade, subject }) => {
           <FaUserXmark /> Today's Absent Vault ({subject?.toUpperCase()})
         </h3>
         <p>
-          අද දින පන්තියට පැමිණ නැති සිසුන් සටහන් කරන්න. මෙම ලැයිස්තුව දෙමාපිය
-          පෝටලයේ ඔටෝම අප්ඩේට් වේ.
+          Note down the students who are absent from class today. This list will
+          be automatically updated in the Parent Portal.
         </p>
       </div>
 
@@ -437,7 +455,7 @@ const AbsentVault = ({ selectedGrade, subject }) => {
                     {/* Undo / Remove Absentee Button */}
                     <td style={{ padding: "12px", textAlign: "center" }}>
                       <button
-                        onClick={() => handleRemoveAbsent(row.id)}
+                        onClick={() => handleRemoveClick(row.id)}
                         style={{
                           background: "#f5b7b1",
                           color: "#78281f",
@@ -467,6 +485,15 @@ const AbsentVault = ({ selectedGrade, subject }) => {
           </table>
         </div>
       </div>
+
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        title="Are You Sure?"
+        message="Do you want to completely remove this data from the system? This action cannot be undone."
+        type="danger"
+        onConfirm={confirmRemoveAbsent}
+        onCancel={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };
