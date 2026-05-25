@@ -543,7 +543,7 @@ const ClassScheduleVault = () => {
 
   const handleStatusOverride = (statusType) => {
     if (!currentSchedule) {
-      setError("කරුණාකර මුලින්ම පන්තියේ විස්තර ඇතුළත් කර සේව් කරන්න! ⚠️");
+      setError("Please enter the class details first and save! ⚠️");
       return;
     }
     const updatedRecords = scheduleRecords.map((r) => {
@@ -553,7 +553,9 @@ const ClassScheduleVault = () => {
       return r;
     });
     setScheduleRecords(updatedRecords);
-    setSuccess(`පන්ති තත්ත්වය සාර්ථකව මාරু විය! 🟢 (${statusType})`);
+    setSuccess(
+      `The class situation was successfully changed! 🟢 (${statusType})`,
+    );
     setTimeout(() => setSuccess(""), 4000);
   };
 
@@ -588,7 +590,7 @@ const ClassScheduleVault = () => {
     }
 
     setScheduleRecords(updatedRecords);
-    setSuccess(`Grade ${localGrade} කාලසටහන සාර්ථකව යාවත්කාලීන විය! 🟢`);
+    setSuccess(`Grade ${localGrade} The schedule was successfully updated! 🟢`);
     setTimeout(() => setSuccess(""), 4000);
   };
 
@@ -608,8 +610,8 @@ const ClassScheduleVault = () => {
           <FaCalendarDays /> Class Schedule Vault ({subject?.toUpperCase()})
         </h3>
         <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
-          ශ්‍රේණි (6-11) අනුව පන්ති පවත්වන දිනය, වෙලාව, පාඩම සහ සූම් ලින්ක් එක
-          පාලනය කරන්න.
+          Control the date, time, lesson, and Zoom link for classes by grade
+          (6-11).
         </p>
       </div>
       {error && (
@@ -679,7 +681,7 @@ const ClassScheduleVault = () => {
                   display: "block",
                   marginBottom: "5px",
                 }}>
-                Select School Grade (ශ්‍රේණිය තෝරන්න)
+                Select School Grade
               </label>
               <select
                 value={localGrade}
@@ -735,7 +737,7 @@ const ClassScheduleVault = () => {
                   display: "block",
                   marginBottom: "5px",
                 }}>
-                Current Lesson (අද උගන්වන පාඩම)
+                Current Lesson
               </label>
               <input
                 type="text"
@@ -762,7 +764,7 @@ const ClassScheduleVault = () => {
                   display: "block",
                   marginBottom: "5px",
                 }}>
-                Special Notes (විශේෂ පණිවිඩ)
+                Special Notes
               </label>
               <input
                 type="text"
@@ -851,8 +853,8 @@ const ClassScheduleVault = () => {
                 marginBottom: "20px",
                 lineHeight: "1.4",
               }}>
-              හදිසි අවස්ථාවකදී පන්තියේ තත්ත්වය ක්ෂණිකව වෙනස් කිරීමට පහත බටන්ස්
-              පාවිච්චි කරන්න.
+              Use the buttons below to instantly change the class status in an
+              emergency.
             </p>
 
             <div
@@ -927,7 +929,7 @@ const ClassScheduleVault = () => {
               fontWeight: "bold",
               color: "#1e1b4b",
             }}>
-            📢 Grade {localGrade} දැනට සජීවී තත්ත්වය:{" "}
+            📢 Grade {localGrade} Currently live status :{" "}
             <span
               style={{
                 color:
