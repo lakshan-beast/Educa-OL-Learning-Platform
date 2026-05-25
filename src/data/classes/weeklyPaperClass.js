@@ -1,8 +1,8 @@
 export const weeklyPaperClass = [
-  // --- GRADE 10 CLASSES ---
+  // --- GRADE 11 CLASSES ---
   {
-    id: "m10",
-    grade: "10",
+    id: "mp",
+    grade: "11p",
     subject: "O/L Mathematics",
     teacher: "Sir 01",
     day: "Saturday",
@@ -16,8 +16,8 @@ export const weeklyPaperClass = [
     },
   },
   {
-    id: "s10",
-    grade: "10",
+    id: "sp",
+    grade: "11p",
     subject: "O/L Science",
     teacher: "Sir 02",
     day: "Sunday",
@@ -31,8 +31,8 @@ export const weeklyPaperClass = [
     },
   },
   {
-    id: "e10",
-    grade: "10",
+    id: "ep",
+    grade: "11p",
     subject: "O/L English",
     teacher: "Sir 03",
     day: "Saturday",
