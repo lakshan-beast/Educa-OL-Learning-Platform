@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import {
   parentGeneralNotices,
   parentFeesTable,
   parentAttendanceTable,
 } from "../data/parentPortalData";
+
 import {
   FaUserShield,
-  FaKey,
+  // FaKey,
   FaBell,
   FaMagnifyingGlass,
   FaMoneyCheckDollar,
@@ -77,11 +79,11 @@ const ParentPortal = () => {
         setSearchQuery(cleanId); // ලොග් වුණු ගමන් තමන්ගේ ළමයාගේ ID එක වගු වල ඔටෝ සර්ච් (Filter) වෙනවා
         setError("");
       } else {
-        setError("ඇතුළත් කළ රහස් මුරපදය (Password) වැරදියි! ❌");
+        setError("The password entered is incorrect! ❌");
       }
     } else {
       setError(
-        "වලංගු නොවන හෝ අනුමත නොකළ ශිෂ්‍ය ID අංකයකි. කරුණාකර කාඩ් මාකර් සම්බන්ධ කරගන්න. ❌",
+        "Invalid or unapproved student ID number. Please contact Card Marker. ❌",
       );
     }
   };
@@ -184,7 +186,7 @@ const ParentPortal = () => {
                     display: "block",
                     marginBottom: "5px",
                   }}>
-                  ශිෂ්‍ය ID අංකය (Student ID)
+                  Student ID
                 </label>
                 <input
                   type="text"
@@ -210,7 +212,7 @@ const ParentPortal = () => {
                     display: "block",
                     marginBottom: "5px",
                   }}>
-                  <FaKey /> රහස් මුරපදය (Password)
+                  Password
                 </label>
                 <input
                   type="password"
@@ -250,7 +252,7 @@ const ParentPortal = () => {
                   fontWeight: "bold",
                   cursor: "pointer",
                 }}>
-                වාර්තාව බලන්න (View Reports)
+                View Reports
               </button>
             </form>
           </div>
@@ -275,8 +277,8 @@ const ParentPortal = () => {
                   alignItems: "center",
                   gap: "8px",
                 }}>
-                <FaBell style={{ color: "#ff4b2b" }} /> පොදු පන්ති නිවේදන පුවරුව
-                (Notice Board)
+                <FaBell style={{ color: "#ff4b2b" }} /> Public class bulletin
+                board (පොදු පන්ති නිවේදන)
               </h3>
               <div
                 style={{
@@ -336,7 +338,7 @@ const ParentPortal = () => {
               />
               <input
                 type="text"
-                placeholder="දරුවාගේ ID අංකය ගසා සර්ච් කරන්න (Search Student ID...)"
+                placeholder="Search by entering the child's ID number..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 style={{
@@ -361,8 +363,8 @@ const ParentPortal = () => {
                 overflowX: "auto",
               }}>
               <h3>
-                <FaMoneyCheckDollar style={{ color: "#2ecc71" }} /> පන්ති ගාස්තු
-                වාර්තා වගුව (Class Fees Status)
+                <FaMoneyCheckDollar style={{ color: "#2ecc71" }} /> Class Fees
+                Report Table
               </h3>
               <table
                 style={{
@@ -425,8 +427,8 @@ const ParentPortal = () => {
                 overflowX: "auto",
               }}>
               <h3>
-                <FaCalendarCheck style={{ color: "#4b6bfb" }} /> ශිෂ්‍ය පැමිණීමේ
-                වාර්තා වගුව (Student Attendance)
+                <FaCalendarCheck style={{ color: "#4b6bfb" }} /> Student
+                Attendance Report Table (ශිෂ්‍ය පැමිණීමේ වාර්තා වගුව)
               </h3>
 
               <table
@@ -486,8 +488,7 @@ const ParentPortal = () => {
                 border: "1px solid rgba(231,76,60,0.2)",
               }}>
               <h3 style={{ color: "#c0392b", marginBottom: "15px" }}>
-                <FaUserXmark /> අද දින පන්තියට පැමිණ නැති සිසුන් (Today's Absent
-                Student IDs)
+                <FaUserXmark /> Today's Absent Student IDs
               </h3>
               <table
                 style={{
@@ -553,7 +554,7 @@ const ParentPortal = () => {
                 fontWeight: "bold",
                 cursor: "pointer",
               }}>
-              පද්ධතියෙන් පිටවීම (Logout Portal)
+              Logout Portal
             </button>
           </div>
         )}
