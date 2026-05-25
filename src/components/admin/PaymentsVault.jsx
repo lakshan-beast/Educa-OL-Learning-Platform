@@ -106,7 +106,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.studentId) {
-      setError("කරුණාකර වලංගු ශිෂ්‍ය ID එකක් තෝරන්න! ❌");
+      setError("Please select a valid student ID! ❌");
       setSuccess("");
       return;
     }
@@ -126,7 +126,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
     };
 
     setPaymentRecords([newPayment, ...paymentRecords]);
-    setSuccess("ගාස්තු වාර්තාව සාර්ථකව සටහන් විය! 🟢");
+    setSuccess("Fee report successfully recorded! 🟢");
     setError("");
     setFormData({ studentId: "", month: "May", amount: "1500" });
 
@@ -167,7 +167,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
       "---------------------------------------------%0A" +
       "Thank%20You!";
 
-    return "https://wa.me" + cleanMobile + "?text=" + message;
+    return "https://wa.me/" + cleanMobile + "?text=" + message;
   };
 
   return (
@@ -186,8 +186,8 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
           <FaMoneyCheckDollar /> Class Payments Vault ({subject?.toUpperCase()})
         </h3>
         <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
-          ශ්‍රේණි සහ මාස අනුව ශිෂ්‍ය පන්ති ගාස්තු (Fees) වාර්තා සටහන් කර
-          දෙමාපියන්ට WhatsApp යවන්න.
+          Record student fees by grade and month and send them to parents via
+          WhatsApp.
         </p>
       </div>
 
@@ -239,7 +239,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
                 fontSize: "0.85rem",
                 fontWeight: "600",
               }}>
-              Total Paid Students (ගෙවූ මුළු සිසුන් ගණන)
+              Total Paid Students
             </p>
           </div>
         </div>
@@ -285,7 +285,7 @@ const PaymentsVault = ({ selectedGrade, subject }) => {
                 fontSize: "0.85rem",
                 fontWeight: "600",
               }}>
-              Total Collected Income (එකතු වූ මුළු මුදල)
+              Total Collected Income
             </p>
           </div>
         </div>
