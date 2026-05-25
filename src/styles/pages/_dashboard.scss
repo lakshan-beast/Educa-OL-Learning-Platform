@@ -435,6 +435,8 @@
         }
         .seconds {
           color: #ff4b2b;
+          font-size: 2.3rem;
+          animation: popup 0.5s ease-in infinite;
         }
         small {
           font-size: 0.75rem;
@@ -557,10 +559,19 @@
 
 .signout-btn {
   width: 100%;
-  margin-top: 20px;
-  padding: 12px;
+  // margin-top: 20px;
+  margin: 0 0 0 auto;
+  // padding: 12px;
   border-radius: 12px;
   border-color: #ff4b2b;
   color: #ffc4b9;
   background-color: #ff2f0a;
+  font-size: 1.05rem;
+
+  @include center-everything;
+
+  .icon {
+    margin-right: 12px;
+    // padding-top: 6px;
+  }
 }
