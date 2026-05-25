@@ -824,7 +824,8 @@ const ClassScheduleVault = () => {
                   fontWeight: "600",
                 }}>
                 {" "}
-                6 - 9
+                ℹ️ Zoom links are currently not available for grades 6 - 9. Only
+                class details are displayed on the home page.
               </div>
             )}
 
