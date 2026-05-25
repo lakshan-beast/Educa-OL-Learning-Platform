@@ -48,14 +48,14 @@ export const parentAttendanceTable = [
 
     class: "Mathematics",
     grade: "11",
-    date: "2026-05-16 (Today)",
+    date: "2026-05-16",
     status: "Absent",
   },
   {
     studentId: "EDU-M-11-KASUN-0914",
     class: "Mathematics",
     grade: "11",
-    date: "2026-05-16 (Today)",
+    date: "2026-05-16 ",
     status: "Present",
   },
   {
