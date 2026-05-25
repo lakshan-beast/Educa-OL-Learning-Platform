@@ -84,7 +84,8 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
           <FaUserPlus /> Add New Student (Grade {selectedGrade})
         </h3>
         <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
-          පෝරමයේ විස්තර බලාගෙන ශිෂ්‍යයා පද්ධතියට ඇතුළත් කර ID එක සාදා ගන්න.
+          Check the details on the form, enter the student into the system and
+          create an ID.
         </p>
       </div>
 
@@ -168,7 +169,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               type="text"
               name="pin"
               maxLength="4"
-              placeholder="ex: 0102"
+              placeholder="ex: 1234"
               required
               value={formData.pin}
               onChange={handleChange}
@@ -198,7 +199,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
             <input
               type="text"
               name="parentMobile"
-              placeholder="ex: 0787030317"
+              placeholder="ex: 07X-XXX XXXX"
               required
               value={formData.parentMobile}
               onChange={handleChange}
