@@ -708,7 +708,7 @@ const AdminDashboard = () => {
                     cursor: "pointer",
                     fontWeight: "500",
                   }}>
-                  දත්ත හැසිරවීමේ නීතිමය වගකීමක් ලෙස මම මෙහි ඇති{" "}
+                  I am here as a legal obligor for data handling.
                   <Link
                     to="/terms"
                     target="_blank"
@@ -719,7 +719,7 @@ const AdminDashboard = () => {
                     }}>
                     Terms of Service
                   </Link>{" "}
-                  සහ{" "}
+                  &
                   <Link
                     to="/privacy"
                     target="_blank"
@@ -730,7 +730,7 @@ const AdminDashboard = () => {
                     }}>
                     Privacy Policy
                   </Link>{" "}
-                  කොන්දේසි කියවා ඒවාට එකඟ වෙමි.
+                  I have read and agree to the terms and conditions.
                 </label>
               </div>
 
