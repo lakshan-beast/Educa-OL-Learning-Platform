@@ -459,7 +459,7 @@ const ClassMarksVault = ({ selectedGrade, subject }) => {
     e.preventDefault();
     // 👑 Fixed: || ලකුණ දමා නිවැරදි කළා
     if (parseInt(formData.score) < 0 || parseInt(formData.score) > 100) {
-      alert("ලකුණු 0 ත් 100 ත් අතර විය යුතුය! ❌");
+      alert("The score must be between 0 and 100! ❌");
       return;
     }
 
@@ -489,8 +489,8 @@ const ClassMarksVault = ({ selectedGrade, subject }) => {
           <FaGraduationCap /> Class Paper Marks Vault ({subject?.toUpperCase()})
         </h3>
         <p style={{ color: "#666", fontSize: "0.85rem", margin: "5px 0 0" }}>
-          විෂය අකුර (M, E, S), ශිෂ්‍ය නම, PIN හෝ දුරකථන අංකයෙන් ක්ෂණිකව ළමයාව
-          සොයාගන්න.
+          Instantly locate your child by subject letter (M, E, S), student name,
+          PIN or phone number.
         </p>
       </div>
 
