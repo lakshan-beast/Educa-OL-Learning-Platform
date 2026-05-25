@@ -194,7 +194,7 @@ const Dashboard = () => {
     }
 
     // විභාග Countdown ගණනය කිරීම
-    const examDate = new Date("2026-12-01T08:30:00").getTime();
+    const examDate = new Date("2026-12-08T08:30:00").getTime();
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const difference = examDate - now;
@@ -256,12 +256,9 @@ const Dashboard = () => {
           <h2>{getGreeting()}, Student!</h2>
           <p className="student-id">Your ID: {studentId}</p>
           <span> Grade 11 - 2026 O/L Batch</span>
-          <p className="motivation-text">
-            "Success is the sum of small efforts, repeated day in and day out."
-          </p>
 
           <button onClick={handleLogout} className="browse-btn signout-btn">
-            <FaRightFromBracket />
+            <FaRightFromBracket className="icon" />
             Sign Out
           </button>
         </div>
@@ -380,7 +377,7 @@ const Dashboard = () => {
                 <small>Secs</small>
               </div>
             </div>
-            <p>* Target Date: December 01, 2026</p>
+            <p>* Target Date: December 08, 2026</p>
           </div>
         </div>
 
@@ -420,7 +417,7 @@ const Dashboard = () => {
               {/* WhatsApp Payment Trigger Button */}
               <div>
                 <button type="button" className="claim-btn start-btn">
-                  Free Claim
+                  Waiting...
                 </button>
               </div>
             </div>
