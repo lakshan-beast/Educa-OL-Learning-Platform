@@ -219,10 +219,19 @@ const Dashboard = () => {
   // ☀️ 3. Dynamic Greeting Calculator Logic
   const getGreeting = () => {
     const hr = new Date().getHours();
-    if (hr < 12) return `Good Morning ☀️`;
-    if (hr < 17) return "Good Afternoon ⛅";
-    return "Good Evening 🌙";
+    if (hr < 10) return `Good Morning ☀️`;
+    if (hr < 14) return "Good Afternoon ⛅";
+    if (hr < 17) return "Good Evening ⛅";
+    return "Good Night 🌙";
   };
+
+  // 👑 🆕 [DYNAMIC NAME GRABBER]: බ්‍රවුසර් එකේ මතකයෙන් ළමයාගේ ඇත්තම නම ලබා ගැනීම
+  const loggedInUser = JSON.parse(localStorage.getItem("studentUser")) || {};
+
+  // මුළු නමම දිග වැඩි නම් (ex: Lakshan Sandaruwan), පළමු නම විතරක් (Lakshan) වෙන් කර ගන්නවා
+  const studentFirstName = loggedInUser.fullName
+    ? loggedInUser.fullName.split(" ")[0]
+    : "Student";
 
   // Progress Bar එකේ ප්‍රතිශතය හැදීම
   // const completedCount = tasks.filter((t) => t.completed).length;
@@ -253,7 +262,10 @@ const Dashboard = () => {
         </Link>
         {/* 👑 A. Dynamic Welcome Banner */}
         <div className="welcome-banner">
-          <h2>{getGreeting()}, Student!</h2>
+          {/* <h2>{getGreeting()}, Student!</h2> */}
+          <h2>
+            {getGreeting()}, {studentFirstName}!
+          </h2>
           <p className="student-id">Your ID: {studentId}</p>
           <span> Grade 11 - 2026 O/L Batch</span>
 

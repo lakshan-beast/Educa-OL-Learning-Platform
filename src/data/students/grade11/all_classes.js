@@ -9,4 +9,5 @@
 export const grade11All = [
   { id: "EDU-MES-11-LAKSHAN-0512", password: "lakshan1234" },
   { id: "EDU-MES-11-TEACHER-0123", password: "teachers1234" },
+  { id: "EDU-MES-11-LAKSHANSANDEPA-1234", password: "sana1234" },
 ];

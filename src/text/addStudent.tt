@@ -1,0 +1,152 @@
+// const [generatedID, setGeneratedID] = useState("");
+  // const [copied, setCopied] = useState(false);
+
+  // const handleChange = (e) => {
+  //   const { name, value, type, checked } = e.target;
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     [name]: type === "checkbox" ? checked : value,
+  //   }));
+  // };
+
+  // 🧠 [ID GENERATION LOGIC]: බටන් එක එබූ විට ID එක ඔටෝ හැදීමේ පද්ධතිය
+  // const handleRegister = (e) => {
+  //   e.preventDefault();
+
+  //   // 1. විෂයන් අනුව Code එක හැදීම (m/e/s)
+  //   let subCode = "";
+  //   if (formData.maths) subCode += "m";
+  //   if (formData.english) subCode += "e";
+  //   if (formData.science) subCode += "s";
+
+  //   if (!subCode) {
+  //     alert("කරුණාකර අවම වශයෙන් එක විෂයක්වත් තෝරන්න!");
+  //     return;
+  //   }
+
+  //   // 2. නමේ හිස්තැන් අයින් කර කැපිටල් කිරීම (Trim spaces)
+  //   const cleanName = formData.fullName.replace(/\s+/g, "").toUpperCase();
+  //   const cleanPin = formData.pin.trim();
+
+  //   // 3. අවසන් ස්මාර්ට් ID එක ගොඩනැඟීම
+  //   const finalID = `EDU-${subCode.toUpperCase()}-${selectedGrade}-${cleanName}-${cleanPin}`;
+
+  //   setGeneratedID(finalID);
+  //   setCopied(false);
+
+  //   // 🚀 [NEXT STEP NOTICE]: හෙට අපි මේ දත්ත ටික Firebase Cloud එකට යවන කේතය මෙතනට ලියනවා.
+  //   console.log("Saving to Cloud:", {
+  //     finalID,
+  //     ...formData,
+  //     grade: selectedGrade,
+  //   });
+  // };
+
+  // 2nd code
+  // const [generatedID, setGeneratedID] = useState("");
+  // const [copied, setCopied] = useState(false);
+  // const [error, setError] = useState(""); // 👑 🆕 Error Card ස්ටේට් එක
+  // const [success, setSuccess] = useState(""); // 👑 🆕 Success Card ස්ටේට් එක
+
+  // const handleChange = (e) => {
+  //   const { name, value, type, checked } = e.target;
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     [name]: type === "checkbox" ? checked : value,
+  //   }));
+  // };
+
+  // const copyToClipboard = () => {
+  //   navigator.clipboard.writeText(generatedID);
+  //   setCopied(true);
+  //   setTimeout(() => setCopied(false), 3000);
+  // };
+
+  // // 🧠 ☁️ [SMART CLOUD REGISTRATION LOGIC]: ළමයාගේ ID එක හදලා කෙලින්ම Firebase යවන හැටි
+  // const handleRegister = async (e) => {
+  //   e.preventDefault();
+
+  //   // 1. විෂයන් අනුව Code එක හැදීම (M/E/S)
+  //   let subCode = "";
+  //   if (formData.maths) subCode += "M";
+  //   if (formData.english) subCode += "E";
+  //   if (formData.science) subCode += "S";
+
+  //   if (!subCode) {
+  //     setError("කරුණාකර අවම වශයෙන් එක විෂයක්වත් තෝරන්න! ⚠️");
+  //     setSuccess("");
+  //     return;
+  //   }
+
+  //   if (
+  //     !formData.fullName ||
+  //     !formData.password ||
+  //     !formData.pin ||
+  //     !formData.parentMobile
+  //   ) {
+  //     setError("කරුණාකර සියලුම විස්තර නිවැරදිව පුරවන්න! ⚠️");
+  //     setSuccess("");
+  //     return;
+  //   }
+
+  //   // 2. නමේ හිස්තැන් අයින් කර කැපිටල් කිරීම
+  //   const cleanName = formData.fullName.replace(/\s+/g, "").toUpperCase();
+  //   const cleanPin = formData.pin.trim();
+
+  //   // 3. අවසන් ස්මාර්ට් ID එක ගොඩනැඟීම
+  //   const finalID = `EDU-${subCode}-${selectedGrade}-${cleanName}-${cleanPin}`;
+
+  //   // 4. Cloud එකට යන පිරිසිදු Object එක සැකසීම
+  //   const studentCloudData = {
+  //     id: finalID,
+  //     fullName: formData.fullName,
+  //     password: formData.password,
+  //     pin: cleanPin,
+  //     parentMobile: formData.parentMobile,
+  //     maths: formData.maths,
+  //     science: formData.science,
+  //     english: formData.english,
+  //     grade: selectedGrade,
+  //     status: "Approved",
+  //     createdAt: new Date().toISOString(),
+  //   };
+
+  //   try {
+  //     // 🚀 5. [THE FIREBASE CONNECTION]: 'students' Collection එකට දත්ත ලියයි
+  //     await addDoc(collection(db, "students"), studentCloudData);
+
+  //     setGeneratedID(finalID);
+  //     setCopied(false);
+  //     setSuccess(
+  //       `ශිෂ්‍යයා සාර්ථකව Google Cloud Database එකට ඇතුළත් කරන ලදී! 🟢 ID: ${finalID}`,
+  //     );
+  //     setError("");
+
+  //     // පෝම් එක පිරිසිදු කිරීම (විෂය ටික් එක ඉතුරු කරමින්)
+  //     setFormData({
+  //       fullName: "",
+  //       password: "",
+  //       pin: "",
+  //       parentMobile: "",
+  //       maths: subject === "maths",
+  //       science: subject === "science",
+  //       english: subject === "english",
+  //     });
+  //   } catch (err) {
+  //     console.error("Firebase Error:", err);
+  //     setError("Cloud Database එකට දත්ත සේව් කිරීමේදී දෝෂයක් සිදු විය! ❌");
+  //     setSuccess("");
+  //   }
+
+  //   // තත්පර 5කින් ඇලර්ට් කාඩ්ස් නිවී යයි
+  //   setTimeout(() => {
+  //     setSuccess("");
+  //     setError("");
+  //   }, 5000);
+  // };
+
+  // const copyToClipboard = () => {
+  //   navigator.clipboard.writeText(generatedID);
+  //   setCopied(true);
+  //   setTimeout(() => setCopied(false), 3000);
+  // };

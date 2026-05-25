@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { db } from "../../firebaseConfig"; // 👑 අපේ මධ්‍යම Firebase පාලම ගත්තා
+import { collection, addDoc } from "firebase/firestore"; // ☁️ දත්ත ඇතුළත් කරන Cloud Tools ගත්තා
 import {
   FaUserPlus,
   FaKey,
@@ -9,6 +11,12 @@ import {
 } from "react-icons/fa6";
 
 const AddStudentVault = ({ selectedGrade, subject }) => {
+  // 3rd code
+  const [generatedID, setGeneratedID] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState(""); // 👑 🆕 ලස්සන රතු Alert එකට ස්ටේට් එක
+  const [success, setSuccess] = useState(""); // 👑 🆕 ලස්සන කොළ Alert එකට ස්ටේට් එක
+
   // Form එකේ දත්ත තබා ගන්නා State
   const [formData, setFormData] = useState({
     fullName: "",
@@ -20,9 +28,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
     english: subject === "english",
   });
 
-  const [generatedID, setGeneratedID] = useState("");
-  const [copied, setCopied] = useState(false);
-
+  // 1. Input Fields වල දත්ත වෙනස් වන ලොජික් එක
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -31,43 +37,92 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
     }));
   };
 
-  // 🧠 [ID GENERATION LOGIC]: බටන් එක එබූ විට ID එක ඔටෝ හැදීමේ පද්ධතිය
-  const handleRegister = (e) => {
-    e.preventDefault();
-
-    // 1. විෂයන් අනුව Code එක හැදීම (m/e/s)
-    let subCode = "";
-    if (formData.maths) subCode += "m";
-    if (formData.english) subCode += "e";
-    if (formData.science) subCode += "s";
-
-    if (!subCode) {
-      alert("කරුණාකර අවම වශයෙන් එක විෂයක්වත් තෝරන්න!");
-      return;
-    }
-
-    // 2. නමේ හිස්තැන් අයින් කර කැපිටල් කිරීම (Trim spaces)
-    const cleanName = formData.fullName.replace(/\s+/g, "").toUpperCase();
-    const cleanPin = formData.pin.trim();
-
-    // 3. අවසන් ස්මාර්ට් ID එක ගොඩනැඟීම
-    const finalID = `EDU-${subCode.toUpperCase()}-${selectedGrade}-${cleanName}-${cleanPin}`;
-
-    setGeneratedID(finalID);
-    setCopied(false);
-
-    // 🚀 [NEXT STEP NOTICE]: හෙට අපි මේ දත්ත ටික Firebase Cloud එකට යවන කේතය මෙතනට ලියනවා.
-    console.log("Saving to Cloud:", {
-      finalID,
-      ...formData,
-      grade: selectedGrade,
-    });
-  };
-
+  // 2. ID එක Clipboard එකට කොපි කරගන්නා ලොජික් එක (දැන් තියෙන්නේ එකයි!)
   const copyToClipboard = () => {
     navigator.clipboard.writeText(generatedID);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  // 3. 🧠 ☁️ ළමයාගේ ID එක හදලා කෙලින්ම Firebase Cloud යවන ප්‍රධාන ලොජික් එක
+  const handleRegisterSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Button Clicked Success! form submiting...");
+
+    let subCode = "";
+    if (formData.maths) subCode += "M";
+    if (formData.english) subCode += "E";
+    if (formData.science) subCode += "S";
+
+    if (!subCode) {
+      setError("කරුණාකර අවම වශයෙන් එක විෂයක්වත් තෝරන්න! ⚠️");
+      setSuccess("");
+      return;
+    }
+
+    if (
+      !formData.fullName ||
+      !formData.password ||
+      !formData.pin ||
+      !formData.parentMobile
+    ) {
+      setError("කරුණාකර සියලුම විස්තර නිවැරදිව පුරවන්න! ⚠️");
+      setSuccess("");
+      return;
+    }
+
+    const cleanName = formData.fullName.replace(/\s+/g, "").toUpperCase();
+    const cleanPin = formData.pin.trim();
+    const finalID = `EDU-${subCode}-${selectedGrade}-${cleanName}-${cleanPin}`;
+
+    // Cloud එකට යන පිරිසිදු දත්ත ව්‍යුහය
+    const studentCloudData = {
+      id: finalID,
+      fullName: formData.fullName,
+      password: formData.password,
+      pin: cleanPin,
+      parentMobile: formData.parentMobile,
+      maths: formData.maths,
+      science: formData.science,
+      english: formData.english,
+      grade: selectedGrade,
+      status: "Approved",
+      createdAt: new Date().toISOString(),
+    };
+
+    try {
+      // 🚀 Firebase 'students' Collection එකට දත්ත ලියයි
+      await addDoc(collection(db, "students"), studentCloudData);
+
+      setGeneratedID(finalID);
+      setCopied(false);
+
+      // ලස්සන කොළ පාට Notification Card එක සක්‍රීය කරයි
+      setSuccess(
+        `ශිෂ්‍යයා සාර්ථකව Google Cloud Database එකට ඇතුළත් කරන ලදී! 🟢 ID: ${finalID}`,
+      );
+      setError("");
+
+      setFormData({
+        fullName: "",
+        password: "",
+        pin: "",
+        parentMobile: "",
+        maths: subject === "maths",
+        science: subject === "science",
+        english: subject === "english",
+      });
+    } catch (err) {
+      console.error("Firebase Error:", err);
+      setError("Cloud Database එකට දත්ත සේව් කිරීමේදී දෝෂයක් සිදු විය! ❌");
+      setSuccess("");
+    }
+
+    // තත්පර 5කින් පණිවිඩ තීරු නිවී යයි
+    setTimeout(() => {
+      setSuccess("");
+      setError("");
+    }, 5000);
   };
 
   return (
@@ -89,8 +144,40 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
         </p>
       </div>
 
+      {error && (
+        <div
+          style={{
+            background: "#fdedec",
+            borderLeft: "5px solid #e74c3c",
+            color: "#c0392b",
+            padding: "12px",
+            borderRadius: "8px",
+            marginBottom: "15px",
+            fontSize: "0.85rem",
+            fontWeight: "bold",
+          }}>
+          ⚠️ {error}
+        </div>
+      )}
+      {success && (
+        <div
+          style={{
+            background: "#e8f8f5",
+            borderLeft: "5px solid #2ecc71",
+            color: "#27ae60",
+            padding: "12px",
+            borderRadius: "8px",
+            marginBottom: "15px",
+            fontSize: "0.85rem",
+            fontWeight: "bold",
+          }}>
+          ✓ {success}
+        </div>
+      )}
+
       <form
-        onSubmit={handleRegister}
+        onSubmit={handleRegisterSubmit}
+        // onSubmit={handleFormSubmitTrigger}
         className="styled-form"
         style={{
           display: "grid",
