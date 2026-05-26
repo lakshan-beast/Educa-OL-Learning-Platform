@@ -1,0 +1,262 @@
+import { useState } from "react";
+import { db } from "../../firebaseConfig";
+import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+
+import {
+  FaFolderPlus,
+  FaFilePdf,
+  FaArrowDown,
+  FaTrashCan,
+  FaFileLines,
+  FaGraduationCap,
+  FaCircleExclamation,
+} from "react-icons/fa6";
+
+// import ConfirmationModal from "../ConfirmationModal";
+
+const PaperHubUploadVault = ({ selectedGrade, subject }) => {
+    const currentSubject = subject || "maths";
+
+    const [formData, setFormData] = useState({
+    grade: selectedGrade || "11",
+    category: "class-tutes",
+    materialTitle: "",
+    driveUrl: "",
+  });
+
+  // 👑 🆕 [LOCAL GRADE STATE]: 6 සිට 11 දක්වා ටියුට්ස් අප්ලෝඩ් පාලනයට වෙනම ස්ටේට් එකක් ගත්තා
+  const [localGrade, setLocalGrade] = useState("11");
+
+  const [uploadedMaterials, setUploadedMaterials] = useState([
+    // {
+    //   id: 1,
+    //   grade: "11",
+    //   subject: "maths",
+    //   category: "classTutes",
+    //   title: "ජ්‍යාමිතිය ප්‍රමේයයන් සහ සිද්ධාන්ත නිබන්ධනය",
+    //   driveUrl:
+    //     "https://drive.google.com/file/d/1YGA57KwfhuV9blXEOMdWbuGc9gHD571c/view?usp=drive_link",
+    // },
+  ]);
+
+  
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false); // 💡 ලෝඩ් වන විට පෙන්වීමට
+  // // 👑 🆕 [THE REQUESTED MODAL STATES]: උඹ ඉල්ලපු Modal States 3 නූලටම මෙන්න
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMaterialId, setSelectedMaterialId] = useState(null);
+  const [selectedMaterialTitle, setSelectedMaterialTitle] = useState("");
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // if (
+    //   formData.materialTitle.trim() === "" ||
+    //   formData.driveUrl.trim() === ""
+    // ) {
+    //   setError("Please enter all details correctly! ⚠️");
+    //   setSuccess("");
+    //   setIsSubmitting(false);
+    //   return;
+    // }
+    // 👑 3. [FIXED OR LOGIC]: OR (||) කෑල්ල නිවැරදිව දැම්මා
+    if (
+      formData.materialTitle.trim() === "" ||
+      formData.driveUrl.trim() === ""
+    ) {
+      setError("Please enter all details correctly! ⚠️");
+      setSuccess("");
+      setIsSubmitting(false);
+      return;
+    }
+
+
+    const materialCloudData = {
+      grade: formData.grade,
+      category: formData.category,
+      title: formData.materialTitle,
+      driveUrl: formData.driveUrl.trim(),
+      subject: currentSubject, // ලොග් වී ඉන්න සර්ගේ විෂය (maths/science/english) ඔටෝම වැදේ
+      createdAt: new Date().toISOString(),
+    };
+
+    // setUploadedMaterials((prevMaterials) => [materialCloudData, ...prevMaterials]);
+    // setFormData({ category: "tutes", title: "", driveUrl: "" });
+    // setSuccess(
+    //   `Grade ${localGrade} The material for was successfully uploaded! 🟢📄`,
+    // );
+    // setTimeout(() => setSuccess(""), 4000);
+
+    try {
+      // 🚀 [THE MAGIC]: 'academic_materials' Collection එකට දත්ත ලියයි (Collection එක ඉබේම සෑදේ!)
+      await addDoc(collection(db, "academic_materials"), materialCloudData);
+
+      // ලස්සන කොළ පාට Success Notification එකක් පෙන්වයි
+      setSuccess(
+        `"${formData.materialTitle}" The tutorial was successfully uploaded to Google Cloud! 🟢`,
+      );
+      setError("");
+
+      // Local List එකටත් දත්ත එකතු කිරීම
+      setUploadedMaterials((prevMaterials) => [
+        materialCloudData,
+        ...prevMaterials,
+      ]);
+
+      // 💾 [FORM RESET]: ටයිප් කරපු විස්තර ඔක්කොම ක්ලියර් කරයි (Grade & Category ඉතුරු කරමින්)
+      setFormData((prev) => ({
+        ...prev,
+        materialTitle: "",
+        driveUrl: "",
+      }));
+    } catch (err) {
+      console.error("Firebase Storage Error:", err);
+      setError(
+        "An error occurred while updating data to the Cloud Database! ❌",
+      );
+      setSuccess("");
+    }
+
+    setIsSubmitting(false);
+
+    setTimeout(() => {
+      setSuccess("");
+      setError("");
+    }, 5000);
+  };
+
+  const handleDeleteMaterial = (id) => {
+    if (
+      window.confirm(
+        "Do you want to remove this tutorial from the student portal? 😮",
+      )
+    ) {
+      setUploadedMaterials(uploadedMaterials.filter((m) => m.id !== id));
+      setSuccess("The material was successfully removed from the system! 🔴");
+      setTimeout(() => setSuccess(""), 3000);
+    }
+  };
+
+  // 👑 [LOCAL GRADE STATE]: 6 සිට 11 දක්වා ටියුට්ස් අප්ලෝඩ් පාලනයට වෙනම ස්ටේට් එකක්
+  // const [localGrade, setLocalGrade] = useState("11");
+
+  // const [uploadedMaterials, setUploadedMaterials] = useState([
+  //   {
+  //     id: 1,
+  //     grade: "11",
+  //     subject: "maths",
+  //     category: "tutes",
+  //     title: "ජ්‍යාමිතිය ප්‍රමේයයන් සහ සිද්ධාන්ත නිබන්ධනය",
+  //     link: "https://google.com",
+  //   },
+  // ]);
+
+  // // 👑 1. [FIXED STATE LOGIC]: selectedGrade || "11" ලෙස නිවැරදි කළා
+  // const [formData, setFormData] = useState({
+  //   grade: selectedGrade || "11",
+  //   category: "class-tutes",
+  //   materialTitle: "",
+  //   driveUrl: "",
+  // });
+
+  // const [error, setError] = useState("");
+  // const [success, setSuccess] = useState("");
+  // const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({ ...prev, [name]: value }));
+  // };
+
+  // // 👑 2. [FIXED ASYNC]: await එක වැඩ කරන්න මෙතනට 'async' කෑල්ල නූලටම දැම්මා
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+
+  //   // 👑 3. [FIXED OR LOGIC]: මැදට || ලකුණු දෙක නිවැරදිව එකතු කළා
+  //   if (
+  //     formData.materialTitle.trim() === "" ||
+  //     formData.driveUrl.trim() === ""
+  //   ) {
+  //     setError("Please enter all details correctly! ⚠️");
+  //     setSuccess("");
+  //     setIsSubmitting(false);
+  //     return;
+  //   }
+
+  //   const materialCloudData = {
+  //     grade: formData.grade,
+  //     category: formData.category,
+  //     title: formData.materialTitle,
+  //     driveUrl: formData.driveUrl.trim(),
+  //     subject: subject, // ලොග් වී ඉන්න සර්ගේ විෂය (maths/science/english) ඔටෝම වැදේ
+  //     createdAt: new Date().toISOString(),
+  //   };
+
+  //   try {
+  //     // 🚀 [THE REAL MAGIC]: 'academic_materials' Collection එකට දත්ත ලියයි
+  //     await addDoc(collection(db, "academic_materials"), materialCloudData);
+
+  //     // 👑 4. [FIXED BACKTICKS]: මැසේජ් එක වටේට නිවැරදිව බැක්ටික්ස් (``  `) දැම්මා
+  //     setSuccess(
+  //       `"${formData.materialTitle}" The tutorial was successfully uploaded to Google Cloud! 🟢`,
+  //     );
+  //     setError("");
+
+  //     // Local List එකටත් දත්ත එකතු කිරීම
+  //     setUploadedMaterials((prevMaterials) => [
+  //       materialCloudData,
+  //       ...prevMaterials,
+  //     ]);
+
+  //     // 💾 [FORM RESET]: පෝම් එක පිරිසිදු කිරීම
+  //     setFormData((prev) => ({
+  //       ...prev,
+  //       materialTitle: "",
+  //       driveUrl: "",
+  //     }));
+  //   } catch (err) {
+  //     console.error("Firebase Storage Error:", err);
+  //     setError(
+  //       "An error occurred while updating data to the Cloud Database! ❌",
+  //     );
+  //     setSuccess("");
+  //   }
+
+  //   setIsSubmitting(false);
+
+  //   setTimeout(() => {
+  //     setSuccess("");
+  //     setError("");
+  //   }, 5000);
+  // };
+
+  // const handleDeleteMaterial = (id) => {
+  //   if (
+  //     window.confirm(
+  //       "Do you want to remove this tutorial from the student portal? 😮",
+  //     )
+  //   ) {
+  //     setUploadedMaterials(uploadedMaterials.filter((m) => m.id !== id));
+  //     setSuccess("The material was successfully removed from the system! 🔴");
+  //     setTimeout(() => setSuccess(""), 3000);
+  //   }
+  // };
+
+  // const confirmRemovePaper = () => {
+  //   setNotices(
+  //     // notices.filter((record) => record.id !== selectedRecordId),
+  //     setNotices(notices.filter((notice) => notice.id !== selectNoticeId)),
+  //   );
+  //   setIsModalOpen(false);
+  // };

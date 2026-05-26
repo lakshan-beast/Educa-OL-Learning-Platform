@@ -229,8 +229,8 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
         className="styled-form"
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "50px",
+          gridTemplateColumns: "1fr",
+          gap: "12px 50px",
         }}>
         {/* Left Form Column */}
         <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
@@ -316,63 +316,6 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               }}
             />
           </div>
-        </div>
-
-        {/* Right Form Column */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-          <div className="input-group">
-            <label
-              style={{
-                fontWeight: "600",
-                fontSize: "0.85rem",
-                color: "#1a0a54",
-                display: "block",
-                marginBottom: "5px",
-              }}>
-              <FaMobileScreen /> Parent's Mobile Number (දෙමාපිය අංකය)
-            </label>
-            <input
-              type="text"
-              name="parentMobile"
-              placeholder="ex: 07X-XXX XXXX"
-              required
-              value={formData.parentMobile}
-              onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "8px",
-                border: "1px solid #ddd",
-              }}
-            />
-          </div>
-
-          <div className="input-group">
-            <label
-              style={{
-                fontWeight: "600",
-                fontSize: "0.85rem",
-                color: "#1a0a54",
-                display: "block",
-                marginBottom: "5px",
-              }}>
-              <FaMobileScreen /> Student's Mobile Number
-            </label>
-            <input
-              type="text"
-              name="studentMobile"
-              placeholder="ex: 07X-XXX XXXX"
-              required
-              value={formData.studentMobile}
-              onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "8px",
-                border: "1px solid #ddd",
-              }}
-            />
-          </div>
 
           <div className="input-group">
             <label
@@ -445,6 +388,63 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
               </label>
             </div>
           </div>
+        </div>
+
+        {/* Right Form Column */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+          <div className="input-group">
+            <label
+              style={{
+                fontWeight: "600",
+                fontSize: "0.85rem",
+                color: "#1a0a54",
+                display: "block",
+                marginBottom: "5px",
+              }}>
+              <FaMobileScreen /> Parent's Mobile Number (දෙමාපිය අංකය)
+            </label>
+            <input
+              type="text"
+              name="parentMobile"
+              placeholder="ex: 07X-XXX XXXX"
+              required
+              value={formData.parentMobile}
+              onChange={handleChange}
+              style={{
+                width: "100%",
+                padding: "10px",
+                borderRadius: "8px",
+                border: "1px solid #ddd",
+              }}
+            />
+          </div>
+
+          <div className="input-group">
+            <label
+              style={{
+                fontWeight: "600",
+                fontSize: "0.85rem",
+                color: "#1a0a54",
+                display: "block",
+                marginBottom: "5px",
+              }}>
+              <FaMobileScreen /> Student's Mobile Number
+            </label>
+            <input
+              type="text"
+              name="studentMobile"
+              placeholder="ex: 07X-XXX XXXX"
+              required
+              value={formData.studentMobile}
+              onChange={handleChange}
+              style={{
+                width: "100%",
+                padding: "10px",
+                borderRadius: "8px",
+                border: "1px solid #ddd",
+              }}
+            />
+          </div>
 
           <button
             type="submit"
@@ -478,6 +478,7 @@ const AddStudentVault = ({ selectedGrade, subject }) => {
           borderRadius: "16px",
           padding: "30px",
           gap: "15px",
+          marginTop: "20px",
         }}>
         {generatedID ? (
           <div style={{ textAlign: "center", width: "100%" }}>

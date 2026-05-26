@@ -1,0 +1,185 @@
+ const { id } = useParams(); // URL එකෙන් විෂය ID එක ගනී (maths, science, english)
+  const navigate = useNavigate();
+
+  // 🧠 Tabs පාලනය කරන State (Default එක Tutes)
+  const [activeTab, setActiveTab] = useState("tutes");
+
+  // LocalStorage එකෙන් ළමයාගේ විස්තර පරීක්ෂා කිරීම
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const userSubjects = localStorage.getItem("user_subjects") || ""; // ex: "MES" or "M"
+
+  const [materials, setmaterials] = useState;
+  const [isLoading, setIsLoading] = useState;
+
+  useEffect(() => {
+    // 1. ලොග් වෙලා නැත්නම් කෙලින්ම හෝම් පේජ් එකට හරවනවා
+    if (!isLoggedIn) {
+      navigate("/");
+      return;
+    }
+
+    // 2. 🧠 URL URL Guard Protection: ළමයා හොරෙන් URL එක ගහලා අවසර නැති විෂයකට යන්න හැදුවොත් වළක්වයි
+    const subLetter =
+      id === "maths"
+        ? "M"
+        : id === "science"
+          ? "S"
+          : id === "english"
+            ? "E"
+            : "";
+    if (!userSubjects.includes(subLetter)) {
+      alert("You do not have access to this subject portal! 🔒");
+      navigate("/dashboard");
+    }
+  }, [id, isLoggedIn, userSubjects, navigate]);
+
+  // අදාළ විෂයට අදාළ පේපර් දත්ත වෙන් කර ගැනීම
+  const currentSubjectData = paperHub11Data[id];
+
+  // වැරදි විෂය ID එකක් ආවොත් බ්ලොක් වීම වැළැක්වීම
+  if (!currentSubjectData) {
+    return (
+      <div className="page-container">
+        <h3>Subject Hub Not Found! ❌</h3>
+        <Link to="/dashboard" className="start-btn">
+          Back to Dashboard
+        </Link>
+      </div>
+    );
+  }
+
+
+ return (
+    <div className="paper-hub-wrapper page-container">
+      <div className="system-container">
+        {/* Back to Dashboard ලින්ක් එක */}
+        <Link className="back-btn" to="/dashboard">
+          <FaArrowLeft /> Back to Dashboard
+        </Link>
+
+        {/* 👑 Subject Header Title */}
+        <div className="subject-vault-header">
+          <h2>{currentSubjectData.title}</h2>
+          <p>
+            Grade 11 • All structural tutes, past papers and materials are
+            verified.
+          </p>
+        </div>
+
+        {/* 🎛️ TABS MENU (Tutes, Past Papers, Formulas මාරු වෙන බටන්ස්) */}
+        <div className="paper-tabs-container">
+          <button
+            className={`tab-btn ${activeTab === "tutes" ? "active-paper-tab" : ""}`}
+            onClick={() => setActiveTab("tutes")}
+            style={{
+              padding: "10px 20px",
+              borderRadius: "10px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              background: activeTab === "tutes" ? "#26136d" : "white",
+              color: activeTab === "tutes" ? "white" : "#555",
+              border: "1px solid #ddd",
+            }}>
+            <FaFileLines /> Class Tutes
+          </button>
+
+          <button
+            className={`tab-btn ${activeTab === "pastPapers" ? "active-paper-tab" : ""}`}
+            onClick={() => setActiveTab("pastPapers")}
+            style={{
+              padding: "10px 20px",
+              borderRadius: "10px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              background: activeTab === "pastPapers" ? "#26136d" : "white",
+              color: activeTab === "pastPapers" ? "white" : "#555",
+              border: "1px solid #ddd",
+            }}>
+            <FaFilePdf /> Past Papers
+          </button>
+          {/* සූත්‍ර බටන් එක පෙන්වන්නේ Maths සහ Science වලට විතරයි (English වලදී පේන්නේ නැත) */}
+          {currentSubjectData.formulas.length > 0 && (
+            <button
+              className={`tab-btn ${activeTab === "formulas" ? "active-paper-tab" : ""}`}
+              onClick={() => setActiveTab("formulas")}
+              style={{
+                padding: "10px 20px",
+                borderRadius: "10px",
+                fontWeight: "bold",
+                cursor: "pointer",
+                background: activeTab === "formulas" ? "#26136d" : "white",
+                color: activeTab === "formulas" ? "white" : "#555",
+                border: "1px solid #ddd",
+              }}>
+              <FaGraduationCap /> Formula Guides
+            </button>
+          )}
+        </div>
+
+        {/* 📄 CONTENT ZONE (තෝරාගත් Tab එකට අදාළ PDF ලැයිස්තුව ලස්සනට පෙන්වීම) */}
+        <div className="papers-list-grid">
+          {currentSubjectData[activeTab] &&
+          currentSubjectData[activeTab].length > 0 ? (
+            currentSubjectData[activeTab].map((paper) => (
+              <div
+                key={paper.id}
+                className="card-container paper-download-row"
+                style={{
+                  background: "white",
+                  padding: "18px 25px",
+                  borderRadius: "15px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.02)",
+                  border: "1px solid #edf2f9",
+                }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "15px",
+                  }}>
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      background: "#fff0f0",
+                      color: "#e74c3c",
+                      borderRadius: "10px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: "1.2rem",
+                    }}>
+                    <FaFilePdf />
+                  </div>
+                  <h4
+                    style={{
+                      color: "#26136d",
+                      margin: 0,
+                      fontSize: "0.98rem",
+                      fontWeight: "700",
+                    }}>
+                    {paper.title}
+                  </h4>
+                </div>
+
+                {/* Google Drive Link Download Button */}
+                <a
+                  href={paper.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="browse-btn">
+                  Download PDF
+                  <FaArrowDown className="download-icon" />
+                </a>
+              </div>
+            ))
+          ) : (
+            <p>No documents uploaded in this category yet.</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );

@@ -1,0 +1,202 @@
+import React, { useState, useEffect } from "react"; // 💡 Live Fetch සඳහා useEffect එකතු කළා
+import { db } from "../../firebaseConfig"; // 👑 Firebase db පාලම ගත්තා
+import { collection, addDoc, getDocs, query, where } from "firebase/firestore"; // ☁️ Cloud Advanced Tools ගත්තා
+import ConfirmationModal from "../ConfirmationModal"; // 👑 අපේ මධ්‍යම Reusable Modal එක
+import { 
+  FaFolderPlus, FaFilePdf, FaArrowDown, FaTrashCan, 
+  FaFileLines, FaGraduationCap, FaLink 
+} from "react-icons/fa6";
+
+const PaperHubUploadVault = ({ selectedGrade, subject }) => {
+  const currentSubject = subject || "maths";
+
+  // 1. Form Data States
+  const [formData, setFormData] = useState({
+    grade: selectedGrade || "11",
+    category: "class-tutes",
+    materialTitle: "",
+    driveUrl: "",
+  });
+
+  // 👑 🆕 [LIVE CLOUD MATERIALS STATE]: පරණ Hardcoded Array එක වෙනුවට හිස් Array එකක් ගත්තා
+  const [uploadedMaterials, setUploadedMaterials] = useState([]);
+  
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // 💡 ලෝඩ් වන විට පෙන්වීමට
+
+  // 👑 🆕 [THE REQUESTED MODAL STATES]: උඹ ඉල්ලපු Modal States 3 නූලටම මෙන්න
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMaterialId, setSelectedMaterialId] = useState(null);
+  const [selectedMaterialTitle, setSelectedMaterialTitle] = useState("");
+
+  // ============================================================
+  // 📥 👑 🆕 [LIVE CLOUD FETCH ENGINE]: සජීවීව Firebase එකෙන් දත්ත ඇදලා ගන්නා මැජික් එක
+  const fetchCloudMaterials = async () => {
+    setIsLoading(true);
+    try {
+      // ☁️ Firebase එකෙන් දැනට තෝරාගෙන ඇති ශ්‍රේණියට සහ විෂයට අදාළ දත්ත පමණක් Query කර ලබා ගනී
+      const q = query(
+        collection(db, "academic_materials"),
+        where("grade", "==", selectedGrade || "11"),
+        where("subject", "==", currentSubject)
+      );
+      
+      const querySnapshot = await getDocs(q);
+      const materialsList = [];
+      
+      querySnapshot.forEach((doc) => {
+        // Firebase Document ID එකත් සමඟ දත්ත ලබා ගනී (Delete කිරීමට පහසු වීමට)
+        materialsList.push({ id: doc.id, ...doc.data() });
+      });
+      
+      setUploadedMaterials(materialsList); // 🚀 සැබෑ දත්ත ටික State එකට දැම්මා!
+    } catch (err) {
+      console.error("Fetch Error:", err);
+    }
+    setIsLoading(false);
+  };
+
+  // කාඩ් මාකර් ශ්‍රේණිය මාරු කරද්දී ඔටෝම අලුත් දත්ත ලෝඩ් වේ
+  useEffect(() => {
+    fetchCloudMaterials();
+  }, [selectedGrade, currentSubject]);
+  // ============================================================
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // 🧠 ☁️ Cloud එකට දත්ත යවන ලොජික් එක
+  const handleMaterialUploadSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    if (formData.materialTitle.trim() === "" || formData.driveUrl.trim() === "") {
+      setError("Please enter all details correctly! ⚠️");
+      setSuccess("");
+      setIsSubmitting(false);
+      return;
+    }
+
+    const materialCloudData = {
+      grade: formData.grade,
+      category: formData.category,
+      title: formData.materialTitle,
+      driveUrl: formData.driveUrl.trim(),
+      subject: currentSubject, 
+      createdAt: new Date().toISOString()
+    };
+
+    try {
+      // 🚀 Cloud එකට සේව් කරයි
+      await addDoc(collection(db, "academic_materials"), materialCloudData);
+      
+      setSuccess(`"${formData.materialTitle}" නිබන්ධනය සාර්ථකව Google Cloud එකට අප්ලෝඩ් කරන ลදී! 🟢`);
+      setError("");
+      
+      // 🔄 දත්ත සේව් වුණු ගමන් වගුව ඔටෝම ලයිව් රීෆ්‍රෙෂ් (Fetch) වේ!
+      fetchCloudMaterials();
+
+      setFormData((prev) => ({
+        ...prev,
+        materialTitle: "",
+        driveUrl: "",
+      }));
+      } catch (err) {
+      console.error("Firebase Storage Error:", err);
+      setError("Cloud Database එකට දත්ත අප්ඩේට් කිරීමේදී දෝෂයක් සිදු විය! ❌");
+      setSuccess("");
+    }
+    
+    setIsSubmitting(false);
+    
+    setTimeout(() => {
+      setSuccess("");
+      setError("");
+    }, 5000);
+  };
+
+  const handleDeleteClick = (id, title) => {
+    setSelectedMaterialId(id);
+    setSelectedMaterialTitle(title);
+    setIsModalOpen(true);
+  };
+
+  const confirmDeleteMaterial = () => {
+    // 💡 සටහන: මෙතැනදී Firebase Document Delete ලොජික් එක පසුව වුවද ලින්ක් කළ හැක. දැනට Local UI එකෙන් අයින් වේ.
+    setUploadedMaterials(uploadedMaterials.filter((m) => m.id !== selectedMaterialId));
+    setIsModalOpen(false);
+    setSuccess(`"${selectedMaterialTitle}" නිබන්ධනය සාර්ථකව පද්ධතියෙන් ඉවත් කරන ලදී! 🔴`);
+    setError("");
+    setTimeout(() => setSuccess(""), 4000);
+  };
+
+
+
+
+// 👑 🔐 FIXED: Cloud එක ඇතුළේ තියෙන අපේම ID එක සොයා සැබෑ ලෙසම මකා දමයි
+  const confirmDeleteMaterial = async () => {
+    setIsModalOpen(false);
+    setIsLoading(true);
+    
+    try {
+      // ☁️ Firebase එකෙන් අපේ id එකට සමාන document එක සොයා ගන්නා query එක
+      const q = query(collection(db, "academic_materials"), where("id", "==", selectedMaterialId));
+      const querySnapshot = await getDocs(q);
+      
+      // ඒ සොයාගත් document එක ක්ලවුඩ් එකෙන් සදහටම ඩිලීට් කරයි
+      querySnapshot.forEach(async (document) => {
+        await deleteDoc(doc(db, "academic_materials", document.id));
+      });
+      
+      setSuccess(`"${selectedMaterialTitle}" නිබන්ධනය සාර්ථකව Google Cloud එකෙන් ඉවත් කරන ලදී! 🔴`);
+      setError("");
+      
+      fetchCloudMaterials(); // ලයිව් ලිස්ට් එක අප්ඩේට් කරයි
+    } catch (err) {
+      console.error("Delete Error:", err);
+      setError("දත්තය Cloud එකෙන් මැකීමේදී තාක්ෂණික දෝෂයක් සිදු විය! ❌");
+    }
+    
+    setIsLoading(false);
+  };
+
+
+  // 🚀 👑 🆕 [THE REAL CLOUD QUERY DELETE ENGINE]: අපේ Custom ID එක සොයා Firebase එකෙන්ම මකා දමයි!
+  const confirmDeleteMaterial = async () => {
+    setIsModalOpen(false);
+    setIsLoading(true);
+    
+    try {
+      // 1. ☁️ Firebase එකෙන් අපේ Custom ID එක ('MAT-XXXXXX') තියෙන නිශ්චිත ලේඛනය (Document) සොයා ගනී
+      const q = query(collection(db, "academic_materials"), where("id", "==", selectedMaterialId));
+      const querySnapshot = await getDocs(q);
+      
+      // 2. 🗑️ ඒ සොයාගත් Document එක Google Cloud එක ඇතුළෙන්ම සදහටම ඩිලීට් කර දමයි
+      querySnapshot.forEach(async (document) => {
+        await deleteDoc(doc(db, "academic_materials", document.id));
+      });
+      
+      // 👑 FIXED: Backticks නිවැරදිව දමා String Interpolation එක සකස් කළා
+      setSuccess(`"${selectedMaterialTitle}" නිබන්ධනය සාර්ථකව Google Cloud එකෙන් ඉවත් කරන ලදී! 🔴`);
+      setError("");
+      
+      // 🔄 3. ලයිව් ලිස්ට් එක නැවත අප්ඩේට් (Fetch) කර ටේබල් එක රීෆ්‍රෙෂ් කරයි
+      fetchCloudMaterials();
+
+    } catch (err) {
+      console.error("Delete Error:", err);
+      setError("දත්තය Cloud එකෙන් මැකීමේදී තාක්ෂණික දෝෂයක් සිදු විය! ❌");
+      setSuccess("");
+    }
+    
+    setIsLoading(false);
+    
+    setTimeout(() => {
+      setSuccess("");
+      setError("");
+    }, 4000);
+  };

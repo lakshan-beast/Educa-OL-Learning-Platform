@@ -1027,7 +1027,13 @@ const AdminDashboard = () => {
               )}
 
             {/* 📋 DYNAMIC CONTENT VIEWS (ඔබන බටන් එක අනුව පිටු මාරු වන කොටස) */}
-            <div className="dynamic-content" style={{ marginTop: "20px" }}>
+            <div
+              className="dynamic-content"
+              style={{
+                marginTop: "20px",
+                height: "100vh",
+                overflowY: "scroll",
+              }}>
               {activeVault === "add-student" && (
                 <AddStudentVault
                   selectedGrade={selectedGrade}
