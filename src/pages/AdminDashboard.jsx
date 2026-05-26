@@ -932,6 +932,7 @@ const AdminDashboard = () => {
               </button>
 
               <button
+                disabled="disable"
                 onClick={() => setActiveVault("class-marks")}
                 style={{
                   background:
@@ -987,7 +988,7 @@ const AdminDashboard = () => {
             </nav>
 
             <button className="signout-btn" onClick={handleLogout}>
-              <FaRightFromBracket /> Sign Out Panel
+              <FaRightFromBracket className="icon" /> Sign Out Panel
             </button>
           </aside>
           {/* 💻 2. RIGHT MAIN CONTENT SCREEN (දකුණු පැත්තේ ප්‍රධාන තිරය) */}
