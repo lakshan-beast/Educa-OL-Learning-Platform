@@ -368,7 +368,7 @@ const PaperHub = ({ subject }) => {
   const loggedInUser = JSON.parse(localStorage.getItem("studentUser")) || {};
   const studentGrade = loggedInUser.grade || "11"; // ළමයාගේ ශ්‍රේණිය (10/11) [INDEX 51]
 
-  const [activeTab, setActiveTab] = useState();
+  const [activeTab, setActiveTab] = useState("tutes");
 
   const { id } = useParams();
   const currentSubject = (id || "maths").toLowerCase();
